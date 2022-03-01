@@ -1,0 +1,12 @@
+.tight-table td {
+	white-space: normal !important;
+}
+
+.noborder-table td, th {
+   border: none!important;
+}
+
+.noborder-tight-table td, th {
+   white-space: normal !important;
+   border: none!important;
+}

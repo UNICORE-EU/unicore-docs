@@ -1,0 +1,216 @@
+.. table:: 
+ :width: 100 
+ :widths: 30 15 10 45 
+ :class: tight-table
+
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |Property name                |Type          |Default  |Description                                 |
+ |                             |              |         |                                            |
+ |                             |              |value \/ |                                            |
+ |                             |              |         |                                            |
+ |                             |              |mandatory|                                            |
+ +=============================+==============+=========+============================================+
+ |container.security.          |[true, false] |true     |Controls whether access checking            |
+ |                             |              |         |                                            |
+ |accesscontrol[.\*]           |can have      |         |(authorisation) is enabled. Can be used per |
+ |                             |              |         |                                            |
+ |                             |subkeys       |         |service after adding dot and service name   |
+ |                             |              |         |                                            |
+ |                             |              |         |to the property key. (runtime updateable)   |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.          |Class         |\-       |Controls which Policy Decision Point (PDP,  |
+ |                             |              |         |                                            |
+ |accesscontrol.pdp            |extending de. |         |the authorisation engine) should be used.   |
+ |                             |              |         |                                            |
+ |                             |fzj.unicore.  |         |Default value is determined as follows: if  |
+ |                             |              |         |                                            |
+ |                             |wsrflite.     |         |eu.unicore.uas.pdp.local.LocalHerasafPDP is |
+ |                             |              |         |                                            |
+ |                             |security.pdp. |         |available then it is used. If not then this |
+ |                             |              |         |                                            |
+ |                             |UnicoreXPDP   |         |option becomes mandatory.                   |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.          |filesystem    |\-       |Path of the PDP configuration file          |
+ |                             |              |         |                                            |
+ |accesscontrol.pdpConfig      |path          |         |                                            |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.          |list of       |\-       |List of additional service identifiers (e.g.|
+ |                             |              |         |                                            |
+ |additionalServiceIdentifier\*|properties    |         |URLs where this service is accessible)      |
+ |                             |              |         |                                            |
+ |                             |with a common |         |accepted in SAML authentication.            |
+ |                             |              |         |                                            |
+ |                             |prefix        |         |                                            |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.          |string can    |\-       |Prefix used for configurations of           |
+ |                             |              |         |                                            |
+ |attributes[.\*]              |have subkeys  |         |particular attribute sources.               |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.          |string        |MERGE\_  |What algorithm should be used for combining |
+ |                             |              |         |                                            |
+ |attributes.combiningPolicy   |              |LAST\_   |the attributes from multiple attribute      |
+ |                             |              |         |                                            |
+ |                             |              |OVERRIDES|sources (if more then one is defined).      |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.          |string        |\-       |Attribute sources in invocation order.      |
+ |                             |              |         |                                            |
+ |attributes.order             |              |         |                                            |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.          |string can    |\-       |Properties with this prefix are used to     |
+ |                             |              |         |                                            |
+ |credential.[.\*]             |have subkeys  |         |configure the credential used by the        |
+ |                             |              |         |                                            |
+ |                             |              |         |container. See separate documentation for   |
+ |                             |              |         |                                            |
+ |                             |              |         |details.                                    |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.          |list of       |empty    |List of default VOs, which should be        |
+ |                             |              |         |                                            |
+ |defaultVOs.\<NUMBER\>        |properties    |string   |assigned for a request without a VO set.    |
+ |                             |              |         |                                            |
+ |                             |with a common |         |The first VO on the list where the user is  |
+ |                             |              |         |                                            |
+ |                             |prefix        |         |member will be used.                        |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.          |string can    |\-       |When separateDelegationTruststore is true   |
+ |                             |              |         |                                            |
+ |delegationTruststore.[.\*]   |have subkeys  |         |allows to configure the trust delegation    |
+ |                             |              |         |                                            |
+ |                             |              |         |truststore (using normal truststore         |
+ |                             |              |         |                                            |
+ |                             |              |         |properties with this prefix).               |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.          |string can    |\-       |Prefix used for configurations of           |
+ |                             |              |         |                                            |
+ |dynamicAttributes[.\*]       |have subkeys  |         |particular dynamic attribute sources.       |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.          |string        |MERGE\_  |What algorithm should be used for combining |
+ |                             |              |         |                                            |
+ |dynamicAttributes.           |              |LAST\_   |the attributes from multiple dynamic        |
+ |                             |              |         |                                            |
+ |combiningPolicy              |              |OVERRIDES|attribute sources (if more then one is      |
+ |                             |              |         |                                            |
+ |                             |              |         |defined).                                   |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.          |string        |\-       |Dynamic attribute sources in invocation     |
+ |                             |              |         |                                            |
+ |dynamicAttributes.order      |              |         |order.                                      |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.gateway.  |filesystem    |\-       |Path to gateway's certificate file in PEM   |
+ |                             |              |         |                                            |
+ |certificate                  |path          |         |or DER format. Note that DER format is used |
+ |                             |              |         |                                            |
+ |                             |              |         |only for files with .der extension. It is   |
+ |                             |              |         |                                            |
+ |                             |              |         |used only for gateway's authentication      |
+ |                             |              |         |                                            |
+ |                             |              |         |assertions verification (if enabled). Note  |
+ |                             |              |         |                                            |
+ |                             |              |         |that this is not needed to set it if        |
+ |                             |              |         |                                            |
+ |                             |              |         |waiting for gateway on startup is turned on.|
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.gateway.  |[true, false] |true     |Controls whether gateway's authentication   |
+ |                             |              |         |                                            |
+ |checkSignature               |              |         |assertions are verified.                    |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.gateway.  |[true, false] |true     |Whether to accept gateway\-based            |
+ |                             |              |         |                                            |
+ |enable                       |              |         |authentication. Note that if it is enabled  |
+ |                             |              |         |                                            |
+ |                             |              |         |either the site must be secured (usually    |
+ |                             |              |         |                                            |
+ |                             |              |         |via firewall) to disable non\-gateway       |
+ |                             |              |         |                                            |
+ |                             |              |         |access or the verification of gateway's     |
+ |                             |              |         |                                            |
+ |                             |              |         |assertions must be enabled.                 |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.gateway.  |[true, false] |false    |Whether the site should try to autoregister |
+ |                             |              |         |                                            |
+ |registration                 |              |         |itself with the Gateway. This must be also  |
+ |                             |              |         |                                            |
+ |                             |              |         |configured on the Gateway side.             |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.gateway.  |string        |\-       |Required secret when autoregistering with   |
+ |                             |              |         |                                            |
+ |registrationSecret           |              |         |the Gateway. This must match the secret     |
+ |                             |              |         |                                            |
+ |                             |              |         |configured on the Gateway side.             |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.gateway.  |integer \>= 10|30       |How often the automatic gateway             |
+ |                             |              |         |                                            |
+ |registrationUpdateInterval   |              |         |registration should be refreshed.           |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.gateway.  |[true, false] |true     |Controls whether to wait for the gateway at |
+ |                             |              |         |                                            |
+ |waitOnStartup                |              |         |startup.                                    |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.gateway.  |integer \>= 1 |180      |Controls for how long to wait for the       |
+ |                             |              |         |                                            |
+ |waitTime                     |              |         |gateway on startup (in seconds).            |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.rest[.\*] |string can    |\-       |Prefix used to configure REST subsystem     |
+ |                             |              |         |                                            |
+ |                             |have subkeys  |         |security. See separate docs.                |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.          |[true, false] |false    |Significant for XSEDE integration: when     |
+ |                             |              |         |                                            |
+ |separateDelegationTruststore |              |         |turned on, allows for using a separate      |
+ |                             |              |         |                                            |
+ |                             |              |         |truststore for delegation checking then the |
+ |                             |              |         |                                            |
+ |                             |              |         |one used for SSL connections checking.      |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.          |integer \>= 1 |28800    |Controls the lifetime of security sessions  |
+ |                             |              |         |                                            |
+ |sessionLifetime              |              |         |(in seconds).                               |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.          |[true, false] |true     |Controls whether the server supports        |
+ |                             |              |         |                                            |
+ |sessionsEnabled              |              |         |security sessions which reduce client\/     |
+ |                             |              |         |                                            |
+ |                             |              |         |server traffic and load.                    |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.          |integer \>= 1 |5        |Controls the number of security sessions    |
+ |                             |              |         |                                            |
+ |sessionsPerUser              |              |         |each user can have. If exceeded, some       |
+ |                             |              |         |                                            |
+ |                             |              |         |cleanup will be performed.                  |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.signatures|[true, false] |false    |Controls whether signatures (providing non\-|
+ |                             |              |         |                                            |
+ |                             |              |         |repudiation guarantees) on key requests     |
+ |                             |              |         |                                            |
+ |                             |              |         |should be required. If the system is setup  |
+ |                             |              |         |                                            |
+ |                             |              |         |without user certificates, signatures must  |
+ |                             |              |         |                                            |
+ |                             |              |         |be disabled.                                |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.sslEnabled|[true, false] |true     |Controls whether secure SSL mode is enabled.|
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.          |string can    |\-       |Allows for configuring a truststore (using  |
+ |                             |              |         |                                            |
+ |trustedAssertionIssuers.[.\*]|have subkeys  |         |normal truststore properties with this      |
+ |                             |              |         |                                            |
+ |                             |              |         |prefix) with certificates of trusted        |
+ |                             |              |         |                                            |
+ |                             |              |         |services (not CAs!) which are permitted to  |
+ |                             |              |         |                                            |
+ |                             |              |         |issue trust delegations and authenticate    |
+ |                             |              |         |                                            |
+ |                             |              |         |with SAML. Typically this truststore should |
+ |                             |              |         |                                            |
+ |                             |              |         |contain certificates of all Unity instanes  |
+ |                             |              |         |                                            |
+ |                             |              |         |installed.                                  |
+ +-----------------------------+--------------+---------+--------------------------------------------+
+ |container.security.          |string can    |\-       |Properties with this prefix are used to     |
+ |                             |              |         |                                            |
+ |truststore.[.\*]             |have subkeys  |         |configure container's trust settings and    |
+ |                             |              |         |                                            |
+ |                             |              |         |certificates validation. See separate       |
+ |                             |              |         |                                            |
+ |                             |              |         |documentation for details.                  |
+ +-----------------------------+--------------+---------+--------------------------------------------+

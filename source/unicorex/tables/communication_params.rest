@@ -1,0 +1,17 @@
+.. table:: XNJS-TSI communication settings
+ :width: 100 
+ :widths: 25 15 15 45 
+ :class: tight-table
+
+ +---------------------+--------+-------------+-------------------------------------+
+ |Property name        |Range of|Default value|Description                          |
+ |                     |values  |             |                                     |
+ +=====================+========+=============+=====================================+
+ |CLASSICTSI.BUFFERSIZE|integer |1000000      |Buffersize for filetransfers in bytes|
+ +---------------------+--------+-------------+-------------------------------------+
+ |CLASSICTSI.socket.   |integer |300000       |Socket timeout in milliseconds       |
+ |timeout              |        |             |                                     |
+ +---------------------+--------+-------------+-------------------------------------+
+ |CLASSICTSI.socket.   |integer |10000        |Connection timeout in milliseconds   |
+ |connect.timeout      |        |             |                                     |
+ +---------------------+--------+-------------+-------------------------------------+

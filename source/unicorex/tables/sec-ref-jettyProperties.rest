@@ -1,0 +1,112 @@
+.. table:: 
+ :width: 100 
+ :widths: 25 20 15 40 
+ :class: tight-table
+
+ +----------------------+------------------+-------------+---------------------------------------+
+ |Property name         |Type              |Default value|Description                            |
+ |                      |                  |\/ mandatory |                                       |
+ +======================+==================+=============+=======================================+
+ |container.httpServer. |string            |\*           |CORS: comma separated list of allowed  |
+ |CORS_allowedHeaders   |                  |             |HTTP headers (default: any)            |
+ +----------------------+------------------+-------------+---------------------------------------+
+ |container.httpServer. |string            |GET,PUT,POST,|CORS: comma separated list of allowed  |
+ |CORS_allowedMethods   |                  |DELETE,HEAD  |HTTP verbs.                            |
+ +----------------------+------------------+-------------+---------------------------------------+
+ |container.httpServer. |string            |\*           |CORS: allowed script origins.          |
+ |CORS_allowedOrigins   |                  |             |                                       |
+ +----------------------+------------------+-------------+---------------------------------------+
+ |container.httpServer. |[true, false]     |false        |CORS: whether preflight OPTION         |
+ |CORS_chainPreflight   |                  |             |requests are chained (passed on) to    |
+ |                      |                  |             |the resource or handled via the CORS   |
+ |                      |                  |             |filter.                                |
+ +----------------------+------------------+-------------+---------------------------------------+
+ |container.httpServer. |string            |Location,    |CORS: comma separated list of HTTP     |
+ |CORS_exposedHeaders   |                  |Content\-Type|headers that are allowed to be exposed |
+ |                      |                  |             |to the client.                         |
+ +----------------------+------------------+-------------+---------------------------------------+
+ |container.httpServer. |string            |empty string |Space separated list of SSL cipher     |
+ |disabledCipherSuites  |                  |             |suites to be disabled. Names of the    |
+ |                      |                  |             |ciphers must adhere to the standard    |
+ |                      |                  |             |Java cipher names, available here:     |
+ |                      |                  |             |java_ciphers_                          |
+ +----------------------+------------------+-------------+---------------------------------------+
+ |container.httpServer. |[true, false]     |false        |Control whether Cross\-Origin Resource |
+ |enableCORS            |                  |             |Sharing is enabled. Enable to allow e. |
+ |                      |                  |             |g. accesing REST services from client\-|
+ |                      |                  |             |side JavaScript.                       |
+ +----------------------+------------------+-------------+---------------------------------------+
+ |container.httpServer. |[true, false]     |false        |Control whether HTTP strict transport  |
+ |enableHsts            |                  |             |security is enabled. It is a good and  |
+ |                      |                  |             |strongly suggested security mechanism  |
+ |                      |                  |             |for all production sites. At the same  |
+ |                      |                  |             |time it can not be used with self\-    |
+ |                      |                  |             |signed or not issued by a generally    |
+ |                      |                  |             |trusted CA server certificates, as     |
+ |                      |                  |             |with HSTS a user can't opt in to enter |
+ |                      |                  |             |such site.                             |
+ +----------------------+------------------+-------------+---------------------------------------+
+ |container.httpServer. |[true, false]     |false        |Use insecure, but fast pseudo random   |
+ |fastRandom            |                  |             |generator to generate session ids      |
+ |                      |                  |             |instead of secure generator for SSL    |
+ |                      |                  |             |sockets.                               |
+ +----------------------+------------------+-------------+---------------------------------------+
+ |container.httpServer. |[true, false]     |false        |Controls whether to enable compression |
+ |gzip.enable           |                  |             |of HTTP responses.                     |
+ +----------------------+------------------+-------------+---------------------------------------+
+ |container.httpServer. |integer number    |100000       |Specifies the minimal size of message  |
+ |gzip.minGzipSize      |                  |             |that should be compressed.             |
+ +----------------------+------------------+-------------+---------------------------------------+
+ |container.httpServer. |integer number    |200          |deprecated                             |
+ |highLoadConnections   |                  |             |                                       |
+ +----------------------+------------------+-------------+---------------------------------------+
+ |container.httpServer. |integer \>= 1     |100          |deprecated                             |
+ |lowResourceMaxIdleTime|                  |             |                                       |
+ +----------------------+------------------+-------------+---------------------------------------+
+ |container.httpServer. |integer \>= 0     |0            |Maximum number of incoming connections |
+ |maxConnections        |                  |             |to this server. If set to a value      |
+ |                      |                  |             |larger than 0, incoming connections    |
+ |                      |                  |             |will be limited to that number.        |
+ |                      |                  |             |Default is 0 = unlimited.              |
+ +----------------------+------------------+-------------+---------------------------------------+
+ |container.httpServer. |integer \>= 1     |200000       |Time (in ms.) before an idle           |
+ |maxIdleTime           |                  |             |connection will time out. It should be |
+ |                      |                  |             |large enough not to expire connections |
+ |                      |                  |             |with slow clients, values below 30s    |
+ |                      |                  |             |are getting quite risky.               |
+ +----------------------+------------------+-------------+---------------------------------------+
+ |container.httpServer. |integer number    |255          |Maximum number of threads to have in   |
+ |maxThreads            |                  |             |the thread pool for processing HTTP    |
+ |                      |                  |             |connections. Note that this number     |
+ |                      |                  |             |will be increased with few additional  |
+ |                      |                  |             |threads to handle connectors.          |
+ +----------------------+------------------+-------------+---------------------------------------+
+ |container.httpServer. |integer \>= 1     |1            |Minimum number of threads to have in   |
+ |minThreads            |                  |             |the thread pool for processing HTTP    |
+ |                      |                  |             |connections. Note that this number     |
+ |                      |                  |             |will be increased with few additional  |
+ |                      |                  |             |threads to handle connectors.          |
+ +----------------------+------------------+-------------+---------------------------------------+
+ |container.httpServer. |[true, false]     |true         |Controls whether the SSL socket        |
+ |requireClientAuthn    |                  |             |requires client\-side authentication.  |
+ +----------------------+------------------+-------------+---------------------------------------+
+ |container.httpServer. |[true, false]     |true         |Controls whether the SSL socket        |
+ |wantClientAuthn       |                  |             |accepts (but does not require) client\-|
+ |                      |                  |             |side authentication.                   |
+ +----------------------+------------------+-------------+---------------------------------------+
+ |container.httpServer. |string            |\http:\/\/   |URI origin that is allowed to embed    |
+ |xFrameAllowed         |                  |localhost    |web interface inside a (i)frame.       |
+ |                      |                  |             |Meaningful only if the xFrameOptions   |
+ |                      |                  |             |is set to allowFrom. The value should  |
+ |                      |                  |             |be in the form: http[s]:\/\/host[:port]|
+ +----------------------+------------------+-------------+---------------------------------------+
+ |container.httpServer. |[deny, sameOrigin,|deny         |Defines whether a clickjacking         |
+ |xFrameOptions         |allowFrom, allow] |             |prevention should be turned on, by     |
+ |                      |                  |             |insertion of the X\-Frame\-Options HTTP|
+ |                      |                  |             |header. The allow value disables the   |
+ |                      |                  |             |feature. See the RFC 7034 for details. |
+ |                      |                  |             |Note that for the allowFrom you should |
+ |                      |                  |             |define also the xFrameAllowed option   |
+ |                      |                  |             |and it is not fully supported by all   |
+ |                      |                  |             |the browsers.                          |
+ +----------------------+------------------+-------------+---------------------------------------+

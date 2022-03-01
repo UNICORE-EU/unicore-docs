@@ -1,0 +1,83 @@
+.. _ux_xnjs-tsi-custom:
+
+
+Application argument metadata
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For client components it can be useful to have a description of an
+application in terms of its arguments. This allows for example the
+UNICORE Portal to automatically build a nice GUI for the application.
+    
+.. code::
+
+  {
+   Name: SomeApp,
+   Version: 1.0,
+  
+   Parameters: {
+   
+    SOURCE:{
+      Type: filename,
+      Description: "The input file",
+    },
+  
+    VERBOSE:{
+      Type: boolean,
+      Description: "Verbose mode",
+    },
+  
+    PRECISION:{
+      Type: choice,
+      Description: "Computational precision",
+      ValidValues: [
+         "sloppy", "normal", "pedantic",
+      ],
+    },
+    
+   },
+  
+  }
+
+  
+The meaning of the attributes should be fairly obvious.
+  
+ - the ``Description`` attribute contains a human-readable description of the argument
+ 
+ - the ``Type`` attribute can have the values (lower/upper case does not
+   matter) "string", "boolean", "int", "double", "filename" or
+   "choice". In the case of "choice", the ``ValidValues`` attribute is
+   used to specify the list of valid values. The type ``filename`` is used
+   to specify that this is an input file for the application, allowing
+   clients to enable special actions for this.
+
+ - The ``ValidValues`` attribute is used to limit the range of valid
+   values, depending on the ``Type`` of the argument. The processing of
+   this attribute is client-dependent.  The UNICORE Rich Client supports
+   intervals for the numeric types, and Java regular expressions for the
+   string types.
+
+Per-application resource requirements
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If the application requires any default resources, like particular
+node constraints, or a specific queue, you can add resource requests
+in the IDB.
+
+For example:
+
+.. code::
+
+  {
+     Name: SomeSimulation,
+     Version: "3.0",
+     
+     Resources: {
+        Nodes: "2",
+        NodeConstraints: "amd",
+     }
+  }
+
+
+Note that the user job can override these, i.e. if the user requests
+different values for the requested resources, the values from the user
+job will be used.

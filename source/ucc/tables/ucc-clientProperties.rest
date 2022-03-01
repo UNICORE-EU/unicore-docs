@@ -1,0 +1,104 @@
+.. table:: Client options
+ :width: 100 
+ :widths: 20 20 15 45 
+ :class: tight-table
+
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |Property name         |Type              |Default value|Description                                 |
+ |                      |                  |\/ mandatory |                                            |
+ +======================+==================+=============+============================================+
+ |client.               |[true, false]     |true         |Controls whether signing of key web service |
+ |digitalSigningEnabled |                  |             |requests should be performed.               |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.               |[true, false]     |false        |Whether HTTP basic authentication should be |
+ |httpAuthnEnabled      |                  |             |used.                                       |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.httpPassword   |string            |empty string |Password for use with HTTP basic            |
+ |                      |                  |             |authentication (if enabled).                |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.httpUser       |string            |empty string |Username for use with HTTP basic            |
+ |                      |                  |             |authentication (if enabled).                |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.inHandlers     |string            |empty string |Space separated list of additional handler  |
+ |                      |                  |             |class names for handling incoming WS        |
+ |                      |                  |             |messages                                    |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.               |integer number    |3            |Controls how many times the client should   |
+ |maxWsCallRetries      |                  |             |try to call a failing web service. Note     |
+ |                      |                  |             |that only the transient failure reasons     |
+ |                      |                  |             |cause the retry. Note that value of 0       |
+ |                      |                  |             |enables unlimited number of retries, while  |
+ |                      |                  |             |value of 1 means that only one call is      |
+ |                      |                  |             |tried.                                      |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.               |[true, false]     |false        |Controls whether messages should be logged  |
+ |messageLogging        |                  |             |(at INFO level).                            |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.outHandlers    |string            |empty string |Space separated list of additional handler  |
+ |                      |                  |             |class names for handling outgoing WS        |
+ |                      |                  |             |messages                                    |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.               |[true, false]     |true         |Controls whether security sessions should   |
+ |securitySessions      |                  |             |be enabled.                                 |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.               |[NONE, WARN, FAIL]|WARN         |Controls whether server's hostname should   |
+ |serverHostnameChecking|                  |             |be checked for matching its certificate     |
+ |                      |                  |             |subject. This verification prevents man\-   |
+ |                      |                  |             |in\-the\-middle attacks. If enabled WARN    |
+ |                      |                  |             |will only print warning in log, FAIL will   |
+ |                      |                  |             |close the connection.                       |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.               |[true, false]     |true         |Controls whether SSL authentication of the  |
+ |sslAuthnEnabled       |                  |             |client should be performed.                 |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.sslEnabled     |[true, false]     |true         |Controls whether the SSL\/TLS connection    |
+ |                      |                  |             |mode is enabled.                            |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.               |integer number    |10000        |Amount of milliseconds to wait before retry |
+ |wsCallRetryDelay      |                  |             |of a failed web service call.               |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.http.allow\-   |[true, false]     |true         |If set to false, then the client will not   |
+ |chunking              |                  |             |use HTTP 1.1 data chunking.                 |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.http.          |[true, false]     |false        |If set to true then the client will send    |
+ |connection\-close     |                  |             |connection close header, so the server will |
+ |                      |                  |             |close the socket.                           |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.http.          |integer number    |20000        |Timeout for the connection establishing (ms)|
+ |connection.timeout    |                  |             |                                            |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.http.          |integer number    |6            |How many connections per host can be made.  |
+ |maxPerRoute           |                  |             |Note: this is a limit for a single client   |
+ |                      |                  |             |object instance.                            |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.http.          |integer number    |3            |Maximum number of allowed HTTP redirects.   |
+ |maxRedirects          |                  |             |                                            |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.http.          |integer number    |20           |How many connections in total can be made.  |
+ |maxTotal              |                  |             |Note: this is a limit for a single client   |
+ |                      |                  |             |object instance.                            |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.http.socket.   |integer number    |0            |Socket timeout (ms)                         |
+ |timeout               |                  |             |                                            |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.http.          |string            |\-           |Space (single) separated list of hosts, for |
+ |nonProxyHosts         |                  |             |which the HTTP proxy should not be used.    |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.http.proxy.    |string            |\-           |Relevant only when using HTTP proxy:        |
+ |password              |                  |             |defines password for authentication to the  |
+ |                      |                  |             |proxy.                                      |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.http.proxy.    |string            |\-           |Relevant only when using HTTP proxy:        |
+ |user                  |                  |             |defines username for authentication to the  |
+ |                      |                  |             |proxy.                                      |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.http.          |string            |\-           |If set then the HTTP proxy will be used,    |
+ |proxyHost             |                  |             |with this hostname.                         |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.http.          |integer number    |\-           |HTTP proxy port. If not defined then system |
+ |proxyPort             |                  |             |property is consulted, and as a final       |
+ |                      |                  |             |fallback 80 is used.                        |
+ +----------------------+------------------+-------------+--------------------------------------------+
+ |client.http.          |string            |HTTP         |HTTP proxy type: HTTP or SOCKS              |
+ |proxyType             |                  |             |                                            |
+ +----------------------+------------------+-------------+--------------------------------------------+

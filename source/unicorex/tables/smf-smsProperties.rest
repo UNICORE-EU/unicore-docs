@@ -1,0 +1,150 @@
+.. table:: 
+ :width: 100 
+ :widths: 20 20 20 40 
+ :class: tight-table
+
+ +--------------------+-------------------+--------------------------+---------------------------------------+
+ |Property name       |Type               |Default value \/          |Description                            |
+ |                    |                   |                          |                                       |
+ |                    |                   |mandatory                 |                                       |
+ +====================+===================+==========================+=======================================+
+ |coreServices.sms.   |[true, false]      |true                      |Whether the allow the user to set the  |
+ |                    |                   |                          |                                       |
+ |factory.N.          |                   |                          |storage base directory when creating   |
+ |                    |                   |                          |                                       |
+ |allowUserDefinedPath|                   |                          |the storage via the StorageFactory.    |
+ +--------------------+-------------------+--------------------------+---------------------------------------+
+ |coreServices.sms.   |[true, false]      |true                      |Whether the existence of the base      |
+ |                    |                   |                          |                                       |
+ |factory.N.          |                   |                          |directory should be checked when       |
+ |                    |                   |                          |                                       |
+ |checkExistence      |                   |                          |creating the storage.                  |
+ +--------------------+-------------------+--------------------------+---------------------------------------+
+ |coreServices.sms.   |Class extending de.|\-                        |Storage implementation class used (and |
+ |                    |                   |                          |                                       |
+ |factory.N.class     |fzj.unicore.uas.   |                          |mandatory) in case of the CUSTOM type. |
+ |                    |                   |                          |                                       |
+ |                    |impl.sms.          |                          |                                       |
+ |                    |                   |                          |                                       |
+ |                    |SMSBaseImpl        |                          |                                       |
+ +--------------------+-------------------+--------------------------+---------------------------------------+
+ |coreServices.sms.   |[true, false]      |false                     |Whether files of the storage should be |
+ |                    |                   |                          |                                       |
+ |factory.N.cleanup   |                   |                          |removed when the storage is destroyed. |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |This is mostly useful for storage      |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |factories. (runtime updateable)        |
+ +--------------------+-------------------+--------------------------+---------------------------------------+
+ |coreServices.sms.   |integer number     |77                        |Default (initial) umask for files in   |
+ |                    |                   |                          |                                       |
+ |factory.N.          |                   |                          |the storage. Must be an octal number.  |
+ |                    |                   |                          |                                       |
+ |defaultUmask        |                   |                          |Note that this property is not         |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |updateable at runtime for normal       |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |storages as it wouldn't have sense (it |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |is the initial umask by definition).   |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |However in case of storage factory it  |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |is, i.e. after the property change,    |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |the SMSes created by the factory will  |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |use the new umask as the initial one.  |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |At runtime the SMS umask can be        |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |changed by the clients (if are         |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |authorized to do so).                  |
+ +--------------------+-------------------+--------------------------+---------------------------------------+
+ |coreServices.sms.   |string             |Filesystem                |Description of the storage. It will be |
+ |                    |                   |                          |                                       |
+ |factory.N.          |                   |                          |presented to the users. (runtime       |
+ |                    |                   |                          |                                       |
+ |description         |                   |                          |updateable)                            |
+ +--------------------+-------------------+--------------------------+---------------------------------------+
+ |coreServices.sms.   |[true, false]      |false                     |Whether the metadata service should be |
+ |                    |                   |                          |                                       |
+ |factory.N.          |                   |                          |disabled for this storage.             |
+ |                    |                   |                          |                                       |
+ |disableMetadata     |                   |                          |                                       |
+ +--------------------+-------------------+--------------------------+---------------------------------------+
+ |coreServices.sms.   |[true, false]      |false                     |Whether the triggering feature should  |
+ |                    |                   |                          |                                       |
+ |factory.N.          |                   |                          |be enabled for this storage.           |
+ |                    |                   |                          |                                       |
+ |enableTrigger       |                   |                          |                                       |
+ +--------------------+-------------------+--------------------------+---------------------------------------+
+ |coreServices.sms.   |[true, false]      |false                     |If set to true then this SMS will      |
+ |                    |                   |                          |                                       |
+ |factory.N.          |                   |                          |filter returned files in response of   |
+ |                    |                   |                          |                                       |
+ |filterFiles         |                   |                          |the ListDirectory command: only files  |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |owned or accessible by the caller will |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |be returned. (runtime updateable)      |
+ +--------------------+-------------------+--------------------------+---------------------------------------+
+ |coreServices.sms.   |Class extending de.|de.fzj.unicore.uas.       |(Very) advanced setting, providing     |
+ |                    |                   |                          |                                       |
+ |factory.N.          |fzj.unicore.uas.   |impl.sms.                 |information about storages produced by |
+ |                    |                   |                          |                                       |
+ |infoProviderClass   |impl.sms.          |DefaultStorageInfoProvider|the SMS factory.                       |
+ |                    |                   |                          |                                       |
+ |                    |StorageInfoProvider|                          |                                       |
+ +--------------------+-------------------+--------------------------+---------------------------------------+
+ |coreServices.sms.   |string             |\-                        |Storage name. If not set then the      |
+ |                    |                   |                          |                                       |
+ |factory.N.name      |                   |                          |internal unique identifier is used.    |
+ +--------------------+-------------------+--------------------------+---------------------------------------+
+ |coreServices.sms.   |string             |\-                        |Denotes the storage base path.         |
+ |                    |                   |                          |                                       |
+ |factory.N.path      |                   |                          |                                       |
+ +--------------------+-------------------+--------------------------+---------------------------------------+
+ |coreServices.sms.   |string             |\-                        |(DEPRECATED, ignored) (runtime         |
+ |                    |                   |                          |                                       |
+ |factory.N.protocols |                   |                          |updateable)                            |
+ +--------------------+-------------------+--------------------------+---------------------------------------+
+ |coreServices.sms.   |string can have    |\-                        |Useful for CUSTOM storage types:       |
+ |                    |                   |                          |                                       |
+ |factory.N.settings. |subkeys            |                          |allows to set additional settings (if  |
+ |                    |                   |                          |                                       |
+ |[.\*]               |                   |                          |needed) by such storages. Please refer |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |to documentation of a particular       |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |custom storage type for details. Note  |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |that while in general updates of the   |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |properties at runtime are propagated   |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |to the chosen implementation, it is up |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |to it to use the updated values or     |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |ignore changes. (runtime updateable)   |
+ +--------------------+-------------------+--------------------------+---------------------------------------+
+ |coreServices.sms.   |string             |\-                        |For data triggering on shared storages,|
+ |                    |                   |                          |                                       |
+ |factory.N.          |                   |                          |use this user ID for the controlling   |
+ |                    |                   |                          |                                       |
+ |triggerUserID       |                   |                          |process.                               |
+ +--------------------+-------------------+--------------------------+---------------------------------------+
+ |coreServices.sms.   |string             |\-                        |Storage type. FIXEDPATH: mapped to a   |
+ |                    |                   |                          |                                       |
+ |factory.N.type      |                   |                          |fixed directory, VARIABLE: resolved    |
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |using an environmental variable lookup,|
+ |                    |                   |                          |                                       |
+ |                    |                   |                          |CUSTOM: specified class is used.       |
+ +--------------------+-------------------+--------------------------+---------------------------------------+
+ |coreServices.sms.   |string             |\-                        |(DEPRECATED, use path instead)         |
+ |                    |                   |                          |                                       |
+ |factory.N.workdir   |                   |                          |                                       |
+ +--------------------+-------------------+--------------------------+---------------------------------------+

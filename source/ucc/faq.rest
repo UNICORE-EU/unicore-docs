@@ -1,0 +1,54 @@
+.. _ucc_faq:
+
+Frequently asked questions
+--------------------------
+
+Configuration
+~~~~~~~~~~~~~
+
+|:thinking_face:| **Do I really have to store my password in the preferences file? Isn't 
+this insecure?**
+   
+	|:point_right:| Putting the password in a file or giving it as a commandline parameter can be 
+	considered insecure. The file could be read by others, and the commandline parameters may be 
+	visible in for example in the output of the ``ps`` command.  
+	Thus, UCC will simply ask for the password in case you did not specify it.
+
+|:thinking_face:| **How can I enable more detailed logging?**
+
+	|:point_right:| UCC uses log4j, by default the configuration is done in 
+	``<UCC_HOME>/conf/logging.properties``. You can edit this file and increase the logging levels,
+	choose to log to a file or to the console, etc.
+
+
+Usage
+~~~~~
+
+|:thinking_face:| **Can I use multiple registries with UCC?**
+ 
+	|:point_right:| Yes. Simply use a comma-separated list of URLs for the ``-c`` option. 
+	However, you may only use a single key/truststore, so all registries (and sites listed in 
+	them) must accept the same security credentials. 
+
+
+|:thinking_face:| **Can I upload and execute my own executable?**
+ 
+	|:point_right:| Yes. Check :ref:`ucc_jobs`.
+
+
+|:thinking_face:| **Can I use UCC to list the contents of the registry?**
+ 
+	|:point_right:| Using the 'rest' command (and the UNIX 'jq' utility for formatting the output),
+	this is very easy, for example
+
+	.. code:: console
+
+		$ ucc rest get https://localhost:8080/DEMO-SITE/rest/core/registries/default_registry | jq
+
+	will list the content of the registry.
+
+
+|:thinking_face:| **I get strange errors related to security**
+ 
+	|:point_right:| Please read the general `UNICORE FAQ <https://sourceforge.net/p/unicore/wiki/FAQ/>`_ 
+	which contains descriptions of many common errors.

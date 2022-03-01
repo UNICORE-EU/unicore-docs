@@ -1,0 +1,12 @@
+.. table:: 
+ :width: 100 
+ :widths: 25 40 35 
+ :class: tight-table
+
+ +------------------------+-----------------------------------+-------------------------+
+ |Class name              |Description                        |Usage                    |
+ +========================+===================================+=========================+
+ |de.fzj.unicore.uas.util.|initialises the job and the "local"|normal UNICORE\/X servers|
+ |DefaultOnStartup        |registry; should usually be run on |                         |
+ |                        |startup management system          |                         |
+ +------------------------+-----------------------------------+-------------------------+

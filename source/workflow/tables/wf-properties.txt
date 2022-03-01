@@ -1,0 +1,69 @@
+.. table::
+ :width: 100
+ :widths: 20 20 20 40
+
+Property name	Type	Default value / mandatory	Description
+
+workflow.cleanupJobs
+
+[true, false]
+
+true
+
+Whether to remove child jobs when the workflow is destroyed.
+
+workflow.cleanupStorage
+
+[true, false]
+
+false
+
+Whether to cleanup the workflow storage when the workflow is destroyed.
+
+workflow.forEachMaxConcurrentActivities
+
+integer >= 1
+
+100
+
+Maximum number of concurrent for-each iterations.
+
+workflow.maxActivitiesPerGroup
+
+integer >= 1
+
+1000
+
+Maximum number of workflow activities per activity group.
+
+workflow.pollingInterval
+
+integer >= 1
+
+600
+
+Interval in seconds for (slow) polling of job states.
+
+workflow.resubmitDisable
+
+[true, false]
+
+false
+
+Whether to disable automatic re-submission of failed jobs.
+
+workflow.resubmitLimit
+
+integer >= 1
+
+3
+
+Maximum number of re-submissions of failed jobs.
+
+workflow.xnjsConfiguration
+
+string
+
+n/a
+
+(deprecated)

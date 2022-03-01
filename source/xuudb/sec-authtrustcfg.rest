@@ -1,0 +1,132 @@
+.. _sec-authtrust:
+
+Configuring PKI trust settings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Public Key Infrastructure (PKI) trust settings are used to validate certificates. This is 
+performed, in the first place when a connection with a remote peer is initiated over the network, 
+using the SSL (or TLS) protocol. Additionally certificate validation can happen in few other 
+situations, e.g. when checking digital signatures of various sensitive pieces of data.
+
+Certificates validation is primarily configured using a set of initially trusted certificates 
+of so called Certificate Authorities (CAs). Those trusted certificates are also known as 
+*trust anchors* and their collection is called a trust store.
+
+Except of trust anchors validation mechanism can use additional input for checking if a 
+certificate being checked was not revoked and if its subject is in a permitted namespace.
+
+UNICORE allows for different types of *trust stores*. All of them are configured using a set of 
+properties.
+
+ - *Keystore trust store* - the only format supported in older UNICORE versions. Trusted 
+   certificates are stored in a single binary file in JKS or PKCS12 format. The file can be only 
+   manipulated using a special tool like JDK keytool or openssl (in case of PKCS12 format). 
+   This format is great if trust store should be in a single file or when compatibility with 
+   other Java solutions or older UNICORE releases is desired.
+
+ - *OpenSSL trust store* - allows to use a directory with CA certificates stored in PEM format, 
+   under precisely defined names: the CA certificates, CRLs, signing policy files and namespaces 
+   files are named <hash>.0, <hash>.r0, <hash>.signing_policy and <hash>.namespaces. 
+   Hash is the old hash of the trusted CA certificate subject name (in Openssl version > 1.0.0 
+   use -suject_hash_old switch to generate it). If multiple certificates have the same hash then 
+   the default zero number must be increased. This format is the same as used by other then 
+   UNICORE popular middlewares as Globus and gLite. It is suggested when a common trust store 
+   with such middlewares is needed.
+
+ - *Directory trust store* - the most flexible and convenient option, suggested for all remaining 
+   cases. It allows to use a list of wildcard expressions, concrete paths of files or even URLs 
+   to remote files as a set of trusted CAs and in the same way for the CRLs. With this trust 
+   store administrator can simply configure all files (or all with a specified extension) 
+   in a directory to be used as a trusted certificates.
+
+In all cases trust stores can be (and by default are) configured to be automatically refreshed.
+
+.. include:: tables/xuudb-trustProperties.rest
+
+.. topic:: Examples
+
+ .. note::
+  Various UNICORE modules use different property prefixes. Here we don't put any, but in practice 
+  you have to use the prefix (see the reference table above for the actual prefix). Also properties 
+  might need to be provided using different syntax, as XML.
+ 
+ Directory trust store, with a minimal set of options::
+ 
+  truststore.type=directory
+  truststore.directoryLocations.1=/trust/dir/*.pem
+  truststore.crlLocations=/trust/dir/*.crl
+ 
+ Directory trust store, with a complete set of options::
+ 
+  truststore.type=directory
+  truststore.allowProxy=DENY
+  truststore.updateInterval=1234
+  truststore.directoryLocations.1=/trust/dir/*.pem
+  truststore.directoryLocations.2=http://caserver/ca.pem
+  truststore.directoryEncoding=PEM
+  truststore.directoryConnectionTimeout=100
+  truststore.directoryDiskCachePath=/tmp
+  truststore.crlLocations.1=/trust/dir/*.crl
+  truststore.crlLocations.2=http://caserver/crl.pem
+  truststore.crlUpdateInterval=400
+  truststore.crlMode=REQUIRE
+  truststore.crlConnectionTimeout=200
+  truststore.crlDiskCachePath=/tmp
+ 
+ Openssl trust store::
+ 
+  truststore.type=openssl
+  truststore.opensslPath=/truststores/openssl
+  truststore.opensslNsMode=EUGRIDPMA_GLOBUS_REQUIRE
+  truststore.allowProxy=ALLOW
+  truststore.updateInterval=1234
+  truststore.crlMode=IF_VALID
+ 
+ Java keystore used as a trust store::
+ 
+  truststore.type=keystore
+  truststore.keystorePath=src/test/resources/certs/truststore.jks
+  truststore.keystoreFormat=JKS
+  truststore.keystorePassword=xxxxxx
+
+Configuring the credential
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+UNICORE uses private key and a corresponding certificate (called together as a credential) to 
+identify users and servers. Credentials might be provided in several formats:
+
+ - Credential can be obtained from a *keystore file*, encoded in JKS or PKCS12 format.
+
+ - Credential can be loaded as a pair of PEM files (one with private key and another 
+   with certificate), 
+
+ - or from a pair of DER files
+ 
+ - or even from a single file, with PEM-encoded certificates and private key (in any order).
+
+The following table list all parameters which allows for configuring the credential. Note that 
+nearly all options are optional. If not defined, the format is tried to be guessed. However some 
+credential formats require additional settings. For instance if using *der* format the ``keyPath`` is 
+mandatory as you need two DER files: one with certificate and one with the key (and the latter can 
+not be guessed).
+
+.. include:: tables/xuudb-credProperties.rest
+
+.. topic:: Examples
+
+ .. note::
+  Various UNICORE modules use different property prefixes. Here we don’t put any, but in practice 
+  you have to use the prefix (see the reference table above for the actual prefix). Also 
+  properties might need to be provided using different syntax, as XML.
+
+ Credential as a pair of DER files::
+
+  credential.format=der
+  credential.password=the\!njs
+  credential.path=/etc/credentials/cert-1.der
+  credential.keyPath=/etc/credentials/pk-1.der
+
+ Credential as a JKS file (credential type can be autodetected in almost every case)::
+
+  credential.path=/etc/credentials/server1.jks
+  credential.password=xxxxxx

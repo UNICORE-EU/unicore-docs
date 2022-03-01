@@ -1,0 +1,53 @@
+.. table::
+ :width: 100
+ :widths: 20 15 15 50
+
+Property name	Type	Default value / mandatory	Description
+
+xuudb.credential.path
+
+filesystem path
+
+mandatory to be set
+
+Credential location. In case of jks, pkcs12 and pem store it is the only location required. In case when credential is provided in two files, it is the certificate file path.
+
+xuudb.credential.format
+
+[jks, pkcs12, der, pem]
+
+-
+
+Format of the credential. It is guessed when not given. Note that pem might be either a PEM keystore with certificates and keys (in PEM format) or a pair of PEM files (one with certificate and second with private key).
+
+xuudb.credential.password
+
+string
+
+-
+
+Password required to load the credential.
+
+xuudb.credential.keyPath
+
+string
+
+-
+
+Location of the private key if stored separately from the main credential (applicable for pem and der types only),
+
+xuudb.credential.keyPassword
+
+string
+
+-
+
+Private key password, which might be needed only for jks or pkcs12, if key is encrypted with different password then the main credential password.
+
+xuudb.credential.keyAlias
+
+string
+
+-
+
+Keystore alias of the key entry to be used. Can be ignored if the keystore contains only one key entry. Only applicable for jks and pkcs12.

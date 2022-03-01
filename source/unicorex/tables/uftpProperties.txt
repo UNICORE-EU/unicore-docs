@@ -1,0 +1,141 @@
+.. table::
+ :width: 100 
+ :widths: 25 20 15 40
+
+Property name	Type	Default value / mandatory	Description
+
+coreServices.uftp.buffersize
+
+integer >= 1
+
+128
+
+File read/write buffer size in kbytes.
+
+coreServices.uftp.client.executable
+
+string
+
+uftp.sh
+
+Configures the path to the client executable (location of uftp.sh) on the TSI.
+
+coreServices.uftp.client.host
+
+string
+
+not set
+
+Client host. If not set and UFTP client is set to local, then the local interface address will be determined at runtime. If not set and non-local mode is configured, then the TSI machine will be used.
+
+coreServices.uftp.client.ip_addresses
+
+string
+
+not set
+
+Client IP address(es) to send to UFTPD. If not set, the client.host value will be used.
+
+coreServices.uftp.client.local
+
+[true, false]
+
+false
+
+Controls whether, the Java UFTP client code should be run directly within the JVM, which will work only if the UNICORE/X has access to the target file system, or, if set to false, in the TSI.
+
+coreServices.uftp.command.host
+
+string
+
+localhost
+
+The UFTPD command host.
+
+coreServices.uftp.command.port
+
+integer [1-65535]
+
+64435
+
+The UFTPD command port.
+
+coreServices.uftp.command.socketTimeout
+
+integer [0-300]
+
+10
+
+The timeout (in seconds) for communicating with the command port.
+
+coreServices.uftp.command.sslDisable
+
+[true, false]
+
+false
+
+Allows to disable SSL on the command port (useful for testing).
+
+coreServices.uftp.disableSessionMode
+
+[true, false]
+
+false
+
+Controls multi-file transfers should be done one by one (NOT recommended).
+
+coreServices.uftp.enable
+
+[true, false]
+
+true
+
+Controls whether UFTP should be enabled for this server.
+
+coreServices.uftp.encryption
+
+[true, false]
+
+false
+
+Controls whether encryption should be enabled by default for server-server transfers.
+
+coreServices.uftp.rateLimit
+
+integer number
+
+0
+
+Limit the bandwidth (bytes per second) used by a single transfer (0 means no limit).
+
+coreServices.uftp.server.host
+
+string
+
+-
+
+UFTPD listen host. If this is not set, UFTP is disabled.
+
+coreServices.uftp.server.port
+
+integer [1-65535]
+
+64434
+
+UFTPD listen port.
+
+coreServices.uftp.streams
+
+integer number
+
+1
+
+Requested number of parallel data streams.
+
+coreServices.uftp.streamsLimit
+
+integer >= 1
+
+4
+
+Server limit for number of streams (per client connection).

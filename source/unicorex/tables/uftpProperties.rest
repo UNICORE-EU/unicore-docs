@@ -1,0 +1,102 @@
+.. table:: 
+ :width: 100 
+ :widths: 25 20 15 40 
+ :class: tight-table
+
+ +------------------------+------------------+-------------+---------------------------------------+
+ |Property name           |Type              |Default value|Description                            |
+ |                        |                  |             |                                       |
+ |                        |                  |\/ mandatory |                                       |
+ +========================+==================+=============+=======================================+
+ |coreServices.uftp.      |integer \>= 1     |128          |File read\/write buffer size in kbytes.|
+ |                        |                  |             |                                       |
+ |buffersize              |                  |             |                                       |
+ +------------------------+------------------+-------------+---------------------------------------+
+ |coreServices.uftp.      |string            |uftp.sh      |Configures the path to the client      |
+ |                        |                  |             |                                       |
+ |client.executable       |                  |             |executable (location of uftp.sh) on    |
+ |                        |                  |             |                                       |
+ |                        |                  |             |the TSI.                               |
+ +------------------------+------------------+-------------+---------------------------------------+
+ |coreServices.uftp.      |string            |not set      |Client host. If not set and UFTP       |
+ |                        |                  |             |                                       |
+ |client.host             |                  |             |client is set to local, then the local |
+ |                        |                  |             |                                       |
+ |                        |                  |             |interface address will be determined   |
+ |                        |                  |             |                                       |
+ |                        |                  |             |at runtime. If not set and non\-local  |
+ |                        |                  |             |                                       |
+ |                        |                  |             |mode is configured, then the TSI       |
+ |                        |                  |             |                                       |
+ |                        |                  |             |machine will be used.                  |
+ +------------------------+------------------+-------------+---------------------------------------+
+ |coreServices.uftp.      |string            |not set      |Client IP address(es) to send to UFTPD.|
+ |                        |                  |             |                                       |
+ |client.ip_addresses     |                  |             |If not set, the client.host value will |
+ |                        |                  |             |                                       |
+ |                        |                  |             |be used.                               |
+ +------------------------+------------------+-------------+---------------------------------------+
+ |coreServices.uftp.      |[true, false]     |false        |Controls whether, the Java UFTP client |
+ |                        |                  |             |                                       |
+ |client.local            |                  |             |code should be run directly within the |
+ |                        |                  |             |                                       |
+ |                        |                  |             |JVM, which will work only if the       |
+ |                        |                  |             |                                       |
+ |                        |                  |             |UNICORE\/X has access to the target    |
+ |                        |                  |             |                                       |
+ |                        |                  |             |file system, or, if set to false, in   |
+ |                        |                  |             |                                       |
+ |                        |                  |             |the TSI.                               |
+ +------------------------+------------------+-------------+---------------------------------------+
+ |coreServices.uftp.      |string            |localhost    |The UFTPD command host.                |
+ |                        |                  |             |                                       |
+ |command.host            |                  |             |                                       |
+ +------------------------+------------------+-------------+---------------------------------------+
+ |coreServices.uftp.      |integer [1\-65535]|64435        |The UFTPD command port.                |
+ |                        |                  |             |                                       |
+ |command.port            |                  |             |                                       |
+ +------------------------+------------------+-------------+---------------------------------------+
+ |coreServices.uftp.      |integer [0\-300]  |10           |The timeout (in seconds) for           |
+ |                        |                  |             |                                       |
+ |command.socketTimeout   |                  |             |communicating with the command port.   |
+ +------------------------+------------------+-------------+---------------------------------------+
+ |coreServices.uftp.      |[true, false]     |false        |Allows to disable SSL on the command   |
+ |                        |                  |             |                                       |
+ |command.sslDisable      |                  |             |port (useful for testing).             |
+ +------------------------+------------------+-------------+---------------------------------------+
+ |coreServices.uftp.      |[true, false]     |false        |Controls multi\-file transfers should  |
+ |                        |                  |             |                                       |
+ |disableSessionMode      |                  |             |be done one by one (NOT recommended).  |
+ +------------------------+------------------+-------------+---------------------------------------+
+ |coreServices.uftp.enable|[true, false]     |true         |Controls whether UFTP should be        |
+ |                        |                  |             |                                       |
+ |                        |                  |             |enabled for this server.               |
+ +------------------------+------------------+-------------+---------------------------------------+
+ |coreServices.uftp.      |[true, false]     |false        |Controls whether encryption should be  |
+ |                        |                  |             |                                       |
+ |encryption              |                  |             |enabled by default for server\-server  |
+ |                        |                  |             |                                       |
+ |                        |                  |             |transfers.                             |
+ +------------------------+------------------+-------------+---------------------------------------+
+ |coreServices.uftp.      |integer number    |0            |Limit the bandwidth (bytes per second) |
+ |                        |                  |             |                                       |
+ |rateLimit               |                  |             |used by a single transfer (0 means no  |
+ |                        |                  |             |                                       |
+ |                        |                  |             |limit).                                |
+ +------------------------+------------------+-------------+---------------------------------------+
+ |coreServices.uftp.      |string            |\-           |UFTPD listen host. If this is not set, |
+ |                        |                  |             |                                       |
+ |server.host             |                  |             |UFTP is disabled.                      |
+ +------------------------+------------------+-------------+---------------------------------------+
+ |coreServices.uftp.      |integer [1\-65535]|64434        |UFTPD listen port.                     |
+ |                        |                  |             |                                       |
+ |server.port             |                  |             |                                       |
+ +------------------------+------------------+-------------+---------------------------------------+
+ |coreServices.uftp.      |integer number    |1            |Requested number of parallel data      |
+ |                        |                  |             |                                       |
+ |streams                 |                  |             |streams.                               |
+ +------------------------+------------------+-------------+---------------------------------------+
+ |coreServices.uftp.      |integer \>= 1     |4            |Server limit for number of streams     |
+ |                        |                  |             |                                       |
+ |streamsLimit            |                  |             |(per client connection).               |
+ +------------------------+------------------+-------------+---------------------------------------+

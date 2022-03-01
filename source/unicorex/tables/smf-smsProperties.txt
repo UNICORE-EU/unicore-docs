@@ -1,0 +1,141 @@
+.. table::
+ :width: 100 
+ :widths: 20 20 20 40
+
+Property name	Type	Default value / mandatory	Description
+
+coreServices.sms.factory.N.allowUserDefinedPath
+
+[true, false]
+
+true
+
+Whether the allow the user to set the storage base directory when creating the storage via the StorageFactory.
+
+coreServices.sms.factory.N.checkExistence
+
+[true, false]
+
+true
+
+Whether the existence of the base directory should be checked when creating the storage.
+
+coreServices.sms.factory.N.class
+
+Class extending de.fzj.unicore.uas.impl.sms.SMSBaseImpl
+
+-
+
+Storage implementation class used (and mandatory) in case of the CUSTOM type.
+
+coreServices.sms.factory.N.cleanup
+
+[true, false]
+
+false
+
+Whether files of the storage should be removed when the storage is destroyed. This is mostly useful for storage factories. (runtime updateable)
+
+coreServices.sms.factory.N.defaultUmask
+
+integer number
+
+77
+
+Default (initial) umask for files in the storage. Must be an octal number. Note that this property is not updateable at runtime for normal storages as it wouldn't have sense (it is the initial umask by definition). However in case of storage factory it is, i.e. after the property change, the SMSes created by the factory will use the new umask as the initial one. At runtime the SMS umask can be changed by the clients (if are authorized to do so).
+
+coreServices.sms.factory.N.description
+
+string
+
+Filesystem
+
+Description of the storage. It will be presented to the users. (runtime updateable)
+
+coreServices.sms.factory.N.disableMetadata
+
+[true, false]
+
+false
+
+Whether the metadata service should be disabled for this storage.
+
+coreServices.sms.factory.N.enableTrigger
+
+[true, false]
+
+false
+
+Whether the triggering feature should be enabled for this storage.
+
+coreServices.sms.factory.N.filterFiles
+
+[true, false]
+
+false
+
+If set to true then this SMS will filter returned files in response of the ListDirectory command: only files owned or accessible by the caller will be returned. (runtime updateable)
+
+coreServices.sms.factory.N.infoProviderClass
+
+Class extending de.fzj.unicore.uas.impl.sms.StorageInfoProvider
+
+de.fzj.unicore.uas.impl.sms.DefaultStorageInfoProvider
+
+(Very) advanced setting, providing information about storages produced by the SMS factory.
+
+coreServices.sms.factory.N.name
+
+string
+
+-
+
+Storage name. If not set then the internal unique identifier is used.
+
+coreServices.sms.factory.N.path
+
+string
+
+-
+
+Denotes the storage base path.
+
+coreServices.sms.factory.N.protocols
+
+string
+
+-
+
+(DEPRECATED, ignored) (runtime updateable)
+
+coreServices.sms.factory.N.settings.[.*]
+
+string can have subkeys
+
+-
+
+Useful for CUSTOM storage types: allows to set additional settings (if needed) by such storages. Please refer to documentation of a particular custom storage type for details. Note that while in general updates of the properties at runtime are propagated to the chosen implementation, it is up to it to use the updated values or ignore changes. (runtime updateable)
+
+coreServices.sms.factory.N.triggerUserID
+
+string
+
+-
+
+For data triggering on shared storages, use this user ID for the controlling process.
+
+coreServices.sms.factory.N.type
+
+string
+
+-
+
+Storage type. FIXEDPATH: mapped to a fixed directory, VARIABLE: resolved using an environmental variable lookup, CUSTOM: specified class is used.
+
+coreServices.sms.factory.N.workdir
+
+string
+
+-
+
+(DEPRECATED, use path instead)

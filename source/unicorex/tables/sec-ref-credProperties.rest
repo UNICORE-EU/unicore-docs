@@ -1,0 +1,68 @@
+.. table:: 
+ :width: 100 
+ :widths: 25 15 25 35 
+ :class: tight-table
+
+ +----------------------+-------------+-------------------+---------------------------------+
+ |Property name         |Type         |Default value \/   |Description                      |
+ |                      |             |                   |                                 |
+ |                      |             |mandatory          |                                 |
+ +======================+=============+===================+=================================+
+ |container.security.   |filesystem   |mandatory to be set|Credential location. In case of  |
+ |                      |             |                   |                                 |
+ |credential.path       |path         |                   |jks, pkcs12 and pem store it is  |
+ |                      |             |                   |                                 |
+ |                      |             |                   |the only location required. In   |
+ |                      |             |                   |                                 |
+ |                      |             |                   |case when credential is provided |
+ |                      |             |                   |                                 |
+ |                      |             |                   |in two files, it is the          |
+ |                      |             |                   |                                 |
+ |                      |             |                   |certificate file path.           |
+ +----------------------+-------------+-------------------+---------------------------------+
+ |container.security.   |[jks, pkcs12,|\-                 |Format of the credential. It is  |
+ |                      |             |                   |                                 |
+ |credential.format     |der, pem]    |                   |guessed when not given. Note that|
+ |                      |             |                   |                                 |
+ |                      |             |                   |pem might be either a PEM        |
+ |                      |             |                   |                                 |
+ |                      |             |                   |keystore with certificates and   |
+ |                      |             |                   |                                 |
+ |                      |             |                   |keys (in PEM format) or a pair of|
+ |                      |             |                   |                                 |
+ |                      |             |                   |PEM files (one with certificate  |
+ |                      |             |                   |                                 |
+ |                      |             |                   |and second with private key).    |
+ +----------------------+-------------+-------------------+---------------------------------+
+ |container.security.   |string       |\-                 |Password required to load the    |
+ |                      |             |                   |                                 |
+ |credential.password   |             |                   |credential.                      |
+ +----------------------+-------------+-------------------+---------------------------------+
+ |container.security.   |string       |\-                 |Location of the private key if   |
+ |                      |             |                   |                                 |
+ |credential.keyPath    |             |                   |stored separately from the main  |
+ |                      |             |                   |                                 |
+ |                      |             |                   |credential (applicable for pem   |
+ |                      |             |                   |                                 |
+ |                      |             |                   |and der types only),             |
+ +----------------------+-------------+-------------------+---------------------------------+
+ |container.security.   |string       |\-                 |Private key password, which might|
+ |                      |             |                   |                                 |
+ |credential.keyPassword|             |                   |be needed only for jks or pkcs12,|
+ |                      |             |                   |                                 |
+ |                      |             |                   |if key is encrypted with         |
+ |                      |             |                   |                                 |
+ |                      |             |                   |different password then the main |
+ |                      |             |                   |                                 |
+ |                      |             |                   |credential password.             |
+ +----------------------+-------------+-------------------+---------------------------------+
+ |container.security.   |string       |\-                 |Keystore alias of the key entry  |
+ |                      |             |                   |                                 |
+ |credential.keyAlias   |             |                   |to be used. Can be ignored if the|
+ |                      |             |                   |                                 |
+ |                      |             |                   |keystore contains only one key   |
+ |                      |             |                   |                                 |
+ |                      |             |                   |entry. Only applicable for jks   |
+ |                      |             |                   |                                 |
+ |                      |             |                   |and pkcs12.                      |
+ +----------------------+-------------+-------------------+---------------------------------+

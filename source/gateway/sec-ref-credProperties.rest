@@ -1,0 +1,74 @@
+   
+.. table:: Credential settings
+   :widths: 20 10 10 50
+   
+   +--------------------------------+--------------+--------------+----------------------------------+
+   |                                | Type         | Default      | Description                      |
+   |                                |              |              |                                  |
+   | Property name                  |              | value \/     |                                  |
+   |                                |              |              |                                  |
+   |                                |              | mandatory    |                                  |
+   +================================+==============+==============+==================================+
+   | gateway.credential.path        | filesystem   | mandatory    | Credential location.             |
+   |                                |              |              |                                  |
+   |                                | path         | to be set    | In case of *jks*, *pkcs12* and   |
+   |                                |              |              |                                  |
+   |                                |              |              | *pem* store it is the  only      |
+   |                                |              |              |                                  |
+   |                                |              |              | location required. In case       |
+   |                                |              |              |                                  |
+   |                                |              |              | when credential is provided      |
+   |                                |              |              |                                  |
+   |                                |              |              | in two files, it is the          |
+   |                                |              |              |                                  |
+   |                                |              |              | certificate file path.           |
+   +--------------------------------+--------------+--------------+----------------------------------+
+   | gateway.credential.format      | [jks, pkcs12,| \-           | Format of the credential. It     |
+   |                                |              |              |                                  |
+   |                                | der, pem]    |              | is guessed when not given.       |
+   |                                |              |              |                                  |
+   |                                |              |              | Note that *pem* might be         |
+   |                                |              |              |                                  |
+   |                                |              |              | either  a PEM keystore with      |
+   |                                |              |              |                                  |
+   |                                |              |              | certificates and keys (in PEM    |
+   |                                |              |              |                                  |
+   |                                |              |              | format) or a pair of PEM         |
+   |                                |              |              |                                  |
+   |                                |              |              | files (one with certificate      |
+   |                                |              |              |                                  |
+   |                                |              |              | and second with private key).    |
+   +--------------------------------+--------------+--------------+----------------------------------+
+   | gateway.credential.password    | string       | \-           | Password required to load the    |
+   |                                |              |              |                                  |
+   |                                |              |              | credential.                      |
+   +--------------------------------+--------------+--------------+----------------------------------+
+   | gateway.credential.keyPath     | string       | \-           | Location of the private key      |
+   |                                |              |              |                                  |
+   |                                |              |              | if stored separately from the    |
+   |                                |              |              |                                  |
+   |                                |              |              | main credential (applicable      |
+   |                                |              |              |                                  |
+   |                                |              |              | for *pem* and *der* types only). |
+   |                                |              |              |                                  |
+   +--------------------------------+--------------+--------------+----------------------------------+
+   | gateway.credential.keyPassword | string       | \-           | Private key password, which      |
+   |                                |              |              |                                  |
+   |                                |              |              | mightbe needed only for *jks* or |
+   |                                |              |              |                                  |
+   |                                |              |              | *pkcs12*, if key is encrypted    |
+   |                                |              |              |                                  |
+   |                                |              |              | with different password then     |
+   |                                |              |              |                                  |
+   |                                |              |              | the main credential password.    |
+   +--------------------------------+--------------+--------------+----------------------------------+
+   | gateway.credential.keyAlias    | string       | \-           | Keystore alias of the key entry  |
+   |                                |              |              |                                  |
+   |                                |              |              | to be used. Can be ignored if    |
+   |                                |              |              |                                  |
+   |                                |              |              | the keystore contains only one   |
+   |                                |              |              |                                  |
+   |                                |              |              | key entry. Only applicable for   |
+   |                                |              |              |                                  |
+   |                                |              |              | *jks* and *pkcs12*.              |
+   +--------------------------------+--------------+--------------+----------------------------------+

@@ -1,0 +1,53 @@
+.. table::
+ :width: 100
+ :widths: 20 15 25 40
+
+Property name	Type	Default value / mandatory	Description
+
+xuudb.aclFile
+
+filesystem path
+
+-
+
+File with DNs of clients authorised to access protected XUUDB services.
+
+xuudb.address
+
+string
+
+http://localhost:34463
+
+HTTPS or HTTP URL where the server should listen.
+
+xuudb.db.[.*]
+
+string can have subkeys
+
+-
+
+Properties with this prefix are used to configure database backend, used by XUUDB. See separate documentation for details.
+
+xuudb.dynamicAttributesConfig
+
+filesystem path
+
+conf/dynamicAttributesCfg.xml
+
+File with configuration of the dynamic part of the XUUDB.
+
+xuudb.protectAll
+
+[true, false]
+
+false
+
+If true then access to both query and modify operations are protected by ACL. If false then only modification operations are protected.
+
+xuudb.type
+
+[dn]
+
+dn
+
+DEPRECATED and no longer required.

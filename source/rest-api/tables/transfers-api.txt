@@ -1,0 +1,6 @@
+:widths: 30 10 60
+
+URL 	Method 	Description
+/transfers 	GET 	Get a list of all transfers
+/transfers/id 	GET 	Get a representation of a transfer
+/transfers/id 	DELETE 	Abort and destroy the transfer

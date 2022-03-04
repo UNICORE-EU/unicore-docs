@@ -1,6 +1,6 @@
-.. _LICENSE:
+.. _license:
 
 License
-=======
+-------
 
 .. literalinclude:: ../LICENSE

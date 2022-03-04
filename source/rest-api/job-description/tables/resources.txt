@@ -1,0 +1,12 @@
+:widths: 30 20 50
+
+Resource name 	Description
+Runtime 	Job runtime (wall time) (in seconds, append "min", "h", or "d" for other units)
+Queue 	Batch system queue / partition to use
+Nodes 	Number of nodes
+CPUs 	Total number of CPUs
+CPUsPerNode 	Number of CPUs per node
+Memory 	Memory per node
+Reservation 	Batch system reservation ID
+NodeConstraints 	Batch system node constraints
+QoS 	Batch system QoS

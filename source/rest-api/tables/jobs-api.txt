@@ -1,0 +1,11 @@
+:widths: 30 10 60
+
+URL 	Method 	Description
+/jobs?offset= 	GET 	Get a list of all jobs
+/jobs 	POST 	Submit a new job. The site will be chosen automatically
+/jobs/id 	GET 	Get a representation of the given job
+/jobs/id/details 	GET 	Get batch system level information about the job (if available)
+/jobs/id 	DELETE 	Destroy the job and its working directory.
+/jobs/id/actions/start 	POST 	Start the job (in case the client did manual staging)
+/jobs/id}/actions/abort 	POST 	Abort the job
+/jobs/id/actions/restart 	POST 	Restart the job

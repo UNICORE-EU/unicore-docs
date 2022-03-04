@@ -20,7 +20,7 @@ The UCC offers
 
 and much more.
 
-.. topic:: Documentation for UNICORE Users
+.. topic:: User Documentation
 
   :doc:`manual`
       User Manual with detailed instructions and examples for using the UNICORE Client.
@@ -29,7 +29,7 @@ and much more.
     The UNICORE Client changelog.
 
 
-.. topic:: Documentation for UNICORE Administrators
+.. topic:: Administrator Documentation
 
   :doc:`building`
       Building the UNICORE Client distribution packages.

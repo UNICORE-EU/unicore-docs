@@ -8,7 +8,6 @@ Prerequisites
  
 To run UNICORE/X, you need Java (OpenJDK, Oracle or IBM).
 We recommend using the latest version of the OpenJDK.
-
 If not installed on your system, you can download it from
 http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
@@ -22,10 +21,10 @@ Please note that
    all your UNICORE servers.
 
  - to interface with a resource management system like Slurm or SGE,
-   you need to install and configure the UNICORE TSI server.
+   you need to install and configure the `UNICORE TSI server <tsi>`_.
 
  - to make your resources easily accessible outside of your firewalls,
-   you should setup and configure a UNICORE Gateway.
+   you should setup and configure a `UNICORE Gateway <gateway>`_.
 
 All these configuration options will be explained in the manual below.
 
@@ -45,8 +44,8 @@ To install from a Linux package, please use the package manager of your
 system to install the archive.
 
 .. note::
-  Using the Linux packages, you can install only a single  UNICORE/X instance per machine (without
-  manual changes). The tar.gz / zip archives are self contained,   and you can easily install
+  Using the Linux packages, you can install only a single UNICORE/X instance per machine (without
+  manual changes). The tar.gz / zip archives are self contained, and you can easily install
   multiple servers per machine.
 
 The following table gives an overview of the file locations for both tar.gz and Linux bundles.

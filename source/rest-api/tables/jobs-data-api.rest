@@ -1,0 +1,14 @@
+.. table:: 
+ :width: 100 
+ :widths: 30 10 60 
+ :class: tight-table
+
+ +-------------+------+--------------------------------------------------------+
+ |URL          |Method|Description                                             |
+ +=============+======+========================================================+
+ |\/           |GET   |Get info about the client, the server and links to other|
+ |             |      |resources                                               |
+ +-------------+------+--------------------------------------------------------+
+ |\/certificate|GET   |Get the server's public key (needs "Accept: text\/plain"|
+ |             |      |or "Accept: \*" header)                                 |
+ +-------------+------+--------------------------------------------------------+

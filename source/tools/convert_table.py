@@ -17,28 +17,29 @@ def parse_row(row, mwidths):
             s = [s]
         rows.append(s)
         n = max(n, len(s))
+    logger.debug(rows)
     return n, rows
 
 # split row into several multirows to fit a specified width            
 def multirows(s, width):
     rows = []
-    sep_chars = [' ', '.', ',', ':', '-', '_', '\/', '=']
+    split_chars = [' ', '.', ',', ':', '-', '_', '\/', '=']
     indexes = []
-    for sep_char in sep_chars:
-        indexes.append(s[:width].rfind(sep_char))
+    for split_char in split_chars:
+        indexes.append(s[:width].rfind(split_char))
     midx = -1
     for i, idx in enumerate(indexes):
         if idx > midx:
             midx = idx
-            sep_char = sep_chars[i]
+            split_char = split_chars[i]
     if midx == -1:
         logger.warning('Cannot split substring: {}'.format(s))
         return [s]
-    s1 = s[:midx] if sep_char == ' ' or sep_char == '_' else s[:midx+len(sep_char)]
-    if sep_char == '_':
+    s1 = s[:midx] if split_char == ' ' or split_char == '_' else s[:midx+len(split_char)]
+    if split_char == '_':
         s1 += '\_' 
     rows.append(s1)
-    for i in range(midx+len(sep_char), len(s)):
+    for i in range(midx+len(split_char), len(s)):
         if s[i] != ' ':
             s = s[i:]
             break
@@ -152,6 +153,7 @@ parser.add_argument('-i', dest='file', required=True, help='input file')
 parser.add_argument('-l', dest='width', type=int, default=100, help='total table\'s width in characters')
 parser.add_argument('-w', dest='widths',
                     help='Column header widths separated by spaces (in %)')
+parser.add_argument('-t', dest='tab', action='store_true', default=False, help='if set a tabulator used a a separator (default=end of line)')
 parser.add_argument('-f', dest='fixed_widths', action='store_true', default=False,
                     help='set fixed column widths (otherwise they will be calculated dynamically)')
 parser.add_argument('-a', dest='add_headers', action='store_true', default=False,
@@ -237,21 +239,29 @@ try:
             logger.debug('headers: {}'.format(headers))
             i += 1
             while i<len(lines) and lines[i].strip() == '':
+                logger.debug('#ignore line {}: {}'.format(i, line[i]))
                 i += 1
     
         row = []
         n = 0
         logger.debug("Reading table ...")
-        while i<len(lines):
+        while i<len(lines):       
             while i<len(lines) and n < cols:
                 line = lines[i].strip()
                 line = line.replace('*', '\*').replace('/', '\/').\
-                    replace('>', '\>').replace('<', '\<').replace('-', '\-')
-                row.append(line)
-                i += 1
-                while i<len(lines) and lines[i].strip() == '':
+                        replace('>', '\>').replace('<', '\<').replace('-', '\-')
+                if not args.tab:
+                    row.append(line)
                     i += 1
-                n += 1
+                    while i<len(lines) and lines[i].strip() == '':
+                        i += 1
+                    n += 1        
+                else:
+                    row = [s.strip() for s in line.split('\t')]
+                    n = len(row)
+                    i += 1
+                    
+                           
             table.append(parse_row(row, cwidths))
             row = []
             n = 0

@@ -1,0 +1,7 @@
+:widths: 30 70
+
+Parameter 	Description
+file 	the file on the storage, relative to storage root
+target 	the target URL in case of "data push"
+source 	the source URL in case of "data pull"
+extraParameters 	any additional parameters (e.g. number of UFTP streams)

@@ -1,87 +1,65 @@
 .. _unicore-docs:
 
+
 UNICORE Documentation
-*********************
+=====================
 
 `UNICORE <https://www.unicore.eu>`_ (**U**\ niform **I**\ nterface to **CO**\ mputing 
 **RE**\ sources) offers a ready-to-run system including client and server software. 
 It makes distributed computing and data resources available in a seamless and secure way 
 in intranets and the internet. 
 
-
 .. image:: _static/unicore-features.png
-  :width: 600
-  :alt: UNICORE Features 
+   :width: 600
+   :alt: UNICORE Features 
 
 
-UNICORE Features
-****************
-
-UNICORE has special characteristics that make it unique among middleware systems. 
-The UNICORE design is based on several guiding principles, that serve as key objectives 
-for further enhancements. UNICORE deals with authentication, user mapping and authorization, 
-and provides a comprehensive set 
-of RESTful APIs for HPC access and workflows.
-
-.. topic:: Services and APIs
-
-    * Batch jobs with pre- and postprocessing
-    * Support for common resource managers such as SLURM or LoadLeveler
-    * File system access and file transfer
-    * Site-to-site file transfer
-    * Cross-site workflows featuring graphs, loops, conditions, variables, hold/continue, workflow data management
-    * Metadata
-    * Service Registry
-
-.. topic:: Security
-
-    * Flexible user authentication: username/password, OpenID Connect, X\.509, ...
-    * Flexible user mapping
-    * Based on open standards: X\.509 Public Key Infrastructure, TLS, SAML, OIDC, XACML, ...
-
-.. topic:: Clients
-
-    * Commandline client: Job execution, data transfer, workflows, scripting, batch mode, extensible
-    * Dedicated client for the UFTP high performance file transfer
-    * pyUNICORE Python client library
-
-.. topic:: Add-ons
-
-    * Standalone UFTP suite for high-performance data transfer (can be used independently of UNICORE)
-    * Unity: Identity Management server, SAML compliant, administration GUI, many features, see unity-idm.eu
-
-
-UNICORE Architecture
-********************
-
-The architecture of UNICORE is three-layered in client layer, service layer and 
-target system layer as shown in the figure below. 
-
-.. image:: _static/unicore-arch.png
-  :width: 600
-  :alt: UNICORE Architecture 
+* :ref:`unicore-overview` gives an overview of the UNICORE features and the UNICORE architecture. 
   
-UNICORE Components
-******************
+.. toctree::
+	:maxdepth: 2
+	:caption: UNICORE Documentation
+	:hidden:
 
-* :ref:`unicorex` - the central server component of a typical UNICORE  installation
-  that provides REST APIs for job management and data access  services for a
-  single compute cluster (or just a file system).
+	overview
+
+
+User Documentation
+==================
+
+* :ref:`ucc` - a full featured commandline client for UNICORE.
+* :ref:`rest-api` - REST-API for job submission and management, 
+  data access and transfer, workflow submission and management
+
+  * :ref:`job-description` - the job description format 
+  * :ref:`workflow-description` - the workflow description language 
+
+.. toctree::
+	:maxdepth: 2
+	:caption: User Documentation
+	:hidden:
+
+	ucc/index
+	rest-api/index
+	rest-api/job-description/index
+	rest-api/workflow-description/index
+
+
+Administrator documentation
+===========================
 
 * :ref:`gateway` - an optional server component that
   provides a reverse https proxy, allowing you to run several backend
   servers (:ref:`unicorex`, :ref:`Registery <registry>`, ...) behind a single   address.
+  
+* :ref:`unicorex` - the central server component of a typical UNICORE  installation
+  that provides REST APIs for job management and data access  services for a
+  single compute cluster (or just a file system).
 
 * :ref:`tsi` - the Target System Interface (TSI) server is used to 
   interface to a resource manager such as Slurm and to access files 
   on the cluster.
-
-* :ref:`workflow` - provides advanced workflow processing
-  capabilities using UNICORE resources.  The Workflow service provides
-  graphs of activities including high-level control constructs
-  (for-each, while, if-then-else, etc), and submits and manages the
-  execution of single UNICORE jobs.
-
+  
 * :ref:`xuudb` - an optional service, that is best
   suited as a per-site service, providing attributes for multiple
   UNICORE/X-like services at a site. The XUUDB maps a UNICORE user identity 
@@ -90,45 +68,58 @@ UNICORE Components
   commonly also to provide authorization information, i.e. the
   user's role.
 
-* `UFTPD <https://uftp-docs.readthedocs.io/en/latest/uftpd/index.html#uftpd>`_ - the UNICORE File 
-  Transfer Server for high performance data transfer
+* :ref:`workflow` - provides advanced workflow processing
+  capabilities using UNICORE resources.  The Workflow service provides
+  graphs of activities including high-level control constructs
+  (for-each, while, if-then-else, etc), and submits and manages the
+  execution of single UNICORE jobs.
+  
+* :ref:`registry` - the Registry server is a specially configured
+  UNICORE/X server which provides the information about available
+  services to clients and other services. 
 
-* :ref:`ucc` - a full featured commandline client for UNICORE.
+* `UFTPD <https://uftp-docs.readthedocs.io/en/latest/uftpd/index.html#uftpd>`_ - 
+  the UNICORE File Transfer Server for high performance data transfer
+
 
 .. toctree::
 	:maxdepth: 2
-	:caption: UNICORE Documentation
+	:caption: Administrator Documentation
 	:hidden:
-
-	unicorex/index
+	
 	gateway/index
+	unicorex/index
 	tsi/index
-	workflow/index
 	xuudb/index
-	ucc/index
+	workflow/index
+	unicorex/registry
 
 
 Getting Support
-***************
+===============
 
-For more information, please see the :ref:`support` page.
+For more information, please see the :ref:`links` and :ref:`support` page.
 
-	
-.. raw:: html
-
-   	<hr>
 
 .. toctree::
+	:caption: Getting Support
 	:hidden:
 	
 	links.rst
-	faq.rst
-	wiki
 	support
-	license
-   
+
+License
+=======
+
+UNICORE is available under the :ref:`BSD 2-Clause License <license>`.
+
+.. toctree::
+	:caption: LICENSE
+	:hidden:
 	
-   
+	license
+
+
 Indices and tables
 ******************
 

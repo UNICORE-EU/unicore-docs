@@ -1,0 +1,10 @@
+.. table:: 
+ :width: 100 
+ :widths: 30 20 50 
+ :class: tight-table
+
+ +-------------+----------------+
+ |Resource name|Description     |
+ +=============+================+
+ |QoS          |Batch system QoS|
+ +-------------+----------------+

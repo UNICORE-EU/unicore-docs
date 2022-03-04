@@ -1,0 +1,15 @@
+:widths: 30 10 60
+
+Property 	Values 	Description
+status 	UNKNOWN, STAGINGIN, READY, QUEUED, STAGINGOUT, FAILED, SUCCESSFUL 	The status of the job
+statusMessage 	string 	status / error summary message
+name 	string 	Job name as submitted, or "N/A"
+log 	string 	Execution log
+exitCode 	integer 	exit code of the application (if available)
+queue 	string 	batch queue, or "N/A"
+submissionTime 	date-time 	job submission time
+terminationTime 	date-time 	time of automated job cleanup
+currentTime 	date-time 	current server time
+owner 	X500 name 	job owner (who submitted it)
+acl 	acl 	access control list
+submissionPreferences 	map 	user preferences (uid, gid) if applicable

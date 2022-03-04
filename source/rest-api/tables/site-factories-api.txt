@@ -1,0 +1,9 @@
+:widths: 30 10 60
+
+URL 	Method 	Description
+/factories 	GET 	Get a list of all site factories
+/factories 	POST 	Create a new site
+/factories/id 	GET 	Get the representation of the given factory
+/factories/id 	POST 	Create a new site
+/factories/id/applications 	GET 	Get a list of all applications
+/factories/id/applications/appID 	GET 	Get the representation of the given applications

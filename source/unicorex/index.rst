@@ -20,9 +20,6 @@ UNICORE/X server, so please make sure to refer to the general
 
 :doc:`manual`
   Installation and Operating the UNICORE/X server.
-  
-:doc:`registry`
-	  Installation and Operating the Registry server.  
 
 :doc:`upgrade`
   Upgrade the UNICORE/X server to this version.
@@ -41,7 +38,6 @@ UNICORE/X server, so please make sure to refer to the general
 	:hidden:
 
 	manual
-	registry
    	upgrade
 	building
 	

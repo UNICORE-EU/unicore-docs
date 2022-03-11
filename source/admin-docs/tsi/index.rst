@@ -4,7 +4,7 @@ TSI
 ***
 
 The UNICORE **T**\ arget **S**\ ystem **I**\ nterface (TSI) is used by the 
-`:ref:`UNICORE/X server <unicorex>` to perform tasks
+:ref:`UNICORE/X server <unicorex>` to perform tasks
 on the target resource, such as submitting and monitoring jobs,
 handling data, managing directories etc. It is a daemon running on the frontend of the target
 resource (e.g. a cluster login node) which provides a remote interface

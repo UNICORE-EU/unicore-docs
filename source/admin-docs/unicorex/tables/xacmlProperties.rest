@@ -1,0 +1,45 @@
+.. table:: 
+ :width: 100 
+ :widths: 35 15 15 35 
+ :class: tight-table
+
+ +-----------------------------+--------------+----------+----------------------------------+
+ |XACML attribute name         |XACML category|XACML type|Description                       |
+ +=============================+==============+==========+==================================+
+ |urn:oasis:names:tc:xacml:1.0:|Resource      |AnyURI    |WS service name                   |
+ |resource:resource\-id        |              |          |                                  |
+ +-----------------------------+--------------+----------+----------------------------------+
+ |urn:unicore:wsresource       |Resource      |String    |Identifier of the WSRF resource   |
+ |                             |              |          |instance (if any).                |
+ +-----------------------------+--------------+----------+----------------------------------+
+ |owner                        |Resource      |X.500 name|The name of the VO resource owner.|
+ +-----------------------------+--------------+----------+----------------------------------+
+ |voMembership\-VONAME         |Resource      |String    |For each VO the accessed resource |
+ |                             |              |          |is a member, there is such        |
+ |                             |              |          |attribute with the VONAME set to  |
+ |                             |              |          |the VO, and with the value        |
+ |                             |              |          |specifying allowed access type,   |
+ |                             |              |          |using the same action categories  |
+ |                             |              |          |as are used for the actionType    |
+ |                             |              |          |attribute.                        |
+ +-----------------------------+--------------+----------+----------------------------------+
+ |actionType                   |Action        |String    |Action type or category.          |
+ |                             |              |          |Currently read for read\-only     |
+ |                             |              |          |operation and modify for others.  |
+ +-----------------------------+--------------+----------+----------------------------------+
+ |urn:oasis:names:tc:xacml:1.0:|Action        |String    |WS operation name.                |
+ |action:action\-id            |              |          |                                  |
+ +-----------------------------+--------------+----------+----------------------------------+
+ |urn:oasis:names:tc:xacml:1.0:|Subject       |X.500 name|User's DN.                        |
+ |subject:subject\-id          |              |          |                                  |
+ +-----------------------------+--------------+----------+----------------------------------+
+ |role                         |Subject       |String    |The user's role.                  |
+ +-----------------------------+--------------+----------+----------------------------------+
+ |consignor                    |Subject       |X.500 name|Client's (consignor's) DN.        |
+ +-----------------------------+--------------+----------+----------------------------------+
+ |vo                           |Subject       |Strings   |Bag with all VOs the user is      |
+ |                             |              |          |member of (if any).               |
+ +-----------------------------+--------------+----------+----------------------------------+
+ |selectedVo                   |Subject       |String    |The effective, selected VO (if    |
+ |                             |              |          |any).                             |
+ +-----------------------------+--------------+----------+----------------------------------+

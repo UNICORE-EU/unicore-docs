@@ -1,7 +1,7 @@
 .. _links:
 
 Links
------
+*****
 
 .. table::
  :width: 100

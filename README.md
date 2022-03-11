@@ -4,4 +4,4 @@ The repository contains the latest UNICORE docs for the [unicore-docs project](h
 
 The Read the Docs simplifies software documentation by building, versioning, and hosting of the docs, automatically. It  enables to trigger builds from GitHub pull requests and gives a preview of how the UNICORE documentation (HTML, PDF, Epub) would look like with those changes on the following web page:
 
-https://unicore-docs.readthedocs.io/en/latest/index.html
+https://unicore-docs.readthedocs.io

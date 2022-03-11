@@ -1,0 +1,180 @@
+.. table::
+   :width: 100
+   :widths: 30 15 15 50
+
+Property name	Type	Default value / mandatory	Description
+gateway.httpServer.CORS_allowedHeaders
+
+string
+
+*
+
+CORS: comma separated list of allowed HTTP headers (default: any)
+
+gateway.httpServer.CORS_allowedMethods
+
+string
+
+GET,PUT,POST,DELETE,HEAD
+
+CORS: comma separated list of allowed HTTP verbs.
+
+gateway.httpServer.CORS_allowedOrigins
+
+string
+
+*
+
+CORS: allowed script origins.
+
+gateway.httpServer.CORS_chainPreflight
+
+[true, false]
+
+false
+
+CORS: whether preflight OPTION requests are chained (passed on) to the resource or handled via the CORS filter.
+
+gateway.httpServer.CORS_exposedHeaders
+
+string
+
+Location,Content-Type
+
+CORS: comma separated list of HTTP headers that are allowed to be exposed to the client.
+
+gateway.httpServer.disabledCipherSuites
+
+string
+
+empty string
+
+Space separated list of SSL cipher suites to be disabled. Names of the ciphers must adhere to the standard Java_cipher_names_
+
+gateway.httpServer.enableCORS
+
+[true, false]
+
+false
+
+Control whether Cross-Origin Resource Sharing is enabled. Enable to allow e.g. accesing REST services from client-side JavaScript.
+
+gateway.httpServer.enableHsts
+
+[true, false]
+
+false
+
+Control whether HTTP strict transport security is enabled. It is a good and strongly suggested security mechanism for all production sites. At the same time it can not be used with self-signed or not issued by a generally trusted CA server certificates, as with HSTS a user can't opt in to enter such site.
+
+gateway.httpServer.fastRandom
+
+[true, false]
+
+false
+
+Use insecure, but fast pseudo random generator to generate session ids instead of secure generator for SSL sockets.
+
+gateway.httpServer.gzip.enable
+
+[true, false]
+
+false
+
+Controls whether to enable compression of HTTP responses.
+
+gateway.httpServer.gzip.minGzipSize
+
+integer number
+
+100000
+
+Specifies the minimal size of message that should be compressed.
+
+gateway.httpServer.highLoadConnections
+
+integer number
+
+200
+
+deprecated
+
+gateway.httpServer.lowResourceMaxIdleTime
+
+integer >= 1
+
+100
+
+deprecated
+
+gateway.httpServer.maxConnections
+
+integer >= 0
+
+0
+
+Maximum number of incoming connections to this server. If set to a value larger than 0, incoming connections will be limited to that number. Default is 0 = unlimited.
+
+gateway.httpServer.maxIdleTime
+
+integer >= 1
+
+200000
+
+Time (in ms.) before an idle connection will time out. It should be large enough not to expire connections with slow clients, values below 30s are getting quite risky.
+
+gateway.httpServer.maxThreads
+
+integer number
+
+255
+
+Maximum number of threads to have in the thread pool for processing HTTP connections. Note that this number will be increased with few additional threads to handle connectors.
+
+gateway.httpServer.minThreads
+
+integer >= 1
+
+1
+
+Minimum number of threads to have in the thread pool for processing HTTP connections. Note that this number will be increased with few additional threads to handle connectors.
+
+gateway.httpServer.requireClientAuthn
+
+[true, false]
+
+true
+
+Controls whether the SSL socket requires client-side authentication.
+
+gateway.httpServer.useNIO
+
+[true, false]
+
+true
+
+DEPRECATED, no effect
+
+gateway.httpServer.wantClientAuthn
+
+[true, false]
+
+true
+
+Controls whether the SSL socket accepts (but does not require) client-side authentication.
+
+gateway.httpServer.xFrameAllowed
+
+string
+
+\http://localhost
+
+URI origin that is allowed to embed web interface inside a (i)frame. Meaningful only if the xFrameOptions is set to allowFrom. The value should be in the form: \http[s]://host[:port]
+
+gateway.httpServer.xFrameOptions
+
+[deny, sameOrigin, allowFrom, allow]
+
+deny
+
+Defines whether a clickjacking prevention should be turned on, by insertionof the X-Frame-Options HTTP header. The allow value disables the feature. See the RFC 7034 for details. Note that for the allowFrom you should define also the xFrameAllowed option and it is not fully supported by all the browsers.

@@ -13,6 +13,6 @@ Please note also the following places for getting more information:
 
 :Support list: unicore-support@lists.sf.net
 
-:Developer's list: unicore-devel@lists.sf.net
+:Developer's list: unicore-devel@lists.sf.net (*needs registration*)
 
 :Source code: https://github.com/UNICORE-EU

@@ -39,10 +39,7 @@ def multirows(s, width):
     if split_char == '_':
         s1 += '\_' 
     rows.append(s1)
-    for i in range(midx+len(split_char), len(s)):
-        if s[i] != ' ':
-            s = s[i:]
-            break
+    s = s[midx+len(split_char):].strip()
     if len(s) > width:
         rows.extend(multirows(s, width))
     else:
@@ -239,7 +236,6 @@ try:
             logger.debug('headers: {}'.format(headers))
             i += 1
             while i<len(lines) and lines[i].strip() == '':
-                logger.debug('#ignore line {}: {}'.format(i, line[i]))
                 i += 1
     
         row = []

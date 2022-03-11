@@ -1,0 +1,74 @@
+.. table:: 
+ :width: 100 
+ :widths: 30 15 15 50 
+ :class: tight-table
+
+ +-----------------------------+--------------+-------------+-------------------------------------------------+
+ |Property name                |Type          |Default value|Description                                      |
+ |                             |              |\/ mandatory |                                                 |
+ +=============================+==============+=============+=================================================+
+ |gateway.hostname             |string        |mandatory to |external gateway bind address                    |
+ |                             |              |be set       |                                                 |
+ +-----------------------------+--------------+-------------+-------------------------------------------------+
+ |gateway.registration.allow   |string        |\-           |Space separated list of allowed hosts for        |
+ |                             |              |             |dynamic registration.                            |
+ +-----------------------------+--------------+-------------+-------------------------------------------------+
+ |gateway.registration.deny    |string        |\-           |Space separated list of denied hosts for dynamic |
+ |                             |              |             |registration.                                    |
+ +-----------------------------+--------------+-------------+-------------------------------------------------+
+ |gateway.registration.enable  |[true, false] |false        |Whether dynamic registration of sites is enabled.|
+ +-----------------------------+--------------+-------------+-------------------------------------------------+
+ |gateway.registration.secret  |string        |\-           |Required secret for dynamic registration.        |
+ +-----------------------------+--------------+-------------+-------------------------------------------------+
+ |gateway.                     |integer \>= 0 |30           |The validity time of the authenticated client    |
+ |consignorTokenTimeTolerance  |              |             |information passed to backend sites will start   |
+ |                             |              |             |that many seconds before the real authentication.|
+ |                             |              |             |It is used to mask time synchronization problems |
+ |                             |              |             |between machines.                                |
+ +-----------------------------+--------------+-------------+-------------------------------------------------+
+ |gateway.                     |integer \>= 1 |60           |What is the validity time of the authenticated   |
+ |consignorTokenValidity       |              |             |client information passed to backend sites.      |
+ |                             |              |             |Increase it if there machines clocks are not     |
+ |                             |              |             |synhronized.                                     |
+ +-----------------------------+--------------+-------------+-------------------------------------------------+
+ |gateway.signConsignorToken   |[true, false] |false        |Controls whether information about the           |
+ |                             |              |             |authenticated client (the consignor) passed to   |
+ |                             |              |             |backend sites should be signed, or not. Signing  |
+ |                             |              |             |is slower, but is required when sites may be     |
+ |                             |              |             |reached directly, bypassing the Gateway.         |
+ +-----------------------------+--------------+-------------+-------------------------------------------------+
+ |gateway.client.chunked       |[true, false] |true         |Controls whether chunked passing of HTTP         |
+ |                             |              |             |requests to backend sites is supported.          |
+ +-----------------------------+--------------+-------------+-------------------------------------------------+
+ |gateway.client.              |integer number|30000        |Connection timeout, used when connecting to      |
+ |connectionTimeout            |              |             |backend sites.                                   |
+ +-----------------------------+--------------+-------------+-------------------------------------------------+
+ |gateway.client.expectContinue|[true, false] |true         |Controls whether the HTTP expec\-continue        |
+ |                             |              |             |mechanism is enaled on connections to backend    |
+ |                             |              |             |sites.                                           |
+ +-----------------------------+--------------+-------------+-------------------------------------------------+
+ |gateway.client.gzip          |[true, false] |true         |Controls whether support for compression is      |
+ |                             |              |             |announced to backend sites.                      |
+ +-----------------------------+--------------+-------------+-------------------------------------------------+
+ |gateway.client.keepAlive     |[true, false] |true         |Whether to keep alive the connections to backend |
+ |                             |              |             |sites.                                           |
+ +-----------------------------+--------------+-------------+-------------------------------------------------+
+ |gateway.client.maxPerService |integer number|20           |Maximum allowed number of connections per        |
+ |                             |              |             |backend site.                                    |
+ +-----------------------------+--------------+-------------+-------------------------------------------------+
+ |gateway.client.maxTotal      |integer number|100          |Maximum total number of connections to backend   |
+ |                             |              |             |sites allowed.                                   |
+ +-----------------------------+--------------+-------------+-------------------------------------------------+
+ |gateway.client.socketTimeout |integer number|30000        |Connection timeout, used when connecting to      |
+ |                             |              |             |backend sites.                                   |
+ +-----------------------------+--------------+-------------+-------------------------------------------------+
+ |gateway.disableWebpage       |[true, false] |false        |Whether the (so called monkey) status web page   |
+ |                             |              |             |should be disabled.                              |
+ +-----------------------------+--------------+-------------+-------------------------------------------------+
+ |gateway.externalHostname     |string        |not set      |External address of the gateway, when it is      |
+ |                             |              |             |accessible through a frontend server as Apache   |
+ |                             |              |             |HTTP.                                            |
+ +-----------------------------+--------------+-------------+-------------------------------------------------+
+ |gateway.soapMaxHeader        |integer [1024 |102400       |Size in bytes of the accepted SOAP header. In    |
+ |                             |\- 1024000000]|             |the most cases you don't need to change it.      |
+ +-----------------------------+--------------+-------------+-------------------------------------------------+

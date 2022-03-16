@@ -318,7 +318,7 @@ on the remote system. For example
 
 UNICORE has the following built-in resource names.
 
-.. include:: tables/resources.rest
+.. include:: tables/resources.rst
 
 Sites may define additional, "custom" resources, which you can use, too.
 

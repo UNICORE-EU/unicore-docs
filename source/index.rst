@@ -1,8 +1,8 @@
 .. _unicore-docs:
 
 
-UNICORE Documentation
-=====================
+Welcome to UNICORE Documentation
+================================
 
 `UNICORE <https://www.unicore.eu>`_ (**U**\ niform **I**\ nterface to **CO**\ mputing 
 **RE**\ sources) offers a ready-to-run system including client and server software. 
@@ -12,7 +12,6 @@ in intranets and the internet.
 .. image:: _static/unicore-features.png
    :width: 600
    :alt: UNICORE Features 
-
 
 * :ref:`unicore-overview` gives an overview of the UNICORE features and the UNICORE architecture. 
   
@@ -34,13 +33,13 @@ Getting Support
 
 For more information, please see the :ref:`links` and :ref:`support` page.
 
-
 .. toctree::
 	:caption: Getting Support
 	:hidden:
 	
 	links.rst
 	support
+
 
 License
 =======

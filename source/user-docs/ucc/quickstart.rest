@@ -22,7 +22,7 @@ To get help on a specific command, type
 
   $  ucc <command> -h
 
-See also `ucc_options`_ for a list of common options.
+See also :ref:`ucc_options` for a list of common options.
 
 
 Connecting

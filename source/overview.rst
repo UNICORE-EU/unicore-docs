@@ -20,7 +20,7 @@ UNICORE Features
 
 UNICORE has special characteristics that make it unique among middleware systems. 
 UNICORE deals with authentication, user mapping and authorization, 
-and provides a comprehensive set of RESTful APIs for HPC access and workflows.
+and provides a comprehensive set of :ref:`RESTful APIs <rest-api>` for HPC access and workflows.
 The UNICORE design is based on several guiding principles, that serve as key objectives 
 for further enhancements. 
 
@@ -44,9 +44,9 @@ for further enhancements.
 
     * `Commandline client <ucc>`_: Job execution, data transfer, workflows, scripting, batch mode, extensible
     * Dedicated `client for the UFTP high performance file transfer <https://uftp-docs.readthedocs.io/en/latest/uftp-client/>`_
-    * pyUNICORE Python client library
+    * `pyUNICORE <https://github.com/HumanBrainProject/pyunicore/>`_ Python client library
 
 .. topic:: Add-ons
 
     * `Standalone UFTP suite <https://uftp-docs.readthedocs.io/>`_ for high-performance data transfer (can be used independently of UNICORE)
-    * Unity: Identity Management server, SAML compliant, administration GUI, many features, see https://unity-idm.eu
+    * Unity: Identity Management server, SAML compliant, administration GUI, many features (see https://unity-idm.eu)

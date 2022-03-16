@@ -5,8 +5,9 @@ Configuration of the Workflow server
 
 This chapter covers configuration options for the Workflow server.
 Since the Workflow server is running in the same underlying 
-environment (UNICORE Services Environment, USE), a lot of the
-basic configuration options are documented in the UNICORE/X manual.
+environment (**U**\ NICORE **S**\ ervices **E**\ nvironment, **USE**), 
+a lot of the basic configuration options are documented in the 
+:ref:`UNICORE/X manual <unicorex-manual>`.
 
 .. note::
   The configuration files in the distribution are commented, and contain

@@ -4,7 +4,7 @@ Sharing resources
 -----------------
 
 Accessing UNICORE resources (jobs, storages, ...) is usually only
-possible when you "own" the resource or when there are special
+possible when you *own* the resource or when there are special
 server-side policies in place that allow you access.
 
 Starting with server version 7.3, UNICORE supports ACLs on a
@@ -22,7 +22,7 @@ groups.
 Editing ACLs
 ~~~~~~~~~~~~
 
-The ACLs are managed via the "share" command.
+The ACLs are managed via the ``share`` command.
 Use the basic
 
 .. code:: console

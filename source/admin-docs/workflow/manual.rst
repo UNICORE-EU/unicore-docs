@@ -6,12 +6,12 @@ User Manual
 The UNICORE Workflow service provides advanced workflow processing
 capabilities using UNICORE resources.  The Workflow service provides
 graphs of activities including high-level control constructs
-(for-each, while, if-then-else, etc), and submits and manages the
+(*for-each*, *while*, *if-then-else*, etc), and submits and manages the
 execution of single UNICORE jobs.
 
-The Workflow service offers a REST API for workflow submission and
-management and uses an easy-to-understand workflow description syntax
-in JSON format.
+The Workflow service offers a :ref:`REST API <rest-api>` for workflow submission 
+and management and uses an easy-to-understand :ref:`workflow description 
+<workflow-description>` syntax in JSON format.
 
 Thanks to a flexible internal workflow model and execution engine, the
 Workflow service can be in principle extended with custom workflow

@@ -9,13 +9,14 @@ Introduction
 The UCC can run jobs specified in the JSON job description format that
 is used by the UNICORE REST API, plus a few extensions related to
 handling of local files, submission options etc. See
-`ucc_jobdescription`_ for all the details.
+:ref:`ucc_jobdescription` for all the details.
 
 In the following it is assumed that you have UCC installed
-`ucc_install`_ and tried some examples `ucc_quickstart`_ .
+:ref:`ucc_install` and tried some examples :ref:`ucc_quickstart`.
 
 For example, assume the file "myjob.u" looks as follows
-::
+
+.. code:: json
 
   {
     "ApplicationName": "Date", 
@@ -64,16 +65,18 @@ Accessing a job's working directory
 
 Using the UCC's data management functions, the job working directory
 can be accessed at any time after job submission. Please see section
-`ucc_datamanagement`_ for details.
+:ref:`ucc_datamanagement` for details.
 
 Options overview
 ~~~~~~~~~~~~~~~~
 
-The following options are available when running jobs (see also the general options overview in `ucc_options`_.
+The following options are available when running jobs (see also the general options overview 
+in :ref:`ucc_options`.
 
 .. table:: Job submission options for UCC
    :width: 100%
    :widths: 30,70
+   :class: tight-table
 
    +------------------------------+----------------------------------------------------------------------+
    | Option (Short and long form) | Description                                                          |
@@ -82,8 +85,8 @@ The following options are available when running jobs (see also the general opti
    +------------------------------+----------------------------------------------------------------------+
    | -b,--brief                   | Do not create a sub-directory for output files                       |
    +------------------------------+----------------------------------------------------------------------+
-   | -B,--broker                  | Select the type of resource broker to use (see ``run -h``            |
-   |                              | for a list)                                                          |
+   | -B,--broker                  | Select the type of resource broker to use (see ``run -h`` for        |
+   |                              | a list)                                                              |
    +------------------------------+----------------------------------------------------------------------+
    | -d,--dryRun                  | Only show candidate sites, but do not submit the job                 |
    +------------------------------+----------------------------------------------------------------------+
@@ -174,7 +177,7 @@ list of all job URLs that you can access.
 
 Note that in this case UCC will only retrieve stdout and stderr files. To download
 other result files, you'll have to use the data movement functions described 
-in `ucc_datamanagement`_.
+in :ref:`ucc_datamanagement`.
 
   
 Scheduling job submission to the batch system
@@ -192,7 +195,8 @@ command:
   $ ucc run -S "12:24" ...
 
 Alternatively, you can specify the start time in your job file using the ``Not before`` key word
-::
+
+.. code:: json
 
   {
     "Not before": "12:30",
@@ -200,7 +204,8 @@ Alternatively, you can specify the start time in your job file using the ``Not b
 
 In both cases, the specified start time can be given in the brief "HH:mm" (hours and minutes) 
 format shown above, or in the full ISO 8601 format including year, date, time and time zone:
-::
+
+.. code:: json
 
   {
    "Not before": "2011-12-24T12:30:00+0200",

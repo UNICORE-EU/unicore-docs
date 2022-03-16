@@ -6,7 +6,7 @@ Authentication
 Introduction
 ~~~~~~~~~~~~
 
-UNICORE's RESTful APIs require configuration of the mechanisms for end
+:ref:`UNICORE's RESTful APIs <rest-api>` require configuration of the mechanisms for end
 user authentication, which will check the supplied credentials and map
 the user to a distinguished name (DN).
 
@@ -48,7 +48,7 @@ The file format is
 
 i.e. each line gives the username, the hashed password, the salt and
 the user's DN, separated by colons. To generate entries, i.e. to hash the 
-password correctly, the *md5sum* utility can be used. For example, 
+password correctly, the ``md5sum`` utility can be used. For example, 
 if your intended password is *test123*, you could do
 
 .. code:: console
@@ -66,22 +66,22 @@ Unity authentication using OAuth2 Bearer token
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This mechanism uses the OAuth2 token sent from the client (HTTP
-"Authorization: Bearer ..." header) to authenticate to Unity.
-In Unity terms, this uses the endpoint of type "SAMLUnicoreSoapIdP"
-with authenticator of type "oauth-rp with cxf-oauth-bearer".
+``Authorization: Bearer ...`` header) to authenticate to Unity.
+In Unity terms, this uses the endpoint of type ``SAMLUnicoreSoapIdP``
+with authenticator of type ``oauth-rp with cxf-oauth-bearer``.
 ::
 
  container.security.rest.authentication.UNITY-OAUTH.class=eu.unicore.services.rest.security.UnityOAuthAuthenticator
  container.security.rest.authentication.UNITY-OAUTH.address=https://localhost:2443/unicore-soapidp-oidc/saml2unicoreidp-soap/AuthenticationService
 
 You can configure an additional validation of the Unity assertions
-using the configured "trusted assertion issuer" certificate(s)::
+using the configured *trusted assertion issuer* certificate(s)::
 
  # validate the received assertions?
  container.security.rest.authentication.UNITY-OAUTH.validate=true
 
 For this to work, UNICORE needs to public key of the Unity server as
-one of the "trusted assertion issuers", please refer to the relevant
+one of the *trusted assertion issuers*, please refer to the relevant
 section on trusted assertion issuers in the manual.
 
 Unity authentication using username/password
@@ -101,7 +101,7 @@ using the configured "trusted assertion issuer" certificate(s)::
  container.security.rest.authentication.UNITY.validate=true
 
 For this to work, UNICORE needs to public key of the Unity server as
-one of the "trusted assertion issuers", please refer to the relevant
+one of the *trusted assertion issuers*, please refer to the relevant
 section on trusted assertion issuers in the manual.
 
 
@@ -129,11 +129,11 @@ username and password that they have on the UNICORE/X system.
 	container.security.rest.authentication.X509.DNTemplate=CN=%s, OU=pam-local-users
 
 The parameter "DNTemplate" is used to define which DN will be assigned to authenticated users,
-where the "%s" will be replaced by the user name. In the example above, user "test-user" will have the
+where the ``%s`` will be replaced by the user name. In the example above, user *test-user* will have the
 DN "CN=test-user, OU=pam-local-users".
 
 There is also a PAM attribute source that you can use to automatically
-assign role="user" as well the Unix login and groups correctly for
+assign role=*user* as well the Unix login and groups correctly for
 authenticated users.
 ::
 

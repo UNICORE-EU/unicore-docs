@@ -1,16 +1,15 @@
 .. _registry:
 
 UNICORE Registry 
-================
+****************
 
-The UNICORE Registry server provides information about available
-services to clients and other services. It is a specially configured
-UNICORE/X server, so please make sure to refer to the general
-:ref:`UNICORE/X manual <unicorex-manual>` as well.
+The UNICORE Registry server provides information about available services to clients and other 
+services. It is a specially configured :ref:`UNICORE/X <unicorex>` server, so please make sure 
+to read the general :ref:`UNICORE/X manual <unicorex-manual>` as well.
 
-Multiple UNICORE/X sites can share a Registry, greatly simplifying the
-use of UNICORE services. Since such a registry is vital to the
-functioning of a UNICORE-based federation, you can have more than one.
+Multiple UNICORE/X sites can share a Registry, greatly simplifying the use of UNICORE services. 
+Since such a registry is vital to the functioning of a UNICORE-based federation, you can have 
+more than one.
 
 
 Installation
@@ -19,17 +18,14 @@ Installation
 Prerequisites
 ~~~~~~~~~~~~~ 
 
-To run the Registry, you need the OpenJDK or Oracle Java (JRE or SDK),
-in version 8 or later.
+To run the Registry, you need the OpenJDK or Oracle Java (JRE or SDK), in version 8 or later.
 
-UNICORE has been most extensively tested on Linux-like systems, but
-runs on MacOS/X as well.
+UNICORE has been most extensively tested on Linux-like systems, but runs on MacOS/X as well.
 
 Please note that
 
-- to integrate into secure production environments, you will need
-  access to a certificate authority and generate server certificates for
-  all your UNICORE servers.
+- to integrate into secure production environments, you will need access to a certificate 
+  authority and generate server certificates for all your UNICORE servers.
 
 - to make your UNICORE servers accessible outside of your firewalls,
   you should setup and configure a :ref:`UNICORE Gateway <gateway>`.
@@ -38,14 +34,15 @@ Please note that
 A note on paths
 ~~~~~~~~~~~~~~~
 
-The Registry can be installed either from a Linux package (i.e. RPM or deb), 
-from a tar.gz or even from the `UNICORE core server bundle package 
-<https://sourceforge.net/projects/unicore/files/Servers/Core/>`_.
+The Registry can be installed either from the `UNICORE core server bundle package 
+<https://sourceforge.net/projects/unicore/files/Servers/Core/>`_ (tar.gz or zip archive) or 
+from a Linux package on the `UNICORE project website at sourceforge <https://sourceforge.net/p/unicore/wiki/Linux_Repositories/>`_ 
+(i.e. RPM or deb). 
 
 .. attention::
 
-  Using the Linux packages, you can install only a
-  single Registry instance per machine (without manual changes).
+  Using the Linux packages, you can install only a single Registry instance per machine 
+  (without manual changes).
 
 The following table gives an overview of the file locations for both
 tar.gz and Linux packages.
@@ -74,20 +71,20 @@ tar.gz and Linux packages.
 Registry configuration
 ----------------------
 
-A Registry is running in a "normal" UNICORE/X container, however, you
-should use a dedicated UNICORE/X instance for the Registry, making
-sure no other services are running.
+A Registry is running in a *normal* :ref:`UNICORE/X <unicorex>` container, however, you
+should use a dedicated UNICORE/X instance for the Registry, making sure no other services 
+are running.
 
-Thus, most of the UNICORE/X documentation regarding access control,
-keystores, etc also applies to the Registry. Please, make sure to read
-the :ref:`UNICORE/X documentation <unicorex-manual>` as well.
+Thus, most of the UNICORE/X documentation regarding access control, keystores, etc also applies 
+to the Registry. Please, make sure to read the :ref:`UNICORE/X documentation <unicorex-manual>` 
+as well.
 
 
 Registry configuration (CONF/uas.config)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Apart from hostname, port, and other properties, the ``uas.config`` file 
-must contain the following entry
+Apart from hostname, port, and other properties, the ``uas.config`` file must contain the 
+following entry
 ::
 
  container.feature.Registry.mode=shared
@@ -98,29 +95,33 @@ This setting configures the container to operate as a shared Registry.
 Starting and stopping
 ~~~~~~~~~~~~~~~~~~~~~
 
-The Registry is started and stopped like any other UNICORE/X container
-using the scripts in the ``bin`` folder.
+The Registry is started and stopped like any other 
+:ref:`UNICORE/X <unicorex>` container using the scripts in the ``bin`` folder.
+
+.. _access-control:
+
 
 Access control
 ~~~~~~~~~~~~~~
 
-It is absolutely VITAL that the Registry only contains trusted
+It is absolutely **VITAL** that the Registry only contains trusted
 entries. Therefore access control is enabled by default. It is
 configured in ``CONF/uas.config``
 ::
 
  container.security.accesscontrol.Registry=true
 
-("true" by default)
+(``true`` by default)
 
 This will check the security policy (``CONF/xacml2Policies/*.xml``) for
 each request.  By default, this policy allows to add entries only for
-callers with the role "server".
+callers with the role *server*.
 
 If using an :ref:`XUUDB <xuudb>` or other attribute source, you will need to add the
 certificates / DNs of all servers wishing to publish into the registry
-as having the role "server".  Please check the 
+as having the role *server*.  Please check the 
 :ref:`UNICORE/X documentation <unicorex-manual>` on how to do that.
+
 
 User / server authentication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -145,7 +146,7 @@ As an example the following configuration will achieve this
   container.security.rest.authentication.X509.class=eu.unicore.services.rest.security.X509Authenticator
 
 
-For further details we refer also to the :ref:`UNICORE/X documentation <unicorex>` on
+For further details we refer also to the :ref:`UNICORE/X documentation <unicorex-manual>` on
 authentication and REST services.
 
 

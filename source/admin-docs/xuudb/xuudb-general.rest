@@ -16,7 +16,8 @@ storing the mappings. Please refer to the UNICORE/X documentation for more infor
 The XUUDB offers two web services, one for querying, and one for 
 administration of the users' database. There are several clients which can use the XUUDB server:
 
- - Admin client (see `sec_admin`_) can be used to control the XUUDB database contents.
+ - Admin client (see :ref:`sec_admin`) can be used to control the XUUDB database contents.
+ 
  - UNICORE servers include the XUUDB client code (it is named XUUDB Attribute Information Point) and
    can consume and process the XUUDB information.
 
@@ -26,6 +27,7 @@ The XUUDB can map users using two different mechanisms:
 
 - *classic* or *static* mechanism, where administrator enters mappings 
   for each DN manually,
+  
 - *dynamic* mechanism, where administrator only define rules stating what attributes
   should be assigned to UNICORE users fulfilling rule's condition.   
 
@@ -42,8 +44,8 @@ UNIX groups (aka projects or gids) and the role attribute used for authorization
 The first uid and the first gid is assumed to be the default one but Grid users are 
 allowed to choose any of the available. 
 
-In case of the default authorization policy the 'user' role is required to get a normal access
-to the site, the 'admin' role grants super-user privileges, and the 'banned' role bans the user.    
+In case of the default authorization policy the *user* role is required to get a normal access
+to the site, the *admin* role grants super-user privileges, and the *banned* role bans the user.    
 
 The XUUDB stores and compares only distinguished names (DNs), not full certificates.
 
@@ -56,7 +58,7 @@ The dynamic mapping
 
 The dynamic mechanism is used to map users who *were already
 authorized*, therefore it doesn't make sense (and is not possible) to
-assign the authorization attributes as 'role'. The dynamic mechanism
+assign the authorization attributes as *role*. The dynamic mechanism
 is useful in deployments where a site doesn't know the precise list of
 its users (which are maintained externally), or simply doesn't want to
 define local accounts for each UNICORE user. In other words, the site
@@ -67,7 +69,7 @@ user.
 As it will be shown later on dynamic mappings can be also used in
 other scenarios, also being complementary to static mappings.
 
-Dynamic mappings configuration is described in the section `dynamic`_.
+Dynamic mappings configuration is described in the section :ref:`dynamic`.
     
 
 .. important:: IMPORTANT NOTE ON PATHS
@@ -104,8 +106,8 @@ Installation
 The UNICORE XUUDB is distributed in the following formats:
 
  1. As a part of a platform independent installation bundle called
- UNICORE core server bundle.
- 2. As a platform-specific binary package
+ `UNICORE core server bundle <https://sourceforge.net/projects/unicore/files/Servers/Core>`_.
+ 2. As a `platform-specific binary package <https://sourceforge.net/p/unicore/wiki/Linux_Repositories/>`_
  available for RedHat (Centos) and Debian platforms. Those
  packages are not tested on all possible platforms, but should work
  without any problems with other versions of similar distributions.
@@ -113,14 +115,14 @@ The UNICORE XUUDB is distributed in the following formats:
 In both cases an installation of XUUDB installs both XUUDB Server and XUUDB admin client.
 
 After installing the server you will have to configure it. This is described in the section 
-`server-cfg`_.
+:ref:`server-cfg`.
 
 
 Installation from Core Server Bundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Download the core server bundle from the UNICORE project website at 
-https://sourceforge.net/projects/unicore/files/Servers/Core
+https://sourceforge.net/projects/unicore/files/Servers/Core.
 
 
 Installation from RPM or DEB packages
@@ -131,7 +133,7 @@ https://sourceforge.net/p/unicore/wiki/Linux_Repositories/
 
 The preferred way is to use Yum or APT to install (and subsequently update) XUUDB.
 
-After the repository is configured, the following command installs XUUDB:
+After the repository is configured, the following command will install the XUUDB:
 
 .. code:: console
 

@@ -40,14 +40,18 @@ Job elements
 Specifying the executable or application
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To directly call an executable on the remote system::
+To directly call an executable on the remote system:
+
+.. code:: json
 
 	{
 	   "Executable": "/bin/date",  
 	}
 
 You can specify a UNICORE application (defined in the server's IDB) by name and (optional) 
-version::
+version:
+
+.. code:: json
 
 	{
 	   "ApplicationName": "Date",
@@ -62,7 +66,8 @@ Arguments and Environment settings
 
 Arguments and environment settings are specified using a list of String values. Here is an 
 example.
-::
+
+.. code:: json
 
 	{
 
@@ -79,13 +84,17 @@ Argument sweeps
 ^^^^^^^^^^^^^^^
 
 To create a sweep over an Argument setting by replacing the value by a sweep specification. This 
-can be either a simple list::
+can be either a simple list:
+
+.. code:: json
 
   "Arguments": [
    { "Values": ["-o 1", "-o 2", "-o 3"] },
   ],  
 
-or a range::
+or a range:
+
+.. code:: json
 
   "Arguments": {
    "-o", { "From": "1", "To": "3", "Step" : "1" },
@@ -99,7 +108,9 @@ Application parameters
 
 In UNICORE, parameters for applications are often transferred in the form of environment variables. For example, 
 the POVRay application has a large set of parameters to specify image width, height and many more. You can specify these 
-parameters in a very simple way using the ``Parameters`` keyword::
+parameters in a very simple way using the ``Parameters`` keyword:
+
+.. code:: json
 
 	{
 	  "ApplicationName": "POVRay",
@@ -120,13 +131,17 @@ Parameter sweeps
 ^^^^^^^^^^^^^^^^
 
 You can sweep over application parameters by replacing the parameter value
-by a sweep specification. The replacement can be either a simple list::
+by a sweep specification. The replacement can be either a simple list:
+
+.. code:: json
 
   "Parameters": {
    "WIDTH": { "Values": ["240", "480", "960"] },
   },  
 
-or a range::
+or a range:
+
+.. code:: json
 
   "Parameters": {
    "WIDTH": { "From": "240", "To": "960", "Step": "240" },
@@ -137,17 +152,21 @@ where the ``From``, ``To`` and ``Step`` parameters are floating point or integer
 Job data management
 ~~~~~~~~~~~~~~~~~~~
 
-In general your job will require data files, either from your client machine, or from some remote location. An important concept in UNICORE is the job's workspace, which is the default location into which files are placed. The same applies to result files: by default, files will be downloaded from the job's workspace. However, other remote storage locations are supported, too.
+In general your job will require data files, either from your client machine, or from some 
+remote location. An important concept in UNICORE is the job's workspace, which is the default 
+location into which files are placed. The same applies to result files: by default, files will be 
+downloaded from the job's workspace. However, other remote storage locations are supported, too.
 
 Jobs without client-controlled stage in
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To tell UNICORE/X that the client does not wish to send any local files, use the flag
-::
+
+.. code:: json
 
  "haveClientStageIn": "false",
 
-Otherwise, the server will wait for an explicit "start" command (see the :ref:`rest-api`] spec for 
+Otherwise, the server will wait for an explicit "start" command (see the :ref:`rest-api` spec for 
 details) before submitting / executing the user job.
 
 Importing files into the job workspace
@@ -159,7 +178,8 @@ the possibilities.
 
 Note that uploading LOCAL files is the responsibility of the client! Make sure to read the 
 :ref:`client documentation <ucc-manual>` for more information on this topic.
-::
+
+.. code:: json
 
 	{
 
@@ -181,7 +201,9 @@ Note that uploading LOCAL files is the responsibility of the client! Make sure t
 	}
 
 If you want the job to run even if an import operation fails, there is a flag ``FailOnError`` 
-that can be set to ``false``::
+that can be set to ``false``:
+
+.. code:: json
 
  { 
     "From":        "/work/data/fileName",
@@ -204,7 +226,9 @@ Using "inline" data to import a file into the job workspace
 For short import files, it can be convenient to place the data directly into the job descrition,
 which can speed up and simplify the job submission process.
 
-Here is an example::
+Here is an example:
+
+.. code:: json
 
 	{ 
 		  "From": "inline://dummy",
@@ -219,7 +243,9 @@ Sweeping over a stage-in file
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can also sweep over files, i.e. create multiple batch jobs that differ by one imported file. 
-To achieve this, replace the ``From`` parameter by list of values, for example::
+To achieve this, replace the ``From`` parameter by list of values, for example:
+
+.. code:: json
 
     { 
        "From": [ 
@@ -243,7 +269,9 @@ To export files from the job's working directory to remote storages, use the ``E
  Depending on the client, additional options exist, such as downloading files to your local 
  machine.
 
-Here is an example::
+Here is an example:
+
+.. code:: json
 
 	{
 
@@ -268,7 +296,8 @@ Specifying credentials for data staging
 Some data staging protocols supported by UNICORE require credentials such as username and password.
 
 To pass username and password to the server, the syntax is as follows
-::
+
+.. code:: json
 
      { 
        "From": "ftp://someserver:25/some/file", 
@@ -279,7 +308,8 @@ To pass username and password to the server, the syntax is as follows
 and similarly for exports.
 
 You may also directly specify an OAuth Bearer token for HTTPS data transfers.
-::
+
+.. code:: json
 
      { 
        "From": "https://someserver/some/file", 
@@ -295,7 +325,8 @@ Redirecting standard input
 
 If you want to have your application or executable read its standard input from a file, you
 can use the following
-::
+
+.. code:: json
 
   "Stdin": "filename",
 
@@ -304,9 +335,10 @@ then the standard input will come from the file named "filename" in the job work
 Resources
 ~~~~~~~~~
 
-A job definition can have a Resources section specifying the resources to request
+A job definition can have a ``Resources`` section specifying the resources to request
 on the remote system. For example
-::
+
+.. code:: json
 
   "Resources": {
 
@@ -320,7 +352,7 @@ UNICORE has the following built-in resource names.
 
 .. include:: tables/resources.rest
 
-Sites may define additional, "custom" resources, which you can use, too.
+Sites may define additional, *custom* resources, which you can use, too.
 
 
 Miscellaneous options
@@ -329,16 +361,19 @@ Miscellaneous options
 Specifying a project
 ^^^^^^^^^^^^^^^^^^^^
 
-If the system you're submitting to requires a project name for accounting purposes, you can specify the account (or project) you want
-to charge the job to using the "Project" tag::
+If the system you're submitting to requires a project name for accounting purposes, you 
+can specify the account (or project) you want to charge the job to using the ``Project`` tag:
+
+.. code:: json
 
   "Project" : "my_project",
 
 Job tags
 ^^^^^^^^
 
-To set job tags that help you find / filter jobs later, use the "Tags" keyword
-::
+To set job tags that help you find / filter jobs later, use the ``Tags`` keyword
+
+.. code:: json
 
   "Tags": [ "production", "train1", "my_tag" ],
 
@@ -346,12 +381,14 @@ To set job tags that help you find / filter jobs later, use the "Tags" keyword
 Specifying a URL for receiving notifications
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The UNICORE/X server can send out notifications when the job enters the RUNNING and/or DONE state.
-::
+The UNICORE/X server can send out notifications when the job enters the ``RUNNING`` and/or 
+``DONE`` state.
+
+.. code:: json
 
   "Notification" : "https://your-service-url",
 
-UNICORE/X will send an authenticated HTTPS POST message to this URL, with JSON content.
+UNICORE/X will send an authenticated ``HTTPS POST`` message to this URL, with JSON content.
 ::
 
 	"href" : "https://unicore-url/rest/core/jobs/job-uuid",
@@ -360,7 +397,8 @@ UNICORE/X will send an authenticated HTTPS POST message to this URL, with JSON c
 
 The ``status`` field will be ``RUNNING`` when the user application starts executing, and 
 ``SUCCESSFUL`` / ``FAILED`` when the job has finished.
-::
+
+.. code:: json
 
 	"href" : "https://unicore-url/rest/core/jobs/job-uuid",
 	"status" : "SUCCESSFUL",
@@ -378,7 +416,8 @@ Specifying the job name
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 The job name can be set simply by
-::
+
+.. code:: json
 
   "Name": "Test job",
 
@@ -387,7 +426,8 @@ Specifying the user email for batch system notifications
 
 Some batch systems support sending email upon completion of jobs. To specify
 your email, use
-::
+
+.. code:: json
 
   "User email" : "foo@bar.org",
 

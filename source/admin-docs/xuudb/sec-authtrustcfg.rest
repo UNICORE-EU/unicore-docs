@@ -3,14 +3,15 @@
 Configuring PKI trust settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Public Key Infrastructure (PKI) trust settings are used to validate certificates. This is 
-performed, in the first place when a connection with a remote peer is initiated over the network, 
-using the SSL (or TLS) protocol. Additionally certificate validation can happen in few other 
-situations, e.g. when checking digital signatures of various sensitive pieces of data.
+**P**\ ublic **K**\ ey **I**\ nfrastructure (PKI) trust settings are used to validate 
+certificates. This is performed, in the first place when a connection with a remote peer 
+is initiated over the network, using the SSL (or TLS) protocol. Additionally certificate 
+validation can happen in few other situations, e.g. when checking digital signatures of 
+various sensitive pieces of data.
 
 Certificates validation is primarily configured using a set of initially trusted certificates 
-of so called Certificate Authorities (CAs). Those trusted certificates are also known as 
-*trust anchors* and their collection is called a trust store.
+of so called **C**\ ertificate **A**\ uthorities (CAs). Those trusted certificates are also 
+known as *trust anchors* and their collection is called a trust store.
 
 Except of trust anchors validation mechanism can use additional input for checking if a 
 certificate being checked was not revoked and if its subject is in a permitted namespace.

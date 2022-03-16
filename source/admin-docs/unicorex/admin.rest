@@ -16,7 +16,7 @@ add properties, e.g.
   container.wsrf.maxInstancesPerUser.FileTransfer=20
 
 
-The last part of the property name is the service name, see :ref:`ux_features`
+The last part of the property name is the service name, please see :ref:`ux_features`
 for the services in UNICORE/X.
   
 When the limits are reached, the server will report an error to the client (e.g. when
@@ -28,9 +28,8 @@ trying to submit a new job).
 Logging
 ~~~~~~~
 
-UNICORE uses the **Log4j/2** logging framework.
-(http://logging.apache.org/log4j/2.x/manual/configuration.html). The
-config file is specified with a Java property
+UNICORE uses the `Log4j 2 <http://logging.apache.org/log4j/2.x/manual/configuration.html>`_ 
+logging framework. The config file is specified with a Java property
 ``log4j.configurationFile``.
 
 .. hint::
@@ -41,7 +40,7 @@ config file is specified with a Java property
 By default, log files are written to the the ``LOGS`` directory. 
 
 Within the logging pattern, you can use special variables to output information.
-In addition to the variables defined by Log4j (such as '%d'), UNICORE defines several variables
+In addition to the variables defined by Log4j (such as ``%d``), UNICORE defines several variables
 related to the client and the current job.
 
 .. table::
@@ -67,9 +66,10 @@ A sample logging pattern might be
 
 
 
-For more info on controlling the logging we refer to the log4j/2 documentation:
+For more info on controlling the logging we refer to the `Log4j 2 documentation
+<https://logging.apache.org/log4j/2.x/manual/configuration.html>`_.
 
-https://logging.apache.org/log4j/2.x/manual/configuration.html
+
 
 
 Logger categories, names and levels
@@ -81,7 +81,7 @@ the ``unicore.security.XUUDBAuthoriser`` logger.
 
 Therefore the logging output produced can be controlled in a fine-grained manner. 
 
-Here is a table of the various logger categories
+Here is a table of the various logger categories:
 
 
 .. table::
@@ -125,7 +125,7 @@ Here is a table of the various logger categories
  +------------------------------------+--------------------------+ 
 
 .. caution::
-  Please take care to not set the global level to TRACE or DEBUG for long times, 
+  Please take care to not set the global level to ``TRACE`` or ``DEBUG`` for long times, 
   as this will produce a lot of output.
 
 
@@ -145,17 +145,18 @@ monitored in several ways.
 Commandline client (UCC)
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-It is possible to use the UNICORE commandline client (UCC) for administrative and operations tasks.
+It is possible to use the UNICORE commandline client (:ref:`UCC <ucc>`) for administrative and 
+operations tasks.
 
 To do this you need to configure UCC with administrative
-privileges. One way is to add the "admin" role to your user account,
+privileges. One way is to add the *admin* role to your user account,
 and select this role when running UCC commands
 
 .. code:: console
 
   $ ucc .... -Z role:admin
 
-or create a dedicated admin user.
+or create a dedicated *admin* user.
 
 Another way to do this is using the *server* certificate of
 the UNICORE/X server, which will give UCC  administrator rights provided UNICORE/X
@@ -210,9 +211,9 @@ Try
 The Admin web service
 ^^^^^^^^^^^^^^^^^^^^^
 
-The Admin service is a powerful tool to get "inside information" about your server using the UCC 
-(or possibly another UNICORE client) and run one of the available "admin actions", which provide 
-useful functions.
+The Admin service is a powerful tool to get *inside information* about your server using the 
+:ref:`UCC <ucc>` (or possibly another UNICORE client) and run one of the available *admin actions*, 
+which provide useful functions.
 
 If you have enabled the admin service, you can do 
 
@@ -221,7 +222,7 @@ If you have enabled the admin service, you can do
   $ ucc admin-info -l
 
 
-to get information about available admin services. Note that you need to have role "**admin**" to invoke 
+to get information about available admin services. Note that you need to have role *admin* to invoke 
 the admin service. The output includes information about the available administrative commands.
 To run one of these, you can use the ``admin-runcommand`` command. For example, to temporarily 
 disable job submission
@@ -246,11 +247,11 @@ Migration of a UNICORE/X server to another physical host
 
 If you want to migrate a UNICORE/X server to another host, there are
 several things to consider.  The hostname and port are listed in
-*CONF/container.properties* and usually in the Gateway's
-connection.properties file. These you will have to change. Otherwise,
+``CONF/container.properties`` and usually in the :ref:`Gateway's <gateway>`
+``connection.properties`` file. These you will have to change. Otherwise,
 you can copy the relevant files in CONF to the new machine. Also, the
 persisted state data needs to be moved to the new machine, if it is
 stored on the file system. If it is stored in a database, there is
-nothing to be done.  If you are using a TSI server, you might need to
+nothing to be done.  If you are using a :ref:`TSI <tsi>` server, you might need to
 edit the TSI's properties file and update the ``tsi.njs_machine``
 property.

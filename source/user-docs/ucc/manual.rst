@@ -30,16 +30,17 @@ It offers the following functions
 
  * Information about the available services is provided via the ``system-info`` command
 
- * Various utilities like a "shell" mode, low-level REST API operations and others
+ * Various utilities like a *shell* mode, low-level REST API operations and others
 
  * Extensibility through custom commands and the possibility to run scripts written 
    in the Groovy programming language
 
  * Built-in help
 
+.. note::
 
-Starting with Version 8 of the UCC, the UNICORE REST API is used
-exclusively for client-server communications.
+ Starting with Version 8 of the UCC, the :ref:`UNICORE REST API <rest-api>` is used
+ exclusively for client-server communications.
 
 
 For more information about UNICORE visit

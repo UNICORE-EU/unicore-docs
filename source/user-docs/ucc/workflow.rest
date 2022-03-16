@@ -69,7 +69,7 @@ Workflow description format
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The JSON format used by that the Workflow service can be found here:
-`JSON workflow description format <https://unicore-dev.zam.kfa-juelich.de/documentation/workflow-8.0.0/workflow-manual.html#wf_dialect>`_
+`JSON workflow description format <wf_dialect>`
 
 
 Managing workflow data
@@ -99,7 +99,8 @@ activities.
 
 You can also "manually" register files by adding in ``inputs`` section to your
 workflow JSON.
-::
+
+.. code:: json
 
   {
    "inputs": {
@@ -112,12 +113,13 @@ workflow JSON.
 Workflow templates
 ^^^^^^^^^^^^^^^^^^
 
-If the workflows contains a +Template parameters+ section, the
+If the workflows contains a ``Template parameters`` section, the
 corresponding replacement will be done by reading parameter values
-from the .u file. These so-called workflow templates can be a very
-simple and safe way to make adjustments in complex workflows # before
+from the ``.u`` file. These so-called workflow templates can be a very
+simple and safe way to make adjustments in complex workflows before
 submission. As an example, consider the following workflow
-::
+
+.. code:: json
 
   {
     "Template parameters": {
@@ -142,7 +144,8 @@ This introduces a parameter with default value "10".
 
 When the workflow is submitted, you can specify a JSON file with the "-u" option,
 which will be checked for a parameter named "SLEEPTIME".
-::
+
+.. code:: json
 
   {
     "SLEEPTIME": "1",
@@ -154,5 +157,5 @@ and if present, the value will be replaced in the workflow.
 Resuming a held workflow
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-A workflow in status ``HELD`` can be resumed using the ``workflow-control resume`` command. If the workflow
-has variables/parameters, updated values can be sent with the resume command.
+A workflow in status ``HELD`` can be resumed using the workflow-control ``resume`` command. If the workflow
+has variables/parameters, updated values can be sent with the ``resume`` command.

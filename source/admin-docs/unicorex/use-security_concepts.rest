@@ -38,7 +38,7 @@ Identity
   
 A server has a certificate, which is used to identify the server when
 it makes a web service request. This certificate resides in the server keystore, and can be 
-configured in the usual configuration file (see the :ref:`configuration reference <use_configuration>`).
+configured in the usual configuration file (see the :ref:`use_configuration`).
 
 Consignor, User
 ^^^^^^^^^^^^^^^
@@ -48,7 +48,7 @@ To clearly name actors in such scenarios two terms are used: ``Consignor`` and
 ``User``.
 
 In UNICORE Consignor is the client who directly submitted a request to the UNICORE server
-(possibly via :ref:`Gateway <gateway>`). The User is the original initiator of the Grid operation. 
+(possibly via :ref:`gateway`). The User is the original initiator of the Grid operation. 
 Of course each for each request sent directly by end-user the Consignor is equal to User. 
 
 Example of such situation in UNICORE is Unicore/X server downloading a job's input from a remote

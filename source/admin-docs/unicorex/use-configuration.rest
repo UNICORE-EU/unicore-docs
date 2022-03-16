@@ -19,7 +19,7 @@ Mandatory configuration
 
  - Attribute sources: to map clients (i.e. X.509 certificates) to local attributes such as 
    user name, groups and role, various attribute sources are available. For details,
-   consult the :ref:`attribute sources section <use_aip>`.
+   please refer to the :ref:`attribute sources section <use_aip>`.
 
 UNICORE/X has several sub-components. These are configured using
 several config files residing in the CONF directory, see 

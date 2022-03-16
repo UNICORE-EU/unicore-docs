@@ -5,7 +5,7 @@ Features provided by UNICORE/X
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-The functionality of the UNICORE/X server is organised into "features", where
+The functionality of the UNICORE/X server is organised into *features*, where
 each feature can combine services, startup code and the like.
 
 Features are enabled by default.
@@ -136,7 +136,7 @@ Registry
 --------
 
 This feature provides the Registry service. This covers both the
-"internal" version running in every UNICORE/X server, as well as the
+*internal* version running in every UNICORE/X server, as well as the
 shared Registry that is used to store information about multiple
 UNICORE servers.
 
@@ -146,7 +146,7 @@ A setting
   container.feature.Registry.mode=shared
 
 
-will enable ``shared`` mode. Don't do this on a "normal" UNICORE/X server.
+will enable ``shared`` mode. Don't do this on a *normal* UNICORE/X server.
 
 .. table::
  :width: 100

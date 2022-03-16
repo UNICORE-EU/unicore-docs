@@ -145,19 +145,19 @@ and both return a xlogin attribute for a certain user, say "xlogin_1" and "xlogi
 
 The different combining policies are
   
-- ``MERGE_LAST_OVERRIDES`` : new attributes override those from previous sources. 
+- ``MERGE_LAST_OVERRIDES``: new attributes override those from previous sources. 
   In our example, the result would be "xlogin_2". 
   
-- ``FIRST_APPLICABLE`` : the attributes from the first source that returned a non 
+- ``FIRST_APPLICABLE``: the attributes from the first source that returned a non 
   empty list of attributes are used. In our case this would be "xlogin_1". If there 
   were no xlogin attribute for the user in XUUDB then "xlogin_2" would be returned.
   
-- ``FIRST_ACCESSIBLE`` : the attributes from the first source that is accessible are used. 
+- ``FIRST_ACCESSIBLE``: the attributes from the first source that is accessible are used. 
   In our case this would be "xlogin_1". This policy is useful for redundant attribute sources. 
   E.g. you can configure two instances of XUUDB with the same users data; the 2nd one will 
   be tried only if the first one is down.  
   
-- ``MERGE`` : attributes are merged. In our example, the result would be "xlogin_1, xlogin_2",
+- ``MERGE``: attributes are merged. In our example, the result would be "xlogin_1, xlogin_2",
   and the user would be able to choose between them.
 
 
@@ -234,7 +234,7 @@ features and therefore offers a greatest flexibility, while being
 simple to adopt. SAML attributes can be used only as a static
 attribute source.
 
-The SAML attribute source is described in a separate section: :ref:`use_vo`.
+The SAML attribute source is described in a separate section :ref:`use_vo`.
 
 
 File attribute source
@@ -333,7 +333,7 @@ Chained attribute source
 
 Chained attribute source is a meta source which allows you to mix different combining 
 policies together. It is configured as other attribute sources with two parameters 
-(except of its class): order and combiningPolicy. The result of the chain attribute 
+(except of its class): ``order`` and ``combiningPolicy``. The result of the chain attribute 
 source is the set of attributes returned by the configured chain. 
 
 Let's consider the following example situation where we want to configure two 

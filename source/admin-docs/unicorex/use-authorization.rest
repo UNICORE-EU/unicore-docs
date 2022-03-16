@@ -14,7 +14,7 @@ Local PDPs use a set of policy files to reach an authorisation decision, remote 
 a remote service.
 
 Local UNICORE PDPs use the XACML language to express the authorization policy. The XACML policy
-language is introduced in the `Guide to XACML security policies <use_policies>`_.
+language is introduced in the :ref:`use_policies`.
 You can also review this guide if you want to have a deeper understanding of the authorization 
 process. 
 
@@ -83,8 +83,7 @@ Remote SAML/XACML 2.0 PDP with Argus PAP
 
 This PDP allows for mixing local policies with policies downloaded from a remote 
 server using SAML protocol for XACML policy query. This protocol is implemented by
-Argus PAP server 
-`Argus PAP <https://twiki.cern.ch/twiki/bin/view/EGEE/AuthorizationFramework>`_.
+`Argus PAP <https://argus-documentation.readthedocs.io>`_ server.
 Please note that under the name Argus there is a whole portfolio of services, but for purpose
 of UNICORE integration Argus PAP is the only one required.
 

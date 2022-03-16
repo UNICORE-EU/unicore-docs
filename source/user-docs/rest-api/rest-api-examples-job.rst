@@ -5,8 +5,6 @@ Job submission and management
 
 List of all examples :ref:`rest-api-examples`
 
-The same example as an IPython Notebook is attached to this page.
-
 .. code:: python
 
 	#!/usr/bin/env python

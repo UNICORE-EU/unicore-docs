@@ -7,7 +7,7 @@ Introduction
 ~~~~~~~~~~~~
 
 This chapter provides an overview of the JSON workflow description that is supported by the 
-:ref:`Workflow engine <workflow>`. It will allow you to write workflows "by hand", i.e. without 
+:ref:`Workflow engine <workflow>`. It will allow you to write workflows *by hand*, i.e. without 
 using tools such as the Java or Python APIs.
 
 After presenting all the constructs individually, several complete examples are given in 
@@ -36,7 +36,7 @@ The overall workflow document has the following form::
 
 Two special elements are
 
-- "notification" (optional) denotes an URL to where UNICORE Workflow server will send a 
+- ``notification`` (optional) denotes an URL to where UNICORE Workflow server will send a 
   ``POST`` notification (authenticated via a JWT token signed by the Workflow server) when the 
   workflow has finished processing. Notification messages have the following content
   ::
@@ -51,7 +51,7 @@ Two special elements are
 	  "statusMessage": "..."
 	}
 
-- "tags" is an optional list of initial tags, that can later be used to conveniently filter the 
+- ``tags`` is an optional list of initial tags, that can later be used to conveniently filter the 
   list of workflows.
 
 Both of these are analogous to their conterparts for single jobs in UNICORE.
@@ -106,7 +106,7 @@ Subworkflows
 ^^^^^^^^^^^^
 
 The workflow description allows nested sub workflows, which have the same formal structure as 
-the main workflow (without the "tags"). There is an additional ``type`` element that is used to 
+the main workflow (without the ``tags``). There is an additional ``type`` element that is used to 
 distinguish the different control structure types.
 ::
 
@@ -298,7 +298,7 @@ Currently variables of type ``STRING``, ``INTEGER`` , ``FLOAT`` and ``BOOLEAN`` 
 
 Variables can be modified using an activity of type ``ModifyVariable``.
 
-For example, to increment the value of the ``COUNTER`` variable, the following Activity is used
+For example, to increment the value of the "COUNTER" variable, the following Activity is used
 ::
 
 	{
@@ -317,20 +317,20 @@ The ``expression`` contains an expression in Groovy syntax (which is very close 
 
 The workflow engine will replace variables in job data staging sections and environment 
 definitions, allowing to inject variables into jobs. Examples for this mechanism will be given 
-in the examples section.
+in the :ref:`examples` section.
 
 Loop constructs
 ~~~~~~~~~~~~~~~
 
 Apart from graphs constructed using ``activity`` and ``transition`` elements, the workflow system 
-supports special looping constructs, for-each, while and repeat-until, which allow to build 
+supports special looping constructs, *for-each*, *while* and *repeat-until*, which allow to build 
 complex workflows.
 
 While and repeat-until loops
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 These allow to loop a certain part of the workflow while (or until) a condition is met. 
-A while loop looks like this
+A *while* loop looks like this
 ::
 
 	{
@@ -374,7 +374,7 @@ A while loop looks like this
 The necessary ingredients are that the loop’s ``body`` modifies the loop variable ("C" in the 
 example), and the exit condition eventually terminates the loop.
 
-Completely analogously, a repeat-until loop is constructed, the only syntactic difference is 
+Completely analogously, a *repeat-until* loop is constructed, the only syntactic difference is 
 that the subworkflow now has a different type element::
 
 	{
@@ -386,8 +386,8 @@ that the subworkflow now has a different type element::
 
 	}
 
-Semantically, the repeat-loop will always execute the body at least once, since the condition is 
-checked after executing the body, while in the "while" case, the condition will be checked before 
+Semantically, the *repeat*-loop will always execute the body at least once, since the condition is 
+checked after executing the body, while in the *while* case, the condition will be checked before 
 executing the body.
 
 For-each loop
@@ -529,10 +529,10 @@ Indirection
 
 Sometimes the list of files that should be looped over is not known at workflow design time, but 
 will be computed at runtime. Or, you wish simply to list the files in a file, and not put them 
-all in your workflow description. The indirection attribute on a FileSet allows to do just that. 
-If indirection is set to true, the workflow engine will load the given file(s) in the fileset at 
-runtime, and read the actual list of files to iterate over from them. As an example, you might 
-have a file filelist.txt containing a list of UNICORE file URLs::
+all in your workflow description. The ``indirection`` attribute on a FileSet allows to do just that. 
+If ``indirection`` is set to ``true``, the workflow engine will load the given file(s) in the 
+fileset at runtime, and read the actual list of files to iterate over from them. As an example, 
+you might have a file filelist.txt containing a list of UNICORE file URLs::
 
 	https://someserver/file1
 	https://someserver/fileN
@@ -565,7 +565,7 @@ A chunk is either a certain number of files, or a set of files with a certain to
   "chunksize_formula": "expression",
  }
 
-The chunksize element is either the number of files in a chunk, or (if type is set to ``SIZE``) 
+The ``chunksize`` element is either the number of files in a chunk, or (if type is set to ``SIZE``) 
 the total size of a chunk in kbytes.
 
 For example:
@@ -585,7 +585,7 @@ For example:
 	  "type": "SIZE"
 	}
 
-The chunksize can also be computed at runtime using the expression given in the optional 
+The ``chunksize`` can also be computed at runtime using the expression given in the optional 
 expression element. In the expression, two special variables may be used. The ``TOTAL_NUMBER`` 
 variable holds the total number of files iterated over, while the ``TOTAL_SIZE`` variable holds 
 the aggregated size of all files in kbytes. The script must return an integer-valued result. 
@@ -703,7 +703,7 @@ Here we use the ``BRANCH`` activity which will only follow the first matching tr
 While loop example using workflow variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The next example shows some uses of workflow variables in a while loop. The loop variable "C" is 
+The next example shows some uses of workflow variables in a *while* loop. The loop variable "C" is 
 copied into the job’s environment. Another possible use is to use workflow variables in data 
 staging sections, for example to name files.
 ::

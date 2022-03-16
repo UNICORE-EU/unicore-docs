@@ -3,22 +3,23 @@
 Guide to XACML security policies
 --------------------------------
 
-XACML authorization policies need not to be modified on a day-to-day basis when 
+.. _XACML: http://www.oasis-open.org/committees/tc_home.php?wg_abbrev=xacml
+
+`XACML`_ authorization policies need not to be modified on a day-to-day basis when 
 running the UNICORE server. The most common tasks as banning or allowing users 
 can be performed very easily using UNICORE Attribute Sources like XUUDB or Unity. 
 This guide is intended for advanced administrators who want to change the 
 non-standard authorization process and for developers who want to provide
 authorization policies for services they create. 
 
-The `XACML <http://www.oasis-open.org/committees/tc_home.php?wg_abbrev=xacml>` standard is a
-powerful way to express fine grained access control. The idea is to have XML policies 
-describing how and by whom actions on resources can be performed. A very readable introduction 
-into XACML can be found with `Sun's XACML implementation <http://sunxacml.sourceforge.net/guide.html#xacml>`.
+The `XACML`_ standard is a powerful way to express fine grained access control. The idea is to have 
+XML policies describing how and by whom actions on resources can be performed. A very readable introduction 
+into XACML can be found with `Sun's XACML implementation <http://sunxacml.sourceforge.net/guide.html#xacml>`_.
 
 There are several versions of XACML policy language. Currently UNICORE uses version 2.0.
 
 UNICORE allows to choose one of several authorization back-end implementations 
-called Policy Decision Points (PDP). The :ref:`authorization section <use_pdp>` shows how 
+called Policy Decision Points (PDP). The :ref:`use_pdp` shows how 
 to choose and configure each of the available PDPs.   
 
 In UNICORE terms XACML is used as follows. Before each operation (i.e. execution of a web
@@ -104,9 +105,9 @@ This can be achieved with the following XACML rule, which describes that a user 
 	</Rule>
 
 
-If the access should be limited to a certain service, the +Target+ element must contain a
-service identifier, as follows. In this example, access to the 'DataService' is granted to those 
-who have the 'data-access' role. 
+If the access should be limited to a certain service, the ``Target`` element must contain a
+service identifier, as follows. In this example, access to the *DataService* is granted to those 
+who have the *data-access* role. 
 
 .. code:: xml
 
@@ -134,7 +135,7 @@ who have the 'data-access' role.
 		</Condition>
 
 
-By using the <Action> tag in policies, web service access can be controlled on the method level.
+By using the ``<Action>`` tag in policies, web service access can be controlled on the method level.
 In principle, XACML supports even control based on the content of some XML document, such as 
 the incoming SOAP request. However this is not yet used in UNICORE/X.
 
@@ -169,14 +170,14 @@ More details on XACML use in UNICORE/X
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To get more detailed information about XACML policies (e.g. to get the list of all 
-available functions etc) consult the
-`XACML specification <http://www.oasis-open.org/committees/tc_home.php?wg_abbrev=xacml<`.
-To get more information on XACML use in UNICORE/X it is good to set the logging level
-of security messages to DEBUG::
+available functions etc) please read the `XACML specification 
+<http://www.oasis-open.org/committees/tc_home.php?wg_abbrev=xacml>`_.
+To get more information on XACML used in UNICORE/X it is good to set the logging level
+of security messages to ``DEBUG``::
 
  logger.sec.name=unicore.security
  logger.sec.level=DEBUG
 
 You will be able to read what input is given to the XACML engine and
 what is the detailed answer.  Alternatively, ask on the
-`support mailing list <mailto:unicore-support@lists.sf.net>`.
+`support mailing list <mailto:unicore-support@lists.sf.net>`_.

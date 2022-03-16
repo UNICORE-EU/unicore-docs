@@ -90,6 +90,7 @@ html_title = "UNICORE Docs"
 #   '**': ['globaltoc.html'],
 #}
 
+numfig = True
 
 
 

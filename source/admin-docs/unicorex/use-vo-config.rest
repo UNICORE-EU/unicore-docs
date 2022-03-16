@@ -6,7 +6,7 @@ Configuration
 This sections describes the default configuration file format which is
 used to configure the VO attribute source. This section provides a
 detailed and comrehensive information on all configuration options. In
-the most cases defaults are fine - you can consult the :ref:`HOWTO <use-vo-howto>`
+the most cases defaults are fine - you can refer to the :ref:`HOWTO <use-vo-howto>`
 for a short *quick start* information.
 
 Some of the configuration options require a value of a VO/GROUP type. 
@@ -15,7 +15,7 @@ Whenever it is needed it should be written in the following way::
  /VO[/group1[/subgroup2[...]]]
 
 where elements in square brackets are optional. E.g. ``/Math/users``
-denotes a group 'users' of a VO called 'Math'.
+denotes a group *users* of a VO called *Math*.
 
 In case of UNICORE/X and other USE servers the configuration is
 provided in a separate file, by default the ``vo.config`` from the
@@ -43,7 +43,7 @@ VOs::
 	container.security.attributes.SAML-PULL.configurationFile=conf/vo.config
 
 Before proceeding to fill the VO configuration it is suggested to prepare the VO truststore, 
-which should contain *ONLY* the certificates of the trusted VO servers. Note that
+which should contain **ONLY** the certificates of the trusted VO servers. Note that
 this file must not contain any CA certificates, only the trusted VO servers' certificates!
 This file is optional, but will increase security.
 

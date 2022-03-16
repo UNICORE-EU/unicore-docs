@@ -16,7 +16,7 @@ The UCC offers
 * Storage functions (``ls``, ``mkdir``, \.\.\.) including creation of storage instances 
   via storage factories
 
-* `UNICORE Workflow service <workflow>`_ support (see :ref:`workflow-description`)
+* :ref:`UNICORE Workflow service <workflow>` support (see :ref:`workflow-description`)
 
 and much more.
 

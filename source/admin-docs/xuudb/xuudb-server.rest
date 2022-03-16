@@ -9,9 +9,9 @@ Security
 Usually, client-authenticated SSL is used to protect the XUUDB. For
 this you will need certificates for the XUUDB server and all Grid
 components that want to talk to the XUUDB.  In general the UNICORE
-servers (like UNICORE/X) and the XUUDB-admin client need to connect to
-the XUUDB-server. To make SSL connections possible, you have to
-put the following certificates as trusted certs into the XUUDB's
+servers (like :ref:`unicorex`) and the XUUDB-admin client need to 
+connect to the XUUDB-server. To make SSL connections possible, you have 
+to put the following certificates as trusted certs into the XUUDB's
 server truststore:
 
 - CA certificate(s) of the UNICORE/X server(s) that query the XUUDB
@@ -44,12 +44,12 @@ As the static XUUDB data is rather sensitive (at least if privacy of the users
 is a concern) and dynamic mappings often require some local modifications (e.g.
 assigning an account from a pool) it is often desirable to protect also the
 query operations. The XUUDB server offers such an option 
-(see `base-settings`_). 
+(see :ref:`base-settings`). 
 
 The ACL file can be changed at runtime to easily add or remove administrators.
 
 To change the location of the ACL file, edit the server
-configuration and set a configuration parameter (see `base-settings`_).
+configuration and set a configuration parameter (see :ref:`base-settings`).
  
 The ACL entries are expected in the RFC 2253 format. To get the name 
 of a certificate in the correct format using openssl, you can use the 
@@ -65,8 +65,8 @@ Configuration
 ~~~~~~~~~~~~~
 
 By default, the configuration is defined in the file
-``CONF/xuudb_server.conf``. To use a different configuration file, edit the start script, or use
-``--start <config_file>`` as command line arguments when starting.
+``CONF/xuudb_server.conf``. To use a different configuration file, edit the start script, 
+or use ``--start <config_file>`` as command line arguments when starting.
 
 The server's configuration file allows for setting the general XUUDB settings, 
 database backend settings, advanced HTTP server settings and finally 
@@ -89,23 +89,23 @@ Base server settings
 Database settings
 ^^^^^^^^^^^^^^^^^
 
-The XUUDB can be configured to use different database backends. Currently an embedded H2 database and external MySQL 
-are supported. H2 database (the default) requires no additional configuration actions. In any case XUUDB will
-automatically create the required database tables. 
+The XUUDB can be configured to use different database backends. Currently an embedded H2 database 
+and external MySQL are supported. H2 database (the default) requires no additional configuration 
+actions. In any case XUUDB will automatically create the required database tables. 
 
-For MySQL you have to properly set up the server and create a database. After installing and starting 
-the MySQL server login to its using MySQL client as administrator and using a commands similar to the below ones, 
-create a database and assign full access to a xuudb user.  
+For MySQL you have to properly set up the server and create a database. After installing and 
+starting the MySQL server login to its using MySQL client as administrator and using a commands 
+similar to the below ones, create a database and assign full access to a xuudb user.  
 ::
 
     create database xuudb;
     grant all on xuudb.* to 'xuudbuser'@'127.0.0.1' identified by 'pass';
 
-Of course you are free to choose different names for the user, password and database. If XUUDB server is 
-installed on other host then the proper address must be set instead of localhost. 
+Of course you are free to choose different names for the user, password and database. If XUUDB 
+server is installed on other host then the proper address must be set instead of localhost. 
 
-Use the following properties to configure database connection from the XUUDB server. In case of external database
-pay attention to enter proper values.  
+Use the following properties to configure database connection from the XUUDB server. In case of 
+external database pay attention to enter proper values.  
 
 .. include:: tables/xuudb-ref-dbProperties.rest
 
@@ -145,16 +145,16 @@ Precisely speaking, a mapping must have defined:
 - using what method: *fixed*, *pool* or *script*
  
 Additionally one can define an optional parameter stating if the mapping should overwrite
-an attribute value which was previously set (either by an earlier rule or assigned using a different
-attribute source).
+an attribute value which was previously set (either by an earlier rule or assigned using a 
+different attribute source).
 
 As it was mentioned there are three kinds of mappings. Let's shortly introduce them one by one.
 
 Fixed mappings
 ^^^^^^^^^^^^^^
 
-*Fixed mappings* are the most basic option. The mapping is formed by a simple assignment of a fixed value.
-It can be used to:
+*Fixed mappings* are the most basic option. The mapping is formed by a simple assignment of a 
+fixed value. It can be used to:
 
 - assign a common (shared!) uid to selected users (rarely used)
 - assign a fixed gid to selected users (very useful to assign a gid to all Grid users, or
@@ -167,11 +167,11 @@ The example in the pool mappings section contains also a fixed mapping.
 Script mappings
 ^^^^^^^^^^^^^^^
 
-*Script mappings* are the "Do It Yourself" mechanism. You can provide a command line which will be parsed
-and invoked. The application must return (on its standard output) a string with a mapping result 
-(depending on what is mapped - gid, uid or a space separated list of supplementary gids).
-Of course the script can be informed who is actually being mapped, by using parameters enclosed in ``${}``.
-The list of available parameters is given below.
+*Script mappings* are the *Do It Yourself* mechanism. You can provide a command line which will 
+be parsed and invoked. The application must return (on its standard output) a string with a 
+mapping result (depending on what is mapped - gid, uid or a space separated list of supplementary 
+gids). Of course the script can be informed who is actually being mapped, by using parameters 
+enclosed in ``${}``. The list of available parameters is given below.
 
 - ``userDN`` user's DN
 - ``issuerDN`` user's certificate issuer's DN
@@ -403,7 +403,7 @@ Stop the server with
 
   $ BIN/stop.sh
  
-This sends a TERM signal to the XUUDB process. Please do not use +kill -9+
+This sends a TERM signal to the XUUDB process. Please do not use ``kill -9``
 to stop XUUDB, to avoid corrupting the database.
 
 In case if XUUDB was installed with binary package use:
@@ -420,6 +420,7 @@ Several logging categories common in XUUDB:
 .. table::
  :width: 100
  :widths: 30 70
+ :class: tight-table
 
  +------------------------+----------------------------------+
  |Log category            | Description                      |

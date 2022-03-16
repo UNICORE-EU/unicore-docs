@@ -67,7 +67,8 @@ Here is a list of options related to user attributes.
    |                              | (e.g. xlogin)                         |
    +------------------------------+---------------------------------------+
 
-The preference option accepts multiple arguments of the form "<name>:<value>" where name
+The preference option accepts multiple arguments of the form *<name>:<value>* 
+where name
 
 .. table:: User attribute options
    :width: 100%
@@ -92,7 +93,7 @@ The preference option accepts multiple arguments of the form "<name>:<value>" wh
 Configuration file
 ~~~~~~~~~~~~~~~~~~
 
-By default, UCC checks for the existence of a file ``<userhome/.ucc/preferences>`` and reads
+By default, UCC checks for the existence of a file ``<userhome>/.ucc/preferences`` and reads
 settings from there. As shown above, you can use a different file by specifying
 it on the commandline using the ``-c`` option.
 
@@ -153,7 +154,7 @@ Support for token based authentication
 
 UCC has three different options for using token-based authentication
 
-* via 'oidc-agent'
+* via *oidc-agent*
 * directly contact an OIDC server as an OIDC client (requires client ID and secret)
 * specify the token directly as a config property
 
@@ -161,15 +162,12 @@ UCC has three different options for using token-based authentication
 OIDC-Agent
 ^^^^^^^^^^
 
-UCC supports the 'oidc-agent' tool that allows to interact
-with common OIDC servers to retrieve new access tokens.
+UCC supports the *`oidc-agent <https://github.com/indigo-dc/oidc-agent>`_* tool that 
+allows to interact with common OIDC servers to retrieve new access tokens.
 
-Please visit https://github.com/indigo-dc/oidc-agent for more
-information.
+To configure *oidc-agent*, UCC supports the following properties
 
-To configure oidc-agent, UCC supports the following properties
-
-.. .. include:: tables/oidc-agent-properties.rest
+.. include:: tables/oidc-agent-properties.rest
 
 Your config file would require at least::
 
@@ -187,7 +185,7 @@ ID and secret.
 .. include:: tables/oidc-server-properties.rest
 
 
-.. code::
+::
 
   authenticationMethod=oidc-server
   oidc.endpoint=<oidc server token endpoint>
@@ -228,8 +226,7 @@ certificates::
   truststore.directoryLocations.1=/trust/dir/*.pem
 
 A full list of options related to truststore management is available
-in the following table. You can also get them via the online help
-using
+in the following table:
 
 .. include:: tables/ucc-trustProperties.rest
 
@@ -283,11 +280,12 @@ The following table lists other options, that are more rarely used.
    :align: left
    :width: 100%
    :widths: 30,70
+   :class: tight-table
 
    +------------------+--------------------------------------+
    | Property name    | Description                          |
    +==================+======================================+
-   | blacklist        | Comma separated 'patterns' for sites |
+   | blacklist        | Comma separated *patterns* for sites |
    |                  | / URLs to ignore                     |
    +------------------+--------------------------------------+
    | contact-registry | Do not attempt to contact the        |

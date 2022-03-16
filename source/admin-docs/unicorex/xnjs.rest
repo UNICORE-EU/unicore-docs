@@ -5,7 +5,7 @@ Configuring the XNJS
 
 The XNJS is an internal UNICORE/X component that deals with the actual
 job execution and file system access. It is configured using a properties 
-file named ``xnjs.properties``. It is include'd from the main config file.
+file named ``xnjs.properties``. It is included from the main config file.
 
 Here's an overview of the most important properties that can be set in this file.
 
@@ -18,7 +18,7 @@ values.
 The UNICORE TSI
 ~~~~~~~~~~~~~~~
 
-This section describes installation and usage of the UNICORE TSI.
+This section describes installation and usage of the :ref:`UNICORE TSI <tsi>`.
 This is a mandatory step if you want to interface to batch systems
 such as Slurm to efficiently use a compute cluster.
 
@@ -51,17 +51,18 @@ different batch systems such as Torque or SGE.
 Usually installation and start of the TSI will be performed as the
 root user.  The TSI will then be able to change to the current Grid
 user's id for performing work (Note: nothing will ever be executed as
-"root").  You can also use a normal user, but then all commands will
+*root*).  You can also use a normal user, but then all commands will
 be executed under this user's id.
 
 As the TSI is a central and sensitive service, make sure to read
-its documentation. This guide serves just as a quick overview of
+its :ref:`documentation <tsi-manual>`. This guide serves just as a quick overview of
 the necessary steps.
 
- - First, download and install the UNICORE TSI package. The UNICORE
-   core server bundle ("quickstart" package) includes the TSI in the
-   ``tsi`` subdirectory. You should copy this folder to the correct machine
-   first.  In the following this will be denoted by *<tsidir>*
+ - First, download and install the UNICORE TSI package. The `UNICORE
+   core server bundle <https://sourceforge.net/projects/unicore/files/Servers/Core/>`_ 
+   ("quickstart" package) includes the TSI in the ``tsi`` subdirectory. You should copy 
+   this folder to the correct machine first.  In the following this will be denoted by 
+   ``<tsidir>``
 
  - Install the correct TSI variant by 
 
@@ -71,7 +72,7 @@ the necessary steps.
       $ ./Install.sh
 
 
-   When prompted for the path, choose an appropriate on, denoted  *'<your_tsi>'* in the following
+   When prompted for the path, choose an appropriate one, denoted ``<your_tsi>`` in the following
 
  - Check the TSI configuration, especially command locations, path settings etc.
 
@@ -79,7 +80,7 @@ the necessary steps.
 Required TSI Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Configuration is done by editing *<tsi_conf_dir>/tsi.properties*
+Configuration is done by editing ``<tsi_conf_dir>/tsi.properties``
 At least check the following settings::
 
   # UNICORE/X machine

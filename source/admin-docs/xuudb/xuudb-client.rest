@@ -4,7 +4,8 @@ The admin client
 ----------------
 
 The admin client is used to edit the XUUDB, using a web service interface.
-It is configured in the file ``CONF/xuudb_client.conf``. Client is invoked using the following pattern:
+It is configured in the file ``CONF/xuudb_client.conf``. 
+Client is invoked using the following pattern:
 
 .. code:: console
 
@@ -16,7 +17,7 @@ XUUDB was installed: it is either ``/usr/sbin/unicore-xuudb-admin`` or
 ``INST/bin/admin.sh``.
 
 NOTE: to switch on the confirmation message asked by the ``add``
-command, edit the admin.sh script, so that the ``xuudb.batch`` property
+command, edit the ``admin.sh`` script, so that the ``xuudb.batch`` property
 is set to ``false``.
 
 The client configuration requires the URL of the XUUDB server in the property ``xuudb.address``
@@ -63,7 +64,7 @@ a reference documentation for all commands. Selected commands are also described
 Common options:
 
 :gcID: 
-          The so-called "grid component ID" is used to group entries, and
+          The so-called *grid component ID* is used to group entries, and
           must match the setting in the UNICORE/X configuration file
           ``uas.config``.  For example if you have two systems with
           different user name mappings, you can handle both with a

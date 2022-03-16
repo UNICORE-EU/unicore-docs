@@ -93,4 +93,4 @@ or simply
 Exiting the shell
 ~~~~~~~~~~~~~~~~~
 
-To exit, type `exit` or press **CTRL-D** 
+To exit, type ``exit`` or press :kbd:`Control-D`.

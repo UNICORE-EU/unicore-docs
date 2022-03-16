@@ -20,17 +20,17 @@ Mandatory configuration
 
  - Attribute sources: various ways are available to assign local
    attributes to users, such as Unix user name, groups and role. For
-   details, consult :ref:`use_aip`.
+   details, please refer to the :ref:`use_aip`.
 
  - Backend / target system access: to access a resource manager like Slurm, the
    UNICORE TSI needs to be installed and UNICORE/X needs to be configured accordingly. Please
-   consult :ref:`ux_xnjs`.
+   see :ref:`ux_xnjs`.
 
  - You can choose to enable/disable certain UNICORE features, for example if you
    wish to set up a storage-only UNICORE server. Please refer to :ref:`ux_features`.
 
 UNICORE/X is configured using several config files residing in the
-*CONF* directory, see :ref:`ux_install` for the location of the *CONF*
+*CONF* directory, please see :ref:`ux_install` for the location of the *CONF*
 directory.
 
 Config file overview
@@ -131,7 +131,7 @@ a Registry.
 Gateway
 ^^^^^^^
 
-The gateway address is hard-coded into CONF/container.properties, using
+The gateway address is hard-coded into ``CONF/container.properties``, using
 the ``container.baseurl`` property::
 
   container.baseurl=https://Gateway_HOST:Gateway_PORT/SITENAME/services
@@ -149,7 +149,7 @@ Registry
 ^^^^^^^^
 
 It is possible to configure UNICORE/X to contact one or more external
-or "global" Registries in order to publish information on crucial
+or *global* :ref:` UNICORE Registries <registry>` in order to publish information on crucial
 services there. 
 
 For example
@@ -183,6 +183,7 @@ as well, as described in :ref:`use-authtrust`.
   To enable certificate-less end user access, you will also make sure that
   the Gateway does not require SSL client-authentication. Please refer to the
   :ref:`gateway-manual`.
+
 
 Startup code
 ~~~~~~~~~~~~
@@ -255,11 +256,13 @@ Configuring the execution backend (XNJS and TSI)
 
 Information on the configuration of the XNJS and TSI backend can be found in :ref:`ux_xnjs`.
 
+
 Configuring storage services
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Information on the configuration of the storage factory service, shared storages and per-user 
 storages attached to target systems can be found in :ref:`ux_storages`.
+
 
 HTTP proxy, timeout and web server settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

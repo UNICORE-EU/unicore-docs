@@ -7,9 +7,9 @@ The Workflow service is a server component that supports submission
 and execution of application workflows consisting of UNICORE jobs
 and control constructs:
 
-* RESTful APIs
+* :ref:`RESTful APIs <rest-api>`
 
-* JSON workflow description
+* JSON :ref:`workflow description <workflow-description>`
 
 * Full range of UNICORE user authentication options and AAI
   integration

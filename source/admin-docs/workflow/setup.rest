@@ -6,7 +6,7 @@ Installing and setting up the UNICORE Workflow engine
 This chapter covers basic installation of the Workflow engine and the
 integration of the workflow services into an existing UNICORE system.
 
-As a general note, the Workflow engine is based on a UNICORE/X
+As a general note, the Workflow engine is based on a :ref:`UNICORE/X <unicorex>`
 instance. General UNICORE configuration concepts (such as user
 authentication, gateway integration, shared registry, attribute
 sources) fully apply, and you should refer to the UNICORE/X manual for
@@ -32,11 +32,13 @@ update.
 Installation
 ~~~~~~~~~~~~
 
-The workflow system is available either as part of the UNICORE Server
-Bundle, or as separate Linux packages (deb or rpm).
+The workflow system is available either as part of the `UNICORE Server
+Bundle <https://sourceforge.net/projects/unicore/files/Servers/Core>`_ 
+(tar.gz or zip), or as separate Linux packages (deb or rpm) on the `UNICORE project website 
+at sourceforge <https://sourceforge.net/p/unicore/wiki/Linux_Repositories/>`.
 
 The basic installation procedure is completely analogous to the
-installation of a UNICORE/X server.
+installation of a :ref:`UNICORE/X <unicorex>` server.
 
 If you downloaded the UNICORE server bundle, untar the tar.gz, edit
 ``configure.properties`` and run ``configure.py``
@@ -56,25 +58,25 @@ Setup
 After installation, there are some manual steps needed to integrate the 
 new server into your UNICORE installation.
 
-* **Gateway**: edit ``gateway/conf/connections.properties`` and add the connection 
+* :ref:`Gateway <gateway>`: edit ``gateway/conf/connections.properties`` and add the connection 
   data for the Workflow server. For example,
   ::
 
      WORKFLOW = https://localhost:7700
 
-* **XUUDB**: if you chose to use an XUUDB for the Workflow server,
+* :ref:`XUUDB <xuudb>`: if you chose to use an XUUDB for the Workflow server,
   you might have to add entries to the XUUDB to allow users
   access to the workflow engine. Optionally, you can edit the GCID used
   by the workflow/servorch servers, so that existing entries in the XUUDB
   will match.
 
-* **Registry**: if the registry is setup to use access control (which is
+* :ref:`Registry <registry>`: if the registry is setup to use access control (which is
   the default), you need to allow the Workflow server to register in
   the Registry. The exact procedure depends on how you configured
-  your Registry, please cross-reference the section "Enabling access
-  control" in the Registry manual. If you're using default
-  certificates and the XUUDB, the required entries can be added as
-  follows:
+  your Registry, please refer to the section `Access
+  control <../registry/index.html#access-control>`__ in the :ref:`Registry manual <registry>`. 
+  If you're using default certificates and the XUUDB, the required entries can 
+  be added as follows:
 
   .. code:: console
 
@@ -85,7 +87,7 @@ new server into your UNICORE installation.
 Verifying the installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Using the UNICORE commandline client, you can
+Using the :ref:`UNICORE commandline client <ucc>`, you can
 check whether the new server is available and accessible:
 
 .. code:: console
@@ -102,7 +104,7 @@ should include output such as
     * authenticated as: 'CN=Demo User, O=UNICORE, C=EU' role='user'
 
 
-The "*authenticated as:*" line should list you as "*user*".
+The *authenticated as:* line should list you as *user*.
 
 Some more info about the server can be obtained via
 
@@ -114,7 +116,7 @@ Some more info about the server can be obtained via
 Running a test job
 ^^^^^^^^^^^^^^^^^^
 
-Using UCC again, you can submit workflows
+Using :ref:`UCC <ucc>` again, you can submit workflows
 
 .. code:: console
 
@@ -130,8 +132,7 @@ and get the ID of your new workflow back, e.g.
 API documentation
 ~~~~~~~~~~~~~~~~~
 
-Since version 8.0, the Workflow engine exclusively uses a RESTful API for
-all operation including job submission.
+Since version 8.0, the Workflow engine exclusively uses a 
+:ref:`RESTful API <rest-api>` for all operations including :ref:`job submission <job-description>`.
 
-You can find an API reference and usage examples on the UNICORE Wiki
-at https://sourceforge.net/p/unicore/wiki/REST_API
+You can find an API reference and usage examples in :ref:`workflow-description`

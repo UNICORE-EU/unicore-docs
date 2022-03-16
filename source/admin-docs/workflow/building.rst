@@ -17,7 +17,7 @@ The following commands create the distribution packages
 deb
 ~~~
 
-.. code: console
+.. code:: console
 
   $ mvn package -DskipTests -Ppackman -Dpackage.type=deb -Ddistribution=Debian
 
@@ -25,7 +25,7 @@ deb
 rpm
 ~~~
   
-.. code: console
+.. code:: console
 
   $ mvn package -DskipTests -Ppackman -Dpackage.type=rpm -Ddistribution=RedHat
 
@@ -33,7 +33,7 @@ rpm
 binary tar.gz
 ~~~~~~~~~~~~~
 
-.. code: console
+.. code:: console
 
   $ mvn package -DskipTests -Ppackman -Dpackage.type=bin.tar.gz
 

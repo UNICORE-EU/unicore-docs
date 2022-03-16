@@ -12,8 +12,8 @@ This description was last updated for UNICORE 8.0.4
 
 Also, have a look at :ref:`rest-api-examples` for some Python example code.
 
-A Python client library is under development on GitHub 
-https://github.com/HumanBrainProject/pyunicore/ and can be installed from PyPI via
+A `Python client library <https://github.com/HumanBrainProject/pyunicore/>`_ 
+is under development on GitHub and can be installed from PyPI via
 ``pip install pyunicore``
 
 
@@ -26,7 +26,7 @@ Base URL
 ~~~~~~~~
 
 The base URL of the the REST API for a single UNICORE/X container is
-https://gateway_url/SITENAME/rest/core
+``https://gateway_url/SITENAME/rest/core``
 
 In the following, we will abbreviate this URL as: ``BASE`` Authentication
 
@@ -99,10 +99,10 @@ General API features
 A few common operations and principles apply to all the REST resources.
 
 - ``GET`` is used to retrieve information (resource properties).
-  Depending on the "``Accept:``" header the format can be JSON or HTML. (JSON is recommended!!)
+  Depending on the ``Accept:`` header the format can be JSON or HTML (**JSON is recommended!**).
 - ``PUT`` is used to modify resource properties (JSON format)
 - ``POST`` creates new resources (e.g. job submission). The URL of new resource is returned in 
-  the response "``Location``" header
+  the response ``Location`` header
   Some resources support ``POST`` also for triggering actions (e.g., job abort)
 - ``DELETE`` removes resources
 
@@ -366,7 +366,7 @@ Data upload and download
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are two ways to transfer data to/from a UNICORE storage via the REST API. The simpler, more 
-RESTful way is to use HTTP GET and PUT requests to download or upload data. This should be 
+RESTful way is to use ``HTTP GET`` and ``PUT`` requests to download or upload data. This should be 
 straightforward, the only thing to note is to NOT use the media type ``application/json``, which 
 is reserved for getting information about the file or changing properties.
 
@@ -622,7 +622,7 @@ Workflow
 Synopsis
 ^^^^^^^^
 
-The UNICORE Workflow system can be accessed for workflow submission and management.
+The :ref:`UNICORE Workflow system <workflow>` can be accessed for workflow submission and management.
 
 Basics like authentication, user preferences, security sessions work the exact same way as for a 
 UNICORE/X server.
@@ -644,8 +644,8 @@ API Summary
 Workflow submission
 ^^^^^^^^^^^^^^^^^^^
 
-Submitting a workflow is done with a single POST with ``Content-Type: application/json`` to the 
-base URL.
+Submitting a workflow is done with a single ``POST`` with ``Content-Type: application/json`` 
+to the base URL.
 
 If successful, a new workflow instance will be created, and the URL returned in a HTTP location 
 header.
@@ -656,14 +656,14 @@ If the workflow contains errors, the response body will contain a list of errors
 Workflow description format
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The JSON workflow description as understood by the Workflow engine is described here: 
+The JSON workflow description as understood by the :ref:`Workflow engine <workflow>` is described here: 
 :ref:`workflow-description`.
 
 
 Workflow properties
 ^^^^^^^^^^^^^^^^^^^^
 
-For each workflow, a GET request will retrieve a representation of the current workflow state, 
+For each workflow, a ``GET`` request will retrieve a representation of the current workflow state, 
 including the current state of the workflow variables.
 
 To get a list of jobs that were submitted for the workflow, do a ``GET`` request to 
@@ -676,7 +676,7 @@ To get a list of workflow files (registered names and physical locations) for th
 Hold and resume
 ^^^^^^^^^^^^^^^
 
-A workflow in held state (``waiting for user input``) can be resumed by a ``POST`` to the URL
+A workflow in *held* state (``waiting for user input``) can be resumed by a ``POST`` to the URL
 ``BASE/{id}/actions/resume`` with JSON content. The JSON can contain new values for any workflow 
 variables, e.g.
 

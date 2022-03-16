@@ -8,15 +8,18 @@ http://docs.python-requests.org/en/latest/user/quickstart
 
 The API description is here: :ref:`rest-api`.
 
+
 Basic job submission
 ~~~~~~~~~~~~~~~~~~~~
 
 :ref:`rest-api-examples-job`
 
+
 Storages and data management
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 |:hammer_and_wrench:| |:soon:| 
+
 
 Workflow submission and management
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

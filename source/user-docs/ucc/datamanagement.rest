@@ -18,7 +18,7 @@ server (host/port), site name, and filename, for example
  BFT:https://mygateway:8080/SITE/rest/core/storages/HOME/files/my_file
 
 which specifies a file named "/my_file" on the storage instance 
-"https://mygateway:8080/SITE/rest/core/storages/HOME",
+"\https://mygateway:8080/SITE/rest/core/storages/HOME",
 using the BFT protocol. 
 
 Paths are always relative to the storage root, not the root of
@@ -54,11 +54,11 @@ Examples for server-server transfer:
 
 .. code:: console
 
-  $ucc cp https://server/rest/core/storages/SHARE/files/*.pdf  \
+  $ ucc cp https://server/rest/core/storages/SHARE/files/*.pdf  \
        https://otherserver/rest/core/storages/WORK/data/
 
 
-For server-to-server transfers, the 'cp' command supports several
+For server-to-server transfers, the ``cp`` command supports several
 additional options.
 
 The ``-S`` option allows to schedule a transfer for a certain time.
@@ -68,7 +68,7 @@ For example
 
   $ ucc cp -S "23:00" ...
 
-The format is simply "HH:mm" (hours and minutes). Alternatively you can give 
+The format is simply *HH:mm* (hours and minutes). Alternatively you can give 
 the time in the full ISO 8601 format including year, date, time 
 and time zone:
 
@@ -195,8 +195,8 @@ Finding data
 ls
 ^^
 
-This will list a remote directory. Useful options are: ``-l`` (detailed output), ``-H`` (human-friendly)
-and ``-R`` (recurse). Example:
+This will list a remote directory. Useful options are: ``-l`` (detailed output), ``-H`` 
+(human-friendly) and ``-R`` (recurse). Example:
 
 .. code:: console
 
@@ -241,7 +241,7 @@ Usually you want to control at least where the storage is created.
 Additionally, the type of storage and some parameters can be passed to 
 UCC. 
 
-As an example, creating a storage of type "S3" would look like this
+As an example, creating a storage of type ``S3`` would look like this
 
 .. code:: console
 
@@ -249,13 +249,13 @@ As an example, creating a storage of type "S3" would look like this
 
 
 You can also read parameters from a file. Say you have your S3 keys in a file
-'s3.properties', then you can use the following syntax
+*s3.properties*, then you can use the following syntax
 
 .. code:: console
 
   $ ucc create-storage -t S3 @s3.properties
 
-You can also mix this with the normal 'key=value' syntax, or mix it like this:
+You can also mix this with the normal *key=value* syntax, or mix it like this:
 
 .. code:: console
 

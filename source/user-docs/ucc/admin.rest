@@ -15,9 +15,9 @@ Usually, each UNICORE user has only access to his or her own resources
 privileges. There are two ways to achieve this: 
 
 - create dedicated user credentials (e.g. a certificate) and map
-  them to the role "admin" (in the XUUDB, or whatever attribute source
+  them to the role *admin* (in the XUUDB, or whatever attribute source
   you are using). This method is recommended if you want to remotely
-  administrate UNICORE/X.
+  administrate :ref:`UNICORE/X <unicorex>`.
 
 - use the server keystore (of the UNICORE/X server you want to administrate) 
   as UCC keystore. This will also give you administrator privileges. For this you 
@@ -27,7 +27,7 @@ privileges. There are two ways to achieve this:
 Admin commands
 ~~~~~~~~~~~~~~
 
-UCC has dedicated commands for accessing the "AdminService" of a UNICORE/X container.
+UCC has dedicated commands for accessing the *AdminService* of a UNICORE/X container.
 To get started, try
 
 .. code: console
@@ -156,7 +156,7 @@ UNICORE, this may not always work as expected: the *admin* user might
 not have the required Unix permissions to access files, list
 directories etc.
 
-The UCC commands that list server-side things (list-jobs etc) accept 
+The UCC commands that list server-side things (``list-jobs``, etc) accept 
 a filtering option, that can be used to limit the results of the operation.
 Filtering works on the XML resource properties of the resource in question.
 

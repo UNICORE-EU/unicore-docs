@@ -10,9 +10,9 @@ client machine. If you need to take the client offline, you should consider
 using the workflow system instead, which also allows efficient high-throughput 
 processing.
 
-Assume you have a bunch of jobs in UCC's job description format 
-(xref:ucc_jobdescription[]) stored in a directory ``jobs``. 
-The output should go to a directory ``out``. You can run them all through 
+Assume you have a bunch of jobs in :ref:`UCC's job description format 
+<ucc_jobdescription>` stored in a directory *jobs*. 
+The output should go to a directory *out*. You can run them all through 
 UCC using a single invocation as follows:
 
 .. code:: console
@@ -49,7 +49,6 @@ factor, etc.
 You should experiment a bit to get the best performance for your
 specific setup. UCC has many options available for tuning. Here is an
 overview.
-
 
 .. table:: Tuning options for the UCC batch mode
    :width: 100%
@@ -111,8 +110,8 @@ jobs to the big cluster, you can use the site weights file,
   # set default weight (for any sites not specified here)
   UCC_DEFAULT_SITE_WEIGHT = 10
 
-This would tell UCC to send 10 times more jobs to the "BIG-CLUSTER" site, 
-and send no jobs´to the "BAD-CLUSTER". All other sites would get weight "10", 
-i.e. the same as "SMALL-CLUSTER".  
+This would tell UCC to send 10 times more jobs to the *BIG-CLUSTER* site, 
+and send no jobs to the *BAD-CLUSTER*. All other sites would get weight *10*, 
+i.e. the same as *SMALL-CLUSTER*.  
 
   

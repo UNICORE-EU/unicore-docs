@@ -31,10 +31,10 @@ All these configuration options will be explained in the manual below.
 Installation
 ~~~~~~~~~~~~
 
-UNICORE/X can be installed either as a part of the `UNICORE core server bundle package 
-<https://sourceforge.net/projects/unicore/files/Servers/Core/>`_ (tar.gz or zip archive) or from 
-a Linux package (i.e. RPM or deb) on the `UNICORE project website at sourceforge 
-<https://sourceforge.net/p/unicore/wiki/Linux_Repositories/>`_. 
+UNICORE/X can be installed either as a part of the `UNICORE Server bundle
+<https://sourceforge.net/projects/unicore/files/Servers/Core/>`_ (tar.gz or zip archive) 
+or from a Linux package (i.e. RPM or deb) on the `UNICORE project website  
+<https://sourceforge.net/p/unicore/wiki/Linux_Repositories/>`_ at sourceforge. 
 
 To install from the tar.gz or zip archive, unpack the archive in a 
 directory of your choice. You should then review the config files

@@ -4,13 +4,8 @@ UNICORE/X
 *********
 
 UNICORE/X is the central component of a typical UNICORE installation,
-providing REST APIs for job management and data access services for a
-single compute cluster (or just a file system).
-
-The :ref:`UNICORE Registry server <registry>` provides information about available
-services to clients and other services. It is a specially configured
-UNICORE/X server, so please make sure to refer to the general
-:doc:`UNICORE/X manual <manual>` as well.
+providing :ref:`REST APIs <rest-api>` for job management and data access services 
+for a single compute cluster (or just a file system).
 
 
 .. image:: ../../_static/unicorex.png

@@ -68,7 +68,9 @@ The UNICORE Gateway is distributed in the following formats:
    `UNICORE Server bundle <https://sourceforge.net/projects/unicore/files/Servers/Core/>`_.  
    The UNICORE Server bundle is provided as a tar package and includes a command line installer.
 #. As a binary, platform-specific package available currently for
-   RedHat (Centos) and Debian platforms. Those packages are not tested
+   RedHat (Centos) and Debian platforms on the 
+   `UNICORE project website <https://sourceforge.net/p/unicore/wiki/Linux_Repositories/>`_ 
+   at sourceforge. Those packages are not tested
    on all possible platforms, but should work without any problems with
    other versions of similar distributions, e.g. SL, Centos, or Fedora.
    

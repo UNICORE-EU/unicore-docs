@@ -4,16 +4,13 @@
 Overview
 ********
 
-UNICORE Architecture
---------------------
+UNICORE (UNiform Interface to COmputing REsources) provides tools and
+services for building federated systems, making high-performance
+computing and data resources accessible in a seamless and secure way
+for a wide variety of applications in intranets and the internet.
 
-The architecture of UNICORE is three-layered in client layer, service layer and 
-target system layer as shown in the figure below. 
-
-.. image:: _static/unicore-arch.png
-  :width: 600
-  :alt: UNICORE Architecture
-
+UNICORE deals with user authentication, account mapping and authorization, 
+and provides a comprehensive set of RESTful APIs for HPC access and workflows.
 
 UNICORE Features
 ----------------
@@ -37,7 +34,7 @@ for further enhancements.
 .. topic:: Security
 
     * Flexible user authentication: username/password, OpenID Connect, X\.509, ...
-    * Flexible user mapping
+    * Flexible mapping of users to local accounts and groups
     * Based on open standards: X\.509 Public Key Infrastructure, TLS, SAML, OIDC, XACML, ...
 
 .. topic:: Clients
@@ -49,4 +46,16 @@ for further enhancements.
 .. topic:: Add-ons
 
     * `Standalone UFTP suite <https://uftp-docs.readthedocs.io/>`_ for high-performance data transfer (can be used independently of UNICORE)
-    * Unity: Identity Management server, SAML compliant, administration GUI, many features (see https://unity-idm.eu)
+    * `Unity Identity Management system <https://unity-idm.eu>`_, supports LDAP, OAuth, SAML, federated AAI and a lot more
+
+
+UNICORE Architecture
+--------------------
+
+The architecture of UNICORE is three-layered in client layer, service layer and 
+target system layer as shown in the figure below. 
+
+.. image:: _static/unicore-arch.png
+  :width: 600
+  :alt: UNICORE Architecture
+

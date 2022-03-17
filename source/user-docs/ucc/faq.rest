@@ -16,9 +16,9 @@ this insecure?**
 
 |:thinking_face:| **How can I enable more detailed logging?**
 
-	|:point_right:| UCC uses log4j, by default the configuration is done in 
-	``<UCC_HOME>/conf/logging.properties``. You can edit this file and increase the logging levels,
-	choose to log to a file or to the console, etc.
+	|:point_right:| UCC uses `Log4j 2 <http://logging.apache.org/log4j/2.x/manual/configuration.html>`_, 
+	by default the configuration is done in ``<UCC_HOME>/conf/logging.properties``. You can edit 
+	this file and increase the logging levels, choose to log to a file or to the console, etc.
 
 
 Usage
@@ -38,7 +38,7 @@ Usage
 
 |:thinking_face:| **Can I use UCC to list the contents of the registry?**
  
-	|:point_right:| Using the 'rest' command (and the UNIX 'jq' utility for formatting the output),
+	|:point_right:| Using the ``rest`` command (and the UNIX ``jq`` utility for formatting the output),
 	this is very easy, for example
 
 	.. code:: console

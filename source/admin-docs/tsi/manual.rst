@@ -8,17 +8,18 @@ able to execute processes under different uids and gids. Therefore, in
 production it must be run with sufficient privileges to allow this
 (during development and testing it can be run as a normal user).
 
-You can configure the TSI and UNICORE/X to communicate via SSL. In
+You can configure the TSI and :ref:`UNICORE/X <unicorex>` to communicate via SSL. In
 this case, you need a server certificate for the TSI. For details, see
-Section `tsi_ssl`_
+Section :ref:`tsi_ssl`.
 
 The TSI is one point where UNICORE's seamless model meets local
 variations and so will usually need to be adapted to the target
-system. This is described in Section `tsi_localization`_.
+system. This is described in Section :ref:`tsi_localization`.
 
 .. note:: 
   In production environments, the TSI will run with elevated privileges.
-  Make sure to read and understand section `tsi_security`_ on security and hardening the system.
+  Make sure to read and understand section :ref:`tsi_security` on security and hardening 
+  the system.
 
 
 Prerequisites
@@ -28,17 +29,17 @@ The TSI requires Python Version 3.4 or later. It works only on
 Unix-style operating systems (e.g. Linux or Mac OS/X), Windows is not
 directly supported.
 
-The TSI uses the ``setpriv`` tool to run as a non-root user ("unicore")
+The TSI uses the ``setpriv`` tool to run as a non-root user (*unicore*)
 with the capability to switch uid/gid to the requested values, in
 order to perform tasks on behalf of the requesting user.
 If this is not available on the system, the TSI will run
-as "**root**" (but never perform any actions as root).
+as **root** (but never perform any actions as *root*).
 
 Batch system status checks (e.g. via ``squeue`` for Slurm) will be
-executed under a system account (usually 'unicore') which is
+executed under a system account (usually *unicore*) which is
 configured in the UNICORE/X server configuration. Note that this
-system account cannot be '**root**', as the TSI will never execute
-anything as root.
+system account cannot be **root**, as the TSI will never execute
+anything as *root*.
 
 The system account **MUST** be able to list batch job status from all
 users! If necessary, configure your batch system accordingly. For
@@ -47,16 +48,20 @@ system.
 
 If you want to run user scripts in the proper user slice, you can
 enable PAM, which requires an appropriate PAM module file, by 
-default this is.called ``unicore-tsi``.
+default this is called ``unicore-tsi``.
 
 
 Installation
 ------------
 
 The TSI is available either as a generic distribution (part of the
-UNICORE core server bundle, or as a separate tgz archive) or as a
+`UNICORE core server bundle package 
+<https://sourceforge.net/projects/unicore/files/Servers/Core/>`_, 
+or as a separate tgz archive) or as a
 batch system specific package (such as an RPM, deb or tgz for Torque
-or Slurm).
+or Slurm) on the `UNICORE project website at sourceforge 
+<https://sourceforge.net/p/unicore/wiki/Linux_Repositories/>`_.
+
 
 Batch system specific distribution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -64,17 +69,20 @@ Batch system specific distribution
 Use the installation tools of your operating system to install the
 package. The following table shows the location of the TSI files.
 
-+---------------------+-----------------------------+---------------------+
-| Name in this manual | Location                    | Description         |
-+=====================+=============================+=====================+
-| CONF                | /etc/unicore/tsi            | Configuration files |
-+---------------------+-----------------------------+---------------------+
-| BIN                 | /usr/share/unicore/tsi/bin  | Start/stop scripts  |
-+---------------------+-----------------------------+---------------------+
-| LIB                 | /usr/share/unicore/tsi/lib  | Python files        |
-+---------------------+-----------------------------+---------------------+
-| LOGS                | /var/run/unicore/tsi/logs   | Log files           |
-+---------------------+-----------------------------+---------------------+
+.. table::
+ :class: tight-table
+ 
+ +---------------------+-----------------------------+---------------------+
+ | Name in this manual | Location                    | Description         |
+ +=====================+=============================+=====================+
+ | CONF                | /etc/unicore/tsi            | Configuration files |
+ +---------------------+-----------------------------+---------------------+
+ | BIN                 | /usr/share/unicore/tsi/bin  | Start/stop scripts  |
+ +---------------------+-----------------------------+---------------------+
+ | LIB                 | /usr/share/unicore/tsi/lib  | Python files        |
+ +---------------------+-----------------------------+---------------------+
+ | LOGS                | /var/run/unicore/tsi/logs   | Log files           |
+ +---------------------+-----------------------------+---------------------+
 
 
 Generic distribution
@@ -94,20 +102,23 @@ and configure it for your local environment.
 In the following, ``TSI_INSTALL`` refers to the directory where you installed the 
 TSI. This has the following sub-directories
 
-+---------------------+--------------------+--------------------------------------+
-| Name in this manual | Location           | Description                          |
-+=====================+====================+======================================+
-| TSI_INSTALL         |                    | Base directory chosen during         |
-|                     |                    | execution of ``Install.sh``          |
-+---------------------+--------------------+--------------------------------------+
-| CONF                | TSI_INSTALL/conf   | Configuration files                  |
-+---------------------+--------------------+--------------------------------------+
-| BIN                 | TSI_INSTALL/bin    | Start/stop scripts                   |
-+---------------------+--------------------+--------------------------------------+
-| LIB                 | TSI_INSTALL/lib    | Python files                         |
-+---------------------+--------------------+--------------------------------------+
-| LOGS                | TSI_INSTALL/logs   | Log files                            |
-+---------------------+--------------------+--------------------------------------+
+.. table::
+ :class: tight-table
+ 
+ +---------------------+--------------------+--------------------------------------+
+ | Name in this manual | Location           | Description                          |
+ +=====================+====================+======================================+
+ | TSI_INSTALL         |                    | Base directory chosen during         |
+ |                     |                    | execution of ``Install.sh``          |
+ +---------------------+--------------------+--------------------------------------+
+ | CONF                | TSI_INSTALL/conf   | Configuration files                  |
+ +---------------------+--------------------+--------------------------------------+
+ | BIN                 | TSI_INSTALL/bin    | Start/stop scripts                   |
+ +---------------------+--------------------+--------------------------------------+
+ | LIB                 | TSI_INSTALL/lib    | Python files                         |
+ +---------------------+--------------------+--------------------------------------+
+ | LOGS                | TSI_INSTALL/logs   | Log files                            |
+ +---------------------+--------------------+--------------------------------------+
 
 
 .. _tsi_permissions:
@@ -139,7 +150,7 @@ Verifying
 ~~~~~~~~~
 
 Before starting the TSI, you should make sure that the batch system integration
-is working correctly. See the section on `tsi_localization`_ below!
+is working correctly. See the section on :ref:`tsi_localization` below!
 
 
 UNICORE/X configuration
@@ -163,7 +174,7 @@ SSL support
 ^^^^^^^^^^^
 
 If you wish to setup SSL for the UNICORE/X-to-TSI communication,
-please refer to section `tsi_ssl`_.
+please refer to section :ref:`tsi_ssl`.
 
 
 ACL support
@@ -172,7 +183,7 @@ ACL support
 The TSI (together with UNICORE/X) provides a possibility to manipulate
 file Access Control Lists (ACLs). To use ACLs, the appropriate support
 must be available from the underlying file system. Currently only the
-so called POSIX ACLs are supported ('so called' as in fact the
+so called POSIX ACLs are supported (*so called* as in fact the
 relevant documents POSIX 1003.1e/1003.2c were never finalized), using
 the popular ``setfacl`` and ``getfacl`` commands. Most current file
 systems provide support for the POSIX ACLs.
@@ -190,16 +201,17 @@ To enable POSIX ACL support you typically must ensure that:
  - the ``getfacl`` and ``setfacl`` commands are available on your machine.
 
 Configuration of ACLs is performed in the ``tsi.properties`` file. First of all you can define
-a location of ``setfacl`` and ``getfacl`` programs with ``tsi.setfacl`` and ``tsi.getfacl`` properties.
-By providing absolute paths you can use non-standard locations, typically it is enough to 
-leave the default, non-absolute values which will use programs as available under the standard 
-shell search path. Note that if you will comment any of those properties, the POSIX ACL subsystem
-will be turned off.
+a location of ``setfacl`` and ``getfacl`` programs with ``tsi.setfacl`` and ``tsi.getfacl`` 
+properties. By providing absolute paths you can use non-standard locations, typically it is 
+enough to leave the default, non-absolute values which will use programs as available under the 
+standard shell search path. Note that if you will comment any of those properties, the POSIX 
+ACL subsystem will be turned off.
 
-Configuration of ACL support is per directory, using properties of the format: ``tsi.acl.PATH``,
-where '**PATH**' is an absolute directory path for which the setting is being made. 
+Configuration of ACL support is per directory, using properties of the format: 
+``tsi.acl.PATH``, where *PATH* is an absolute directory path for which the setting is being made. 
 You can provide as many settings as required, the most specific one will be used. 
-The valid values are ``POSIX`` and ``NONE`` respectively for POSIX ACLs and for turning off the ACL support. 
+The valid values are ``POSIX`` and ``NONE`` respectively for POSIX ACLs and for turning 
+off the ACL support. 
 
 Consider an example::
 
@@ -212,20 +224,21 @@ The above configuration turns off ACL for all directories, except for
 everything under ``/home`` and everything under ``/mnt/apps`` with the
 exception of ``/mnt/apps/external``.
 
-.. .warning::
+.. warning::
   Do not use symbolic links or ``..`` or ``.`` in properties configuring
   directories - use only absolute, normalized paths. Currently spaces in
   paths are also unsupported.
 
 
-NOTE: The ACL support settings are typically cached on the UNICORE/X side (for a few minutes). 
-Therefore, after changing the TSI configuration (and after resetting the TSI) you have to 
-wait a bit until the new configuration is applied also in UNICORE/X.
+.. note::
+ The ACL support settings are typically cached on the UNICORE/X side (for a few minutes). 
+ Therefore, after changing the TSI configuration (and after resetting the TSI) you have to 
+ wait a bit until the new configuration is applied also in UNICORE/X.
 
 
 ACL limitations
 ^^^^^^^^^^^^^^^
-There is no ubiquitous standard for file ACLs. "POSIX draft" ACLs are by far the most popular 
+There is no ubiquitous standard for file ACLs. *POSIX draft* ACLs are by far the most popular 
 however there are several other implementations. Here is a short list that should help to figure out
 the situation:
 
@@ -263,12 +276,12 @@ truststore.
 
 The following configuration options must be set in ``tsi.properties``:
 
-:``tsi.keystore``: file containing the private TSI key in PEM format
-:``tsi.keypass``: password for decrypting the key
-:``tsi.certificate``: file containing the TSI certificate in PEM format
-:``tsi.truststore``: file containing the certificate of the accepted CA(s) 
-    in PEM format
-:``tsi.allowed_dn.NNN``: allowed DNs of UNICORE/X servers in RFC format
+ :``tsi.keystore``: file containing the private TSI key in PEM format
+ :``tsi.keypass``: password for decrypting the key
+ :``tsi.certificate``: file containing the TSI certificate in PEM format
+ :``tsi.truststore``: file containing the certificate of the accepted CA(s) 
+  in PEM format
+ :``tsi.allowed_dn.NNN``: allowed DNs of UNICORE/X servers in RFC format
 
 SSL is activated if the keystore file is specified in ``tsi.properties``.
 
@@ -286,14 +299,14 @@ The truststore file contains the CA cert(s)::
   -----END CERTIFICATE-----
 
 
-The ``tsi.allowed_dn.NNN`` properties are used to specify which certificates are allowed, for 
-example::
+The ``tsi.allowed_dn.NNN`` properties are used to specify which certificates are allowed, 
+for example::
 
   tsi.allowed_dn.1=CN=UNICORE/X 1, O=UNICORE, C=EU
   tsi.allowed_dn.2=CN=UNICORE/X 2, O=UNICORE, C=EU
 
 
-.. note:: 
+.. attention:: 
   If you do not specify any access control entries, all 
   certificates issued by trusted CAs are allowed to
   connect to the TSI. Be very careful to prevent
@@ -338,8 +351,8 @@ commands.
 As the TSI process runs as root, and switches to the required
 user/group IDs before each request, setting up the required
 environment per user has to be done carefully. Per-user settings are
-usually done on the UNICORE/X level using "**IDB templates**", please
-consult the UNICORE/X documentation.
+usually done on the UNICORE/X level using *IDB templates*, please
+refer to the :ref:`UNICORE/X documentation <unicorex-manual>`.
 
 
 Assigning groups to the current user
@@ -359,7 +372,8 @@ This will use a different implementation via the system command
 Batch system integration: BSS.py
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This file contains the functions specific to the used batch system,
+The file `BSS.py <https://github.com/UNICORE-EU/tsi/blob/master/lib/BSS.py>`_
+contains the functions specific to the used batch system,
 specifically it prepares the job script, deals with job status 
 reporting and job control.
 
@@ -373,7 +387,9 @@ Reporting free disk space
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 UNICORE will often invoke the ``df`` command which is implemented in the
-IO.py file in order to get information about free disk space. On some
+`IO.py 
+<https://github.com/UNICORE-EU/tsi/blob/master/lib/IO.py>`_ file in order 
+to get information about free disk space. On some
 distributed file systems, executing this command can take quite some
 time, and it may be advisable to modify the ``df`` function to
 optimize this behaviour.
@@ -382,10 +398,11 @@ Reporting computing time budget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If supported by your site installation, users might have a computing time
-budget allocated to them. The BSS.py module contains a function ``get_budget`` 
-that is used to retrieve this budget as a number e.g. representing core-hours.
-By default, this function returns ``-1`` to indicate that computing time is not
-budgeted.
+budget allocated to them. The `BSS.py 
+<https://github.com/UNICORE-EU/tsi/blob/master/lib/BSS.py>`_ module contains a 
+function ``get_budget`` that is used to retrieve this budget as a number e.g. 
+representing core-hours. By default, this function returns ``-1`` to indicate 
+that computing time is not budgeted.
 
 Filtering cluster working nodes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -395,16 +412,18 @@ defined for nodes in BSS configuration. It can limit working nodes only to
 those having shared file system. 
 It can be defined in the ``tsi.properties`` file by setting the property ``tsi.nodes_filter``.
 
-Note that this feature is not working for all batch systems. Currently it is 
-supported in: **Torque** and **SLURM**.
+.. attention::
+ Note that this feature is not working for all batch systems. Currently it is 
+ supported in Torque and SLURM.
 
 Resource reservation
 ~~~~~~~~~~~~~~~~~~~~
 
-The reservation module ``Reservation.py`` is responsible for interacting
-with the reservation system of your batch system. 
+The reservation module `Reservation.py 
+<https://github.com/UNICORE-EU/tsi/blob/master/lib/Reservation.py>`_ is 
+responsible for interacting with the reservation system of your batch system. 
 
-.. caution::
+.. attention::
  Note that this feature is not available for all batch systems. Currently it is 
  included in: Torque and SLURM.
 
@@ -448,7 +467,7 @@ You can enable PAM, which will open a user session before running the user's tas
 so the tasks will be run in the correct user slice, and thus the system's resource
 management will properly apply also to tasks started via UNICORE.
 
-To do this, set in tsi.properties
+To do this, set in ``tsi.properties``
 ::
 
   tsi.open_user_sessions=1
@@ -468,7 +487,7 @@ For example this could contain
 Directories used by the TSI
 ---------------------------
 
-The TSI must have access to the '**filespace**' directory specified in the
+The TSI must have access to the *filespace* directory specified in the
 UNICORE/X configuration (usually the property ``XNJS.filespace`` in
 ``xnjs.properties``) to hold job directories. These directories are
 written with the TSI's uid set to the Unix user for which the work is
@@ -486,7 +505,7 @@ if you want to run it as a a system service, you can use ``systemctl``:
 
   $ sudo systemctl add-wants multi-user.target unicore-tsi-variant
 
-(where "**variant**" stands for the concrete TSI implementation, such as
+(where *variant* stands for the concrete TSI implementation, such as
 ``nobatch`` or ``slurm``)
 
 
@@ -545,8 +564,10 @@ Porting the TSI to other batch systems
 Most variations are found in the batch subsystem commands, porting
 to a new BSS usually requires changes to the following files:
 
- * ``BSS.py``
- * ``Reservation.py`` (reservation functions if applicable)
+ * `BSS.py <https://github.com/UNICORE-EU/tsi/blob/master/lib/BSS.py>`_
+ * `Reservation.py 
+   <https://github.com/UNICORE-EU/tsi/blob/master/lib/Reservation.py>`_ 
+   (reservation functions if applicable)
 
 It is recommended to start from a up-to-date and well-documented TSI, e.g.
 the Torque or Slurm variation. If you have further questions regarding porting
@@ -580,10 +601,11 @@ We recommed the following measures to make operating the TSI secure:
 
  * Prevent all access to the TSI's config and executable files. This is usually
    done by setting appropriate file permissions, and usually already taken care 
-   of during installation. See section `tsi_permissions`_.
+   of during installation ( please see the section :ref:`tsi_permissions`).
 
  * Make sure only UNICORE/X can connect to the TSI. This is most reliably done by 
-   configuring SSL for the UNICORE/X to TSI communication. See section `tsi_ssl`_.
+   configuring SSL for the UNICORE/X to TSI communication (please see the section 
+   :ref:`tsi_ssl`).
 
  * If SSL cannot be used, the UNICORE/X should run on a separate machine.
 
@@ -597,7 +619,7 @@ We recommed the following measures to make operating the TSI secure:
    the UNICORE/X config files and keystore using appropriate file
    permissions. Not using SSL in this situation is a serious risk! An
    attacker connecting to the TSI can impersonate any user and access 
-   any user's data (except for the root user).
+   any user's data (except for the *root* user).
 
  * An additional safeguard is to establish monitoring for UNICORE/X, and 
    kill the TSI in case the UNICORE/X process terminates.

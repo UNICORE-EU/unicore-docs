@@ -91,7 +91,8 @@ Resource selection in batch mode
 By default, the UCC batch mode will select a random site for running a job. You can modify
 the selection in different ways. 
 
-- using the ``-s`` option or a ``Site: <sitename>,`` entry in the job file, you can specify the site directly
+- using the ``-s`` option or a ``Site: <sitename>,`` entry in the job file, you can specify the 
+  site directly
   
 - use the ``-W`` option to specify a file containing site weights.
  

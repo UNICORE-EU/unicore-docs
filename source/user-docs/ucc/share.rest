@@ -15,7 +15,7 @@ For example, you might have access to an S3 cloud storage via UNICORE,
 and you want to securely share data on this resource. Or, you want to
 allow others to check job status, or even allow them to abort jobs.
 
-Note that to access actual *files* the permissions on file system
+Note that to access actual files the permissions on file system
 level still need to match. Usually this is achieved by using Unix
 groups.
 
@@ -29,7 +29,7 @@ Use the basic
 
   $ ucc share <URL>
 
-to showe the current ACL for the given resource, where "URL" is the full WSRF service URL
+to showe the current ACL for the given resource, where *URL* is the full WSRF service URL
 of the resource, e.g.
 
 .. code:: console
@@ -42,12 +42,12 @@ To add an ACL entry, use
 
   $ ucc share ACE1 ACE2 ... <URL> 
 
-where "ACE" is an access control entry expressed in a simple format::
+where *ACE* is an access control entry expressed in a simple format::
 
   [read|modify]:[DN|VO|GROUP|UID]:[value]
 
-For example to give "modify" permission to a user whose UNIX user id on the 
-target system is "test", you would use
+For example to give *modify* permission to a user whose UNIX user id on the 
+target system is *test*, you would use
 
 .. code:: console
 
@@ -59,7 +59,7 @@ To delete entries, use the ``-d`` option
 
   $ ucc share -d modify:UID:test <URL>
 
-To delete *all* entries, use the ``-b`` option
+To delete **all** entries, use the ``-b`` option
 
 .. code:: console
 
@@ -71,8 +71,8 @@ Permission levels
 
 The permissions controlled by ACLs are as follows
 
- * read : access resource properties
- * modify : perform actions e.g. job submission or creating a file export
+ * ``read``: access resource properties
+ * ``modify``: perform actions e.g. job submission or creating a file export
 
 Only the owner of a resource can edit the ACL or destroy the resource.
 

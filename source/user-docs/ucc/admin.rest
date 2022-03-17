@@ -15,7 +15,7 @@ Usually, each UNICORE user has only access to his or her own resources
 privileges. There are two ways to achieve this: 
 
 - create dedicated user credentials (e.g. a certificate) and map
-  them to the role *admin* (in the XUUDB, or whatever attribute source
+  them to the role *admin* (in the :ref:`XUUDB <xuudb>`, or whatever attribute source
   you are using). This method is recommended if you want to remotely
   administrate :ref:`UNICORE/X <unicorex>`.
 
@@ -78,7 +78,7 @@ which can take an optional message:
 
 The service will reply::
 
-  > SUCCESS, service reply: OK - job submission is disabled
+  $> SUCCESS, service reply: OK - job submission is disabled
 
 If a user now tries to submit, she will receive an error message on submission.
 Running the command again will re-enable the service.
@@ -86,7 +86,7 @@ Running the command again will re-enable the service.
 .. code:: console
 
  $ ucc admin-runcommand ToggleJobSubmission message="Maintenance"
- > SUCCESS, service reply: OK - job submission is now enabled
+ $> SUCCESS, service reply: OK - job submission is now enabled
 
 
 Getting job details
@@ -182,7 +182,7 @@ To list all jobs submitted on Nov 13, 2007:
 etc. 
 
 .. table:: Filtering options
-   :widths: 30,70
+   :widths: 40,60
    :class: tight-table
 
    +--------------------------------+-----------------------------------+

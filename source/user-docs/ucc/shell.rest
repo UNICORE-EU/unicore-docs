@@ -63,7 +63,7 @@ For example
   ucc> ls -l $S1
 
 A special variable ``$_`` exists that is set by various commands to
-the "last thing" that was created or accessed.
+the *last thing* that was created or accessed.
 
 For example
 

@@ -4,7 +4,7 @@ API
 ---
 
 This document describes the API to the TSI as used by 
-:ref:`UNICORE/X <unicorex>` (more concretely, the XNJS subsystem of UNICORE/X).  
+:ref:`UNICORE/X <unicorex>` (more concretely, the :ref:`XNJS <ux_xnjs>` subsystem of UNICORE/X).  
 The parts of the TSI that interact with the target system have been isolated 
 and are documented here with their function calls.
 
@@ -35,16 +35,18 @@ it to execute commands. The UNICORE/X-to-TSI connection uses two
 sockets, a data and a command socket.
 
 After initialisation is complete, the ``process()`` function (in the
-TSI.py module) is entered, which reads messages from the UNICORE/X
-server and dispatches processing to the various TSI functions.
+`TSI.py <https://github.com/UNICORE-EU/tsi/blob/master/lib/TSI.py>`_ module) 
+is entered, which reads messages from the UNICORE/X server and dispatches processing 
+to the various TSI functions.
 
 Messages to the UNICORE/X server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The TSI provides methods to pass messages to the UNICORE/X server.  In
 particular the UNICORE/X server expects every method to call either
-ok() or failed() at the end of its execution. The messaging methods
-are implemented in Connector.py:
+``ok()`` or ``failed()`` at the end of its execution. The messaging methods
+are implemented in `Connector.py 
+<https://github.com/UNICORE-EU/tsi/blob/master/lib/Connector.py>`_:
 
  * ``ok(string)`` Sends a message to the UNICORE/X server to say that
    execution of the command was successful.
@@ -71,7 +73,7 @@ jobs prepared by the user, transfer and manipulation of files on
 storages and the management of Uspaces (job working directory). Only
 the first type of work, execution of jobs, needs a complete user
 environment. The other two types of TSI work use a restricted set of
-standard commands (mkdir, cp, rm etc) and should not require access to
+standard commands (``mkdir``, ``cp``, ``rm``, etc) and should not require access to
 specific environments set up by users. Furthermore, job execution is
 not done directly by the TSI but is passed on to the local Batch
 Subsystem which ensures that a full user environment is set before a
@@ -360,7 +362,7 @@ Getting the user's remaining compute budget (#TSI_GET_COMPUTE_BUDGET)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This ``BSS.get_budget()`` function returns the remaining compute budget
-for the user (in core hours) or "-1" if not known or not applicable.
+for the user (in core hours) or ``-1`` if not known or not applicable.
 
 
 Input
@@ -377,16 +379,18 @@ Output
 
 Format
 ++++++
+
 The output is a multiline string which each line of the form
 ::
 
   <PROJECT> <ABSOLUTE_BUDGET> <PERCENTAGE> <UNITS>
 
 where
-:PROJECT: the project / budget account name
-:ABSOLUTE_BUDGET: the absolute value (integer) of compute time remaining
-:PERCENTAGE: the relative amount (integer, 0-100) of compute time remaining
-:UNITS: the units used (should be one of: ``core-h``, ``node-h``, ``cpu-h``)
+
+ :PROJECT: the project / budget account name
+ :ABSOLUTE_BUDGET: the absolute value (integer) of compute time remaining
+ :PERCENTAGE: the relative amount (integer, 0-100) of compute time remaining
+ :UNITS: the units used (should be one of: ``core-h``, ``node-h``, ``cpu-h``)
 
 
 I/O functions
@@ -426,15 +430,18 @@ write the contents of one file to a directory accessible by the TSI.
 Input
 +++++
 
-The ``#TSI_FILESACTION`` parameter contains the action to take if the
-file exists (or does not): ``0`` = don't care, ``1`` = only write if the file
-does not exist, ``2`` = only write if the file exists, ``3`` = append to
-file.
+ * The ``#TSI_FILESACTION`` parameter contains the action to take if the
+   file exists (or does not): 
+   
+	* ``0`` = don't care, 
+	* ``1`` = only write if the file does not exist, 
+	* ``2`` = only write if the file exists, 
+	* ``3`` = append to file
 
-The ``#TSI_FILE`` parameter contains the filname and permissions.
+ * The ``#TSI_FILE`` parameter contains the filname and permissions.
 
-The ``#TSI_LENGTH`` parameter contains the number of bytes to read from
-the data channel and write to disk.
+ * The ``#TSI_LENGTH`` parameter contains the number of bytes to read from
+   the data channel and write to disk.
 
 The TSI replies with TSI_OK, and the data to write is then read from
 the data channel.
@@ -450,8 +457,9 @@ Output
 File ACL operations (#TSI_FILE_ACL)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``process_acl`` function allows to set or get the access control list on a given
-file or directory. Please refer to the file ``ACL.py`` to learn about this part of the 
+The ``process_acl`` function allows to set or get the access control list on a given file or 
+directory. Please refer to the file `ACL.py 
+<https://github.com/UNICORE-EU/tsi/blob/master/lib/ACL.py>`_ to learn about this part of the 
 API.
 
 
@@ -465,17 +473,20 @@ single file.
 Input
 +++++
 
-The ``#TSI_FILE`` parameter contains the file/directory name.
+ * The ``#TSI_FILE`` parameter contains the file/directory name.
 
-The ``#TSI_LS_MODE`` parameter contains the kind of listing: 
-``A`` = info on a single file, ``R`` = recursive directory listing, 
-``N`` = normal directory listing
+ * The ``#TSI_LS_MODE`` parameter contains the kind of listing:
+ 
+   * ``A`` = info on a single file, 
+   * ``R`` = recursive directory listing, 
+   * ``N`` = normal directory listing
 
 Output
 ++++++
 
- * Normal: The TSI writes the listing to the command socket, see the ``IO.py`` file for a detailed
-   description of the format
+ * Normal: The TSI writes the listing to the command socket, see the 
+   `IO.py <https://github.com/UNICORE-EU/tsi/blob/master/lib/IO.py>`_ file for a 
+   detailed description of the format
  * Error: TSI replies with ``TSI_FAILED`` and the reason for failure.
 
 
@@ -493,7 +504,8 @@ Output
 ++++++
 
  * Normal: The TSI writes the disk space info to the command socket, see 
-   the ``IO.py`` file for a detailed description of the format.
+   the `IO.py <https://github.com/UNICORE-EU/tsi/blob/master/lib/IO.py>`_ file for a detailed 
+   description of the format.
  * Error: TSI replies with ``TSI_FAILED`` and the reason for failure.
 
 
@@ -501,8 +513,9 @@ Resource reservation functions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The TSI offers functionality to create and manage reservations. These
-are implemented in the file ``Reservation.py``, different versions for
-different scheduling systems exist.
+are implemented in the file `Reservation.py 
+<https://github.com/UNICORE-EU/tsi/blob/master/lib/Reservation.py>`_, 
+different versions for different scheduling systems exist.
 
 
 Creating a reservation (#TSI_MAKE_RESERVATION)

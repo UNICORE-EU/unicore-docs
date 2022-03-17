@@ -6,7 +6,7 @@ Job description format
 A UNICORE job describes a *single job* on the target system.
 
 By default, the job will be submitted to the batch system and run on a compute node. To execute 
-the job on a login node, the "Job type" can be set to "interactive" (see below).
+the job on a login node, the *Job type* can be set to *interactive* (see below).
 
 UNICORE uses a JSON format that allows you to specify the application or executable you want to 
 run, arguments and environment settings, any files to stage in from remote servers and any result 
@@ -106,9 +106,9 @@ where the ``From``, ``To`` and ``Step`` parameters are floating point or integer
 Application parameters
 ^^^^^^^^^^^^^^^^^^^^^^
 
-In UNICORE, parameters for applications are often transferred in the form of environment variables. For example, 
-the POVRay application has a large set of parameters to specify image width, height and many more. You can specify these 
-parameters in a very simple way using the ``Parameters`` keyword:
+In UNICORE, parameters for applications are often transferred in the form of environment variables. 
+For example, the POVRay application has a large set of parameters to specify image width, height and 
+many more. You can specify these parameters in a very simple way using the ``Parameters`` keyword:
 
 .. code:: json
 
@@ -123,7 +123,7 @@ parameters in a very simple way using the ``Parameters`` keyword:
 
 	}
 
-Note that an "empty" parameter (which does not have a value) needs to be written with an explicit
+Note that an *empty* parameter (which does not have a value) needs to be written with an explicit
 empty string due to the limitations of the JSON syntax.
 
 

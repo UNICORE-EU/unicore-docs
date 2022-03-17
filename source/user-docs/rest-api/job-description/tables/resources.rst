@@ -1,6 +1,6 @@
 .. table:: 
  :width: 100 
- :widths: 30 20 50 
+ :widths: 30 70 
  :class: tight-table
 
  +----------------+--------------------------+

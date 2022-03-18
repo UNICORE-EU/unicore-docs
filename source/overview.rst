@@ -9,8 +9,6 @@ services for building federated systems, making high-performance
 computing and data resources accessible in a seamless and secure way
 for a wide variety of applications in intranets and the internet.
 
-UNICORE deals with user authentication, account mapping and authorization, 
-and provides a comprehensive set of RESTful APIs for HPC access and workflows.
 
 UNICORE Features
 ----------------
@@ -28,7 +26,8 @@ Services and APIs
     * Support for common resource managers such as SLURM or LoadLeveler
     * File system access and file transfer
     * Site-to-site file transfer
-    * Cross-site workflows featuring graphs, loops, conditions, variables, hold/continue, workflow data management
+    * Cross-site workflows featuring graphs, loops, conditions, variables, hold/continue, workflow 
+	  data management
     * Metadata
     * Service Registry
 
@@ -43,14 +42,17 @@ Clients
 ~~~~~~~
 
     * `Commandline client <ucc>`_: Job execution, data transfer, workflows, scripting, batch mode, extensible
-    * Dedicated `client for the UFTP high performance file transfer <https://uftp-docs.readthedocs.io/en/latest/uftp-client/>`_
+    * Dedicated `client for the UFTP <https://uftp-docs.readthedocs.io/en/latest/uftp-client/>`_ 
+	  high performance file transfer 
     * `pyUNICORE <https://github.com/HumanBrainProject/pyunicore/>`_ Python client library
 
 Add-ons
 ~~~~~~~
 
-    * `Standalone UFTP suite <https://uftp-docs.readthedocs.io/>`_ for high-performance data transfer (can be used independently of UNICORE)
-    * `Unity Identity Management system <https://unity-idm.eu>`_, supports LDAP, OAuth, SAML, federated AAI and a lot more
+    * `Standalone UFTP suite <https://uftp-docs.readthedocs.io/>`_ for high-performance data transfer 
+	  (can be used independently of UNICORE)
+    * `Unity Identity Management system <https://unity-idm.eu>`_, supports LDAP, OAuth, SAML, 
+	  federated AAI and a lot more
 
 
 UNICORE Architecture

@@ -14,7 +14,7 @@ handling of local files, submission options etc. See
 In the following it is assumed that you have UCC installed
 :ref:`ucc_install` and tried some examples :ref:`ucc_quickstart`.
 
-For example, assume the file "myjob.u" looks as follows
+For example, assume the file *myjob.u* looks as follows
 
 .. code:: json
 
@@ -44,8 +44,8 @@ Controlling the output location and file names
 
 Output files will be placed in the directory given by the ``-o`` option, if not given, the current
 directory is used. Also, file names will be put into a subdirectory named as the job id, 
-to prevent accidental overwriting of existing files. This behaviour can be changed using the ``-b`` 
-option. When ``-b`` is given on the command line, no subdirectory will be created.
+to prevent accidental overwriting of existing files. This behaviour can be changed using the 
+``-b`` option. When ``-b`` is given on the command line, no subdirectory will be created.
 
 Specifying the site
 ^^^^^^^^^^^^^^^^^^^
@@ -216,7 +216,7 @@ Executing a command
 ~~~~~~~~~~~~~~~~~~~
 
 If you just want to execute a simple command remotely (i.e. without data staging, 
-resource specifications etc), you can use the "exec" command. 
+resource specifications etc), you can use the ``exec`` command. 
 
 This will run the given command remotely (similarly to ``ssh``), and print the 
 output to the console. You can specify the site with the ``-s`` option.

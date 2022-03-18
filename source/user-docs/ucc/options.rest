@@ -19,7 +19,7 @@ keystore, registry etc.
 
 .. table:: Common options for the UCC
    :width: 100%
-   :widths: 30,70
+   :widths: 40,60
    :class: tight-table
 
    +----------------------------------------+---------------------------------------+
@@ -113,7 +113,7 @@ An overview of the available authentication options can be retrieved using
 
   $ ucc help-auth
 
-A minimal example for using the "quickstart" installation would be
+A minimal example for using the *quickstart* installation would be
 ::
 
   registry=https://localhost:8080/DEMO-SITE/services/Registry?res=default_registry
@@ -148,13 +148,14 @@ To authenticate with username and password, set the following
   password=<your remote password>
 
 
+.. _oidc-agent: https://github.com/indigo-dc/oidc-agent
 
 Support for token based authentication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 UCC has three different options for using token-based authentication
 
-* via *oidc-agent*
+* via oidc-agent 
 * directly contact an OIDC server as an OIDC client (requires client ID and secret)
 * specify the token directly as a config property
 
@@ -162,10 +163,10 @@ UCC has three different options for using token-based authentication
 OIDC-Agent
 ^^^^^^^^^^
 
-UCC supports the *`oidc-agent <https://github.com/indigo-dc/oidc-agent>`_* tool that 
+UCC supports the `oidc-agent <https://github.com/indigo-dc/oidc-agent>`__ tool that 
 allows to interact with common OIDC servers to retrieve new access tokens.
 
-To configure *oidc-agent*, UCC supports the following properties
+To configure oidc-agent, UCC supports the following properties
 
 .. include:: tables/oidc-agent-properties.rest
 

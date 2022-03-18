@@ -18,25 +18,25 @@ Installation and configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To install, unpack the distribution in a directory of your choice. It's a good idea
-to add the bin/ directory to your PATH variable,
+to add the ``bin/`` directory to your ``PATH`` variable,
 
 .. code:: console
 
   $ export PATH=$PATH:<UCC_HOME>/bin
 
 
-where UCC_HOME is the directory you installed UCC in.
+where *UCC_HOME* is the directory you installed UCC in.
 
 .. note:: *Windows only* 
 
   Please do not install UCC into a directory containing spaces such 
-  as "Program files".
+  as *Program files*.
   
   Also avoid long path names, this can lead to errors due to the Windows
   limit on command line length.
   
-  Setting environment variables can be done (as administrator) 
-  using the Control panel->System->Extras panel.
+  Setting environment variables can be done (as *administrator*) 
+  using the :kbd:`Control panel --> System --> Extras panel`.
 
 
 Though you can specify many parameters on the commandline, it is
@@ -62,12 +62,12 @@ would look as follows::
   
   client.serverHostnameChecking=NONE
 
-Please refer to `ucc_options`_ for a full description of available options.
+Please refer to :ref:`ucc_options` for a full description of available options.
 
 
 .. note::
-  If you are worried about security, and do not want specify the password: UCC will ask for it if it
-  is not given in the preferences or on the commandline.
+  If you are worried about security, and do not want specify the password: UCC will ask for it 
+  if it is not given in the preferences or on the commandline.
 
 
 .. note:: *Windows only* 
@@ -112,7 +112,7 @@ Installing UCC extensions
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 UCC can be extended with additional commands. It is enough
-to copy the libraries (.jar files) of the extension into a directory
+to copy the libraries (``.jar`` files) of the extension into a directory
 that is scanned by UCC: in general these are the UCC ``lib``
 and the ``${HOME}/.ucc/lib`` directory. 
 

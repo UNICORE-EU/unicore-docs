@@ -7,13 +7,15 @@ UNICORE uses a JSON format that allows you to specify the application or executa
 want to run, arguments and environment settings, any files to stage in from remote servers or the
 local machine and any result files to stage out.
 
-Several complete job samples can be found in the ``samples`` directory of the distribution.
+Several complete job samples can be found in the `samples 
+<https://github.com/UNICORE-EU/commandline-client/tree/master/ucc-distribution/src/main/samples>`_ 
+directory of the distribution.
 On Linux, check also the ``/usr/share/unicore/ucc/samples`` directory.
 
 Comments are (inofficially!) possible using the ``#`` hash character, as in Unix shell scrips.
 
 .. note::
- Quotes "" are needed around the keys and values in case special characters (like ':' or '/'")
+ Quotes ``""`` are needed around the keys and values in case special characters (like ``:`` or ``/``)
  appear, if in doubt use quotes!
 
 
@@ -154,7 +156,7 @@ Note the comma-separation and the curly braces. To directly call an executable,
 
 Generally, jobs will be submitted to the batch scheduler on the remote
 system.  If you want to run on a login node instead, set the ``Job
-type`` to ``interactiv``" (instead of the default ``normal``):
+type`` to ``interactiv`` (instead of the default ``normal``):
 
 .. code:: json
   
@@ -284,14 +286,14 @@ demonstrates some of the possibilities.
 
   {
   
-	  "Imports": [ 
-	  
+	"Imports": [ 
+	
 		  #
 		  # import a local file from the client machine
 		  # into the job workspace
 		  #
 		  { "From": "/work/data/fileName", "To": "fileName" },
-		  
+		
 		  #    
 		  # import a set of local files from the client machine
 		  # into the job workspace
@@ -331,7 +333,7 @@ there is a flag ``FailOnError`` that can be set to ``false``::
  ],
 
 .. note::
-  UCC supports simple wild cards ("*" and "?") for importing and exporting files
+  UCC supports simple wild cards (``*`` and ``?``) for importing and exporting files
 
 
 Supported protocols for imports
@@ -342,6 +344,7 @@ Supported protocols for imports
   * ``link://`` : symlink file/dir from the remote machine into the job dir
 
   * Read more on remote locations in :ref:`ucc_datamanagement`.
+
 
 Using "inline" data to import a file into the job workspace
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -362,6 +365,7 @@ Here is an example:
 
 The ``From`` URL has to start with ``inline://``
 
+
 Sweeping over a stage-in file
 +++++++++++++++++++++++++++++
 
@@ -379,9 +383,9 @@ file. To achieve this, replace the ``From`` parameter by list of values, for exa
             ],
       "To": "fileName",  },
 
-
-**Note** that only a single stage-in can be sweeped over in this way, and that this will not work
-with files imported from your local client machine.
+.. note::
+ Note that only a single stage-in can be sweeped over in this way, and that this will not 
+ work with files imported from your local client machine.
 
 
 Exporting result files from the job workspace
@@ -466,6 +470,7 @@ You can use an OAuth Bearer token to authenticate HTTP data transfers:
 You can leave the token value empty, ``"BearerToken": ""``, if the server
 already has your token by some other means.
 
+
 Redirecting standard input
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -476,14 +481,14 @@ can use the following
 
   "Stdin": "filename",
 
-then the standard input will come from the file named "filename" in the job working directory. 
+then the standard input will come from the file named *filename* in the job working directory. 
 
 
 
 Resources
 ~~~~~~~~~
 
-A job definition can have a Resources section specifying the resources to request
+A job definition can have a ``Resources`` section specifying the resources to request
 on the remote system. For example
 
 .. code:: json
@@ -546,6 +551,7 @@ If you do not specifiy anything UCC will select a site that will match
 your requirements (at least those that UCC checks for). You can also
 set the site during job submission as an option to ``ucc run ...``.
 
+
 Specifying a project
 ^^^^^^^^^^^^^^^^^^^^
 If the system you're submitting to requires a project name for
@@ -586,7 +592,7 @@ Specifying a URL for receiving notifications
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The UNICORE/X server can send out notifications when the job enters
-the RUNNING and/or DONE state.
+the ``RUNNING`` and/or ``DONE`` state.
 
 To enable this, add the URL of the receiving service to your job:
 
@@ -603,7 +609,7 @@ with JSON content.
   "status" : "RUNNING",
   "statusMessage" : ""
 
-The ``status`` field will be RUNNING when the user application starts
+The ``status`` field will be ``RUNNING`` when the user application starts
 executing, and ``SUCCESSFUL`` / ``FAILED`` when the job has finished.
 
 .. code:: json

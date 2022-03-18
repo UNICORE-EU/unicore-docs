@@ -34,9 +34,10 @@ For UNICORE/X, do
 
   $ cd unicorex-dist
 
-and check that the versions in pom.xml are OK. The manual sources
+and check that the versions in `pom.xml 
+<https://github.com/UNICORE-EU/unicorex/blob/master/pom.xml>`_ are OK. The manual sources
 are asciidoc txt files in src/doc, some parts are included from
-the general USE doumentation.
+the general `USE <https://github.com/UNICORE-EU/use>`__ documentation.
 
 To build the docs:
 
@@ -65,7 +66,8 @@ in tgz, deb and rpm formats
 Do a ``cd unicorex-dist`` or ``cd registry-dist`` for UNICORE/X or
 Registry.
 
-The versions are again defined in the ``pom.xml`` file!
+The versions are again defined in the `pom.xml 
+<https://github.com/UNICORE-EU/unicorex/blob/master/unicorex-dist/pom.xml>`__ file!
 
 tgz
 ~~~

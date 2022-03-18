@@ -34,10 +34,10 @@ Please note that
 A note on paths
 ~~~~~~~~~~~~~~~
 
-The Registry can be installed either from the `UNICORE server bundle  
+The Registry can be installed either from the `UNICORE Server bundle  
 <https://sourceforge.net/projects/unicore/files/Servers/Core/>`_ (tar.gz or zip archive) or 
-from a Linux package on the 
-`UNICORE project website <https://sourceforge.net/p/unicore/wiki/Linux_Repositories/>`_ at sourceforge  
+from a Linux package on the `UNICORE project website 
+<https://sourceforge.net/p/unicore/wiki/Linux_Repositories/>`_ at sourceforge  
 (i.e. RPM or deb). 
 
 .. attention::

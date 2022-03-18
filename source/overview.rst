@@ -27,7 +27,7 @@ Services and APIs
     * File system access and file transfer
     * Site-to-site file transfer
     * Cross-site workflows featuring graphs, loops, conditions, variables, hold/continue, workflow 
-	  data management
+      data management
     * Metadata
     * Service Registry
 
@@ -43,16 +43,16 @@ Clients
 
     * `Commandline client <ucc>`_: Job execution, data transfer, workflows, scripting, batch mode, extensible
     * Dedicated `client for the UFTP <https://uftp-docs.readthedocs.io/en/latest/uftp-client/>`_ 
-	  high performance file transfer 
+      high performance file transfer 
     * `pyUNICORE <https://github.com/HumanBrainProject/pyunicore/>`_ Python client library
 
 Add-ons
 ~~~~~~~
 
     * `Standalone UFTP suite <https://uftp-docs.readthedocs.io/>`_ for high-performance data transfer 
-	  (can be used independently of UNICORE)
+      (can be used independently of UNICORE)
     * `Unity Identity Management system <https://unity-idm.eu>`_, supports LDAP, OAuth, SAML, 
-	  federated AAI and a lot more
+      federated AAI and a lot more
 
 
 UNICORE Architecture

@@ -3,18 +3,18 @@
 REST API
 ********
 
-This document describes and documents the REST APIs for the :ref:`UNICORE/X server <unicorex>` (job 
-submission and management, data access and data transfer) and the :ref:`Workflow server <workflow>`
+This document describes and documents the REST APIs for the :ref:`UNICORE/X <unicorex>` server (job 
+submission and management, data access and data transfer) and the :ref:`Workflow <workflow>` server 
 (workflow submission and management).
 
 The documentation generally refers to the latest released version. 
-This description was last updated for UNICORE 8.0.4
+This description was last updated for UNICORE 8.0.4.
 
 Also, have a look at :ref:`rest-api-examples` for some Python example code.
 
 A `Python client library <https://github.com/HumanBrainProject/pyunicore/>`_ 
 is under development on GitHub and can be installed from PyPI via
-``pip install pyunicore``
+``pip install pyunicore``.
 
 
 Basics
@@ -38,7 +38,7 @@ For example, when username/password are enabled you can use curl to access the b
 
 .. code:: console
 
- $> curl -k -u user:pass -X GET -H "Accept: application/json" BASE
+ $ curl -k -u user:pass -X GET -H "Accept: application/json" BASE
 
 In the following examples, we leave out the authentication details!
 
@@ -47,7 +47,7 @@ User preferences
 ~~~~~~~~~~~~~~~~
 
 In some special cases, you as a user might have more than one available unix account, or you might
-have more than just the ``user`` role on the server. It is possible to select from the available
+have more than just the *user* role on the server. It is possible to select from the available
 attributes. Available attributes are: ``role``, ``uid``, ``group``.
 
 For example, to execute a call using the Unix ID *some.user*, you can specify this in a HTTP 
@@ -55,14 +55,14 @@ header as follows:
 
 .. code:: console
 
- $>  curl -k -u user:pass -X GET -H "Accept: application/json"  \
+ $  curl -k -u user:pass -X GET -H "Accept: application/json"  \
         -H "X-UNICORE-User-Preferences: uid:some.user" BASE
 
-Or, to select role ``admin`` (if you are worthy)
+Or, to select role *admin* (if you are worthy)
 
 .. code: console
 
- $>  curl -k -u user:pass -X GET -H "Accept: application/json"  \
+ $  curl -k -u user:pass -X GET -H "Accept: application/json"  \
         -H "X-UNICORE-User-Preferences: role:admin" BASE
 
 You can find out the available values for these attributes with a ``GET`` to the ``BASE`` URL!
@@ -84,7 +84,7 @@ You can use the session ID in place of authentication info, i.e.
 
 .. code:: console
 
- $> curl -k -H "X-UNICORE-SecuritySession: ..." BASE
+ $ curl -k -H "X-UNICORE-SecuritySession: ..." BASE
 
 If the session is no longer valid the server will reply with a ``HTTP 432`` error code, and you 
 must re-send the authentication information.
@@ -100,17 +100,18 @@ A few common operations and principles apply to all the REST resources.
 
 - ``GET`` is used to retrieve information (resource properties).
   Depending on the ``Accept:`` header the format can be JSON or HTML (**JSON is recommended!**).
-- ``PUT`` is used to modify resource properties (JSON format)
+- ``PUT`` is used to modify resource properties (JSON format).
 - ``POST`` creates new resources (e.g. job submission). The URL of new resource is returned in 
-  the response ``Location`` header
-  Some resources support ``POST`` also for triggering actions (e.g., job abort)
-- ``DELETE`` removes resources
+  the response ``Location`` header. Some resources support ``POST`` also for triggering actions 
+  (e.g., *job abort*).
+- ``DELETE`` removes resources.
 
 
 Media types
 ~~~~~~~~~~~
 
-The REST API uses the following media types
+The REST API uses the following media types:
+
 - ``application/json`` is the commonly used media type for all sorts of tasks.
 - ``application/octet-stream`` : used for upload/download of file data.
 
@@ -179,11 +180,20 @@ but not files) and which allows you to limit results to the named fields.
 
  BASE/sites/{id}/jobs/2f6836ca-6bf7-4cbc-b8df-627f9c7ba08c?fields=status
 
-Parameter 	Format 	Description
-offset 	integer (0, 1, 2, ...) 	How many elements of the list to skip
-num 	integer (0, 1, 2, ...) 	How many elements you want
-tags 	comma-separated strings 	Only list elements with this tag
-fields 	comma-separated strings 	Only return the named properties
+.. table::
+ :class: tight-table
+ 
+ +----------+------------------------+--------------------------------------+
+ |Parameter |Format                  | Description                          |
+ +==========+========================+======================================+
+ |offset    |integer (0, 1, 2, ...)  |How many elements of the list to skip |
+ +----------+------------------------+--------------------------------------+
+ |num       |integer (0, 1, 2, ...)  |How many elements you want            |
+ +----------+------------------------+--------------------------------------+
+ |tags      |comma-separated strings |Only list elements with this tag      |
+ +----------+------------------------+--------------------------------------+
+ |fields    |comma-separated strings |Only return the named properties      |
+ +----------+------------------------+--------------------------------------+
 
 
 Modifying resource properties
@@ -292,7 +302,7 @@ Using POST, a new site resource can be created.
 
 .. code:: console
 
- $> curl -X POST -H "Content-Type: application/json" --data "{}"  https://localhost:8080/DEMO-SITE/rest/core/sites
+ $ curl -X POST -H "Content-Type: application/json" --data "{}"  https://localhost:8080/DEMO-SITE/rest/core/sites
 
 Note that if necessary, a *default* site is created automatically when you submit a job.
 
@@ -374,26 +384,26 @@ For example, let's download a file named stdout using ``curl``
 
 .. code:: console
 
- $> curl -X GET BASE/storages/{id}/files/stdout
+ $ curl -X GET BASE/storages/{id}/files/stdout
 
 The GET supports the ``Range`` header, if you want to download only part of the file. For example,
 
 .. code:: console
 
- $> curl -X GET -H "Range: bytes=10-42" ....
+ $ curl -X GET -H "Range: bytes=10-42" ....
 
 Similarly, to upload a file localfile to a remote file newfile
 
 .. code:: console
 
- $> curl -X PUT --data-binary @localfile BASE/storages/{id}/files/some_dir/newfile
+ $ curl -X PUT --data-binary @localfile BASE/storages/{id}/files/some_dir/newfile
 
 .. note::
  Any required parent directories will be created automatically.
 
 .. attention::
  There is a special feature related to the ``Content-Type`` header here. If the 
- :ref:`UNICORE/X server <unicorex>` is setup with metadata support, the value of the 
+ :ref:`UNICORE/X <unicorex>` server is setup with metadata support, the value of the 
  ``Content-Type`` header will be stored in the file's metadata. If you download the file later, 
  the correct ``Content-Type`` will be used. This will work nicely and automatically for every 
  media type EXCEPT ``application/json``! See the :ref:`rest-api-examples` for a detailed example.
@@ -485,7 +495,7 @@ If the storage supports metadata, the index can be searched using a ``GET`` requ
 
 .. code:: console
 
- $> curl -H "Accept: application/json" BASE/storages/{id}/search?q=querystring
+ $ curl -H "Accept: application/json" BASE/storages/{id}/search?q=querystring
 
 The query string is appended as the ``?q=...`` URL query parameter. The server will reply
 with a JSON listing the files found::
@@ -513,7 +523,7 @@ a file or a directory.
 
 .. code:: console
 
- $> curl -X POST BASE/storages/{id}/files/some_directory/actions/extract --data-binary @params.json -H "Content-Type: application/json"
+ $ curl -X POST BASE/storages/{id}/files/some_directory/actions/extract --data-binary @params.json -H "Content-Type: application/json"
 
 This would extract metadata from the files in the "some_directory" directory.
 
@@ -575,7 +585,7 @@ In this case, the full job submission sequence is
 #. upload data from client to server
 #. start job
 
-Note however that small(!) files can be embedded into the job description as well.
+Note however that **small(!)** files can be embedded into the job description as well.
 
 In the :ref:`rest-api-examples` you will find some typical job submission and management examples.
 

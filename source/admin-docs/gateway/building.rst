@@ -54,14 +54,15 @@ Creating distribution packages
 The following commands create the distribution packages
 in tgz, deb and rpm formats
 
-The package versions are defined in the ``pom.xml`` file!
+The package versions are defined in the `pom.xml 
+<https://github.com/UNICORE-EU/gateway/blob/master/pom.xml>`_ file!
 
 tgz
 ~~~
 
 .. code:: console
 
-  $> mvn package -DskipTests -Ppackman -Dpackage.type=bin.tar.gz
+  $ mvn package -DskipTests -Ppackman -Dpackage.type=bin.tar.gz
 
 deb
 ~~~

@@ -6,7 +6,7 @@ Job description format
 A UNICORE job describes a *single job* on the target system.
 
 By default, the job will be submitted to the batch system and run on a compute node. To execute 
-the job on a login node, the *Job type* can be set to *interactive* (see below).
+the job on a login node, the ``Job type`` can be set to ``interactive`` (see below).
 
 UNICORE uses a JSON format that allows you to specify the application or executable you want to 
 run, arguments and environment settings, any files to stage in from remote servers and any result 
@@ -20,13 +20,13 @@ Overview
 
 UNICORE's job description consists of several parts
 
-- an 'Imports' section listing data to be staged in to the job's working directory from remote 
+- an ``Imports`` section listing data to be staged in to the job's working directory from remote 
   storage locations (and/or the client's file system, if you use :ref:`ucc`)
 - pre-processing
 - a section describing the main executable
 - post-processing
-- an 'Exports' section listing result files to be staged out to remote storage locations
-- a 'Resources' section stating any resource requirements like batch queue, job runtime or number 
+- an ``Exports`` section listing result files to be staged out to remote storage locations
+- a ``Resources`` section stating any resource requirements like batch queue, job runtime or number 
   of nodes
 - a number of additional elements for setting the job name, or defining tags for the job
 
@@ -149,6 +149,7 @@ or a range:
 
 where the ``From``, ``To`` and ``Step`` parameters are floating point or integer numbers.
 
+
 Job data management
 ~~~~~~~~~~~~~~~~~~~
 
@@ -156,6 +157,7 @@ In general your job will require data files, either from your client machine, or
 remote location. An important concept in UNICORE is the job's workspace, which is the default 
 location into which files are placed. The same applies to result files: by default, files will be 
 downloaded from the job's workspace. However, other remote storage locations are supported, too.
+
 
 Jobs without client-controlled stage in
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -166,8 +168,9 @@ To tell UNICORE/X that the client does not wish to send any local files, use the
 
  "haveClientStageIn": "false",
 
-Otherwise, the server will wait for an explicit "start" command (see the :ref:`rest-api` spec for 
+Otherwise, the server will wait for an explicit *start* command (see the :ref:`rest-api` spec for 
 details) before submitting / executing the user job.
+
 
 Importing files into the job workspace
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -216,7 +219,7 @@ Special protocols for imports
 - ``file://`` : copy file(s) residing on the remote machine into the job dir
 - ``link://`` : symlink a file/dir residing on the remote machine into the job dir
 - ``ftp://`` : download a file from an FTP server
-- ``https://`` : download a file from an HTTP(s) server (UNICORE will try to "guess" whether the 
+- ``https://`` : download a file from an HTTP(s) server (UNICORE will try to *guess* whether the 
   HTTP URL refers to a UNICORE file or not)
 
 

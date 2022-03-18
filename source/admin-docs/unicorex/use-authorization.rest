@@ -7,7 +7,7 @@ The authorization process in UNICORE/X requires that nearly all operations
 must be authorized prior to execution (exceptions may be safely ignored).
  
 UNICORE allows to choose which authorization back-end is used. The module which
-is responsible for this operation is called Policy Decision Point (PDP). 
+is responsible for this operation is called **P**\ olicy **D**\ ecision **P**\ oint (PDP). 
 You can choose one among already available PDP modules or even develop your own engine.
 
 Local PDPs use a set of policy files to reach an authorisation decision, remote PDPs query
@@ -65,17 +65,17 @@ The configuration file content is very simplistic as it is enough to define only
 
 The policies from the ``localpdp.directory`` are always evaluated in alphabetical order,
 so it is good to name files with a number. By default the first-applicable combining algorithm is
-used and UNICORE policy is stored in two files: '01coreServices.xml' and '99finalDeny.xml'.
+used and UNICORE policy is stored in two files: ``01coreServices.xml`` and ``99finalDeny.xml``.
 The first file contains the default access policy, the latter a single fall through deny rule.
 Therefore you can put your own policies using an additional file in file named 
-e.g. '50localRules.xml'.
+e.g. *50localRules.xml*.
 
 The policies are reloaded whenever you change (or touch) the configuration file of this PDP, e.g.
 like this:
 
 .. code:: console
 
- $> touch conf/xacml2.conf
+ $ touch conf/xacml2.conf
 
 
 Remote SAML/XACML 2.0 PDP with Argus PAP
@@ -146,10 +146,10 @@ Using the available configuration options, it is possible to merge Argus policie
 in many different ways. Here we present a simple pattern, which is good for cases when 
 Argus is used to ban users (it was also applied to the example above):
 
- - Argus policy should be saved to a file which will be evaluated first, e.g. ``00argus.xml``
+ - Argus policy should be saved to a file which will be evaluated first, e.g. *00argus.xml*.
  - Default XACML 2.0 policies of UNICORE local PDP should be added to the directory, 
    without any changes.
- - The policy combining algorithm should be ``first-applicable``
+ - The policy combining algorithm should be ``first-applicable``.
  - Argus PAP policies should include a series of deny statements (see Argus documentation
    for details) and no final permit (or deny) fall-trough rule. 
 
@@ -157,8 +157,8 @@ Then Argus policy will be evaluated first. If any banning rule matches the user 
 will be denied by the Argus policy. Otherwise it will be non-applicable and the local, default
 UNICORE policy will be evaluated. Note that if it is problematic for other (non-UNICORE) 
 services using Argus, to remove the final fall-through permit or deny rule, then you can 
-add such rule, but with a proper +resource+ statement so it will be applicable only for non-UNICORE
-components.
+add such rule, but with a proper ``resource`` statement so it will be applicable only for 
+non-UNICORE components.
 
 Of course it is also possible to creatively design other patterns, when for instance Argus policy 
 is evaluated as a second one.  

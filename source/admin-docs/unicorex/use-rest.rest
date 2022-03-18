@@ -53,9 +53,9 @@ if your intended password is *test123*, you could do
 
 .. code:: console
 
-	$> SALT=$(tr -dc "A-Za-z0-9_$&!=+#" < /dev/urandom | head -c 16 | xargs)
-	$> echo "Salt is ${SALT}"
-	$> echo -n "${SALT}test123" | md5sum
+	$ SALT=$(tr -dc "A-Za-z0-9_$&!=+#" < /dev/urandom | head -c 16 | xargs)
+	$ echo "Salt is ${SALT}"
+	$ echo -n "${SALT}test123" | md5sum
 
 which will output the salted and hashed password. Here we generate a
 random string as the salt. Enter these together with the username, and
@@ -95,7 +95,7 @@ and uses this to authenticate to Unity, retrieving an authentication assertion.
  container.security.rest.authentication.UNITY.address=https://localhost:2443/unicore-soapidp/saml2unicoreidp-soap/AuthenticationService
 
 You can configure an additional validation of the Unity assertions
-using the configured "trusted assertion issuer" certificate(s)::
+using the configured *trusted assertion issuer* certificate(s)::
 
  # validate the received assertions?
  container.security.rest.authentication.UNITY.validate=true

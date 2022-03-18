@@ -65,7 +65,7 @@ There are two special authorization attributes:
 There are several attributes used for incarnation:
 
 - *xlogin* - specifies which local user id (in UNIX called *uid*) should be assigned to 
-   the UNICORE user.
+  the UNICORE user.
 - *group* - specifies the primary group (primary gid) that the UNICORE user should get. 
 - *supplementaryGroups* - specifies all supplementary groups the UNICORE user should get.
 - *addDefaultGroups* - boolean attribute saying whether groups assigned to the 
@@ -136,35 +136,35 @@ For example, the following configuration snippet
 	container.security.attributes.combiningPolicy=MERGE_LAST_OVERRIDES
   
 
-will declare two attribute sources, "XUUDB" and "FILE", which should
+will declare two attribute sources, *XUUDB* and *FILE*, which should
 be both queried and combined using the ``MERGE_LAST_OVERRIDES`` policy.
 
 Since multiple attribute sources can be queried, it has to be defined how 
 attributes will be combined. For example, assume you have both XUUDB and FILE,
-and both return a xlogin attribute for a certain user, say "xlogin_1" and "xlogin_2".
+and both return a xlogin attribute for a certain user, say *xlogin_1* and *xlogin_2*.
 
 The different combining policies are
   
 - ``MERGE_LAST_OVERRIDES``: new attributes override those from previous sources. 
-  In our example, the result would be "xlogin_2". 
+  In our example, the result would be *xlogin_2*. 
   
 - ``FIRST_APPLICABLE``: the attributes from the first source that returned a non 
-  empty list of attributes are used. In our case this would be "xlogin_1". If there 
-  were no xlogin attribute for the user in XUUDB then "xlogin_2" would be returned.
+  empty list of attributes are used. In our case this would be *xlogin_1*. If there 
+  were no xlogin attribute for the user in XUUDB then *xlogin_2* would be returned.
   
 - ``FIRST_ACCESSIBLE``: the attributes from the first source that is accessible are used. 
-  In our case this would be "xlogin_1". This policy is useful for redundant attribute sources. 
+  In our case this would be *xlogin_1*. This policy is useful for redundant attribute sources. 
   E.g. you can configure two instances of XUUDB with the same users data; the 2nd one will 
   be tried only if the first one is down.  
   
-- ``MERGE``: attributes are merged. In our example, the result would be "xlogin_1, xlogin_2",
+- ``MERGE``: attributes are merged. In our example, the result would be *xlogin_1, xlogin_2*,
   and the user would be able to choose between them.
 
 
 Each of the sources needs a mandatory configuration option defining
 the Java class, and several optional properties that configure the
 attribute source. In our example, one would need to configure both
-the "XUUDB" and the "FILE" source::
+the *XUUDB* and the *FILE* source::
   
 	container.security.attributes.XUUDB.class=...
 	container.security.attributes.XUUDB.xuudbHost=...
@@ -200,12 +200,12 @@ The XUUDB is the standard option in UNICORE. It has the following features:
 
 - Multiple xlogins per DN, where the user can select one
    
-- Entries are grouped using the so-called *Grid component ID* (GCID). This makes it easy to
-  assign users different attributes when accessing different UNICORE/X servers.
+- Entries are grouped using the so-called **G**\ rid **c**\ omponent **ID** (GCID). This makes it 
+  easy to assign users different attributes when accessing different UNICORE/X servers.
     
-Full XUUDB documentation is available from :ref:`xuudb-manual`.
+Full XUUDB documentation is available from :ref:`XUUDB Manual <xuudb-manual>`.
    
-To enable and configure the XUUDB as a static attribute source, 
+To enable and configure the *XUUDB* as a static attribute source, 
 set the following properties in the configuration file::
 
 	container.security.attributes.order=... XUUDB ...
@@ -214,7 +214,7 @@ set the following properties in the configuration file::
 	container.security.attributes.XUUDB.xuudbPort=<xuudbport>
 	container.security.attributes.XUUDB.xuudbGCID=<your_gcid>
 
-To enable and configure the XUUDB as a dynamic attribute source, 
+To enable and configure the *XUUDB* as a dynamic attribute source, 
 set the following properties in the configuration file::
 
 	container.security.dynamicAttributes.order=... XUUDB ...

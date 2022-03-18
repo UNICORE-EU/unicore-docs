@@ -67,18 +67,21 @@ provided in :ref:`use_incarnation-attributes`).
 
 .. table::
  :width: 100
- :widths: 45 15 40
+ :widths: 30 20 50
  :class: tight-table
 
- +---------------------------------------+-------------------+---------------------------------------------------------------------------------------------------------------------+
- |Property name                          |Range of values    |Description                                                                                                          |
- +=======================================+===================+=====================================================================================================================+
- |vo.unicoreAttribute.NAME               |URI                |Value must be a SAML attribute name which will be used as a UNICORE internal incarnation attribute NAME.             |
- +---------------------------------------+-------------------+---------------------------------------------------------------------------------------------------------------------+
- |vo.unicoreAttribute.NAME.default       |URI                |Value must be a SAML attribute name which will be used as a default for UNICORE internal incarnation attribute NAME. |
- +---------------------------------------+-------------------+---------------------------------------------------------------------------------------------------------------------+
- |vo.unicoreAttribute.NAME.disabled      |ANY, IGNORED       |When this attribute is present regardless of its value the NAME attribute won't be mapped.                           |
- +---------------------------------------+-------------------+---------------------------------------------------------------------------------------------------------------------+
+ +----------------------------------+----------------+-----------------------------------------------------------+
+ |Property name                     |Range of values |Description                                                |
+ +==================================+================+===========================================================+
+ |vo.unicoreAttribute.NAME          |URI             |Value must be a SAML attribute name which will be used     |
+ |                                  |                | as a UNICORE internal incarnation attribute NAME.         |
+ +----------------------------------+----------------+-----------------------------------------------------------+
+ |vo.unicoreAttribute.NAME.default  |URI             |Value must be a SAML attribute name which will be used as  |
+ |                                  |                |a default for UNICORE internal incarnation attribute NAME. |
+ +----------------------------------+----------------+-----------------------------------------------------------+
+ |vo.unicoreAttribute.NAME.disabled |ANY, IGNORED    |When this attribute is present regardless of its value the |
+ |                                  |                |NAME attribute won't be mapped.                            |
+ +----------------------------------+----------------+-----------------------------------------------------------+
 
 Example mapping for Unity attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

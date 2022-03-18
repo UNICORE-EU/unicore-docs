@@ -138,10 +138,10 @@ the ``container.baseurl`` property::
 
 where *Gateway_HOST* and *Gateway_PORT* are the host and port of the
 gateway, and *SITENAME* is the UNICORE/X site name. The gateway address
-MUST be accessible from the UNICORE/X node!
+**MUST** be accessible from the UNICORE/X node!
 
 On the gateway side, the UNICORE/X address is hard-coded as well,
-using an entry SITENAME=address in the connections.properties file
+using an entry SITENAME=address in the ``connections.properties`` file
 pointing to the network address of the UNICORE/X container.
 
 
@@ -149,7 +149,7 @@ Registry
 ^^^^^^^^
 
 It is possible to configure UNICORE/X to contact one or more external
-or *global* :ref:` UNICORE Registries <registry>` in order to publish information on crucial
+or global :ref:`UNICORE Registries <registry>` in order to publish information on crucial
 services there. 
 
 For example
@@ -163,8 +163,8 @@ For example
 Unity
 ^^^^^
 
-If you want to support user authentication via Unity, you have to
-configure UNICORE/X to trust one or more Unity servers. This is done
+If you want to support user authentication via `Unity <https://unity-idm.eu/>`_, 
+you have to configure UNICORE/X to trust one or more Unity servers. This is done
 using the ``container.security.trustedAssertionIssuers`` property. This
 configures a truststore containing the certificates of all trusted
 Unity servers (NOT the CA certificates).
@@ -177,7 +177,7 @@ in PEM format::
   container.security.trustedAssertionIssuers.directoryLocations.1=conf/unity/unity.pem
 
 All the usual options for configuring truststores are available here, 
-as well, as described in :ref:`use-authtrust`.
+as well as described in :ref:`use-authtrust`.
 
 .. note::
   To enable certificate-less end user access, you will also make sure that
@@ -191,7 +191,7 @@ Startup code
 In order to provide a flexible initialization process for UNICORE/X,
 there is a set of properties named ``container.onstartup.*``. The
 value(s) of this property consists of a whitespace separated list of
-Java classes which must be implementing the "Runnable" interface. Many
+Java classes which must be implementing the ``Runnable`` interface. Many
 extensions for UNICORE/X rely on an entry in this property to
 initialise themselves.
 

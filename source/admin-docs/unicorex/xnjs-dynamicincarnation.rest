@@ -140,15 +140,13 @@ SpEL and Groovy
 Rule conditions are always boolean expressions of the Spring Expression Language (SpEL). 
 As SpEL can be also used in some types of actions it is the most fundamental tool to understand.  
   
-Full documentation is available here:
-http://static.springsource.org/spring/docs/3.0.0.M3/spring-framework-reference/html/ch07.html
-
-The most useful is the section 7.5:
-http://static.springsource.org/spring/docs/3.0.0.M3/spring-framework-reference/html/ch07s05.html
+Full documentation is available `here
+<https://docs.spring.io/spring-framework/docs/3.0.0.M3/spring-framework-reference/html/ch07.html>`_.
+The most useful is the `section 7.5
+<https://docs.spring.io/spring-framework/docs/3.0.0.M3/spring-framework-reference/html/ch07s05.html>`_.
 
 Actions can be also coded using the Groovy language. You can find Groovy documentation
-at Groovy's web page: 
-http://groovy-lang.org
+at Groovy's web page: http://groovy-lang.org
 
 
 Creating conditions

@@ -83,7 +83,7 @@ Remote SAML/XACML 2.0 PDP with Argus PAP
 
 This PDP allows for mixing local policies with policies downloaded from a remote 
 server using SAML protocol for XACML policy query. This protocol is implemented by
-`Argus PAP <https://argus-documentation.readthedocs.io>`_ server.
+`Argus PAP <https://argus-documentation.readthedocs.io/en/stable>`_ server.
 Please note that under the name Argus there is a whole portfolio of services, but for purpose
 of UNICORE integration Argus PAP is the only one required.
 

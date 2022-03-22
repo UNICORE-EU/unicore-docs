@@ -19,7 +19,7 @@ It offers the following functions
  * :ref:`Data movement <ucc_datamanagement>` (upload, download, server-to-server copy, etc) using the
    UNICORE storage management functions and available data transfer protocols
 
- * Storage functions (:ref:`ls_command`, :ref:`mkdir_command`, ...) including creation of storage instances
+ * Storage functions (:ref:`ls_command`, :ref:`mkdir_command`, \.\.\.) including creation of storage instances
    via storage factories
 
  * Support for UNICORE :ref:`workflow submission and management <ucc_workflow>`

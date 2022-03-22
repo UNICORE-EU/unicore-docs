@@ -8,12 +8,12 @@ client for UNICORE.
 
 The UCC offers
 
-* Job submission and management
+* :ref:`Job submission and management <ucc_jobs>`
 
-* Data movement (upload, download, server-to-server copy, etc) using the UNICORE 
+* :ref:`Data movement <ucc_datamanagement>` (upload, download, server-to-server copy, etc) using the UNICORE 
   storage management functions and the available data transfer protocols
 
-* Storage functions (``ls``, ``mkdir``, \.\.\.) including creation of storage instances 
+* Storage functions (:ref:`ls_command`, :ref:`mkdir_command`, \.\.\.) including creation of storage instances 
   via storage factories
 
 * :ref:`UNICORE Workflow service <workflow>` support (see :ref:`workflow-description`)

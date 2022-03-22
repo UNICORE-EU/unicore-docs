@@ -3,7 +3,7 @@
 Guide to XACML security policies
 --------------------------------
 
-.. _XACML: http://www.oasis-open.org/committees/tc_home.php?wg_abbrev=xacml
+.. _XACML: https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=xacml
 
 `XACML`_ authorization policies need not to be modified on a day-to-day basis when 
 running the UNICORE server. The most common tasks as banning or allowing users 
@@ -171,7 +171,7 @@ More details on XACML use in UNICORE/X
 
 To get more detailed information about XACML policies (e.g. to get the list of all 
 available functions etc) please read the `XACML specification 
-<http://www.oasis-open.org/committees/tc_home.php?wg_abbrev=xacml>`_.
+<https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=xacml>`__.
 To get more information on XACML used in UNICORE/X it is good to set the logging level
 of security messages to ``DEBUG``::
 

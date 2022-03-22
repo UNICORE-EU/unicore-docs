@@ -79,7 +79,7 @@ Prerequisites
 
 To run, the Gateway requires Java (JRE headless is sufficient) in
 version 11 or later. We recommend using 
-`OpenJDK <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_.
+`OpenJDK <https://www.oracle.com/java/technologies/downloads>`_.
 
 
 Installation from the Server bundle

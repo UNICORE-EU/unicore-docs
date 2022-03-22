@@ -21,8 +21,7 @@ The Workflow service supports the full range of authentication options
 provided by UNICORE and uses JWT tokens for delegated authentication
 when submitting jobs to the execution sites.
 
-For more information about UNICORE visit
-http://www.unicore.eu.
+For more information about UNICORE visit https://www.unicore.eu.
 
 .. include:: setup.rest
 

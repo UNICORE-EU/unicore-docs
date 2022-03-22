@@ -151,7 +151,7 @@ The clustering config file can be set using a (per-table) property
   
 If this is not set, a default configuration is used.
 
-For clustering, the Hazelcast library is used (https://hazelcast.org/documentation). 
+For clustering, the Hazelcast library is used (https://hazelcast.org/imdg/docs). 
 A basic TCP based configuration is
 
 .. code:: xml

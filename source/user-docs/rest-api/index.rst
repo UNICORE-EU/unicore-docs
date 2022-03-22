@@ -441,7 +441,7 @@ Copying data to another server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 UNICORE supports server-to-server transfers using one of several protocols including the rather 
-efficient `UFTP protocol <https://uftp-docs.readthedocs.io>`_. This is initiated by POSTing to a 
+efficient `UFTP protocol <https://uftp-docs.readthedocs.io/en/latest>`_. This is initiated by POSTing to a 
 storage resource's/transfers path:
 
  BASE/storages/{id}/transfers.

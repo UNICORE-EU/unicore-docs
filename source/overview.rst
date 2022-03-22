@@ -49,7 +49,7 @@ Clients
 Add-ons
 ~~~~~~~
 
-    * `Standalone UFTP suite <https://uftp-docs.readthedocs.io/>`_ for high-performance data transfer 
+    * `Standalone UFTP suite <https://uftp-docs.readthedocs.io/en/latest>`_ for high-performance data transfer 
       (can be used independently of UNICORE)
     * `Unity Identity Management system <https://unity-idm.eu>`_, supports LDAP, OAuth, SAML, 
       federated AAI and a lot more

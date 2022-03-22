@@ -9,7 +9,7 @@ Prerequisites
 To run UNICORE/X, you need Java (OpenJDK, Oracle or IBM).
 We recommend using the latest version of the OpenJDK.
 If not installed on your system, you can download it from
-https://openjdk.java.net/.
+https://openjdk.java.net/install/.
 
 UNICORE/X has been developed and most extensively tested on Linux-like
 systems, but runs on MacOS/X as well.

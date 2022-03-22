@@ -74,7 +74,7 @@ provided in :ref:`use_incarnation-attributes`).
  |Property name                     |Range of values |Description                                                |
  +==================================+================+===========================================================+
  |vo.unicoreAttribute.NAME          |URI             |Value must be a SAML attribute name which will be used     |
- |                                  |                | as a UNICORE internal incarnation attribute NAME.         |
+ |                                  |                |as a UNICORE internal incarnation attribute NAME.          |
  +----------------------------------+----------------+-----------------------------------------------------------+
  |vo.unicoreAttribute.NAME.default  |URI             |Value must be a SAML attribute name which will be used as  |
  |                                  |                |a default for UNICORE internal incarnation attribute NAME. |

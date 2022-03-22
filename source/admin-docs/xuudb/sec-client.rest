@@ -9,7 +9,7 @@ this section as defaults are fine.
 The following table lists all available options. A special note for the *http.\** properties: those 
 are passed to the Apache Commons HTTP Client library. Therefore it is possible to configure all 
 relevant options of the client. The options are listed under this address: 
-http://hc.apache.org/httpclient-3.x/preference-api.html Also see the example below.
+https://hc.apache.org/httpclient-legacy/preference-api.html Also see the example below.
 
 
 .. include:: tables/xuudb-clientProperties.rest

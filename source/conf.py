@@ -40,8 +40,15 @@ extensions = [
     'sphinx.ext.coverage',
     'sphinx.ext.ifconfig',
     'sphinxemoji.sphinxemoji',
+    #'sphinx.ext.autosectionlabel', # don't use it due to duplicated labels
     'm2r2'
 ]
+
+# Make sure the target is unique
+#
+# don't use it diue to duplicated file names,
+# e.g. ucc/manual.rst and gateway/manual.rst
+#autosectionlabel_prefix_document = True
 
 source_suffix = {
     '.rst': 'restructuredtext',

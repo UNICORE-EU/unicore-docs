@@ -639,7 +639,7 @@ UNICORE/X server.
 
 NOTE that the BASE url for workflows is:
 
-https://gateway_url/WORKFLOW_SITENAME/rest/workflows
+``https://gateway_url/WORKFLOW_SITENAME/rest/workflows``
 
 This base *workflows* URL is used to list the workflows available to the user and submit new
 ones.

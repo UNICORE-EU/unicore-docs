@@ -16,7 +16,7 @@ this insecure?**
 
 |:thinking_face:| **How can I enable more detailed logging?**
 
-	|:point_right:| UCC uses `Log4j 2 <http://logging.apache.org/log4j/2.x/manual/configuration.html>`_, 
+	|:point_right:| UCC uses `Log4j 2 <https://logging.apache.org/log4j/2.x/manual/configuration.html>`_, 
 	by default the configuration is done in ``<UCC_HOME>/conf/logging.properties``. You can edit 
 	this file and increase the logging levels, choose to log to a file or to the console, etc.
 

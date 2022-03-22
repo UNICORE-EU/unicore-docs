@@ -6,36 +6,36 @@ User Manual
 Overview
 --------
 
-The UNICORE Commandline client (UCC) is a full-featured client for the 
+The **U**\ NICORE **C**\ ommandline **C**\ lient (UCC) is a full-featured client for the 
 UNICORE middleware. UCC has client commands for all the UNICORE basic 
-services and the UNICORE workflow system.
+services and the :ref:`UNICORE workflow system <workflow>`.
 
 It offers the following functions
 
- * Job submission and management
+ * :ref:`Job submission and management <ucc_jobs>`
 
- * Batch mode job submission and processing with many performance tuning options
+ * :ref:`Batch mode <ucc_batch>` job submission and processing with many performance tuning options
 
- * Data movement (upload, download, server-to-server copy, etc) using the
+ * :ref:`Data movement <ucc_datamanagement>` (upload, download, server-to-server copy, etc) using the
    UNICORE storage management functions and available data transfer protocols
 
- * Storage functions (``ls``, ``mkdir``, ...) including creation of storage instances
+ * Storage functions (:ref:`ls_command`, :ref:`mkdir_command`, ...) including creation of storage instances
    via storage factories
 
- * Support for UNICORE workflow submission and management
+ * Support for UNICORE :ref:`workflow submission and management <ucc_workflow>`
 
- * Support for the UNICORE metadata system
+ * Support for the :ref:`UNICORE metadata <ucc_metadata>` system
  
- * Support for sharing UNICORE resources via ACLs
+ * Support for :ref:`sharing UNICORE resources <ucc_share>` via ACLs
 
  * Information about the available services is provided via the ``system-info`` command
 
- * Various utilities like a *shell* mode, low-level REST API operations and others
+ * Various utilities like a :ref:`shell mode <ucc_shell>`, low-level :ref:`REST API <ucc_jobdescription>` operations and others
 
- * Extensibility through custom commands and the possibility to run scripts written 
-   in the Groovy programming language
+ * Extensibility through custom commands and the possibility to 
+   :ref:`run scripts <ucc_scripting>` written in the Groovy programming language
 
- * Built-in help
+ * :ref:`Built-in help <ucc_help>`
 
 .. note::
 

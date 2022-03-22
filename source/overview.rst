@@ -41,7 +41,7 @@ Security
 Clients
 ~~~~~~~
 
-    * `Commandline client <ucc>`_: Job execution, data transfer, workflows, scripting, batch mode, extensible
+    * :ref:`Commandline client <ucc>`: Job execution, data transfer, workflows, scripting, batch mode, extensible
     * Dedicated `client for the UFTP <https://uftp-docs.readthedocs.io/en/latest/uftp-client/>`_ 
       high performance file transfer 
     * `pyUNICORE <https://github.com/HumanBrainProject/pyunicore/>`_ Python client library

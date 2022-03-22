@@ -131,9 +131,10 @@ the ``protocols`` key::
   UCC will try to use reasonable defaults for any missing parameters.
 
 
-
 General commands
 ~~~~~~~~~~~~~~~~
+
+.. _mkdir_command:
 
 mkdir
 ^^^^^
@@ -191,6 +192,8 @@ Example
 
 Finding data
 ~~~~~~~~~~~~
+
+.. _ls_command:
 
 ls
 ^^

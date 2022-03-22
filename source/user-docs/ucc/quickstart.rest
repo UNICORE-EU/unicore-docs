@@ -6,6 +6,8 @@ Getting started with UCC
 Assuming you have successfully installed UCC, this section
 shows how to get going quickly.
 
+.. _ucc_help:
+
 Getting help
 ~~~~~~~~~~~~
 

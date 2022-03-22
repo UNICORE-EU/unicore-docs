@@ -7,7 +7,7 @@ Prerequisites
 -------------
 
 Apart from the Java SDK, you will need a Git client and Maven3, 
-available at http://maven.apache.org
+available at https://maven.apache.org
 
 Buiding
 -------

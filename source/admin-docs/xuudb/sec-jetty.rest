@@ -7,7 +7,7 @@ UNICORE servers are using an embedded Jetty HTTP server. In most cases the defau
 should be perfectly fine. However, for some sites (e.g. experiencing an extremely high load) 
 HTTP server settings can be fine-tuned with the following parameters.
 
-.. _java_ciphers: http://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SupportedCipherSuites
+.. _java_ciphers: https://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SupportedCipherSuites
 
 .. include:: tables/xuudb-jettyProperties.rest
 

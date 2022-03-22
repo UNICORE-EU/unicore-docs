@@ -1,7 +1,7 @@
 .. _admin-docs:
 
 
-Administrator documentation
+Administrator Documentation
 ===========================
 
 * :ref:`gateway` - an optional server component that

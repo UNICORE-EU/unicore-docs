@@ -21,10 +21,10 @@ Please note that
    all your UNICORE servers.
 
  - to interface with a resource management system like Slurm or SGE,
-   you need to install and configure the `UNICORE TSI server <tsi>`_.
+   you need to install and configure the :ref:`UNICORE TSI server <tsi>`.
 
  - to make your resources easily accessible outside of your firewalls,
-   you should setup and configure a `UNICORE Gateway <gateway>`_.
+   you should setup and configure a :ref:`UNICORE Gateway <gateway>`.
 
 All these configuration options will be explained in the manual below.
 

@@ -286,8 +286,8 @@ The issue tracker is at https://sourceforge.net/p/unicore/issues
  - connections.properties modifications take effect at runtime
  - use log4j logging framework
 
-6.0.0 rc1:
-----------
+6.0.0 rc1
+---------
 
  - fix bugs in parsing security headers
  - accept more credentials in security header
@@ -301,16 +301,16 @@ The issue tracker is at https://sourceforge.net/p/unicore/issues
  - add Maven build
 
 
-6.0.0 beta1:
-------------
+6.0.0 beta1
+-----------
 
  - use latest codebase
  - fix concurrency problems
  - add dynamic registration
  - fix missing "xmls" dir in distribution which led to "500 internal server error"
 
-6.0.0 alpha7:
--------------
+6.0.0 alpha7
+------------
 
  - change default config dir from etc/ to conf/
  - replace hardcoded "/" by File.separator

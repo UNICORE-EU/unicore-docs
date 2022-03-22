@@ -148,7 +148,7 @@ http://static.springsource.org/spring/docs/3.0.0.M3/spring-framework-reference/h
 
 Actions can be also coded using the Groovy language. You can find Groovy documentation
 at Groovy's web page: 
-http://groovy.codehaus.org
+http://groovy-lang.org
 
 
 Creating conditions
@@ -182,7 +182,7 @@ There are the following action types which you can use:
   - ``groovy`` treats action value as a Groovy script. The script is simply invoked and can 
     manipulate the variables.
 
-  - ``groovy-file`` works similarly to the +groovy+ action but the Groovy script is read from 
+  - ``groovy-file`` works similarly to the ``groovy`` action but the Groovy script is read from 
     the file given as the action value.
 
 All actions have access to the same variables as conditions; see :ref:`xnjs-dynamicincarnation-context`

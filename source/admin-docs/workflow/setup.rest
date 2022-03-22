@@ -16,8 +16,8 @@ Prerequisites
 ~~~~~~~~~~~~~
 
  * Java 8 or later
- * An existing UNICORE installation with Gateway, Shared Registry 
-   and one ore more UNICORE/X execution systems.
+ * An existing UNICORE installation with :ref:`gateway`, 
+   :ref:`Shared Registry <registry>` and one ore more :ref:`unicorex` execution systems.
  * (for production use) A server certificate
 
 Updating from previous versions
@@ -73,8 +73,8 @@ new server into your UNICORE installation.
 * :ref:`Registry <registry>`: if the registry is setup to use access control (which is
   the default), you need to allow the Workflow server to register in
   the Registry. The exact procedure depends on how you configured
-  your Registry, please refer to the section `Access
-  control <../registry/index.html#access-control>`__ in the :ref:`Registry manual <registry>`. 
+  your Registry, please refer to the section :ref:`Access
+  control <access-control>` in the :ref:`Registry manual <registry>`. 
   If you're using default certificates and the XUUDB, the required entries can 
   be added as follows:
 

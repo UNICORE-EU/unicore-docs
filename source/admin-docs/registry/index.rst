@@ -101,7 +101,6 @@ The Registry is started and stopped like any other
 
 .. _access-control:
 
-
 Access control
 ~~~~~~~~~~~~~~
 

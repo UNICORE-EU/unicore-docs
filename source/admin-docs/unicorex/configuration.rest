@@ -270,7 +270,7 @@ HTTP proxy, timeout and web server settings
 A number of settings exist that control the the web server and the
 HTTPClient library used for outgoing HTTP(s) calls.
 
-.. _java_ciphers: http://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SupportedCipherSuites
+.. _java_ciphers: https://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SupportedCipherSuites
 
 The HTTP server options are shown in the following table.
 

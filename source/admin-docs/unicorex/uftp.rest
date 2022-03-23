@@ -5,16 +5,18 @@ UFTP setup
 
 UFTP is a high-performance file transfer protocol.  For using UFTP as
 a data staging and file upload/download solution in UNICORE, a
-separate server (uftpd) is required. This is installed on a host with
-direct access to the file system, usually this is a cluster login
-node, but it can also be a separate host.
+separate server (`UFTPD 
+<https://uftp-docs.readthedocs.io/en/latest/admin-docs/uftpd/index.html>`_) is required. 
+This is installed on a host with direct access to the file system, usually this is a cluster 
+login node, but it can also be a separate host.
 
-In a UFTP transfer, one side acts as a client and the other side is
-the uftpd server. UNICORE/X will run the client code via the TSI
-(recommended) or in-process (with lower performance)
+In a `UFTP transfer <https://uftp-docs.readthedocs.io/en/latest/index.html>`_, one side acts 
+as a client and the other side is the uftpd server. UNICORE/X will run the client code via the 
+:ref:`TSI <tsi>` (recommended) or in-process (with lower performance)
 
-For details on how to install the uftpd server please refer to the
-separate `UFTPD manual <https://uftp-docs.readthedocs.io/en/latest/uftpd/index.html>`_, which provides all
+For details on how to install the UFTPD server please refer to the
+separate `UFTPD manual 
+<https://uftp-docs.readthedocs.io/en/latest/admin-docs/uftpd/manual.html>`_, which provides all
 information required to install and configure the UFTPD.
 
 .. note::
@@ -60,7 +62,7 @@ that will then be used in a round-robin fashion, to increase
 performance and scalability.
 
 The configuration is similar to the simple case, but you can
-have multiple "blocks" of servers.
+have multiple *blocks* of servers.
 
 As an example, consider this configuration of two UFTPD servers::
 

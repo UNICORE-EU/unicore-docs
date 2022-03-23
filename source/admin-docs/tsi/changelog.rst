@@ -385,7 +385,7 @@ Version 6.0.1 November 2007
 
 
 Version 4.1.2 Aug 24, 2005
----------------------------
+--------------------------
 
  - added ResourceReservation.pm dummy resource reservation module to the 
    SHARED TSI code. It is called from MainLoop.pm if the NJS  command includes a 

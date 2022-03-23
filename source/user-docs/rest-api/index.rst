@@ -410,7 +410,7 @@ Similarly, to upload a file localfile to a remote file newfile
 
 The second way is to create a UNICORE file transfer by POSTing to the /imports or /exports path, 
 which requires custom clients, e.g. to support `UFTP 
-<https://uftp-docs.readthedocs.io/en/latest/uftp-client/index.html>`_. For 
+<https://uftp-docs.readthedocs.io/en/latest/user-docs/uftp-client/index.html>`_. For 
 this reason, we do not consider this any further here.
 
 

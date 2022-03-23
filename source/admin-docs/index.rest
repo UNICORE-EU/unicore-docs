@@ -34,7 +34,7 @@ Administrator Documentation
   UNICORE/X server which provides the information about available
   services to clients and other services. 
 
-* `UFTPD <https://uftp-docs.readthedocs.io/en/latest/uftpd/index.html#uftpd>`_ - 
+* `UFTPD <https://uftp-docs.readthedocs.io/en/latest/admin-docs/uftpd/>`_ - 
   the UNICORE File Transfer Server for high performance data transfer
 
 

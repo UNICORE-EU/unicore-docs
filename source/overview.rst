@@ -9,6 +9,10 @@ services for building federated systems, making high-performance
 computing and data resources accessible in a seamless and secure way
 for a wide variety of applications in intranets and the internet.
 
+.. image:: _static/unicore-features.png
+   :width: 600
+   :alt: UNICORE Features
+
 
 UNICORE Features
 ----------------

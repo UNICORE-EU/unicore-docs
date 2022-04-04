@@ -128,9 +128,9 @@ username and password that they have on the UNICORE/X system.
 	container.security.rest.authentication.X509.class=eu.unicore.services.rest.security.PAMAuthenticator
 	container.security.rest.authentication.X509.DNTemplate=CN=%s, OU=pam-local-users
 
-The parameter "DNTemplate" is used to define which DN will be assigned to authenticated users,
-where the ``%s`` will be replaced by the user name. In the example above, user *test-user* will have the
-DN "CN=test-user, OU=pam-local-users".
+The parameter ``DNTemplate`` is used to define which DN will be assigned to authenticated users,
+where the ``%s`` will be replaced by the user name. In the example above, user *test-user* will 
+have the DN "*CN=test-user, OU=pam-local-users*".
 
 There is also a PAM attribute source that you can use to automatically
 assign role=*user* as well the Unix login and groups correctly for
@@ -160,6 +160,10 @@ authentication information and signs it with its private key. The
 receiving server can check the signature using the sender's public
 key.
 
+.. image:: ../../_static/unicore-delegation.png
+  :width: 500
+  :alt: UNICORE Delegation
+  
 The lifetime of the tokens issued by the server is 300 seconds by
 default, which can be changed via
 ::

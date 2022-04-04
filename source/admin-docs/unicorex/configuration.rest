@@ -121,12 +121,13 @@ separate sections.
 
 .. include:: tables/containerProperties.rest
 
+
 Integration of UNICORE/X with other parts of a UNICORE infrastructure
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Since UNICORE/X is the central component, it is interfaced to other 
-parts of the UNICORE architecture, i.e. the Gateway and (optionally) 
-a Registry.
+parts of the UNICORE architecture, i.e. the :ref:`gateway` and (optionally) 
+a :ref:`registry`.
 
 Gateway
 ^^^^^^^

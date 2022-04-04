@@ -181,11 +181,12 @@ below for details.
 Available attribute sources
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. _xuudb-attr:
 
 XUUDB
 ^^^^^
 
-The XUUDB is the standard option in UNICORE. It has the following features:
+The :ref:`xuudb` is the standard option in UNICORE. It has the following features:
   
 - Web service interface for querying and administration. It is suitable for serving data for multiple 
   clients. Usually it is deployed to handle attributes for a whole UNICORE site running multiple service
@@ -236,6 +237,8 @@ attribute source.
 
 The SAML attribute source is described in a separate section :ref:`use_vo`.
 
+
+.. _file-attr-source:
 
 File attribute source
 ^^^^^^^^^^^^^^^^^^^^^
@@ -314,6 +317,7 @@ provided. For ``supplementaryGroups`` the default value contains all defined val
 
 You can also define other attributes - those will be used as XACML authorization 
 attributes, with XACML string type.  
+
 
 PAM
 ^^^

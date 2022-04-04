@@ -36,6 +36,11 @@ Administrator Documentation
 
 * `UFTPD <https://uftp-docs.readthedocs.io/en/latest/admin-docs/uftpd/>`_ - 
   the UNICORE File Transfer Server for high performance data transfer
+  
+
+.. image:: _static/unicore-components.png
+  :width: 600
+  :alt: UNICORE Components
 
 
 .. toctree::

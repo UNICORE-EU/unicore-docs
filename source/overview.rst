@@ -9,10 +9,56 @@ services for building federated systems, making high-performance
 computing and data resources accessible in a seamless and secure way
 for a wide variety of applications in intranets and the internet.
 
-.. image:: _static/unicore-features.png
-   :width: 600
-   :alt: UNICORE Features
+UNICORE Architecture
+--------------------
 
+The architecture of UNICORE is three-layered in client layer, service layer and 
+target system layer as shown in the figure below. 
+
+.. image:: _static/unicore-arch.png
+   :width: 600
+   :alt: UNICORE Architecture
+
+
+
+UNICORE Components
+------------------
+
+* :ref:`gateway` - an optional server component that
+  provides a reverse https proxy, allowing you to run several backend
+  servers (:ref:`unicorex`, :ref:`Registery <registry>`, ...) behind a single address.
+  
+* :ref:`unicorex` - the central server component of a typical UNICORE  installation
+  that provides REST APIs for job management and data access  services for a
+  single compute cluster (or just a file system).
+
+* :ref:`tsi` - the Target System Interface (TSI) server is used to 
+  interface to a resource manager such as Slurm and to access files 
+  on the cluster.
+
+* :ref:`workflow` - provides advanced workflow processing
+  capabilities using UNICORE resources.  The Workflow service provides
+  graphs of activities including high-level control constructs
+  (for-each, while, if-then-else, etc), and submits and manages the
+  execution of single UNICORE jobs.
+
+* :ref:`xuudb` - an optional service, that is best
+  suited as a per-site service, providing attributes for multiple
+  UNICORE/X-like services at a site. The XUUDB maps a UNICORE user identity 
+  (which is formally an X.500 distinguished name (DN)) to a set of attributes 
+  which are typically used to provide local account details (uid, gid(s)) and
+  commonly also to provide authorization information, i.e. the
+  user's role.
+
+* `UFTPD <https://uftp-docs.readthedocs.io/en/latest/uftpd/index.html#uftpd>`_ - the UNICORE File 
+  Transfer Server for high performance data transfer
+
+* :ref:`ucc` - a full featured commandline client for UNICORE.
+
+.. image:: _static/unicore-components.png
+  :width: 600
+  :alt: UNICORE Components
+  
 
 UNICORE Features
 ----------------
@@ -58,15 +104,4 @@ Add-ons
       (can be used independently of UNICORE)
     * `Unity Identity Management system <https://unity-idm.eu>`_, supports LDAP, OAuth, SAML, 
       federated AAI and a lot more
-
-
-UNICORE Architecture
---------------------
-
-The architecture of UNICORE is three-layered in client layer, service layer and 
-target system layer as shown in the figure below. 
-
-.. image:: _static/unicore-arch.png
-  :width: 600
-  :alt: UNICORE Architecture
 

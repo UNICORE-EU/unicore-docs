@@ -149,7 +149,7 @@ parser = argparse.ArgumentParser(description='Covert a text table list to the RS
 parser.add_argument('-i', dest='file', required=True, help='input file')
 parser.add_argument('-l', dest='width', type=int, default=100, help='total table\'s width in characters')
 parser.add_argument('-w', dest='widths',
-                    help='Column header widths separated by spaces (in %)')
+                    help='Column header widths separated by spaces')
 parser.add_argument('-t', dest='tab', action='store_true', default=False, help='if set a tabulator used a a separator (default=end of line)')
 parser.add_argument('-f', dest='fixed_widths', action='store_true', default=False,
                     help='set fixed column widths (otherwise they will be calculated dynamically)')
@@ -200,7 +200,7 @@ try:
         if lines[i].strip().startswith(':widths:'):
             widths = lines[i].split(':')[2].strip()
             logger.debug('Read widths from the file: {}'.format(widths.split(' ')))
-            cwidths = [width*int(w)/100-1 for w in widths.split(' ')]
+            cwidths = [int(width*int(w)/100-1) for w in widths.split(' ')]
             cols = len(cwidths)
             i += 1
         else:

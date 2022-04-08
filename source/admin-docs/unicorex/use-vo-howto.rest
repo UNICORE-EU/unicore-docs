@@ -21,16 +21,18 @@ The required steps are:
 	
 #. Add Unity's CA certificate to the UNICORE/X truststore (so SSL connections can be established)
 
-#. Add UNICORE/X's CA certificate to the Unity server's truststore (so SSL connections can be established).
+#. Add UNICORE/X's CA certificate to the Unity server's truststore (so SSL connections can be 
+   established).
 
-#. Add the UNICORE/X server's DN (from its certificate) as a member to the Unity service. You don't have
-   to make it a member of any particular VO (or group). However it must have the *read* permission to 
-   all groups where its users will be placed. In Unity, this corresponds to the "Priviledged Inspector" role
-   (check Unity documentation for details).
+#. Add the UNICORE/X server's DN (from its certificate) as a member to the Unity service. 
+   You don't have to make it a member of any particular VO (or group). However it must have the 
+   **read** permission to all groups where its users will be placed. In Unity, this corresponds 
+   to the "Priviledged Inspector" role (check Unity documentation for details).
 
-#. Check that UNICORE/X can properly authenticate to Unity on the SAML endpoint that is used to query attributes.
-   Generally this will be via the UNICORE/X certificate, if that is not possible, you'll need to setup an additional
-   username identity for the entity created in Step 3, and setup password authentication.
+#. Check that UNICORE/X can properly authenticate to Unity on the SAML endpoint that is used to 
+   query attributes. Generally this will be via the UNICORE/X certificate, if that is not 
+   possible, you'll need to setup an additional username identity for the entity created in Step 
+   3, and setup password authentication.
 
 #. Create a VO (possibly with subgroups). Add users to the group.
    Here we will assume this group is */Math-VO/UUDB/SiteA*. 
@@ -40,9 +42,9 @@ The required steps are:
    Note that if you want to assign the same Xlogin/role to multiple users then you can
    define Unity *group attributes* and set them for the whole */Math-VO/UUDB/SiteA* group.
 
-#. Enable VO attribute source ("SAML PULL") in the UNICORE server. Here we will configure it as the primary
-   source and leave XUUDB to provide local mappings (which can override data fetched from Unity). 
-   You should have the following entries::
+#. Enable VO attribute source (``SAML PULL``) in the UNICORE server. Here we will configure it as 
+   the primary source and leave XUUDB to provide local mappings (which can override data fetched 
+   from Unity). You should have the following entries::
 
 		container.security.attributes.order=SAML-PULL XUUDB
 		container.security.attributes.combiningPolicy=MERGE_LAST_OVERRIDES
@@ -102,15 +104,15 @@ VO attributes.
 Important fact to note here (and in case of PUSH mode too) is how the
 user's group membership is encoded as an XACML attribute.  By default
 it is an attribute of string type (so XACML
-'DataType="http://www.w3.org/2001/XMLSchema#string"') with its name
-('AttributeId') equal to 'urn:SAML:voprofile:group'. The example
+*DataType="http://www.w3.org/2001/XMLSchema#string"*) with its name
+(*AttributeId*) equal to *urn:SAML:voprofile:group*. The example
 policy below uses this attribute.
 
-The following XACML fragment allows for reaching TargetSystemFactory service only for the users which are
-both members of VO ``Example-VO`` and a VO group ``/Math-VO/UUDB/SiteA``. Moreover those users
-also must have a standard UNICORE/X attribute role with a value 'user'. It means that in Unity, UNICORE
-users must have ``urn:unicore:attrType:role`` attribute defined (it is the 
-standard setting) with a value 'user'.
+The following XACML fragment allows for reaching TargetSystemFactory service only for the users 
+which are both members of VO ``Example-VO`` and a VO group ``/Math-VO/UUDB/SiteA``. Moreover those 
+users also must have a standard UNICORE/X attribute role with a value *user*. It means that in 
+Unity, UNICORE users must have ``urn:unicore:attrType:role`` attribute defined (it is the 
+standard setting) with a value *user*.
 ::
 
 	<Rule RuleId="AcceptTSF" Effect="Permit">

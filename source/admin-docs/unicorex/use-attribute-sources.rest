@@ -174,7 +174,7 @@ the *XUUDB* and the *FILE* source::
 	container.security.attributes.FILE.file=...
 	...
  
-Additionally you can mix several combining policies together, see :ref:`chain_attr_source` 
+Additionally you can mix several combining policies together, see :ref:`chain-attr-source` 
 below for details.
 
 
@@ -330,7 +330,7 @@ with the corresponding REST authentication module.
 	container.security.attributes.PAM.class=eu.unicore.services.rest.security.PAMAttributeSource
 
 
-.. _chain_attr_source:
+.. _chain-attr-source:
 
 Chained attribute source
 ^^^^^^^^^^^^^^^^^^^^^^^^

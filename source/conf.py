@@ -118,6 +118,8 @@ pygments_style = 'sphinx'
    
 html_context = {
   "display_github": False, # Add 'Edit on Github' link instead of 'View page source'
-  "last_updated": True,
-  "commit": False,
 }
+
+# If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
+# using the given strftime format.
+html_last_updated_fmt = '%b %d, %Y'

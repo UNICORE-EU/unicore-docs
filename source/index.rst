@@ -59,5 +59,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`search`
 
-
-Last updated: |today|

@@ -5,7 +5,8 @@ Configuration of the Workflow server
 
 This chapter covers configuration options for the Workflow server.
 Since the Workflow server is running in the same underlying 
-environment (**U**\ NICORE **S**\ ervices **E**\ nvironment, **USE**), 
+environment (**U**\ NICORE **S**\ ervices **E**\ nvironment, 
+`USE <https://github.com/UNICORE-EU/use>`_), 
 a lot of the basic configuration options are documented in the 
 :ref:`UNICORE/X manual <unicorex-manual>`.
 
@@ -14,15 +15,15 @@ a lot of the basic configuration options are documented in the
   example settings for all the options listed here.
   
   Depending on how you installed the server, the files are located on
-
-  * ``/etc/unicore/workflow`` (Linux package)
-  * ``<basedir>/workflow/conf`` (standalone installer)
+  
+   * ``/etc/unicore/workflow`` (Linux package)
+   * ``<basedir>/workflow/conf`` (standalone installer)
 
 Workflow processing
 ~~~~~~~~~~~~~~~~~~~
 
 Some details of the workflow engine's behaviour can be configured. 
-All these settings are made in `uas.config`.
+All these settings are made in ``uas.config``.
 
 
 Limits
@@ -33,14 +34,14 @@ workflow, various limits can be set.
 
 * ``workflow.maxActivitiesPerGroup`` limits the total number
   of tasks submitted for a single group (i.e. (sub-)workflow).
-  By default, this limit is 1000, ie. a maximum number of 1000 jobs can
+  By default, this limit is ``1000``, ie. a maximum number of 1000 jobs can
   be created by a single group. Note, that it is not possible to
   limit the total number of jobs for any workflow, it can only be applied
   to individual parts of the workflow (such as loops).
 
 * ``workflow.forEachMaxConcurrentActivities`` limits
   the maximum number of tasks in a for-each group that can be active at 
-  the same time (default: 20).
+  the same time (default: ``20``).
 
 
 Resubmission
@@ -53,7 +54,7 @@ the resubmission,
 
   workflow.resubmitDisable=true
 
-To change the maximum number of resubmissions from the default "3",
+To change the maximum number of resubmissions from the default ``3``,
 ::
 
   workflow.resubmitLimit=3
@@ -68,9 +69,9 @@ but will keep the storage where the files are.
 This can be controlled using two properties:
 
 * ``workflow.cleanupStorage`` remove storage when workflow is 
-  destroyed (default: false)
+  destroyed (default: ``false``)
 * ``workflow.cleanupJobs`` remove jobs when workflow is destroyed 
-  (default: true)
+  (default: ``true``)
 
 
 XNJS settings
@@ -81,9 +82,9 @@ Some settings for modifying the behaviour are available, and
 are usually found in the workflow server's ``container.properties`` file
 
 An important characteristic is the number of threads used by the
-workflow engine for processing.Note, this does not control the number
+workflow engine for processing. Note, this does not control the number
 of concurrent activities etc, since all XNJS processing is
-asynchronous. The default number (4) is usually fine.
+asynchronous. The default number (``4``) is usually fine.
 
 This  properties is set via
 ::

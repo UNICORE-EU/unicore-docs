@@ -75,7 +75,7 @@ Activity elements have the following form:
   }
 
 The `id` element must be UNIQUE within the workflow. There are different types of 
-activity, which are distinguished by the "type" element.
+activity, which are distinguished by the ``type`` element.
 
  * ``START`` denotes an explicit start activity. If no such activity is present, the
    processing engine will try to detect the proper starting activities
@@ -138,7 +138,7 @@ Job activities
 
 Job activities are the basic executable pieces of a workflow. The
 embedded JSON job definition will be sent to an execution site
-(UNICORE/X) for processing.
+(:ref:`unicorex`) for processing.
 ::
 
   {
@@ -241,7 +241,7 @@ A *workflow file* is a named reference to a physical file location, that
 can be generated at at any time during a workflow's lifetime.
 
 Such a reference is an URI of the form ``wf:...`` which you can use in
-a job's ``Imports`` section or in For-Each file sets (see below).
+a job's ``Imports`` section or in *For-Each* file sets (see below).
 
 In a Job you can use them as if they were a normal remote file::
 
@@ -363,26 +363,27 @@ workflow engine offers some pre-defined functions that can be used in
 these expressions.  For example you can use the exit code of a job, or
 check for the existence of a file within these expressions.
 
- * ``eval(expr)`` Evaluates the expression "expr" in Groovy syntax, which must evaluate to a boolean. 
+ * ``eval(expr)`` Evaluates the expression *expr* in Groovy syntax, which must evaluate to a boolean. 
    The expression may contain workflow variables
  
  * ``exitCodeEquals(activityID, value)`` Allows to compare the exit code of the Grid job associated 
-   with the Activity identified by "activityID" to "value"
+   with the Activity identified by *activityID* to *value*
  
  * ``exitCodeNotEquals(activityID, value)`` Allows to check the exit code of the Grid job associated 
-   with the Activity identified by "activityID", and check that it is different from "value"
+   with the Activity identified by *activityID*, and check that it is different from *value*
  
  * ``fileExists(activityID, fileName)`` Checks that the working directory of the Grid job associated with 
-   the given Activity contains a file "fileName" 
+   the given Activity identified by *activityID* contains a file *fileName* 
  
  * ``fileLengthGreaterThanZero(activityID, fileName)`` Checks that the working directory of the Grid job 
-   associated with the given Activity contains the named file, which has a non-zero length
+   associated with the given Activity identified by *activityID* contains the named file, which has a 
+   non-zero length
  
  * ``before(time)`` and ``after(time)`` check whether the current time is before or after the given time
-   (in "yyyy-MM-dd HH:mm" format)
+   (in *yyyy-MM-dd HH:mm* format)
  
  * ``fileContent(activityID, fileName)`` Reads the content of the named file in the working directory of
-   the job associated with the given Activity and returns it as a string.
+   the job associated with the given Activity identified by *activityID* and returns it as a string.
  
 .. _wf_variables:
 
@@ -408,7 +409,7 @@ Currently variables of type ``STRING``, ``INTEGER``, ``FLOAT`` and ``BOOLEAN`` a
 
 Variables can be modified using an activity of type ``MODIFY_VARIABLE``.
 
-For example, to increment the value of the "COUNTER" variable, the following Activity is used
+For example, to increment the value of the *COUNTER* variable, the following Activity is used
 
 .. code:: json
 
@@ -429,7 +430,7 @@ to Java).
 
 The workflow engine will replace variables in job data staging sections and 
 environment definitions, allowing to inject variables into jobs. Examples for this 
-mechanism will be given in the examples section.
+mechanism will be given in the :ref:`Examples` section.
 
 Loop constructs
 ~~~~~~~~~~~~~~~
@@ -669,8 +670,8 @@ Indirection
 
 Sometimes the list of files that should be looped over is not known at workflow design time, 
 but will be computed at runtime. Or, you wish simply to list the files in a file, and not put them 
-all in your workflow description. The `indirection` attribute on a `FileSet` allows to do just that.
-If `indirection` is set to ``true``, the workflow engine will load the given file(s) in the fileset 
+all in your workflow description. The ``indirection`` attribute on a `FileSet` allows to do just that.
+If ``indirection`` is set to ``true``, the workflow engine will load the given file(s) in the fileset 
 at runtime, and read the actual list of files to iterate over from them.
 As an example, you might have a file `filelist.txt` containing a list of UNICORE file URLs::
 
@@ -733,8 +734,8 @@ To process 2000 kBytes of data per iteration:
   }
 
 The chunksize can also be computed at runtime using the expression
-given in the optional `expression` element. In the expression, two
-special variables may be used.  The `TOTAL_NUMBER` variable holds the
+given in the optional ``expression`` element. In the expression, two
+special variables may be used.  The ``TOTAL_NUMBER`` variable holds the
 total number of files iterated over, while the ``TOTAL_SIZE`` variable
 holds the aggregated size of all files in kbytes.  The script must
 return an integer-valued result. The ``type`` element is used to choose
@@ -751,7 +752,7 @@ To choose a larger chunksize if a certain total file size is exceeded:
     "type": "SIZE"
   }
 
-The optional `filename_format` allows to control how the individual
+The optional ``filename_format`` allows to control how the individual
 files (which are staged into the job directory) should be named. By
 default, the index is prepended, i.e. with
 ::
@@ -774,7 +775,7 @@ For example, if you have a set of PDF files, and you want them to be named
 
   "filename_format": "file_{0}.pdf"
 
-which would ignore the name in the "To" field completely.
+which would ignore the name in the ``To`` field completely.
 
 Or, if you prefer to keep the existing name, but append an index to
 the name,
@@ -801,12 +802,12 @@ Examples
 This section collects a few simple example workflows. They 
 are intended to be submitted using :ref:`ucc`.
 
-Simple "diamond" graph
+Simple *diamond* graph
 ^^^^^^^^^^^^^^^^^^^^^^
 
 This example shows how to use transitions for building simple workflow graphs.
-It consists of four "Date" jobs arranged in a diamond shape, i.e. "date2a" and "date2b"
-are executed roughly in parallel. A "Split" activity is inserted to divide the
+It consists of four *Date* jobs arranged in a diamond shape, i.e. *date2a* and *date2b*
+are executed roughly in parallel. A *Split* activity is inserted to divide the
 control flow into two parallel branches.
 
 All *stdout* files are staged out to the workflow storage.
@@ -848,8 +849,8 @@ All *stdout* files are staged out to the workflow storage.
 
 
 
-Conditional execution in an if-else construct
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Conditional execution in an *if-else* construct
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Transitions from one activity to another may be conditional, which allows
 all sorts of *if-else* constructs. Here is a simple example
@@ -884,8 +885,8 @@ Here we use the ``BRANCH`` activity which will only follow the first matching
 transition.
 
 
-While loop example using workflow variables
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*While* loop example using workflow variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The next example shows some uses of workflow variables in a *while* loop.
 The loop variable "C" is copied into the job's environment.
@@ -944,8 +945,8 @@ for example to name files.
       }
   }
 
-For-each loop example
-^^^^^^^^^^^^^^^^^^^^^
+*For-each* loop example
+^^^^^^^^^^^^^^^^^^^^^^^
 
 The next example shows how to use the *for-each* loop to loop over a set of files.
 The jobs will stage-in the current file. Also, the name of the current file is

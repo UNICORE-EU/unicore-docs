@@ -98,7 +98,8 @@ html_title = "UNICORE Docs"
 #}
 
 numfig = True
-
+html_show_sourcelink = False
+html_show_sphinx = False
 
 
 # Add any paths that contain custom static files (such as style sheets) here,

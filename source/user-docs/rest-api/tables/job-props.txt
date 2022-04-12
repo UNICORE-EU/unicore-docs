@@ -1,4 +1,4 @@
-:widths: 30 10 60
+:widths: 25 35 40
 
 Property 	Values 	Description
 status 	UNKNOWN, STAGINGIN, READY, QUEUED, STAGINGOUT, FAILED, SUCCESSFUL 	The status of the job

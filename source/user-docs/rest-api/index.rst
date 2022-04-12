@@ -572,12 +572,12 @@ directory, which is a normal UNICORE storage. Thus all the storage functions abo
 here as well.
 
 In case you do want to upload any data, you can set an additional flag in the job description 
-JSON::
+JSON:
 
 .. code:: json
 
 	{
-	"haveClientStageIn": "true",
+	 "haveClientStageIn": "true",
 	}
 
 In this case, the full job submission sequence is

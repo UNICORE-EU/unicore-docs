@@ -14,6 +14,9 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('.'))
 
+def setup(app):
+   app.add_css_file('css/custom.css')
+
 
 # -- Project information -----------------------------------------------------
 
@@ -112,11 +115,9 @@ html_static_path = ['_static']
 """
 
 pygments_style = 'sphinx'
-
-latex_elements = {
-    'preamble': r'\let\oldmultirow\multirow\def\multirow#1#2{\oldmultirow{#1}{=}}',
-}
-
-def setup(app):
-   app.add_css_file('css/custom.css')
    
+html_context = {
+  "display_github": False, # Add 'Edit on Github' link instead of 'View page source'
+  "last_updated": True,
+  "commit": False,
+}

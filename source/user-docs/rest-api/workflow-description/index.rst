@@ -17,9 +17,12 @@ After presenting all the constructs individually, several complete examples are 
 Overview and simple constructs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The overall workflow document has the following form::
+The overall workflow document has the following form
 
-	{
+.. code:: json
+
+  {
+
 	 "activities" : [],
 
 	 "subworkflows": [],
@@ -30,29 +33,31 @@ The overall workflow document has the following form::
 
 	 "notification" : "optional_notification_url",
 
-	 "tags": ["tag1", "tag2", ... ],
+	 "tags": ["tag1", "tag2", "..." ],
 
-	}
+  }
 
 Two special elements are
 
-- ``notification`` (optional) denotes an URL to where UNICORE Workflow server will send a 
-  ``POST`` notification (authenticated via a JWT token signed by the Workflow server) when the 
-  workflow has finished processing. Notification messages have the following content
-  ::
-  
-	{
-	  "href" : "workflow_url",
-
-	  "group_id": "id of the workflow or sub-workflow",
-
-	  "status": "...",
-
-	  "statusMessage": "..."
-	}
-
 - ``tags`` is an optional list of initial tags, that can later be used to conveniently filter the 
   list of workflows.
+- ``notification`` (optional) denotes an URL to where UNICORE Workflow server will send a 
+  ``POST`` notification (authenticated via a JWT token signed by the Workflow server) when the 
+  workflow has finished processing.
+
+Notification messages sent by the Workflow service have the following content
+
+.. code:: json
+ 
+  {
+    "href" : "workflow_url",
+
+    "group_id": "id of the workflow or sub-workflow",
+
+    "status": "...",
+
+    "statusMessage": "..."
+  }
 
 Both of these are analogous to their conterparts for single jobs in UNICORE.
 
@@ -68,9 +73,7 @@ Activity elements have the following form
 	{
 	 "id" : "unique_id",
 	 "type": "...",
-
-	 ...
-
+         ...
 	}
 
 The id element must be UNIQUE within the workflow. There are different types of activity, which 
@@ -108,25 +111,26 @@ Subworkflows
 The workflow description allows nested sub workflows, which have the same formal structure as 
 the main workflow (without the ``tags``). There is an additional ``type`` element that is used to 
 distinguish the different control structure types.
-::
 
-	{
+.. code:: json
 
-	 "id": "unique_id",
+  {
 
-	 "type": "...",
+    "id": "unique_id",
 
-	 "variables" : [],
+    "type": "...",
 
-	 "activities" : [],
+    "variables" : [],
 
-	 "subworkflows": [],
+    "activities" : [],
 
-	 "transitions": [],
+    "subworkflows": [],
 
-	 "notification" : "optional_notification_url",
+    "transitions": [],
 
-	}
+    "notification" : "optional_notification_url",
+
+  }
 
 
 Job activities
@@ -134,37 +138,38 @@ Job activities
 
 Job activities are the basic executable pieces of a workflow. The embedded JSON job definition 
 will be sent to an execution site (UNICORE/X) for processing.
-::
 
-	{
-	 "id": "unique_id",
+.. code:: json
 
-	 "type" : "job",
+  {
+    "id": "unique_id",
 
-	 "job" : {
+    "type" : "job",
 
-	  ... standard UNICORE job ...
+    "job" : {
 
-	 },
+      "... standard UNICORE job ...": ""
 
-	 "options": { ... },
+    },
 
-	}
+    "options": {  },
+
+  }
 
 The execution site is specified by the optional ``Site name`` element in the job
-::
 
-	{
-	 "id": "unique_id", "type" : "job",
+.. code:: json
 
-	 "job" : {
+    {
+      "id": "unique_id", "type" : "job",
 
-	   "Site name": "DEMO-SITE",
+      "job" : {
 
-		...
-	 },
+        "Site name": "DEMO-SITE",
 
-	}
+      },
+
+  }
 
 .. note::
  There is currently no form of *brokering* in place, it is up to the user to select an execution 

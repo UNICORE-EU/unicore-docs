@@ -9,9 +9,9 @@ graphs of activities including high-level control constructs
 (*for-each*, *while*, *if-then-else*, etc), and submits and manages the
 execution of single UNICORE jobs.
 
-The Workflow service offers a :ref:`REST API <rest-api>` for workflow submission 
-and management and uses an easy-to-understand :ref:`workflow description 
-<workflow-description>` syntax in JSON format.
+The Workflow service offers a :ref:`REST API <rest-api>` for workflow
+submission and management and uses an easy-to-understand
+:ref:`workflow description <workflow-description>` syntax in JSON format.
 
 Thanks to a flexible internal workflow model and execution engine, the
 Workflow service can be in principle extended with custom workflow
@@ -26,7 +26,5 @@ For more information about UNICORE visit https://www.unicore.eu.
 .. include:: setup.rest
 
 .. include:: config.rest
-
-.. include:: workflow-dialect.rest
 
 .. include:: update.rest

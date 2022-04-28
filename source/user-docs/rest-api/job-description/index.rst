@@ -13,7 +13,6 @@ run, arguments and environment settings, any files to stage in from remote serve
 files to stage out. Depending on the client, the JSON may also contain additional instructions 
 that are relevant to that client, so make sure to check the client manuals as well.
 
-This description refers to UNICORE 8.2
 
 Overview
 ~~~~~~~~
@@ -86,7 +85,7 @@ Argument sweeps
 To create a sweep over an Argument setting by replacing the value by a sweep specification. This 
 can be either a simple list:
 
-.. code:: json
+::
 
   "Arguments": [
    { "Values": ["-o 1", "-o 2", "-o 3"] },
@@ -94,7 +93,7 @@ can be either a simple list:
 
 or a range:
 
-.. code:: json
+::
 
   "Arguments": {
    "-o", { "From": "1", "To": "3", "Step" : "1" },
@@ -132,16 +131,14 @@ Parameter sweeps
 
 You can sweep over application parameters by replacing the parameter value
 by a sweep specification. The replacement can be either a simple list:
-
-.. code:: json
+::
 
   "Parameters": {
    "WIDTH": { "Values": ["240", "480", "960"] },
   },  
 
 or a range:
-
-.. code:: json
+::
 
   "Parameters": {
    "WIDTH": { "From": "240", "To": "960", "Step": "240" },
@@ -163,8 +160,7 @@ Jobs without client-controlled stage in
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To tell UNICORE/X that the client does not wish to send any local files, use the flag
-
-.. code:: json
+::
 
  "haveClientStageIn": "false",
 
@@ -237,7 +233,7 @@ Here is an example:
 		  "From": "inline://dummy",
 		  "To":   "uspaceFileName",
 		  "Data": "this is some test data", 
-	},
+	}
 
 The ``From`` URL has to start with ``inline://``, the rest is not important. Make sure to properly 
 escape any special characters.
@@ -257,7 +253,7 @@ To achieve this, replace the ``From`` parameter by list of values, for example:
               "https://gw:8080/DEMO-SITE/rest/core/storages/HOME/files/file3", 
             ],
       "To": "fileName"
-      },
+      }
 
 Note that only a single stage-in can be sweeped over in this way, and that this will not work 
 with files imported from your local client machine.
@@ -306,7 +302,7 @@ To pass username and password to the server, the syntax is as follows
        "From": "ftp://someserver:25/some/file", 
        "To": "input_data",
        "Credentials": { "Username": "myname", "Password": "mypassword" },
-     },
+     }
 
 and similarly for exports.
 
@@ -318,7 +314,7 @@ You may also directly specify an OAuth Bearer token for HTTPS data transfers.
        "From": "https://someserver/some/file", 
        "To": "input_data",
        "Credentials": { "BearerToken": "some_token" },
-     },
+     }
 
 You can leave the token value empty, set to "", if the server already has your token by some 
 other means.
@@ -328,8 +324,7 @@ Redirecting standard input
 
 If you want to have your application or executable read its standard input from a file, you
 can use the following
-
-.. code:: json
+::
 
   "Stdin": "filename",
 
@@ -343,12 +338,14 @@ on the remote system. For example
 
 .. code:: json
 
-  "Resources": {
+  {
+    "Resources": {
 
      "Queue" : "fast",  
      "Runtime": "12h",  
      "Nodes": "8",
 
+    }
   }
 
 UNICORE has the following built-in resource names.
@@ -366,8 +363,7 @@ Specifying a project
 
 If the system you're submitting to requires a project name for accounting purposes, you 
 can specify the account (or project) you want to charge the job to using the ``Project`` tag:
-
-.. code:: json
+::
 
   "Project" : "my_project",
 
@@ -375,8 +371,7 @@ Job tags
 ^^^^^^^^
 
 To set job tags that help you find / filter jobs later, use the ``Tags`` keyword
-
-.. code:: json
+::
 
   "Tags": [ "production", "train1", "my_tag" ],
 
@@ -386,27 +381,31 @@ Specifying a URL for receiving notifications
 
 The UNICORE/X server can send out notifications when the job enters the ``RUNNING`` and/or 
 ``DONE`` state.
-
-.. code:: json
+::
 
   "Notification" : "https://your-service-url",
 
 UNICORE/X will send an authenticated ``HTTPS POST`` message to this URL, with JSON content.
-::
 
+.. code:: json
+
+   {
 	"href" : "https://unicore-url/rest/core/jobs/job-uuid",
 	"status" : "RUNNING",
 	"statusMessage" : ""
+   }
 
 The ``status`` field will be ``RUNNING`` when the user application starts executing, and 
 ``SUCCESSFUL`` / ``FAILED`` when the job has finished.
 
 .. code:: json
 
+   {
 	"href" : "https://unicore-url/rest/core/jobs/job-uuid",
 	"status" : "SUCCESSFUL",
 	"statusMessage" : "",
 	"exitCode" : 0
+   }
 
 Do not expect *realtime* behaviour here, as UNICORE has a certain delay (typically 30 to 60 
 seconds, depending on the server configuration) until *noticing* job status changes on the batch 
@@ -419,8 +418,7 @@ Specifying the job name
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 The job name can be set simply by
-
-.. code:: json
+::
 
   "Name": "Test job",
 
@@ -429,8 +427,7 @@ Specifying the user email for batch system notifications
 
 Some batch systems support sending email upon completion of jobs. To specify
 your email, use
-
-.. code:: json
+::
 
   "User email" : "foo@bar.org",
 

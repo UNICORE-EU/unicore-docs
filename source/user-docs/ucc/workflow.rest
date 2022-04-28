@@ -69,7 +69,7 @@ Workflow description format
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The JSON format used by that the Workflow service can be found here:
-:ref:`wf_dialect`.
+:ref:`workflow-description`.
 
 
 Managing workflow data

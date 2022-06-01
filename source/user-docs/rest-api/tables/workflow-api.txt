@@ -9,3 +9,4 @@ URL 	Method 	Description
 /id/actions/resume 	POST 	Resume the workflow with the given ID, if in state "Held"
 /id/jobs?offset= 	GET 	Get a list of all jobs submitted for this workflow
 /id/files 	GET 	Get a list of the workflow files for this workflow
+/id/files 	PUT 	Modify the list of the workflow files for this workflow

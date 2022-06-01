@@ -22,6 +22,7 @@ The overall workflow document has the following form
 .. code:: json
 
   {
+     "inputs" : {},
 
 	 "activities" : [],
 
@@ -37,8 +38,9 @@ The overall workflow document has the following form
 
   }
 
-Two special elements are
+Three special elements are
 
+- ``inputs`` allows to register external files with the workflow file catalog. See :ref:`datahandling`
 - ``tags`` is an optional list of initial tags, that can later be used to conveniently filter the 
   list of workflows.
 - ``notification`` (optional) denotes an URL to where UNICORE Workflow server will send a 
@@ -63,9 +65,8 @@ Both of these are analogous to their conterparts for single jobs in UNICORE.
 
 In the next sections the elements of the workflow description will be discussed in detail.
 
-
 Activities
-^^^^^^^^^^
+~~~~~~~~~~
 
 Activity elements have the following form
 ::
@@ -106,11 +107,11 @@ are distinguished by the ``type`` element.
 
 
 Subworkflows
-^^^^^^^^^^^^
+~~~~~~~~~~~~
 
 The workflow description allows nested sub workflows, which have the same formal structure as 
-the main workflow (without the ``tags``). There is an additional ``type`` element that is used to 
-distinguish the different control structure types.
+the main workflow (without the ``tags`` and ``inputs``). There is an additional ``type`` element 
+that is used to distinguish the different control structure types.
 
 .. code:: json
 
@@ -226,9 +227,50 @@ choosing between multiple user IDs, you can specify this in the ``job`` element 
 
 where the allowed field names are ``role``, ``uid``, ``group`` and ``supplementaryGroups``.
 
+.. _datahandling:
+
+Data handling
+~~~~~~~~~~~~~
+
+One of the most common tasks is linking the output of one activity to another activity for
+further processing. The UNICORE workflow system supports this by providing a per-workflow
+file catalog, where jobs can reference files with special URIs starting with ``wf:``
+
+Jobs can register outputs with the file catalog using stage-out directives, for example
+::
+
+   Exports: [
+     { "From": "stdout", "To": "wf:step1_stdout" }
+   ]
+
+will register the ``stdout`` file under the name ``wf:step1_stdout``. (note that the file will not be
+copied anywhere).
+
+Later jobs can reference files from the catalog using stage-in directives, for example
+::
+
+   Imports: [
+     { "From": "wf:step1_stdout", "To": "input_file" }
+   ]
+
+The workflow engine will take care of resolving the "wf:..." reference to the actual physical location.
+
+Apart from registration of files in jobs, the user can also "manually" register files using the 
+``inputs`` section of the main workflow.
+::
+
+  "inputs": {
+    "wf:input_data_1": "https://some_storage/somefile.pdf",
+    "wf:input_params": "https://some_storage/parameters.txt"
+  }
+
+
+The Workflow REST API allows you to list (and modify) the file catalog via 
+the ``BASE/{id}/files`` endpoint.
+
 
 Transitions and conditions
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The basic flow of control in a workflow is handled using transition elements. These reference 
 from and to activities or subflows, and may have conditions attached. If no condition is present, 
@@ -261,18 +303,18 @@ code of a job, or check for the existence of a file within these expressions.
 - ``eval(expr)`` Evaluates the expression *expr* in Groovy syntax, which must evaluate to a 
   boolean. The expression may contain workflow variables.
 
-- ``exitCodeEquals(activityID, value)`` Allows to compare the exit code of the Grid job 
+- ``exitCodeEquals(activityID, value)`` Allows to compare the exit code of the UNICORE job 
   associated with the Activity identified by *activityID* to *value*.
 
-- ``exitCodeNotEquals(activityID, value)`` Allows to check the exit code of the Grid job 
+- ``exitCodeNotEquals(activityID, value)`` Allows to check the exit code of the UNICORE job 
   associated with the Activity identified by *activityID*, and check that it is different from 
   *value*.
 
-- ``fileExists(activityID, fileName)`` Checks that the working directory of the Grid job 
+- ``fileExists(activityID, fileName)`` Checks that the working directory of the UNICORE job 
   associated with the given Activity contains a file *fileName*
 
 - ``fileLengthGreaterThanZero(activityID, fileName)`` Checks that the working directory of the 
-  Grid job associated with the given Activity contains the named file, which has a non-zero 
+  UNICORE job associated with the given Activity contains the named file, which has a non-zero 
   length.
 
 - ``before(time)`` and ``after(time)`` check whether the current time is before or after the 
@@ -372,7 +414,7 @@ A *while* loop looks like this
 		 {"from": "job", "to": "mod"}
 	   ]
 
-	   "condition": "eval(C&lt;5)",
+	   "condition": "eval(C>5)",
 
 	}
 
@@ -605,18 +647,44 @@ For example, to choose a larger chunksize if a certain total file size is exceed
 	}
 
 The optional ``filename_format`` allows to control how the individual files (which are staged into 
-the job directory) should be named. By default, the index is prepended, i.e. *inputfile* would 
-be named *1_inputfile* to *N_inputfile* in each chunk. The pattern uses the without extension 
-and extension respectively. For example, if you have a set of PDF files, and you want them to be 
+the job directory) should be named. By default, the index is prepended, i.e. an import statement
+like
+::
+
+  "Imports": [{ "From": "${IT_VALUE}", "To" : "infile.txt" }]
+
+would result in *1_infile.txt* to *N_infile.txt* in each chunk. 
+In the ``filename_format`` pattern you can use the variables "{0}", "{1}" and "{2}", 
+which denote the index, filename without extension and extension respectively. 
+::
+
+  {0} = 1, 2, 3, ...
+  {1} = "infile"
+  {2] = "txt"
+
+For example, if you have a set of PDF files, and you want them to be 
 named "file_1.pdf" to "file_N.pdf", you could use the pattern
 ::
 
   "filename_format": "file_{0}.pdf"
 
-or, if you prefer to keep the existing extensions, but append an index to the name,
+which would ignore the original filename in the "To" field completely.
+Or, if you prefer to keep the existing extensions, but append an index to the name, use
 ::
 
   "filename_format": "{1}{0}.{2}"
+
+which would result in filenames like below:
+::
+
+  inputfile1.txt
+  inputfile2.txt
+  ...
+
+You can also keep the original filenames by setting:
+::
+  
+   "Imports": [{ "From": "${IT_VALUE}", "To" : "${ORIGINAL_FILENAME}"}]
 
 .. _examples:
 
@@ -626,14 +694,54 @@ Examples
 This section collects a few simple example workflows. They are intended to be submitted using 
 :ref:`ucc`.
 
+Simple "two-step" workflow with data dependency
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This example shows how to link output from one task to the input of another task using
+the internal file catalog.
+
+The first task, "step1", registers its ``stdout`` with the file catalog under the name
+``wf:step1_out``, and the second task, "step2", pulls that file in for further processing.
+::
+
+    {
+	  "activities": [
+
+	    {
+	     "id": "step1",
+	     "job": {
+	       "ApplicationName": "Date",
+	       "Exports": [
+	         {"From": "stdout", "To": "wf:step1_out"}
+	       ]
+	     }
+	    },
+
+	    {
+	      "id": "step2",
+	      "job": { 
+	        "Executable": "md5sum", 
+	        "Arguments": ["infile" ],
+	        "Imports": [
+	          { "From": "wf:step1_out", "To": "infile"}
+	        ]  
+	      }
+	    }
+	  
+	  ],
+	  
+	  "transitions": [
+        {"from": "step1", "to": "step2" }
+	  ]
+    }
+    
+
 Simple "diamond" graph
 ^^^^^^^^^^^^^^^^^^^^^^
 
 This example shows how to use transitions for building simple workflow graphs. It consists of 
-four "Date" jobs arranged in a diamond shape, i.e. "date2a" and "date2b" are executed roughly 
-in parallel. A "Split" activity is inserted to divide the control flow into two parallel branches.
-
-All *stdout* files are staged out to the workflow storage.
+four "Date" jobs arranged in a diamond shape, i.e. "date2a" and "date2b" are executed (more 
+or less) simultaneously.
 ::
 
 	{

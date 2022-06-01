@@ -8,6 +8,7 @@ The issue tracker is at https://sourceforge.net/p/unicore/issues
 9.0.0
 -----
  - require Java 11 as minimum
+ - update to Log4j 2.17.1
 
 8.3.0
 -----

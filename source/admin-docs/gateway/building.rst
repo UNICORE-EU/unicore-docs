@@ -6,11 +6,7 @@ Building distribution packages
 Prerequisites
 -------------
 
-You need Java 7 and Apache Maven.
-
-.. note::
-  For packaging, you'll need maven2, while for other 
-  tasks both 2 and 3 should work.
+You need Java 11 and Apache Maven.
 
 
 Buiding Java code
@@ -27,25 +23,6 @@ To skip unit testing
 .. code:: console
 
   $ mvn install -DskipTests
-
-
-Creating documentation
-----------------------
-
-To build the docs:
-
-.. code:: console
-
-  $ mvn site
-
-You can check them by pointing a web browser at 
-``target/site/index.html``
-
-To upload the docs to the unicore-dev documentation server:
-
-.. code:: console
-
-  $ mvn site:deploy
 
 
 Creating distribution packages

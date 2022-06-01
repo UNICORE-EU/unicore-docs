@@ -6,7 +6,7 @@ Building UNICORE/X and Registry
 Prerequisites
 -------------
 
-You need Java 8 or later and Apache Maven.
+You need Java 11 or later and Apache Maven.
 
 
 Building Java code 
@@ -25,38 +25,6 @@ To skip unit testing and save lots of time:
   $ mvn install -DskipTests
 
 
-Creating documentation
-----------------------
-
-For UNICORE/X, do
-
-.. code:: console
-
-  $ cd unicorex-dist
-
-and check that the versions in `pom.xml 
-<https://github.com/UNICORE-EU/unicorex/blob/master/pom.xml>`_ are OK. The manual sources
-are asciidoc txt files in src/doc, some parts are included from
-the general `USE <https://github.com/UNICORE-EU/use>`__ documentation.
-
-To build the docs:
-
-.. code:: console
-
-  $ mvn site
-
-You can check them by pointing a web browser at 
-``target/site/index.html``
-
-To upload the docs to the unicore-dev documentation server:
-
-.. code:: console
-
-  $ mvn site:deploy
-
-For the registry it is the same, only in the ``registry-dist`` folder.
-
-
 Creating distribution packages
 ------------------------------
 
@@ -66,7 +34,7 @@ in tgz, deb and rpm formats
 Do a ``cd unicorex-dist`` or ``cd registry-dist`` for UNICORE/X or
 Registry.
 
-The versions are again defined in the `pom.xml 
+The versions are defined in the `pom.xml 
 <https://github.com/UNICORE-EU/unicorex/blob/master/unicorex-dist/pom.xml>`__ file!
 
 tgz

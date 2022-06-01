@@ -265,6 +265,8 @@ Apart from registration of files in jobs, the user can also "manually" register 
   }
 
 
+For an example workflow, have a look at :ref:`examples_two_step_with_data`.
+
 The Workflow REST API allows you to list (and modify) the file catalog via 
 the ``BASE/{id}/files`` endpoint.
 
@@ -414,15 +416,18 @@ A *while* loop looks like this
 		 {"from": "job", "to": "mod"}
 	   ]
 
-	   "condition": "eval(C>5)",
+	   "condition": "eval(C<5)",
 
 	}
 
 The necessary ingredients are that the loop’s ``body`` modifies the loop variable ("C" in the 
 example), and the exit condition eventually terminates the loop.
 
-Completely analogously, a *repeat-until* loop is constructed, the only syntactic difference is 
-that the subworkflow now has a different type element::
+For a full workflow example, see :ref:`examples_while_loop`.
+
+
+Completely analogously to the WHILE loop, a *repeat-until* loop is constructed, the only
+syntactic difference is that the subworkflow now has a different type element::
 
 	{
 	 "id": "repeat_example",
@@ -694,6 +699,8 @@ Examples
 This section collects a few simple example workflows. They are intended to be submitted using 
 :ref:`ucc`.
 
+.. _examples_two_step_with_data:
+
 Simple "two-step" workflow with data dependency
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -731,7 +738,7 @@ The first task, "step1", registers its ``stdout`` with the file catalog under th
 	  ],
 	  
 	  "transitions": [
-        {"from": "step1", "to": "step2" }
+	    {"from": "step1", "to": "step2" }
 	  ]
     }
     
@@ -812,6 +819,8 @@ constructs. Here is a simple example
 
 Here we use the ``BRANCH`` activity which will only follow the first matching transition.
 
+
+.. _examples_while_loop:
 
 While loop example using workflow variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

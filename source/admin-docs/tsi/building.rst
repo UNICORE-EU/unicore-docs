@@ -9,8 +9,7 @@ Building
 Use the supplied ``Makefile`` to run tests and/or build packages for
 the various supported batch systems.
 
-You will need Java, Maven and Ant to build HTML/PDF
-documentation and RPM/DEB packages.
+You will need Java, Maven and Ant to build RPM/DEB packages.
 
 Packaging
 ---------
@@ -35,28 +34,3 @@ any version of the TSI via the ``Install.sh`` script, run
 
   $ make clean tgz
 
-
-Generating the documentation
-----------------------------
-
-Run
-
-.. code:: console
-
-  $ make doc-generate
-
-to create the HTML and PDF manuals.
-
-.. code:: console
-
-  $ make doc-deploy
-
-to upload to ``unicore-dev`` server
-
-or just
-
-.. code:: console
-
-  $ make doc
-
-to do both.

@@ -176,8 +176,6 @@ Credential and truststore settings
 
 The Gateway credential and truststore is configured using the following properties
 
-.. _Java_cipher_names: https://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SupportedCipherSuites
-
 .. include:: tables/sec-ref-credProperties.rest
     
 
@@ -280,16 +278,18 @@ Main options reference
 HTTP server settings
 ++++++++++++++++++++
 
+.. _Java_cipher_names: https://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SupportedCipherSuites
+
 .. include:: tables/sec-ref-jettyProperties.rest
 
 
 Require end-user certificates
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Using client certificates for end-user authentication are not required
+Using client certificates for end-user authentication are **not required**
 or recommended.  If you still want to require end-users to have a
-certificate, end-user certificates, the Gateway can be configured
-accordingly.  Set the following in ``gateway.properties``::
+certificate, the Gateway can be configured accordingly.
+Set the following in ``gateway.properties``::
 
   gateway.httpServer.requireClientAuthn=true
 

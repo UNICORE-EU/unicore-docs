@@ -1,9 +1,9 @@
 .. _registry:
 
-UNICORE Registry 
-****************
+Registry 
+********
 
-The UNICORE Registry server provides information about available services to clients and other 
+The Registry server provides information about available services to clients and other 
 services. It is a specially configured :ref:`UNICORE/X <unicorex>` server, so please make sure 
 to read the general :ref:`UNICORE/X manual <unicorex-manual>` as well.
 
@@ -18,9 +18,9 @@ Installation
 Prerequisites
 ~~~~~~~~~~~~~ 
 
-To run the Registry, you need the OpenJDK or Oracle Java (JRE or SDK), in version 8 or later.
+To run the Registry, you need the OpenJDK or Oracle Java (headless is enough), in version 11 or later.
 
-UNICORE has been most extensively tested on Linux-like systems, but runs on MacOS/X as well.
+UNICORE servers have been most extensively tested on Linux systems, but run on MacOS/X as well.
 
 Please note that
 
@@ -130,11 +130,8 @@ While users can read registry content without needing to be authenticated,
 servers MUST be authenticated and mapped to role "server" to be able
 to write to the Registry.
 
-Servers using the XML/SOAP interface are authenticated via their X509
-certificate.
-
 To accept servers, the REST interface must be configured for X509
-authentication as well.
+authentication.
 
 As an example the following configuration will achieve this
 ::

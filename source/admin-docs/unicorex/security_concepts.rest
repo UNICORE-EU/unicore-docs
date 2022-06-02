@@ -14,7 +14,7 @@ can be summarised as follows:
 
   - extract authentication information from the HTTP headers, such as
     username/password, OAuth token, a JWT delegation token or even
-    X509 certificate information
+    X509 certificate information.
 
   - authenticate the message using the configured authentication
     handlers.  This procedure will assign a X500 distinguished name to
@@ -32,9 +32,9 @@ can be summarised as follows:
     assertions, etc.
 
   - generate or lookup attributes to be used used for authorisation in
-    the configured attribute sources
+    the configured attribute sources.
   
-  - perform policy check by executing a PDP request
+  - perform policy check by executing a PDP request.
 
 All these steps can be widely configured.
 
@@ -78,7 +78,7 @@ Trust delegation
 ^^^^^^^^^^^^^^^^
 
 Messages can be sent from other servers on behalf of an end user. The
-server will "prove" this by using a JWT token for authentication,
+server will *prove* this by using a JWT token for authentication,
 which contains the target user's identity (X500 name), and which is
 signed by the sending server. The receiving server can check the
 signature with the sender's public key, which will generally be read
@@ -89,7 +89,7 @@ Attributes
 
 UNICORE/X retrieves user attributes using either a local component or
 a remote service.  For example, an XUUDB attribute service can be
-configured.  See ref:`use_aip` for more information.
+configured.  See :ref:`use_aip` for more information.
 
 Policy checks
 ^^^^^^^^^^^^^

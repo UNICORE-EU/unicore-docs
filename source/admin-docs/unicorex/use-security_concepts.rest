@@ -52,9 +52,9 @@ In UNICORE Consignor is the client who directly submitted a request to the UNICO
 Of course each for each request sent directly by end-user the Consignor is equal to User. 
 
 Example of such situation in UNICORE is Unicore/X server downloading a job's input from a remote
-storage, after an end-user Amy submitted a job. 
-In this example Unicore/X is Consignor for the storage, and Amy is Consignor for Unicore/X. 
-For both Unicore/X and storage Amy is the User.
+storage, after an end-user *Amy* submitted a job. 
+In this example Unicore/X is Consignor for the storage, and *Amy* is Consignor for Unicore/X. 
+For both Unicore/X and storage *Amy* is the User.
 
 Trust delegation
 ^^^^^^^^^^^^^^^^

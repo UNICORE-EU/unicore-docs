@@ -89,9 +89,10 @@ Base server settings
 Database settings
 ^^^^^^^^^^^^^^^^^
 
-The XUUDB can be configured to use different database backends. Currently an embedded H2 database 
-and external MySQL are supported. H2 database (the default) requires no additional configuration 
-actions. In any case XUUDB will automatically create the required database tables. 
+The XUUDB can be configured to use different database backends. The embedded H2 database
+and external MySQL and PostgreSQL are supported. H2 database (the default) requires
+no additional configuration actions. In any case XUUDB will automatically create the
+required database tables.
 
 For MySQL you have to properly set up the server and create a database. After installing and 
 starting the MySQL server login to its using MySQL client as administrator and using a commands 
@@ -100,6 +101,17 @@ similar to the below ones, create a database and assign full access to a xuudb u
 
     create database xuudb;
     grant all on xuudb.* to 'xuudbuser'@'127.0.0.1' identified by 'pass';
+
+For PostgreSQL, the commands to create the DB and the required user would be (similar to)::
+
+    sudo -u postgres createuser -P unicore
+    sudo -u postgres createdb -O unicore xuudb
+
+Check that the PostgreSQL server allows for password authentication for the UNICORE user.
+Ensure that in pg_hba.conf you have lines similar to these: ::
+
+    host   all         all         127.0.0.1/32          md5
+    host   all         all         ::1/128               md5
 
 Of course you are free to choose different names for the user, password and database. If XUUDB 
 server is installed on other host then the proper address must be set instead of localhost. 

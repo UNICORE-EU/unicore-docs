@@ -7,9 +7,9 @@
  |Property name    |Type       |Default value \/     |Description                          |
  |                 |           |mandatory            |                                     |
  +=================+===========+=====================+=====================================+
- |xuudb.db.dialect |[h2, mysql]|h2                   |Database SQL dialect. Must match the |
- |                 |           |                     |selected driver, however sometimes   |
- |                 |           |                     |more then one driver can be available|
+ |xuudb.db.dialect |[h2,       |h2                   |Database SQL dialect. Must match the |
+ |                 |mysql,     |                     |selected driver, however sometimes   |
+ |                 |pgsql]     |                     |more then one driver can be available|
  |                 |           |                     |for a dialect.                       |
  +-----------------+-----------+---------------------+-------------------------------------+
  |xuudb.db.driver  |Class      |org.h2.Driver        |Database driver class name. This     |

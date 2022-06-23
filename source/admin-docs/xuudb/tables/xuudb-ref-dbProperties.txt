@@ -6,7 +6,7 @@ Property name	Type	Default value / mandatory	Description
 
 xuudb.db.dialect
 
-[h2, mysql]
+[h2, mysql, pgsql]
 
 h2
 

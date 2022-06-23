@@ -38,7 +38,7 @@ Usage
 
 |:thinking_face:| **Can I use UCC to list the contents of the registry?**
  
-	|:point_right:| Using the ``rest`` command (and the UNIX ``jq`` utility for formatting the output),
+	|:point_right:| Using the ``rest`` command (and optionally the UNIX ``jq`` utility for formatting the output),
 	this is very easy, for example
 
 	.. code:: console

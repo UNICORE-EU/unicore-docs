@@ -22,10 +22,6 @@ for a single compute cluster (or just a file system).
 :doc:`building`
   Creating the UNICORE/X and Registry distribution packages.
 
-:doc:`changelog`
-  The UNICORE/X server changelog.
-
-
     
 .. toctree::
 	:maxdepth: 5
@@ -40,7 +36,5 @@ for a single compute cluster (or just a file system).
 	:maxdepth: 1
 	:hidden:
 
-	changelog
-	
 
 

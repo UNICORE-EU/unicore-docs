@@ -8,19 +8,17 @@ submission and management, data access and data transfer) and the :ref:`Workflow
 (workflow submission and management).
 
 The documentation generally refers to the latest released version. 
-This description was last updated for UNICORE 8.0.4.
-
-Also, have a look at :ref:`rest-api-examples` for some Python example code.
 
 A `Python client library <https://github.com/HumanBrainProject/pyunicore/>`_ 
 is under development on GitHub and can be installed from PyPI via
 ``pip install pyunicore``.
 
+Also, have a look at :ref:`rest-api-examples` for some very basic Python examples.
 
 Basics
 ------
 
-We use JSON rendering throughout, though HTML is available, too (in most cases).
+The REST API supports both the JSON (application/json) and HTML (text/html) content types.
 
 Base URL
 ~~~~~~~~
@@ -60,7 +58,7 @@ header as follows:
 
 Or, to select role *admin* (if you are worthy)
 
-.. code: console
+.. code:: console
 
  $  curl -k -u user:pass -X GET -H "Accept: application/json"  \
         -H "X-UNICORE-User-Preferences: role:admin" BASE
@@ -174,8 +172,8 @@ tag(s).
  BASE/sites/{id}/jobs/?tags="hpc,test"
 
 Last not least you can control which fields you want in the output of a GET request. This is done 
-via another query parameter ``fields`` which works on all lists of resources (jobs, storages, ... 
-but not files) and which allows you to limit results to the named fields.
+via another query parameter ``fields`` which works on all resources (jobs, storages, ...) and
+which allows you to limit results to the named fields.
 ::
 
  BASE/sites/{id}/jobs/2f6836ca-6bf7-4cbc-b8df-627f9c7ba08c?fields=status

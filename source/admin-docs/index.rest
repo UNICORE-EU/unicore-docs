@@ -38,9 +38,12 @@ Administrator Documentation
   the UNICORE File Transfer Server for high performance data transfer
   
 
-.. image:: _static/unicore-components.png
+.. figure:: _static/unicore-components.png
   :width: 600
   :alt: UNICORE Components
+  :align: center
+  
+  UNICORE Components
 
 
 .. toctree::

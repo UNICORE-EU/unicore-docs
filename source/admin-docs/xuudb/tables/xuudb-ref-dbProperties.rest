@@ -1,0 +1,22 @@
+.. table:: XUUDB Server database configuration
+ :width: 100 
+ :widths: 20 20 25 35 
+ :class: tight-table
+
+ +-----------------+------------------+---------------------+---------------------------------+
+ |Property name    |Type              |Default value \/     |Description                      |
+ |                 |                  |mandatory            |                                 |
+ +=================+==================+=====================+=================================+
+ |xuudb.db.dialect |[h2, mysql, pgsql]|h2                   |Database SQL dialect             |
+ +-----------------+------------------+---------------------+---------------------------------+
+ |xuudb.db.driver  |Class extending   |org.h2.Driver        |Database driver class name. This |
+ |                 |java.sql.Driver   |                     |property is optional. If not set.|
+ |                 |                  |                     |a default driver for the chosen  |
+ |                 |                  |                     |database type is used.           |
+ +-----------------+------------------+---------------------+---------------------------------+
+ |xuudb.db.jdbcUrl |string            |\jdbc:h2:data\/xuudb2|Database JDBC URL                |
+ +-----------------+------------------+---------------------+---------------------------------+
+ |xuudb.db.password|string            |empty string         |Database password                |
+ +-----------------+------------------+---------------------+---------------------------------+
+ |xuudb.db.username|string            |sa                   |Database username                |
+ +-----------------+------------------+---------------------+---------------------------------+

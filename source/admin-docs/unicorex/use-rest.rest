@@ -160,9 +160,12 @@ authentication information and signs it with its private key. The
 receiving server can check the signature using the sender's public
 key.
 
-.. image:: ../../_static/unicore-delegation.png
+.. figure:: ../../_static/unicore-delegation.png
   :width: 500
   :alt: UNICORE Delegation
+  :align: center
+  
+  UNICORE Delegation
   
 The lifetime of the tokens issued by the server is 300 seconds by
 default, which can be changed via

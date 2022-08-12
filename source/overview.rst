@@ -15,9 +15,12 @@ UNICORE Architecture
 The architecture of UNICORE is three-layered in client layer, service layer and 
 target system layer as shown in the figure below. 
 
-.. image:: _static/unicore-arch.png
+.. figure:: _static/unicore-arch.png
    :width: 600
    :alt: UNICORE Architecture
+   :align: center
+   
+   UNICORE Architecture
   
 
 UNICORE Features

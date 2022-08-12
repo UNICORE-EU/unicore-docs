@@ -8,9 +8,12 @@ providing :ref:`REST APIs <rest-api>` for job management and data access service
 for a single compute cluster (or just a file system).
 
 
-.. image:: ../../_static/unicorex.png
+.. figure:: ../../_static/unicorex.png
   :width: 500
   :alt: UNICORE/X Server
+  :align: center
+  
+  UNICORE/X Server
 
 
 :doc:`manual`

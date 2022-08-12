@@ -14,9 +14,12 @@ typically used to provide local account details (uid, gid(s)) and
 commonly also to provide authorization information, i.e. the
 user's role.
 
-.. image:: ../../_static/xuudb.png
+.. figure:: ../../_static/xuudb.png
   :width: 500
   :alt: UNICORE XUUDB
+  :align: center
+  
+  UNICORE XUUDB
 
 :doc:`manual`
       User Manual with detailed instructions and examples for using the XUUDB.

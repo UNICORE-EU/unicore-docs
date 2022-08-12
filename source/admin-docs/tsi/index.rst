@@ -18,9 +18,12 @@ from the UNICORE/X server(s). The TSI will make outgoing connections
 accordingly. Operation through an SSH tunnel is possible as well, see
 the :ref:`tsi-manual` for details.
 
-.. image:: ../../_static/tsi.png
+.. figure:: ../../_static/tsi.png
   :width: 500
   :alt: UNICORE TSI
+  :align: center
+  
+  UNICORE TSI
 
 .. topic:: Documentation for TSI
 

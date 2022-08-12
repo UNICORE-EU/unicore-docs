@@ -194,7 +194,7 @@ The execution site is specified by the optional ``Site name`` element in the job
 
 .. code:: json
 
-    {
+  {
       "id": "unique_id", "type" : "job",
 
       "job" : {

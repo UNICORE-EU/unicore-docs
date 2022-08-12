@@ -121,12 +121,12 @@ external database pay attention to enter proper values.
 
 .. include:: tables/xuudb-ref-dbProperties.rest
 
-
-.. csv-table:: XUUDB Server database configuration
- :file: tables/xuudb-ref-dbProperties.csv
- :widths: 20, 15, 25, 40
- :header-rows: 1
- :class: tight-table
+..
+ .. csv-table:: XUUDB Server database configuration
+  :file: tables/xuudb-ref-dbProperties.csv
+  :widths: 20, 15, 25, 40
+  :header-rows: 1
+  :class: tight-table
 
 
 .. include:: sec-jetty.rest

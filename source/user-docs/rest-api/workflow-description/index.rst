@@ -252,7 +252,7 @@ choosing between multiple user IDs, you can specify this in the ``job`` element 
     "User prefences": {
       "uid":   "hpcuser21",
       "group": "hpc",
-  }
+    }
 
  }
  ...

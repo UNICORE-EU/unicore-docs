@@ -4,19 +4,19 @@
 Administrator Documentation
 ===========================
 
-* :ref:`gateway` - an optional server component that
+- :ref:`gateway` - an optional server component that
   provides a reverse https proxy, allowing you to run several backend
   servers (:ref:`unicorex`, :ref:`Registery <registry>`, ...) behind a single   address.
   
-* :ref:`unicorex` - the central server component of a typical UNICORE  installation
+- :ref:`unicorex` - the central server component of a typical UNICORE  installation
   that provides REST APIs for job management and data access  services for a
   single compute cluster (or just a file system).
 
-* :ref:`tsi` - the Target System Interface (TSI) server is used to 
+- :ref:`tsi` - the Target System Interface (TSI) server is used to 
   interface to a resource manager such as Slurm and to access files 
   on the cluster.
   
-* :ref:`xuudb` - an optional service, that is best
+- :ref:`xuudb` - an optional service, that is best
   suited as a per-site service, providing attributes for multiple
   UNICORE/X-like services at a site. The XUUDB maps a UNICORE user identity 
   (which is formally an X.500 distinguished name (DN)) to a set of attributes 
@@ -24,17 +24,17 @@ Administrator Documentation
   commonly also to provide authorization information, i.e. the
   user's role.
 
-* :ref:`workflow` - provides advanced workflow processing
+- :ref:`workflow` - provides advanced workflow processing
   capabilities using UNICORE resources.  The Workflow service provides
   graphs of activities including high-level control constructs
   (for-each, while, if-then-else, etc), and submits and manages the
   execution of single UNICORE jobs.
   
-* :ref:`registry` - the Registry server is a specially configured
+- :ref:`registry` - the Registry server is a specially configured
   UNICORE/X server which provides the information about available
   services to clients and other services. 
 
-* `UFTPD <https://uftp-docs.readthedocs.io/en/latest/admin-docs/uftpd/>`_ - 
+- `UFTPD <https://uftp-docs.readthedocs.io/en/latest/admin-docs/uftpd/>`_ - 
   the UNICORE File Transfer Server for high performance data transfer
   
 

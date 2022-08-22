@@ -4,12 +4,12 @@
 User Documentation
 ==================
 
-* :ref:`ucc` - a full featured commandline client for UNICORE.
-* :ref:`rest-api` - REST-API for job submission and management, 
+- :ref:`ucc` - a full featured commandline client for UNICORE.
+- :ref:`rest-api` - REST-API for job submission and management, 
   data access and transfer, workflow submission and management
 
-  * :ref:`job-description` - the job description format 
-  * :ref:`workflow-description` - the workflow description language 
+  - :ref:`job-description` - the job description format 
+  - :ref:`workflow-description` - the workflow description language 
 
 .. toctree::
 	:maxdepth: 5

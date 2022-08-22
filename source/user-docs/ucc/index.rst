@@ -25,10 +25,6 @@ and much more.
   :doc:`manual`
       User Manual with detailed instructions and examples for using the UNICORE Client.
 
-  :doc:`changelog`
-    The UNICORE Client changelog.
-
-
 .. topic:: Administrator Documentation
 
   :doc:`building`
@@ -48,6 +44,4 @@ and much more.
 .. toctree::
 	:maxdepth: 1
 	:hidden:
-
-	changelog   
 

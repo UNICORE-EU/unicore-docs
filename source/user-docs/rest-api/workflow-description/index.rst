@@ -24,9 +24,9 @@ The overall workflow document has the following form
   {
      "inputs" : {},
 
-	 "activities" : [],
+	 "activities" : {},
 
-	 "subworkflows": [],
+	 "subworkflows": {},
 
 	 "transitions": [],
 
@@ -37,8 +37,42 @@ The overall workflow document has the following form
 	 "tags": ["tag1", "tag2", "..." ],
 
   }
+ 
 
-Three special elements are
+Activities, sub-workflows and transitions make up the workflow logic.
+
+Both activities and sub-workflows are JSON maps (since UNICORE 9.0),
+where the key is the unique identifier of the element. (The 8.x format
+of using JSON arrays with "id" elements is still supported)
+
+Here is a simple example of two tasks that are to be run in a sequence:
+
+.. code:: json
+
+  {
+    "activities": {
+
+      "step1": {
+        "job": {
+          "Executable": "echo step1",
+        }
+      },
+
+      "step2": {
+        "job": {
+          "Executable": "echo step2",
+        }
+      },
+    },
+
+    "transitions": [
+      {"from": "step1", "to": "step2" }
+    ]
+
+  }
+
+
+The remaining elements in the workflow description are:
 
 - ``inputs`` allows to register external files with the workflow file catalog. See :ref:`datahandling`
 - ``tags`` is an optional list of initial tags, that can later be used to conveniently filter the 
@@ -71,17 +105,16 @@ Activities
 Activity elements have the following form
 ::
 
-	{
-	 "id" : "unique_id",
-	 "type": "...",
+	"id": {
+	   "type": "...",
          ...
 	}
 
-The id element must be UNIQUE within the workflow. There are different types of activity, which 
+The id must be UNIQUE within the workflow. There are different types of activity, which
 are distinguished by the ``type`` element.
 
 - ``START`` denotes an explicit start activity. If no such activity is present, the processing 
-  engine will try to detect the proper starting activities
+  engine detect the proper starting activities
 
 - ``JOB`` denotes a executable (job) activity. In this case, the job sub element holds the JSON 
   job definition. (if a ``job`` element is present, you may leave out the ``type``)
@@ -161,7 +194,7 @@ The execution site is specified by the optional ``Site name`` element in the job
 
 .. code:: json
 
-    {
+  {
       "id": "unique_id", "type" : "job",
 
       "job" : {
@@ -219,7 +252,7 @@ choosing between multiple user IDs, you can specify this in the ``job`` element 
     "User prefences": {
       "uid":   "hpcuser21",
       "group": "hpc",
-  }
+    }
 
  }
  ...

@@ -4,7 +4,7 @@ Rest API Examples
 -----------------
 
 The following are some examples that use Python and the Requests package, check out
-https://docs.python-requests.org/en/latest/user/quickstart
+https://requests.readthedocs.io/en/latest/user/quickstart/
 
 The API description is here: :ref:`rest-api`.
 

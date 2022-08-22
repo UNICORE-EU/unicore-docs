@@ -9,9 +9,13 @@ Welcome to UNICORE Documentation
 It makes distributed computing and data resources available in a seamless and secure way 
 in intranets and the internet. 
 
-.. image:: _static/unicore.png
+.. figure:: _static/unicore.png
    :width: 600
-   :alt: UNICORE
+   :alt: Federating HPC with UNICORE
+   :align: center
+   
+   Federating HPC with UNICORE
+   
 
 * :ref:`unicore-overview` gives an overview of the UNICORE features and the UNICORE architecture. 
   
@@ -44,7 +48,10 @@ For more information, please see the :ref:`links` and :ref:`support` page.
 License
 =======
 
-UNICORE is available under the :ref:`BSD 2-Clause License <license>`.
+UNICORE software is available as Open Source under the :ref:`BSD License <license>` 
+while the software repository is hosted on `SourceForge <https://sourceforge.net/projects/unicore/>`_
+and the source code is available on `GitHub <https://github.com/UNICORE-EU>`_. 
+
 
 .. toctree::
 	:caption: LICENSE

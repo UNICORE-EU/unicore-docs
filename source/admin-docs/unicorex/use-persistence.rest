@@ -24,14 +24,14 @@ The UNICORE persistence layer offers three kinds of storage:
 
  - on the filesystem of the UNICORE/X server (using the H2 database engine), which is generally the default;
 
- - on a database server (MySQL, or the "server mode" of H2);
+ - on a database server (MySQL, PostgreSQL, or the "server mode" of H2);
 
  - in-memory, i.e. all info is lost on server restart.
 
 While the first one is very easy to setup, and easy to manage, the second option
 allows advanced setups like clustering/load balancing configurations involving multiple
-UNICORE/X servers sharing the same persistent data. Using MySQL has the additional 
-benefit that the server starts up faster.
+UNICORE/X servers sharing the same persistent data. Using MySQL or PostgreSQL
+has the additional benefit that the server starts up faster.
 
 Data migration from one database system to another is in principle possible, but you
 should select the storage carefully before going into production. In general, if you
@@ -129,53 +129,56 @@ The UNICORE persistence properties would in this case look like this::
 	persistence.user=unicore
 	persistence.password=some_password
 	persistence.host=<your_mysql_host>
-	persistence.port=<your_mysql_port>
+	persistence.port=3306
 	persistence.mysql.tabletype=MyISAM
 
 If you want to store data from multiple UNICORE servers, make sure to
 use a different database for each of them.
 
-Clustering
-~~~~~~~~~~
+The PostgreSQL engine
+^^^^^^^^^^^^^^^^^^^^^
 
-If you intend to run a configuration with multiple UNICORE servers accessing a shared database, you need
-to enable clustering mode by setting a property
+To configure PostgreSQL for UNICORE persistence data, you need to set
 ::
 
- persistence.cluster.enable=true
+ persistence.class=de.fzj.unicore.persist.impl.PGSQLPersist
 
-The clustering config file can be set using a (per-table) property 
-::
+You will need access to a PostgreSQL server, and configure access to
+a database. We recommend a dedicated PostgreSQL user. Here is an example
+for how to setup access.
 
- persistence.cluster.config=<path to config file>
-  
-If this is not set, a default configuration is used.
+ - create a dedicated PostgreSQL user 'unicore' (and set a password)
 
-For clustering, the Hazelcast library is used (https://hazelcast.org/imdg/docs). 
-A basic TCP based configuration is
+   .. code:: console
 
-.. code:: xml
+    $ sudo -u postgres createuser -P unicore
 
-  <hazelcast xmlns="http://www.hazelcast.com/schema/config">
-    <group>
-        <name>persistence-dev</name>
-        <password>dev-pass</password>
-    </group>
-    <network>
-        <port auto-increment="true">5701</port>
-        <join>
-            <multicast enabled="false"/>
-            <tcp-ip enabled="true">
-            <!-- list other members of the cluster -->
-                <member>127.0.0.1</member>
-        <member>some.host.org</member>
-            </tcp-ip>
-        </join>
-    </network>
-  </hazelcast>
+ - create a database for holding UNICORE data
+
+   .. code:: console
+
+    $ sudo -u postgres createdb -O unicore unicore_data
+
+ - Check that the PostgreSQL server allows for password authentication for the UNICORE user.
+   Ensure that in pg_hba.conf you have lines similar to these: ::
+
+    host   all         all         127.0.0.1/32          md5
+    host   all         all         ::1/128               md5
+
+ - If UNICORE server(s) and PostgreSQL servers are on different hosts, adapt hostnames accordingly.
+
+ - You can check that the connection works by invoking the following on the UNICORE/X server: ::
+
+   .. code:: console
+
+     $ psql -h localhost unicore_data unicore
 
 
-The most important part is the "tcp-ip" setting, which must list at
-least one other node in the cluster.  The "group" setting allows to
-run multiple clusters on the same set of hosts, just make sure that
-the group name is the same for all nodes in a cluster.
+The UNICORE persistence properties would in this case look like this::
+
+	persistence.class=de.fzj.unicore.persist.impl.PGSQLPersist
+	persistence.database=unicore_data
+	persistence.user=unicore
+	persistence.password=some_password
+	persistence.host=<your_postgresql_host>
+	persistence.port=5432

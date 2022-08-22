@@ -38,9 +38,12 @@ can be summarised as follows:
 
 All these steps can be widely configured.
 
-.. image:: ../../_static/unicore-auth.png
+.. figure:: ../../_static/unicore-auth.png
   :width: 500
-  :alt: UNICORE authentication and authorization
+  :alt: UNICORE Authentication and Authorization
+  :align: center
+  
+  UNICORE Authentication and Authorization
 
 
 Security concepts

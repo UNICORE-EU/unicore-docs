@@ -25,9 +25,12 @@ server.
 Last not least, the Gateway can be configured as a HTTP load balancer.
 
 
-.. image:: ../../_static/gateway.png
+.. figure:: ../../_static/gateway.png
   :width: 600
   :alt: UNICORE Gateway Server
+  :align: center
+  
+  UNICORE Gateway Server
 
 
 :doc:`manual`

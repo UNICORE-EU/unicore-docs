@@ -27,6 +27,13 @@ service call), an XACML request is generated, which currently includes the follo
 
 .. include:: tables/xacmlProperties.rest
 
+..
+ .. csv-table::
+  :file: tables/xacmlProperties.csv
+  :widths: 35, 15, 15, 35
+  :header-rows: 1
+  :class: tight-table
+
 Note that the above list is valid for the default local XACML 2 PDP. For others
 the attributes might be different - see the respective documentation.  
   

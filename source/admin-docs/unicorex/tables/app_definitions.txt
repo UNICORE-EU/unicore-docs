@@ -1,6 +1,6 @@
 .. table:: JSON IDB Application
  :width: 100
- :widths: 30 15 35 15
+ :widths: 30 15 40 15
 
 Tag	Type	Description	Optional/mandatory
 

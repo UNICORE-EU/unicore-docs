@@ -226,6 +226,7 @@ The base URL of the the REST API for a single UNICORE/X container is
 
 .. include:: tables/rsc-jobs-data.rest
 
+..
  .. csv-table::
   :file: tables/rsc-jobs-data.csv
   :widths: 30, 10, 60

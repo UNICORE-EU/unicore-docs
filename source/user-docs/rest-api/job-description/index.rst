@@ -33,6 +33,13 @@ Here is a table listing the supported elements, these will be described in more 
 
 .. include:: tables/job-desc.rest
 
+..
+ .. csv-table::
+  :file: tables/job-desc.csv
+  :widths: 30, 20, 50
+  :header-rows: 1
+  :class: tight-table
+
 Job elements
 ~~~~~~~~~~~~
 
@@ -351,6 +358,13 @@ on the remote system. For example
 UNICORE has the following built-in resource names.
 
 .. include:: tables/resources.rst
+
+..
+ .. csv-table::
+  :file: tables/resources.csv
+  :widths: 30, 70
+  :header-rows: 1
+  :class: tight-table
 
 Sites may define additional, *custom* resources, which you can use, too.
 

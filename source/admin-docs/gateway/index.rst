@@ -17,7 +17,7 @@ of incoming requests. Connections to the Gateway are made using SSL,
 so the Gateway can be configured to check whether the caller presents
 a certificate issued by a trusted authority. Information about the
 client is forwarded to services behind the Gateway in UNICORE
-proprietary format (as a SOAP or HTTP header).
+proprietary format (as a HTTP header).
 
 The Gateway will forward the IP address of the client to the back-end
 server.
@@ -38,11 +38,6 @@ Last not least, the Gateway can be configured as a HTTP load balancer.
 
 :doc:`building`
   Buiding the distribution packages.
-
-
-
-:doc:`changelog`
-    The Gateway changelog.
     
 
 .. toctree::
@@ -56,7 +51,5 @@ Last not least, the Gateway can be configured as a HTTP load balancer.
 .. toctree::
 	:maxdepth: 1
 	:hidden:
-	
-	changelog
 
 

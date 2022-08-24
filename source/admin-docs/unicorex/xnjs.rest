@@ -242,11 +242,6 @@ The IDB
 
 .. include:: xnjs-tsi-custom.rest
 
-.. include:: xnjs-dynamicincarnation.rest
-
-.. include:: xnjs-dynamicincarnation-context.rest
-
-
 Data staging
 ------------
 

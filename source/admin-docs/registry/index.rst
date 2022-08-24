@@ -18,7 +18,7 @@ Installation
 Prerequisites
 ~~~~~~~~~~~~~ 
 
-To run the Registry, you need the OpenJDK or Oracle Java (headless is enough), in version 11 or later.
+To run the Registry, you need a Java runtime (headless is enough), in version 11 or later.
 
 UNICORE servers have been most extensively tested on Linux systems, but run on MacOS/X as well.
 
@@ -105,22 +105,12 @@ Access control
 ~~~~~~~~~~~~~~
 
 It is absolutely **VITAL** that the Registry only contains trusted
-entries. Therefore access control is enabled by default. It is
-configured in ``CONF/uas.config``
-::
+entries. Therefore the default access control policies (``CONF/xacml2Policies/*.xml``)
+only allow to add entries only for callers with the role *server*.
 
- container.security.accesscontrol.Registry=true
-
-(``true`` by default)
-
-This will check the security policy (``CONF/xacml2Policies/*.xml``) for
-each request.  By default, this policy allows to add entries only for
-callers with the role *server*.
-
-If using an :ref:`XUUDB <xuudb>` or other attribute source, you will need to add the
-certificates / DNs of all servers wishing to publish into the registry
-as having the role *server*.  Please check the 
-:ref:`UNICORE/X documentation <unicorex-manual>` on how to do that.
+You will need to map the certificates / DNs of all servers wishing to publish into the registry
+as having the role *server*.  Please check the :ref:`UNICORE/X documentation <unicorex-manual>`
+on how to do that, using an XUUDB or other attribute source.
 
 
 User / server authentication

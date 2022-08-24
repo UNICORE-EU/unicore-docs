@@ -13,7 +13,7 @@ UNICORE Architecture
 --------------------
 
 The architecture of UNICORE is three-layered in client layer, service layer and 
-target system layer as shown in the figure below. 
+resources layer as shown in the figure below.
 
 .. figure:: _static/unicore-arch.png
    :width: 600
@@ -26,11 +26,8 @@ target system layer as shown in the figure below.
 UNICORE Features
 ----------------
 
-UNICORE has special characteristics that make it unique among middleware systems. 
-UNICORE deals with authentication, user mapping and authorization, 
-and provides a comprehensive set of :ref:`RESTful APIs <rest-api>` for HPC access and workflows.
-The UNICORE design is based on several guiding principles, that serve as key objectives 
-for further enhancements. 
+UNICORE provides a comprehensive set of :ref:`RESTful APIs <rest-api>` for HPC access and workflows,
+dealing with user authentication, user account mapping and authorization in a highly flexible way.
 
 Services and APIs
 ~~~~~~~~~~~~~~~~~

@@ -3,8 +3,8 @@
 Support
 =======
 
-UNICORE says the best way to get help with its software is by using its ticket tracker 
-https://sourceforge.net/p/unicore/issues
+If you encounter any issues with the software, please consider opening a ticket
+on the general issue tracker: https://sourceforge.net/p/unicore/issues
 
 In case you have direct questions related to the UNICORE software, please use the UNICORE 
 support mailing lists at https://sourceforge.net/p/unicore/mailman

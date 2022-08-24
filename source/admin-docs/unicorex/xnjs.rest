@@ -11,6 +11,13 @@ Here's an overview of the most important properties that can be set in this file
 
 .. include:: tables/xnjsMainProperties.rest
 
+..
+ .. csv-table::
+  :file: tables/xnjsMainProperties.csv
+  :widths: 30, 15, 15, 40
+  :header-rows: 1
+  :class: tight-table
+
 Most of the other settings in this file are used to configure the
 internals of the XNJS and should usually be left at their default
 values.
@@ -142,6 +149,13 @@ Some additional parameters exist for tuning the XNJS-TSI communication.
   
 .. include:: tables/communication_params.rest
 
+..
+ .. csv-table:: XNJS-TSI communication settings
+  :file: tables/communication_params.csv
+  :widths: 25, 15, 15, 45
+  :header-rows: 1
+  :class: tight-table
+
 
 Tuning the batch system settings
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -209,6 +223,13 @@ Here is a full list of TSI-related parameters.
 
 .. include:: tables/xnjsTSIProperties.rest
 
+..
+ .. csv-table::
+  :file: tables/xnjsTSIProperties.csv
+  :widths: 25, 15, 20, 40
+  :header-rows: 1
+  :class: tight-table
+
 
 Operation without a UNICORE TSI
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -230,6 +251,13 @@ The embedded mode can be configured with a set of properties which are
 listed in the following table.
 
 .. include:: tables/xnjsLocalTSIProperties.rest
+
+..
+ .. csv-table::
+  :file: tables/xnjsLocalTSIProperties.csv
+  :widths: 25, 15, 20, 40
+  :header-rows: 1
+  :class: tight-table
 
 The IDB
 -------
@@ -285,3 +313,10 @@ The configuration settings related to data staging are summarized in the followi
 table.
 
 .. include:: tables/xnjsStagingProperties.rest
+
+..
+ .. csv-table::
+  :file: tables/xnjsStagingProperties.csv
+  :widths: 25, 15, 20, 40
+  :header-rows: 1
+  :class: tight-table

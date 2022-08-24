@@ -53,6 +53,12 @@ for UFTP.
 
 .. include:: tables/uftpProperties.rest
 
+..
+ .. csv-table::
+  :file: tables/uftpProperties.csv
+  :widths: 25, 20, 15, 40
+  :header-rows: 1
+  :class: tight-table
 
 Configuring multiple UFTPD servers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

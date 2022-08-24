@@ -177,9 +177,23 @@ Credential and truststore settings
 The Gateway credential and truststore is configured using the following properties
 
 .. include:: tables/sec-ref-credProperties.rest
+
+..
+ .. csv-table:: Credential settings
+  :file: tables/sec-ref-credProperties.csv
+  :widths: 25, 10, 15, 50
+  :header-rows: 1
+  :class: tight-table
     
 
 .. include:: tables/sec-ref-trustProperties.rest
+
+..
+ .. csv-table:: Truststore settings
+  :file: tables/sec-ref-trustProperties.csv
+  :widths: 30, 15, 15, 40
+  :header-rows: 1
+  :class: tight-table
 
 
 Scalability settings
@@ -273,6 +287,13 @@ Main options reference
 
 .. include:: tables/gw-ref-main.rest
 
+..
+ .. csv-table::
+  :file: tables/gw-ref-main.csv
+  :widths: 30, 15, 15, 50
+  :header-rows: 1
+  :class: tight-table
+
 .. _ref-jetty:
 
 HTTP server settings
@@ -281,6 +302,13 @@ HTTP server settings
 .. _Java_cipher_names: https://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SupportedCipherSuites
 
 .. include:: tables/sec-ref-jettyProperties.rest
+
+..
+ .. csv-table::
+  :file: tables/sec-ref-jettyProperties.csv
+  :widths: 30, 15, 15, 50
+  :header-rows: 1
+  :class: tight-table
 
 
 Require end-user certificates

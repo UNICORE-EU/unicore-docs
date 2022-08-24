@@ -45,33 +45,34 @@ The attributes in UNICORE can be multi-valued.
 
 There are two special authorization attributes:
 
-- *role* - represents an abstract user's role. The role is used in a default (and rarely changed)
+- ``role`` - represents an abstract user's role. The role is used in a default (and rarely changed)
   UNICORE authorization policy and in authorization process in general. There are several 
   possible values that are recognized by the default authorization policy: 
-- ``user`` - value specifies that the subject is allowed to use the site as a normal user
-  (submit jobs, get results, ...)
-- ``admin`` - value specifies that the subject is an administrator and may do everything. 
-  For example may submit jobs, get results of jobs of other users and even delete them.
-- ``banned`` - user with this role is explicitly banned and all her request are denied.
-- anything else - means that user is not allowed to do anything serious. Some very basic,
-  read-only operations are allowed, but this is a technical detail. 
-  Also access to owned resources is granted, what can happen if the user had the +user+ 
-  role before. Typically it is a good practice to use value ``banned`` in such case.
-- *virtualOrganisations* - represents an abstract federated group of the user. By default it 
+  
+  - ``user`` - value specifies that the subject is allowed to use the site as a normal user
+    (submit jobs, get results, ...)
+  - ``admin`` - value specifies that the subject is an administrator and may do everything. 
+    For example may submit jobs, get results of jobs of other users and even delete them.
+  - ``banned`` - user with this role is explicitly banned and all her request are denied.
+  - anything else - means that user is not allowed to do anything serious. Some very basic,
+    read-only operations are allowed, but this is a technical detail. 
+    Also access to owned resources is granted, what can happen if the user had the ``user`` 
+    role before. Typically it is a good practice to use value ``banned`` in such case.
+- ``virtualOrganisations`` - represents an abstract federated group of the user. By default it 
   is not used directly anywhere in the core stack, but several subsystems (as dynamic attribute 
   sources or jobs accounting) may be configured to use it.   
 
 
 There are several attributes used for incarnation:
 
-- *xlogin* - specifies which local user id (in UNIX called *uid*) should be assigned to 
+- ``xlogin`` - specifies which local user id (in UNIX called *uid*) should be assigned to 
   the UNICORE user.
-- *group* - specifies the primary group (primary gid) that the UNICORE user should get. 
-- *supplementaryGroups* - specifies all supplementary groups the UNICORE user should get.
-- *addDefaultGroups* - boolean attribute saying whether groups assigned to the 
+- ``group`` - specifies the primary group (primary gid) that the UNICORE user should get. 
+- ``supplementaryGroups`` - specifies all supplementary groups the UNICORE user should get.
+- ``addDefaultGroups`` - boolean attribute saying whether groups assigned to the 
   Xlogin (i.e. the local uid of the UNICORE user) in the operating system should be additionally
   added for the UNICORE user.
-- *queue* - define which BSS queues are allowed for the particular user.
+- ``queue`` - define which BSS queues are allowed for the particular user.
 
 
 Finally UNICORE can consume other attributes. All other attributes can be used only for 
@@ -87,12 +88,12 @@ e.g. XUUDB can not define (among others) per-user queues or VOs.
 
 After introducing all the special UNICORE attributes, it must be noted that those attributes are
 used in two ways. Their primary role is to strictly define what is allowed for the
-user. For instance the *Xlogin values specify the valid uids from which the user may
-choose one*. One exception here is *Add operating system groups* - user is always able to 
+user. For instance the ``xlogin`` values specify the valid uids from which the user may
+choose one. One exception here is *Add operating system groups* - user is always able to 
 set this according to his/her preference.
 
 The second way of using those attributes is to specify the default behavior, when the user 
-is not expressing a preference. E.g. a default *Group* (which must be single valued) 
+is not expressing a preference. E.g. a default ``group`` (which must be single valued) 
 specify which group should be used, if user doesn't provide any.
 
 Attribute sources define the permitted values and default values for the attributes in 
@@ -107,8 +108,7 @@ Configuring Attribute Sources
  However everything written here applies also to configuration of the dynamic sources: 
  the only difference is that instead of ``container.security.attributes.`` property prefix,
  the ``container.security.dynamicAttributes.`` should be used.
-
-.. note::
+ 
  The full list of options related to attribute sources is available here: :ref:`use-secref`.
 
 

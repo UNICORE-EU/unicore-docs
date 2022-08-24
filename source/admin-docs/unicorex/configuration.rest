@@ -46,6 +46,13 @@ if they are modified, at least where possible. This is indicated in the
 
 .. include:: tables/config_files.rest
 
+..
+ .. csv-table:: UNICORE/X configuration files
+  :file: tables/config_files.csv
+  :widths: 30, 40, 30
+  :header-rows: 1
+  :class: tight-table
+
 
 
 Settings for the UNICORE/X process (e.g. memory)
@@ -120,6 +127,13 @@ Many of the settings (e.g. security) will be explained in more detail in
 separate sections.
 
 .. include:: tables/containerProperties.rest
+
+..
+ .. csv-table::
+  :file: tables/containerProperties.csv
+  :widths: 20, 20, 20, 40
+  :header-rows: 1
+  :class: tight-table
 
 
 Integration of UNICORE/X with other parts of a UNICORE infrastructure
@@ -196,7 +210,14 @@ Java classes which must be implementing the ``Runnable`` interface. Many
 extensions for UNICORE/X rely on an entry in this property to
 initialise themselves.
 
-.. include:: tables/startup_code.rest 
+.. include:: tables/startup_code.rest
+
+..
+ .. csv-table::
+  :file: tables/startup_code.csv
+  :widths: 25, 40, 35
+  :header-rows: 1
+  :class: tight-table
 
 
 Security
@@ -233,6 +254,13 @@ which are described in the subsequent section.
 
 .. include:: tables/use-ref-security.rest
 
+..
+ .. csv-table::
+  :file: tables/use-ref-security.csv
+  :widths: 30, 15, 10, 45
+  :header-rows: 1
+  :class: tight-table
+
 
 .. _use-authtrust:
 
@@ -248,7 +276,21 @@ directory containing .pem files as truststore.
 
 .. include:: tables/sec-ref-credProperties.rest
 
+..
+ .. csv-table::
+  :file: tables/sec-ref-credProperties.csv
+  :widths: 25, 15, 25, 35
+  :header-rows: 1
+  :class: tight-table
+
 .. include:: tables/sec-ref-trustProperties.rest
+
+..
+ .. csv-table::
+  :file: tables/sec-ref-trustProperties.csv
+  :widths: 25, 20, 15, 40
+  :header-rows: 1
+  :class: tight-table
 
 
 
@@ -277,7 +319,21 @@ The HTTP server options are shown in the following table.
 
 .. include:: tables/sec-ref-jettyProperties.rest
 
+..
+ .. csv-table::
+  :file: tables/sec-ref-jettyProperties.csv
+  :widths: 25, 20, 15, 40
+  :header-rows: 1
+  :class: tight-table
+
 
 The HTTP client options are the following
 
 .. include:: tables/sec-ref-clientProperties.rest
+
+..
+ .. csv-table::
+  :file: tables/sec-ref-clientProperties.csv
+  :widths: 25, 20, 15, 40
+  :header-rows: 1
+  :class: tight-table

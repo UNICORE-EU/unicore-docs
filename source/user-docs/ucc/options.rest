@@ -170,6 +170,13 @@ To configure oidc-agent, UCC supports the following properties
 
 .. include:: tables/oidc-agent-properties.rest
 
+..
+ .. csv-table:: Options for oidc-agent
+  :file: tables/oidc-agent-properties.csv
+  :widths: 20, 20, 20, 40
+  :header-rows: 1
+  :class: tight-table
+
 Your config file would require at least::
 
   authenticationMethod=oidc-agent
@@ -184,6 +191,13 @@ as an OIDC client, you'll need at least an OIDC token endpoint, client
 ID and secret.
 
 .. include:: tables/oidc-server-properties.rest
+
+..
+ .. csv-table:: Options for oidc-server
+  :file: tables/oidc-server-properties.csv
+  :widths: 20, 20, 20, 40
+  :header-rows: 1
+  :class: tight-table
 
 
 ::
@@ -216,6 +230,13 @@ certficates for authentication, set::
 
 .. include:: tables/ucc-credProperties.rest
 
+..
+ .. csv-table:: Credential properties
+  :file: tables/ucc-credProperties.csv
+  :widths: 20, 20, 20, 40
+  :header-rows: 1
+  :class: tight-table
+
 
 Truststore options
 ~~~~~~~~~~~~~~~~~~
@@ -230,6 +251,13 @@ A full list of options related to truststore management is available
 in the following table:
 
 .. include:: tables/ucc-trustProperties.rest
+
+..
+ .. csv-table:: Truststore properties
+  :file: tables/ucc-trustProperties.csv
+  :widths: 20, 20, 15, 45
+  :header-rows: 1
+  :class: tight-table
 
 
 Trust store examples
@@ -270,6 +298,13 @@ The configuration file may also contain low-level options, for example if you ne
 specify connection timeouts, http proxies etc. 
 
 .. include:: tables/ucc-clientProperties.rest
+
+..
+ .. csv-table:: Client options
+  :file: tables/ucc-clientProperties.csv
+  :widths: 20, 20, 15, 45
+  :header-rows: 1
+  :class: tight-table
 
 
 Other options

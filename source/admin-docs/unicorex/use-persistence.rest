@@ -60,6 +60,13 @@ file, and the properties will be used.
 
 .. include:: tables/persistence-properties.rest
 
+..
+ .. csv-table::
+  :file: tables/persistence-properties.csv
+  :widths: 25, 20, 15, 40
+  :header-rows: 1
+  :class: tight-table
+
 Caching
 ^^^^^^^
   

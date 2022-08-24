@@ -11,6 +11,13 @@ HTTP server settings can be fine-tuned with the following parameters.
 
 .. include:: tables/xuudb-jettyProperties.rest
 
+..
+ .. csv-table::
+  :file: tables/xuudb-jettyProperties.csv
+  :widths: 30, 15, 15, 40
+  :header-rows: 1
+  :class: tight-table
+
 .. topic:: Example
 
 

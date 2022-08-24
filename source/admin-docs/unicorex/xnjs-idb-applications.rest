@@ -25,6 +25,13 @@ be documented in detail below.
 
 .. include:: tables/app_definitions.rest
 
+..
+ .. csv-table:: JSON IDB Application
+  :file: tables/app_definitions.csv
+  :widths: 30, 15, 40, 15
+  :header-rows: 1
+  :class: tight-table
+
 Here is an example:
 
 .. code:: 

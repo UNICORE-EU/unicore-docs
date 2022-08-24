@@ -61,6 +61,13 @@ for the main configuration file (usually ``vo.config``).
 
 .. include:: tables/use-ref-voProperties.rest
 
+..
+ .. csv-table::
+  :file: tables/use-ref-voProperties.csv
+  :widths: 30, 15, 15, 40
+  :header-rows: 1
+  :class: tight-table
+
 The following table shows options, which are used to define mappings of SAML attributes to 
 UNICORE incarnation attributes (the available names of UNICORE incarnation attributes are 
 provided in :ref:`use_incarnation-attributes`).

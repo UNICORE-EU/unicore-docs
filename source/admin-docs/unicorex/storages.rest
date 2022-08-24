@@ -43,6 +43,13 @@ Each enabled storage is configured using a set of properties.
 
 .. include:: tables/shared-smsProperties.rest
 
+..
+ .. csv-table::
+  :file: tables/shared-smsProperties.csv
+  :widths: 20, 20, 20, 40
+  :header-rows: 1
+  :class: tight-table
+
 
 
 For example to define a storage for accessing the user's ``HOME`` and some shared path
@@ -95,6 +102,13 @@ For example, to allows users access their home directory on the target system,
 you need to add a storage. This is done using configuration entries in uas.config.
 
 .. include:: tables/tss-smsProperties.rest
+
+..
+ .. csv-table::
+  :file: tables/tss-smsProperties.csv
+  :widths: 20, 20, 20, 40
+  :header-rows: 1
+  :class: tight-table
 
 Here, "N" stands for an identifier (e.g. 1,2, 3, ...) to distinguish the storages. For example, 
 to configure three storages (Home, one named ``TEMP`` pointing to ``/tmp`` and the other named ``DEISA_HOME`` 
@@ -150,6 +164,13 @@ The basic property controls which storage types are supported
 Each supported storage type is configured using a set of properties
 
 .. include:: tables/smf-smsProperties.rest
+
+..
+ .. csv-table::
+  :file: tables/smf-smsProperties.csv
+  :widths: 20, 20, 20, 40
+  :header-rows: 1
+  :class: tight-table
 
 For example
 ::

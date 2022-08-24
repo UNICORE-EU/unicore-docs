@@ -158,6 +158,13 @@ which are described in the subsequent section.
 
 .. include:: tables/use-ref-security.rest
 
+..
+ .. csv-table::
+  :file: tables/use-ref-security.csv
+  :widths: 30, 15, 10, 45
+  :header-rows: 1
+  :class: tight-table
+
 
 .. _use-authtrust:
 
@@ -165,3 +172,10 @@ Truststore settings
 +++++++++++++++++++
 
 .. include:: tables/sec-authtrustcfg.txt
+
+..
+ .. csv-table::
+  :file: tables/sec-authtrustcfg.csv
+  :widths: 25, 20, 15, 40
+  :header-rows: 1
+  :class: tight-table

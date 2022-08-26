@@ -1,3 +1,7 @@
 build/*
 *.bak
 .project
+.pydevproject
+source/tools/lib
+source/tools/tools
+*~

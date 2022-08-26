@@ -1,7 +1,7 @@
 Property name,Type, Default value \/ mandatory,Description
-xuudb.db.dialect, "[h2, mysql, pgsql]", h2, Database SQL dialect
-xuudb.db.driver, Class extending java.sql.Driver, org.h2.Driver, "Database driver class name. This property is optional. 
-If not set. a default driver for the chosen database type is used."
-xuudb.db.jdbcUrl, string, \jdbc:h2:data/xuudb2, Database JDBC URL
-xuudb.db.password, string, empty string, Database password
-xuudb.db.username, string, sa, Database username
+"xuudb.db.charset","string","utf8","(MySQL) Charset to use for XUUDB tables."
+"xuudb.db.dialect","[h2, mysql, pgsql]","h2","Database SQL dialect. Must match the selected driver, however sometimes more then one driver can be available for a dialect."
+"xuudb.db.driver","Class extending java.sql.Driver","org.h2.Driver","Database driver class name. This property is optional - if not set, then a default driver for the chosen database type is used."
+"xuudb.db.jdbcUrl","string","\jdbc:h2:data/xuudb2","Database JDBC URL."
+"xuudb.db.password","string","*empty string*","Database password."
+"xuudb.db.username","string","sa","Database username."

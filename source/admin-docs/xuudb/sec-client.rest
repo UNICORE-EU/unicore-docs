@@ -11,11 +11,7 @@ are passed to the Apache Commons HTTP Client library. Therefore it is possible t
 relevant options of the client. The options are listed under this address: 
 https://hc.apache.org/httpclient-legacy/preference-api.html Also see the example below.
 
-
-.. include:: tables/xuudb-clientProperties.rest
-
-..
- .. csv-table::
+.. csv-table::
   :file: tables/xuudb-clientProperties.csv
   :widths: 20, 15, 15, 50
   :header-rows: 1

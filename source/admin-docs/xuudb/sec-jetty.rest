@@ -9,12 +9,9 @@ HTTP server settings can be fine-tuned with the following parameters.
 
 .. _java_ciphers: https://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SupportedCipherSuites
 
-.. include:: tables/xuudb-jettyProperties.rest
-
-..
- .. csv-table::
+.. csv-table::
   :file: tables/xuudb-jettyProperties.csv
-  :widths: 30, 15, 15, 40
+  :widths: 20, 15, 15, 50
   :header-rows: 1
   :class: tight-table
 

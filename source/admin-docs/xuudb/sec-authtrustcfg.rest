@@ -42,10 +42,7 @@ properties.
 
 In all cases trust stores can be (and by default are) configured to be automatically refreshed.
 
-.. include:: tables/xuudb-trustProperties.rest
-
-..
- .. csv-table::
+.. csv-table::
   :file: tables/xuudb-trustProperties.csv
   :widths: 20, 15, 15, 50
   :header-rows: 1
@@ -118,10 +115,7 @@ credential formats require additional settings. For instance if using *der* form
 mandatory as you need two DER files: one with certificate and one with the key (and the latter can 
 not be guessed).
 
-.. include:: tables/xuudb-credProperties.rest
-
-..
- .. csv-table::
+.. csv-table::
   :file: tables/xuudb-credProperties.csv
   :widths: 20, 15, 15, 50
   :header-rows: 1

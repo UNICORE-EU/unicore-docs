@@ -84,10 +84,7 @@ In case if you plan to use dynamic mappings, also the dynamic mapping rules need
 Base server settings
 ^^^^^^^^^^^^^^^^^^^^
 
-.. include:: tables/xuudb-ref-main.rest
-
-..
- .. csv-table::
+.. csv-table::
   :file: tables/xuudb-ref-main.csv
   :widths: 20, 15, 25, 40
   :header-rows: 1
@@ -127,10 +124,8 @@ server is installed on other host then the proper address must be set instead of
 Use the following properties to configure database connection from the XUUDB server. In case of 
 external database pay attention to enter proper values.  
 
-.. include:: tables/xuudb-ref-dbProperties.rest
 
-..
- .. csv-table:: XUUDB Server database configuration
+.. csv-table:: XUUDB Server database configuration
   :file: tables/xuudb-ref-dbProperties.csv
   :widths: 20, 15, 25, 40
   :header-rows: 1

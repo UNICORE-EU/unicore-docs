@@ -201,7 +201,7 @@ The :ref:`xuudb` is the standard option in UNICORE. It has the following feature
 
 - Multiple xlogins per DN, where the user can select one
    
-- Entries are grouped using the so-called **G**\ rid **c**\ omponent **ID** (GCID). This makes it 
+- Entries are grouped using the so-called **G**\ rid **C**\ omponent **ID** (GCID). This makes it 
   easy to assign users different attributes when accessing different UNICORE/X servers.
     
 Full XUUDB documentation is available from :ref:`XUUDB Manual <xuudb-manual>`.
@@ -288,7 +288,7 @@ canonical representation of the argument. In *regexp* mode the key is considered
 a Java regular expression and the argument is matched with it.  When constructing 
 regular expressions a special care must be taken to construct the regular expression 
 from the canonical representation of the DN. The canonical representation is defined 
-`here <http://download.oracle.com/javase/6/docs/api/javax/security/auth/x500/X500Principal.html#getName(java.lang.String)`.
+`here <http://download.oracle.com/javase/6/docs/api/javax/security/auth/x500/X500Principal.html#getName(java.lang.String)>`_ 
 (but you don't have to perform the two last upper/lower case operations).
 In 90% of all cases (no multiple attributes in one RDN, no special characters, no 
 uncommon attributes) it just means that you should remove extra spaces between RDNs.  

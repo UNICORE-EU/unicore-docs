@@ -8,6 +8,7 @@
   <property name="jproperties-version" value="1.1.2"/>
 
   <!-- Component versions -->
+  <property name="gateway-version" value="1.8.0"/>
   <property name="xuudb-version" value="2.7.0"/>
 
   <target name="prepare"
@@ -27,11 +28,29 @@
       </classpath>
     </taskdef>
   </target>
+
+  <target name="update-gateway" depends="prepare"
+          description="Updates the Gateway config properties tables">
+    <echo>... Gateway version ${gateway-version}</echo>
+    
+    <mvn:resolve>
+      <remoterepo id="unicore-public" url="https://unicore-dev.zam.kfa-juelich.de/maven"/> 
+      <dependencies>
+	<dependency coords="eu.unicore:jproperties-conf:${jproperties-version}"/>
+	<dependency coords="eu.unicore:gateway:${gateway-version}"/>
+      </dependencies>
+      <files dir="lib" layout="{artifactId}-{version}.{extension}"/> 
+    </mvn:resolve>
+
+    <property name="component" value="gateway"/>
+    <property name="doc-properties-file" value="gateway-documentation.properties"/>
+    <antcall target="generate-csv"/>
+  </target>  
  
   <target name="update-xuudb" depends="prepare"
           description="Updates the XUUDB config properties tables">
     <echo>... XUUDB version ${xuudb-version}</echo>
-
+    
     <mvn:resolve>
       <remoterepo id="unicore-public" url="https://unicore-dev.zam.kfa-juelich.de/maven"/> 
       <dependencies>
@@ -41,11 +60,19 @@
       <files dir="lib" layout="{artifactId}-{version}.{extension}"/> 
     </mvn:resolve>
 
-    <property file="xuudb-documentation.properties"/>
+    <property name="component" value="xuudb"/>
+    <property name="doc-properties-file" value="xuudb-documentation.properties"/>
+    <antcall target="generate-csv"/>
+  </target>  
+
+  <target name="generate-csv" depends="prepare"
+          description="Updates config properties tables for one component">
+
+    <property file="${doc-properties-file}"/>
 
     <propertyselector property="toGenerate"
 		      delimiter="|"
-		      match="generate.xuudb.*"
+		      match="generate.${component}.*"
 		      casesensitive="false" />
 
     <for list="${toGenerate}" param="genvar" delimiter="|">
@@ -53,7 +80,7 @@
 	<echo message="Generating from: ${@{genvar}}" />
 	<java fork="true"
 	      classname="eu.unicore.util.configuration.CSVFormatter">
-	  <arg line="../admin-docs/xuudb/tables/ ${@{genvar}}"/>
+	  <arg line="../admin-docs/${component}/tables/ ${@{genvar}}"/>
 	  <classpath>
 	    <fileset dir="lib">
 	      <include name="*.jar"/>
@@ -67,7 +94,7 @@
 
   <target name="update"
           description="Updates all config properties tables"
-	  depends="update-xuudb">
+	  depends="update-xuudb,update-gateway">
   </target>
   
   <target name="clean" 

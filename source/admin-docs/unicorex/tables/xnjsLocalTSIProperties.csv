@@ -1,0 +1,5 @@
+Property name,Type, Default value \/ mandatory,Description
+"XNJS.localtsi.jobLimit","integer number","0","Maximum number of concurrent jobs, if set to a value >0. Default is no limit."
+"XNJS.localtsi.shell","string","/bin/bash","Default UNIX shell to use (if shell is used)."
+"XNJS.localtsi.useShell","[true, false]","true","Should a UNIX shell be used to execute jobs."
+"XNJS.localtsi.workerThreads","integer >= 1","4","Number of worker threads used to execute jobs."

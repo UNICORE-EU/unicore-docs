@@ -51,10 +51,7 @@ If you want to run the client code in the UNICORE/X process, set
 The following table shows all the available configuration options
 for UFTP.
 
-.. include:: tables/uftpProperties.rest
-
-..
- .. csv-table::
+.. csv-table::
   :file: tables/uftpProperties.csv
   :widths: 25, 20, 15, 40
   :header-rows: 1

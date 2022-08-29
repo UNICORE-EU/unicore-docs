@@ -15,17 +15,11 @@ https://www.unicore.eu.
 
 .. include:: configuration.rest
 
-.. .. include:: use-configuration.rest
-
 .. include:: features.rest
 
 .. include:: admin.rest
 
-.. .. include:: use-admin.rest
-
 .. include:: security_concepts.rest
-
-.. .. include:: use-security_concepts.rest
 
 .. include:: use-rest.rest
   
@@ -48,7 +42,5 @@ https://www.unicore.eu.
 .. include:: use-authorization.rest
   
 .. include:: use-policies.rest
-
-.. include:: xtreemfs.rest
 
 .. include:: cloudstorage.rest

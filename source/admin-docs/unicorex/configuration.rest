@@ -44,15 +44,48 @@ UNICORE/X watches some configuration files for changes, and tries to reconfigure
 if they are modified, at least where possible. This is indicated in the
 "dynamically reloaded" column.
 
-.. include:: tables/config_files.rest
+.. table:: UNICORE/X configuration files
+ :width: 100 
+ :widths: 30 40 30 
+ :class: tight-table
 
-..
- .. csv-table:: UNICORE/X configuration files
-  :file: tables/config_files.csv
-  :widths: 30, 40, 30
-  :header-rows: 1
-  :class: tight-table
-
+ +----------------------+--------------------------------------+--------------------------+
+ |config file           |usage                                 |dynamically reloaded      |
+ +======================+======================================+==========================+
+ |startup.properties    |Java process settings (e.g. memory),  |no                        |
+ |                      |lib\/log\/conf directories            |                          |
+ +----------------------+--------------------------------------+--------------------------+
+ |logging.properties    |Logging levels, logfiles and their    |yes                       |
+ |                      |properties                            |                          |
+ +----------------------+--------------------------------------+--------------------------+
+ |uas.config            |Main server config file. Defines      |no                        |
+ |                      |features, storages, AuthN\/AuthZ,     |                          |
+ |                      |AIPs\/PDPs                            |                          |
+ +----------------------+--------------------------------------+--------------------------+
+ |container.properties  |Server address, SSL settings, Web     |no                        |
+ |                      |server settings                       |                          |
+ +----------------------+--------------------------------------+--------------------------+
+ |xnjs.properties       |Backend properties for the UNICORE TSI|no                        |
+ +----------------------+--------------------------------------+--------------------------+
+ |simpleidb             |Backend, installed applications,      |yes                       |
+ |                      |resources                             |                          |
+ +----------------------+--------------------------------------+--------------------------+
+ |simpleuudb            |Maps user DNs to local attributes     |yes                       |
+ |                      |(optional)                            |                          |
+ +----------------------+--------------------------------------+--------------------------+
+ |rest-users.txt        |Usernames\/passwords for REST         |yes                       |
+ |                      |authentication (optional)             |                          |
+ +----------------------+--------------------------------------+--------------------------+
+ |xacml2Policies\/\*.xml|Access control policy for securing the|yes, via xacml2.config (do|
+ |                      |web services                          |touch xacml2.config to    |
+ |                      |                                      |trigger)                  |
+ +----------------------+--------------------------------------+--------------------------+
+ |xacml2.config         |Configure the XACML2 access control   |yes                       |
+ |                      |component                             |                          |
+ +----------------------+--------------------------------------+--------------------------+
+ |vo.config             |Configure the use of Unity as an      |no                        |
+ |                      |attribute source (optional)           |                          |
+ +----------------------+--------------------------------------+--------------------------+
 
 
 Settings for the UNICORE/X process (e.g. memory)
@@ -126,10 +159,7 @@ UNICORE/X server. These can be set in ``uas.config`` or ``container.properties``
 Many of the settings (e.g. security) will be explained in more detail in
 separate sections.
 
-.. include:: tables/containerProperties.rest
-
-..
- .. csv-table::
+.. csv-table::
   :file: tables/containerProperties.csv
   :widths: 20, 20, 20, 40
   :header-rows: 1
@@ -200,26 +230,6 @@ as well as described in :ref:`use-authtrust`.
   :ref:`gateway-manual`.
 
 
-Startup code
-~~~~~~~~~~~~
-
-In order to provide a flexible initialization process for UNICORE/X,
-there is a set of properties named ``container.onstartup.*``. The
-value(s) of this property consists of a whitespace separated list of
-Java classes which must be implementing the ``Runnable`` interface. Many
-extensions for UNICORE/X rely on an entry in this property to
-initialise themselves.
-
-.. include:: tables/startup_code.rest
-
-..
- .. csv-table::
-  :file: tables/startup_code.csv
-  :widths: 25, 40, 35
-  :header-rows: 1
-  :class: tight-table
-
-
 Security
 ~~~~~~~~
   
@@ -252,10 +262,7 @@ General security options
 This table presents all security related options, except credential and truststore settings
 which are described in the subsequent section.
 
-.. include:: tables/use-ref-security.rest
-
-..
- .. csv-table::
+.. csv-table::
   :file: tables/use-ref-security.csv
   :widths: 30, 15, 10, 45
   :header-rows: 1
@@ -274,19 +281,13 @@ which incoming SSL connections are accepted.
 We recommend using a credential in ``PKCS12`` or ``.pem`` format, and a
 directory containing .pem files as truststore.
 
-.. include:: tables/sec-ref-credProperties.rest
-
-..
- .. csv-table::
+.. csv-table::
   :file: tables/sec-ref-credProperties.csv
   :widths: 25, 15, 25, 35
   :header-rows: 1
   :class: tight-table
 
-.. include:: tables/sec-ref-trustProperties.rest
-
-..
- .. csv-table::
+.. csv-table::
   :file: tables/sec-ref-trustProperties.csv
   :widths: 25, 20, 15, 40
   :header-rows: 1
@@ -317,10 +318,7 @@ HTTPClient library used for outgoing HTTP(s) calls.
 
 The HTTP server options are shown in the following table.
 
-.. include:: tables/sec-ref-jettyProperties.rest
-
-..
- .. csv-table::
+.. csv-table::
   :file: tables/sec-ref-jettyProperties.csv
   :widths: 25, 20, 15, 40
   :header-rows: 1
@@ -329,10 +327,7 @@ The HTTP server options are shown in the following table.
 
 The HTTP client options are the following
 
-.. include:: tables/sec-ref-clientProperties.rest
-
-..
- .. csv-table::
+.. csv-table::
   :file: tables/sec-ref-clientProperties.csv
   :widths: 25, 20, 15, 40
   :header-rows: 1

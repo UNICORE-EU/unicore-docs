@@ -23,14 +23,50 @@ or in separate files (one application per file).
 Here is a quick overview of the available elements, which will
 be documented in detail below.
 
-.. include:: tables/app_definitions.rest
+.. table:: JSON IDB Application
+ :width: 100 
+ :widths: 30 15 40 15 
+ :class: tight-table
 
-..
- .. csv-table:: JSON IDB Application
-  :file: tables/app_definitions.csv
-  :widths: 30, 15, 40, 15
-  :header-rows: 1
-  :class: tight-table
+ +---------------------+--------------+---------------------------------------+-------------+
+ |Tag                  |Type          |Description                            |Optional\/   |
+ |                     |              |                                       |mandatory    |
+ +=====================+==============+=======================================+=============+
+ |Name                 |String        |Application name                       |Mandatory    |
+ +---------------------+--------------+---------------------------------------+-------------+
+ |Version              |String        |Application version                    |Mandatory    |
+ +---------------------+--------------+---------------------------------------+-------------+
+ |Description          |String        |Application description                |Optional     |
+ +---------------------+--------------+---------------------------------------+-------------+
+ |Executable           |String        |Executable                             |Mandatory    |
+ +---------------------+--------------+---------------------------------------+-------------+
+ |Arguments            |List of       |Command line arguments                 |Optional     |
+ |                     |strings       |                                       |             |
+ +---------------------+--------------+---------------------------------------+-------------+
+ |Environment          |Map of strings|Environment values                     |Optional     |
+ +---------------------+--------------+---------------------------------------+-------------+
+ |PreCommand           |String        |Pre\-processing executed on the login  |Optional     |
+ |                     |              |node                                   |             |
+ +---------------------+--------------+---------------------------------------+-------------+
+ |PostCommand          |String        |Post\-processing executed on the login |Optional     |
+ |                     |              |node                                   |             |
+ +---------------------+--------------+---------------------------------------+-------------+
+ |Prologue             |String        |Pre\-processing in the batch script    |Optional     |
+ +---------------------+--------------+---------------------------------------+-------------+
+ |Epiloge              |String        |Post\-processing in the batch script   |Optional     |
+ +---------------------+--------------+---------------------------------------+-------------+
+ |Parameters           |Map           |Metadata for application arguments \/  |Optional     |
+ |                     |              |parameters                             |             |
+ +---------------------+--------------+---------------------------------------+-------------+
+ |Resources            |Map           |Application\-specific resource requests|Optional     |
+ +---------------------+--------------+---------------------------------------+-------------+
+ |RunOnLoginNode       |"true"\/      |Run job on login node                  |Optional,    |
+ |                     |"false"       |                                       |default=false|
+ +---------------------+--------------+---------------------------------------+-------------+
+ |IgnoreNonZeroExitCode|"true"\/      |Don't fail the job if app exits with   |Optional,    |
+ |                     |"false"       |non\-zero exit code                    |default=true |
+ +---------------------+--------------+---------------------------------------+-------------+
+
 
 Here is an example:
 

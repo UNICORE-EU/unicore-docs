@@ -8,6 +8,7 @@
   <property name="jproperties-version" value="1.1.2"/>
 
   <!-- Component versions -->
+  <property name="unicorex-version" value="9.0.0"/>
   <property name="gateway-version" value="1.8.0"/>
   <property name="xuudb-version" value="2.7.0"/>
 
@@ -28,6 +29,27 @@
       </classpath>
     </taskdef>
   </target>
+
+  <target name="update-unicorex" depends="prepare"
+          description="Updates the UNICORE/X config properties tables">
+    <echo>... UNICORE/X version ${unicorex-version}</echo>
+    
+    <mvn:resolve>
+      <remoterepo id="unicore-public" url="https://unicore-dev.zam.kfa-juelich.de/maven"/> 
+      <dependencies>
+	<dependency coords="eu.unicore:jproperties-conf:${jproperties-version}"/>
+	<dependency groupId="eu.unicore"
+		    artifactId="unicorex-distribution"
+		    version="${unicorex-version}"
+		    type="pom"/>
+      </dependencies>
+      <files dir="lib" layout="{artifactId}-{version}.{extension}"/> 
+    </mvn:resolve>
+
+    <property name="component" value="unicorex"/>
+    <property name="doc-properties-file" value="unicorex-documentation.properties"/>
+    <antcall target="generate-csv"/>
+  </target>  
 
   <target name="update-gateway" depends="prepare"
           description="Updates the Gateway config properties tables">

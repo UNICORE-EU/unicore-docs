@@ -9,10 +9,7 @@ file named ``xnjs.properties``. It is included from the main config file.
 
 Here's an overview of the most important properties that can be set in this file.
 
-.. include:: tables/xnjsMainProperties.rest
-
-..
- .. csv-table::
+.. csv-table::
   :file: tables/xnjsMainProperties.csv
   :widths: 30, 15, 15, 40
   :header-rows: 1
@@ -146,15 +143,24 @@ Communication parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Some additional parameters exist for tuning the XNJS-TSI communication.
-  
-.. include:: tables/communication_params.rest
 
-..
- .. csv-table:: XNJS-TSI communication settings
-  :file: tables/communication_params.csv
-  :widths: 25, 15, 15, 45
-  :header-rows: 1
-  :class: tight-table
+.. table:: XNJS-TSI communication settings
+ :width: 100 
+ :widths: 25 15 15 45 
+ :class: tight-table
+
+ +---------------------+--------+-------------+-------------------------------------+
+ |Property name        |Range of|Default value|Description                          |
+ |                     |values  |             |                                     |
+ +=====================+========+=============+=====================================+
+ |CLASSICTSI.BUFFERSIZE|integer |1000000      |Buffersize for filetransfers in bytes|
+ +---------------------+--------+-------------+-------------------------------------+
+ |CLASSICTSI.socket.   |integer |300000       |Socket timeout in milliseconds       |
+ |timeout              |        |             |                                     |
+ +---------------------+--------+-------------+-------------------------------------+
+ |CLASSICTSI.socket.   |integer |10000        |Connection timeout in milliseconds   |
+ |connect.timeout      |        |             |                                     |
+ +---------------------+--------+-------------+-------------------------------------+
 
 
 Tuning the batch system settings
@@ -221,10 +227,7 @@ TSI configuration parameter reference
 
 Here is a full list of TSI-related parameters.
 
-.. include:: tables/xnjsTSIProperties.rest
-
-..
- .. csv-table::
+.. csv-table::
   :file: tables/xnjsTSIProperties.csv
   :widths: 25, 15, 20, 40
   :header-rows: 1
@@ -250,10 +253,7 @@ Embedded mode is enabled in xnjs.properties file  by setting
 The embedded mode can be configured with a set of properties which are
 listed in the following table.
 
-.. include:: tables/xnjsLocalTSIProperties.rest
-
-..
- .. csv-table::
+.. csv-table::
   :file: tables/xnjsLocalTSIProperties.csv
   :widths: 25, 15, 20, 40
   :header-rows: 1
@@ -312,10 +312,7 @@ Configuration reference
 The configuration settings related to data staging are summarized in the following 
 table.
 
-.. include:: tables/xnjsStagingProperties.rest
-
-..
- .. csv-table::
+.. csv-table::
   :file: tables/xnjsStagingProperties.csv
   :widths: 25, 15, 20, 40
   :header-rows: 1

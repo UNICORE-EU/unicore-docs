@@ -59,10 +59,7 @@ Main VO configuration file
 The following sections provide complete reference of available options
 for the main configuration file (usually ``vo.config``).
 
-.. include:: tables/use-ref-voProperties.rest
-
-..
- .. csv-table::
+.. csv-table::
   :file: tables/use-ref-voProperties.csv
   :widths: 30, 15, 15, 40
   :header-rows: 1

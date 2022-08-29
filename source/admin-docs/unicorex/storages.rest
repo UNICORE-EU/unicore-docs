@@ -41,10 +41,7 @@ The basic property controls which storages are enabled
 
 Each enabled storage is configured using a set of properties. 
 
-.. include:: tables/shared-smsProperties.rest
-
-..
- .. csv-table::
+.. csv-table::
   :file: tables/shared-smsProperties.csv
   :widths: 20, 20, 20, 40
   :header-rows: 1
@@ -101,10 +98,7 @@ By default, NO storages are created.
 For example, to allows users access their home directory on the target system, 
 you need to add a storage. This is done using configuration entries in uas.config.
 
-.. include:: tables/tss-smsProperties.rest
-
-..
- .. csv-table::
+.. csv-table::
   :file: tables/tss-smsProperties.csv
   :widths: 20, 20, 20, 40
   :header-rows: 1
@@ -163,10 +157,7 @@ The basic property controls which storage types are supported
 
 Each supported storage type is configured using a set of properties
 
-.. include:: tables/smf-smsProperties.rest
-
-..
- .. csv-table::
+.. csv-table::
   :file: tables/smf-smsProperties.csv
   :widths: 20, 20, 20, 40
   :header-rows: 1
@@ -237,6 +228,3 @@ For example
 
   coreServices.sms.jobDirectories.type=CUSTOM
   coreServices.sms.jobDirectories.class=your.custom.SMSImpl
-
-
-

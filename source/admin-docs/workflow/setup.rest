@@ -15,7 +15,7 @@ such details.
 Prerequisites
 ~~~~~~~~~~~~~
 
- * Java 8 or later
+ * Java 11 or later
  * An existing UNICORE installation with :ref:`gateway`, 
    :ref:`Shared Registry <registry>` and one ore more :ref:`unicorex` execution systems.
  * (for production use) A server certificate

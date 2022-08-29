@@ -11,6 +11,7 @@
   <property name="unicorex-version" value="9.0.0"/>
   <property name="gateway-version" value="1.8.0"/>
   <property name="xuudb-version" value="2.7.0"/>
+  <property name="workflow-version" value="3.4.0"/>
 
   <target name="prepare"
           description="Downloads required tools if not present">
@@ -87,6 +88,25 @@
     <antcall target="generate-csv"/>
   </target>  
 
+  
+  <target name="update-workflow" depends="prepare"
+          description="Updates the Workflow config properties tables">
+    <echo>... Workflow version ${workflow-version}</echo>
+    
+    <mvn:resolve>
+      <remoterepo id="unicore-public" url="https://unicore-dev.zam.kfa-juelich.de/maven"/> 
+      <dependencies>
+	<dependency coords="eu.unicore:jproperties-conf:${jproperties-version}"/>
+	<dependency coords="eu.unicore.workflow:workflowservice:${workflow-version}"/>
+      </dependencies>
+      <files dir="lib" layout="{artifactId}-{version}.{extension}"/> 
+    </mvn:resolve>
+
+    <property name="component" value="workflow"/>
+    <property name="doc-properties-file" value="workflow-documentation.properties"/>
+    <antcall target="generate-csv"/>
+  </target>  
+
   <target name="generate-csv" depends="prepare"
           description="Updates config properties tables for one component">
 
@@ -116,9 +136,9 @@
 
   <target name="update"
           description="Updates all config properties tables"
-	  depends="update-xuudb,update-gateway">
+	  depends="update-xuudb,update-gateway,update-unicorex,update-workflow">
   </target>
-  
+
   <target name="clean" 
           description="Cleans up">
     <delete quiet="true" includeemptydirs="true">

@@ -178,14 +178,14 @@ The Gateway credential and truststore is configured using the following properti
 
 .. csv-table:: Credential settings
   :file: tables/sec-ref-credProperties.csv
-  :widths: 25, 10, 15, 50
+  :widths: 25, 15, 15, 45
   :header-rows: 1
   :class: tight-table
     
 
 .. csv-table:: Truststore settings
   :file: tables/sec-ref-trustProperties.csv
-  :widths: 30, 15, 15, 40
+  :widths: 25, 15, 15, 45
   :header-rows: 1
   :class: tight-table
 

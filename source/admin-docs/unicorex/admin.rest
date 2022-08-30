@@ -45,7 +45,7 @@ related to the client and the current job.
 
 .. table::
  :width: 100
- :widths: 30 70
+ :widths: auto
  :class: tight-table
 
  +-------------------+----------------------------------+
@@ -86,7 +86,7 @@ Here is a table of the various logger categories:
 
 .. table::
  :width: 100
- :class: tight-table
+ :class: auto
 
  +------------------------------------+--------------------------+ 
  | Log category                       | Description              |

@@ -8,34 +8,34 @@ Links
 	:target: https://sourceforge.net/projects/unicore/
 	:align: middle 
 	
-.. _SourceForge: https://sourceforge.net/projects/unicore/
+.. _UNICORE at SourceForge: https://sourceforge.net/projects/unicore/
 
 .. |youtube-logo|  image:: _static/youtube-logo.png 
 	:height: 20px
 	:target: https://www.youtube.com/channel/UCKgNmuu1kjzUn4Uav-cZONw
 	:align: middle
 
-.. _YouTube: https://www.youtube.com/channel/UCKgNmuu1kjzUn4Uav-cZONw
+.. _UNICORE at YouTube: https://www.youtube.com/channel/UCKgNmuu1kjzUn4Uav-cZONw
 
 .. |twitter-logo|  image:: _static/twitter-logo.png
 	:height: 20px
 	:target: https://twitter.com/UNICORE_EU
 	:align: middle
 
-.. _Twitter: https://twitter.com/UNICORE_EU
+.. _UNICORE at Twitter: https://twitter.com/UNICORE_EU
 
 .. table::
  :width: 100
  :widths: 30 70
  :class: noborder-tight-table
 
- +----------------+-------------------------+
- | |sf-logo|      | UNICORE at SourceForge_ |
- +----------------+-------------------------+
- | |youtube-logo| | UNICORE at YouTube_     |
- +----------------+-------------------------+
- | |twitter-logo| | UNICORE at Twitter_     |
- +----------------+-------------------------+
+ +----------------+---------------------------+
+ | |sf-logo|      | `UNICORE at SourceForge`_ |
+ +----------------+---------------------------+
+ | |youtube-logo| | `UNICORE at YouTube`_     |
+ +----------------+---------------------------+
+ | |twitter-logo| | `UNICORE at Twitter`_     |
+ +----------------+---------------------------+
  
  
 

@@ -96,7 +96,7 @@ must first create one.
 By default, NO storages are created.
 
 For example, to allows users access their home directory on the target system, 
-you need to add a storage. This is done using configuration entries in uas.config.
+you need to add a storage. This is done using configuration entries in ``uas.config``.
 
 .. csv-table::
   :file: tables/tss-smsProperties.csv

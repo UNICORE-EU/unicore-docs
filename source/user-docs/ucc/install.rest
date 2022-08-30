@@ -6,12 +6,12 @@ Installation and configuration
 Prerequisites
 ~~~~~~~~~~~~~  
 
-To run UCC, you need a Java runtime version 8 or later (OpenJDK preferred).
+To run UCC, you need a Java runtime version 11 or later (OpenJDK preferred).
 
 Download
 ~~~~~~~~
 
-You can get the latest version from the SourceForge 
+You can get the latest version from SourceForge 
 `UNICORE download page <https://sourceforge.net/projects/unicore/files/Clients/Commandline%20Client>`_.
 
 Installation and configuration

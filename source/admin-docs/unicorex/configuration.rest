@@ -214,6 +214,11 @@ using the ``container.security.trustedAssertionIssuers`` property. This
 configures a truststore containing the certificates of all trusted
 Unity servers (NOT the CA certificates).
 
+.. figure:: ../../_static/unicore-unity.png
+  :width: 300
+  :alt: Unity Authentication
+  :align: center
+  
 For example, to configure a directory containing the trusted certificates
 in PEM format::
 

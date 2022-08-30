@@ -11,6 +11,8 @@
   <property name="unicorex-version" value="9.0.0"/>
   <property name="gateway-version" value="1.8.0"/>
   <property name="xuudb-version" value="2.7.0"/>
+  <property name="workflow-version" value="3.4.0"/>
+  <property name="ucc-version" value="9.0.0"/>
 
   <target name="prepare"
           description="Downloads required tools if not present">
@@ -48,6 +50,8 @@
 
     <property name="component" value="unicorex"/>
     <property name="doc-properties-file" value="unicorex-documentation.properties"/>
+    <property name="output-dir" value="../admin-docs/unicorex/tables"/>
+    
     <antcall target="generate-csv"/>
   </target>  
 
@@ -66,6 +70,8 @@
 
     <property name="component" value="gateway"/>
     <property name="doc-properties-file" value="gateway-documentation.properties"/>
+    <property name="output-dir" value="../admin-docs/gateway/tables"/>
+
     <antcall target="generate-csv"/>
   </target>  
  
@@ -84,9 +90,55 @@
 
     <property name="component" value="xuudb"/>
     <property name="doc-properties-file" value="xuudb-documentation.properties"/>
+    <property name="output-dir" value="../admin-docs/xuudb/tables"/>
+    
     <antcall target="generate-csv"/>
   </target>  
 
+  
+  <target name="update-workflow" depends="prepare"
+          description="Updates the Workflow config properties tables">
+    <echo>... Workflow version ${workflow-version}</echo>
+    
+    <mvn:resolve>
+      <remoterepo id="unicore-public" url="https://unicore-dev.zam.kfa-juelich.de/maven"/> 
+      <dependencies>
+	<dependency coords="eu.unicore:jproperties-conf:${jproperties-version}"/>
+	<dependency coords="eu.unicore.workflow:workflowservice:${workflow-version}"/>
+      </dependencies>
+      <files dir="lib" layout="{artifactId}-{version}.{extension}"/> 
+    </mvn:resolve>
+
+    <property name="component" value="workflow"/>
+    <property name="doc-properties-file" value="workflow-documentation.properties"/>
+    <property name="output-dir" value="../admin-docs/workflow/tables"/>
+
+    <antcall target="generate-csv"/>
+  </target>  
+
+  <target name="update-ucc" depends="prepare"
+          description="Updates the UCC config properties tables">
+    <echo>... UCC version ${ucc-version}</echo>
+    
+    <mvn:resolve>
+      <remoterepo id="unicore-public" url="https://unicore-dev.zam.kfa-juelich.de/maven"/> 
+      <dependencies>
+	<dependency coords="eu.unicore:jproperties-conf:${jproperties-version}"/>
+	<dependency groupId="de.fzj.unicore"
+		    artifactId="ucc-distribution"
+		    version="${ucc-version}"
+		    type="pom"/>
+      </dependencies>
+      <files dir="lib" layout="{artifactId}-{version}.{extension}"/> 
+    </mvn:resolve>
+    
+    <property name="component" value="ucc"/>
+    <property name="doc-properties-file" value="ucc-documentation.properties"/>
+    <property name="output-dir" value="../user-docs/ucc/tables"/>
+    
+    <antcall target="generate-csv"/>
+  </target>  
+  
   <target name="generate-csv" depends="prepare"
           description="Updates config properties tables for one component">
 
@@ -102,7 +154,7 @@
 	<echo message="Generating from: ${@{genvar}}" />
 	<java fork="true"
 	      classname="eu.unicore.util.configuration.CSVFormatter">
-	  <arg line="../admin-docs/${component}/tables/ ${@{genvar}}"/>
+	  <arg line="${output-dir} ${@{genvar}}"/>
 	  <classpath>
 	    <fileset dir="lib">
 	      <include name="*.jar"/>
@@ -116,9 +168,9 @@
 
   <target name="update"
           description="Updates all config properties tables"
-	  depends="update-xuudb,update-gateway">
+	  depends="update-xuudb,update-gateway,update-unicorex,update-workflow">
   </target>
-  
+
   <target name="clean" 
           description="Cleans up">
     <delete quiet="true" includeemptydirs="true">

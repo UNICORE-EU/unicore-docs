@@ -1,0 +1,13 @@
+Property name,Type, Default value \/ mandatory,Description
+"workflow.additionalSettings","filesystem path","","Optional file containing additional settings (e.g. XNJS.* settings) only used for the workflow service."
+"workflow.cleanupJobs","[true, false]","true","Whether to remove child jobs when the workflow is destroyed."
+"workflow.cleanupStorage","[true, false]","false","Whether to cleanup the workflow storage when the workflow is destroyed."
+"workflow.fastPollingInterval","integer >= 1","20","Interval in seconds for (slow) polling of job states."
+"workflow.forEachConcurrentActivities","integer >= 1","100","Default maximum number of concurrent for-each iterations (user can increase this)."
+"workflow.forEachMaxConcurrentActivities","integer >= 1","200","Hard limit on the number of concurrent for-each iterations."
+"workflow.internalMode","[true, false]","false","Internal mode: Workflow service only uses services deployed in the same UNICORE/X instance."
+"workflow.maxActivitiesPerGroup","integer >= 1","1000","Maximum number of workflow activities per activity group."
+"workflow.pollingInterval","integer >= 1","600","Interval in seconds for (slow) polling of job states."
+"workflow.resubmitDisable","[true, false]","false","Whether to disable automatic re-submission of failed jobs."
+"workflow.resubmitLimit","integer >= 1","3","Maximum number of re-submissions of failed jobs."
+"workflow.xnjsConfiguration","string","n/a","(deprecated)"

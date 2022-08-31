@@ -45,7 +45,7 @@ related to the client and the current job.
 
 .. table::
  :width: 100
- :widths: auto
+ :widths: 25, 75
  :class: tight-table
 
  +-------------------+----------------------------------+
@@ -84,45 +84,37 @@ Therefore the logging output produced can be controlled in a fine-grained manner
 Here is a table of the various logger categories:
 
 
-.. table::
- :width: 100
- :class: auto
+.. table:: 
+ :width: 100 
+ :widths: 35 65 
+ :class: tight-table
 
- +------------------------------------+--------------------------+ 
- | Log category                       | Description              |
- +====================================+==========================+
- | unicore                            | All of UNICORE           |
- +------------------------------------+--------------------------+ 
- | unicore.security                   | Security layer           |
- +------------------------------------+--------------------------+           
- | unicore.services                   | Service operational      |
- |                                    | information              | 
- +------------------------------------+--------------------------+ 
- | unicore.services.jobexecution      | Information related to   |
- |                                    | job execution            |
- +------------------------------------+--------------------------+ 
- | unicore.services.jobexecution.USAGE| Usage logging (see next  |
- |                                    | section)                 |
- +------------------------------------+--------------------------+ 
- | unicore.xnjs                       | XNJS subsystem           |
- |                                    | (execution engine)       | 
- +------------------------------------+--------------------------+ 
- | unicore.xnjs.tsi                   | TSI subsystem (batch     |
- |                                    | system connector)        |
- +------------------------------------+--------------------------+  
- | unicore.client                     | Client calls (to other   |
- |                                    | servers)                 |
- +------------------------------------+--------------------------+ 
- | unicore.wsrflite                   | Underlying services      |
- |                                    | environment (WSRF        |
- |                                    | framework)               |
- +------------------------------------+--------------------------+ 
- | uftp                               | UFTP client/server       |
- |                                    | communication            |
- +------------------------------------+--------------------------+ 
- | org.apache.cxf                     | Web service toolkit      |
- |                                    | (Apache CXF)             |
- +------------------------------------+--------------------------+ 
+ +------------------------------+------------------------------------------------+
+ |Log category                  |Description                                     |
+ +==============================+================================================+
+ |unicore                       |All of UNICORE                                  |
+ +------------------------------+------------------------------------------------+
+ |unicore.security              |Security layer                                  |
+ +------------------------------+------------------------------------------------+
+ |unicore.services              |Service operational information                 |
+ +------------------------------+------------------------------------------------+
+ |unicore.services.jobexecution |Information related to job execution            |
+ +------------------------------+------------------------------------------------+
+ |unicore.services.jobexecution.|Usage logging (see next section)                |
+ |USAGE                         |                                                |
+ +------------------------------+------------------------------------------------+
+ |unicore.xnjs                  |XNJS subsystem (execution engine)               |
+ +------------------------------+------------------------------------------------+
+ |unicore.xnjs.tsi              |TSI subsystem (batch system connector)          |
+ +------------------------------+------------------------------------------------+
+ |unicore.client                |Client calls (to other servers)                 |
+ +------------------------------+------------------------------------------------+
+ |unicore.wsrflite              |Underlying services environment (WSRF framework)|
+ +------------------------------+------------------------------------------------+
+ |uftp                          |UFTP client\/server communication               |
+ +------------------------------+------------------------------------------------+
+ |org.apache.cxf                |Web service toolkit (Apache CXF)                |
+ +------------------------------+------------------------------------------------+
 
 .. caution::
   Please take care to not set the global level to ``TRACE`` or ``DEBUG`` for long times, 

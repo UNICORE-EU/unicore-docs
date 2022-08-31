@@ -179,6 +179,7 @@ which allows you to limit results to the named fields.
  BASE/sites/{id}/jobs/2f6836ca-6bf7-4cbc-b8df-627f9c7ba08c?fields=status
 
 .. table::
+ :widths: 20, 35, 45
  :class: tight-table
  
  +----------+------------------------+--------------------------------------+
@@ -229,7 +230,7 @@ The base URL of the the REST API for a single UNICORE/X container is
 ..
  .. csv-table::
   :file: tables/rsc-jobs-data.csv
-  :widths: 30, 10, 60
+  :widths: 20, 20, 60
   :header-rows: 1
   :class: tight-table
   
@@ -249,7 +250,7 @@ API Summary
 ..
  .. csv-table::
   :file: tables/jobs-data-api.csv
-  :widths: 30, 10, 60
+  :widths: 20, 20, 60
   :header-rows: 1
   :class: tight-table
 
@@ -274,7 +275,7 @@ API Summary
 ..
  .. csv-table::
   :file: tables/site-factories-api.csv
-  :widths: 30, 10, 60
+  :widths: 30, 20, 50
   :header-rows: 1
   :class: tight-table
 
@@ -368,7 +369,7 @@ API Summary
 ..
  .. csv-table::
   :file: tables/list-jobs-api.csv
-  :widths: 30 10 60
+  :widths: 30 20 50
   :header-rows: 1
   :class: tight-table
 
@@ -577,7 +578,7 @@ API Summary
 ..
  .. csv-table::
   :file: tables/storages-files-api.csv
-  :widths: 30, 10, 60
+  :widths: 30, 20, 50
   :header-rows: 1
   :class: tight-table
 
@@ -644,7 +645,7 @@ API Summary
 ..
  .. csv-table::
   :file: tables/jobs-api.csv
-  :widths: 30, 10, 60
+  :widths: 30, 20, 50
   :header-rows: 1
   :class: tight-table
 
@@ -682,7 +683,7 @@ API Summary
 ..
  .. csv-table::
   :file: tables/transfers-api.csv
-  :widths: 30, 10, 60
+  :widths: 30, 20, 50
   :header-rows: 1
   :class: tight-table
 
@@ -714,7 +715,7 @@ API Summary
 ..
  .. csv-table::
   :file: tables/workflow-api.csv
-  :widths: 30, 10, 60
+  :widths: 30, 20, 50
   :header-rows: 1
   :class: tight-table
 

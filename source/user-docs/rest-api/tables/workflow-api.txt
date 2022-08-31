@@ -1,4 +1,4 @@
-:widths: 30 10 60
+:widths: 30 20 50
 
 URL 	Method 	Description
 / 	GET 	Get a list of all workflows accessible to the user

@@ -28,7 +28,7 @@ To disable the whole feature
 
 .. table::
  :width: 100
- :widths: auto
+ :widths: 35 65
  :class: tight-table
  
  +----------------------------+------------------------------------+
@@ -59,7 +59,7 @@ metadata management and file transfers.
 
 .. table::
  :width: 100
- :widths: auto
+ :widths: 30 70
  :class: tight-table
  
  +--------------------------+------------------------------------+
@@ -98,7 +98,7 @@ RESTful APIs for jobs and data management.
 
 .. table::
  :width: 100
- :widths: auto
+ :widths: 35 65
  :class: tight-table
  
  +----------------+----------------------------------------------+
@@ -120,7 +120,7 @@ This feature provides the Admin service (see :ref:`ux_admin_service`)
 
 .. table::
  :width: 100
- :widths: auto
+ :widths: 35 65
  :class: tight-table
  
  +------------------+--------------------------------------------+
@@ -150,7 +150,7 @@ will enable ``shared`` mode. Don't do this on a *normal* UNICORE/X server.
 
 .. table::
  :width: 100
- :widths: auto
+ :widths: 35 65
  :class: tight-table
  
  +-------------------+-------------------------------------------+

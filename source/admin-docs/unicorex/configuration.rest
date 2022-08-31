@@ -161,7 +161,7 @@ separate sections.
 
 .. csv-table::
   :file: tables/containerProperties.csv
-  :widths: auto
+  :widths: 30, 15, 15, 40
   :header-rows: 1
   :class: tight-table
 
@@ -269,7 +269,7 @@ which are described in the subsequent section.
 
 .. csv-table::
   :file: tables/use-ref-security.csv
-  :widths: 30, 15, 10, 45
+  :widths: 30, 15, 15, 40
   :header-rows: 1
   :class: tight-table
 

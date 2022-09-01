@@ -7,14 +7,14 @@ Introduction
 ~~~~~~~~~~~~
   
 The UCC can run jobs specified in the JSON job description format that
-is used by the UNICORE REST API, plus a few extensions related to
-handling of local files, submission options etc. See
+is used by the UNICORE :ref:`REST API <rest-api>`, plus a few extensions related to
+handling of local files, submission options, etc. See
 :ref:`ucc_jobdescription` for all the details.
 
 In the following it is assumed that you have UCC installed
 :ref:`ucc_install` and tried some examples :ref:`ucc_quickstart`.
 
-For example, assume the file *myjob.u* looks as follows
+For example, assume the file *myjob.u* looks as follows:
 
 .. code:: json
 
@@ -23,14 +23,14 @@ For example, assume the file *myjob.u* looks as follows
     "ApplicationVersion": "1.0"
   }
 
-To run this through UCC, issue the following command
+To run this through UCC, issue the following command:
 
 .. code:: console
 
   $ ucc run myjob.u
   
 This will submit the job, wait for completion, download the stdout and
-stderr files, and place them in your default output directory. The run
+stderr files, and place them in your default output directory. The ``run``
 command has a number of options, to see all the possibilities use the
 built-in help:
 
@@ -71,7 +71,7 @@ Options overview
 ~~~~~~~~~~~~~~~~
 
 The following options are available when running jobs (see also the general options overview 
-in :ref:`ucc_options`.
+in :ref:`ucc_options`):
 
 .. table:: Job submission options for UCC
    :width: 100%
@@ -126,7 +126,7 @@ it, in order to get the results later.
 Asynchronous submission
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Use the ``-a`` flag when submitting a job
+Use the ``-a`` flag when submitting a job:
   
 .. code:: console
 
@@ -151,13 +151,13 @@ will retrieve the status of the given jobs. If not given on the command line, a
 job URL will be read from the console.
 
 The arguments can be either a job URL, or the name of a job file (as
-written by the ``run -a`` command.
+written by the ``run -a`` command).
 
 
 Download results
 ^^^^^^^^^^^^^^^^
     
-To get stdout and stderr as well as other files marked for export, do
+To get stdout and stderr as well as other files marked for export, do:
 
 .. code:: console
 
@@ -172,7 +172,7 @@ Referencing a job by its URL (endpoint address)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In case you want to check on a job not submitted through UCC, you can
-refer to a job by its URL.  The ``list-jobs`` command will produce a
+refer to a job by its URL.  The :ref:`list-jobs <list-jobs>` command will produce a
 list of all job URLs that you can access.
 
 Note that in this case UCC will only retrieve stdout and stderr files. To download
@@ -184,7 +184,7 @@ Scheduling job submission to the batch system
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Sometimes a user wishes to control the time when a job is
-submitted to the batch queue, for example because she knows that
+submitted to the batch queue, for example, because he/she knows that
 a certain queue will be empty at that time.
 
 To schedule a job, you can either use the ``-S`` option to the ucc ``run``
@@ -194,7 +194,7 @@ command:
 
   $ ucc run -S "12:24" ...
 
-Alternatively, you can specify the start time in your job file using the ``Not before`` key word
+Alternatively, you can specify the start time in your job file using the ``Not before`` keyword:
 
 .. code:: json
 

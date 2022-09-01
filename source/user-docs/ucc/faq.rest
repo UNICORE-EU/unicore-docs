@@ -38,8 +38,8 @@ Usage
 
 |:thinking_face:| **Can I use UCC to list the contents of the registry?**
  
-	|:point_right:| Using the ``rest`` command (and optionally the UNIX ``jq`` utility for formatting the output),
-	this is very easy, for example
+	|:point_right:| Using the :ref:`rest command <rest-command>` (and optionally the UNIX ``jq`` utility for formatting the output),
+	this is very easy. For example,
 
 	.. code:: console
 
@@ -48,7 +48,7 @@ Usage
 	will list the content of the registry.
 
 
-|:thinking_face:| **I get strange errors related to security**
+|:thinking_face:| **I get strange errors related to security**.
  
 	|:point_right:| Please read the general `UNICORE FAQ <https://sourceforge.net/p/unicore/wiki/FAQ/>`_ 
 	which contains descriptions of many common errors.

@@ -14,13 +14,13 @@ It offers the following functions
 
  * :ref:`Job submission and management <ucc_jobs>`
 
- * :ref:`Batch mode <ucc_batch>` job submission and processing with many performance tuning options
+ * :ref:`Batch mode <ucc_batch>` job submission and processing with many :ref:`performance tuning <performance-tuning>` options
 
  * :ref:`Data movement <ucc_datamanagement>` (upload, download, server-to-server copy, etc) using the
    UNICORE storage management functions and available data transfer protocols
 
- * Storage functions (:ref:`ls_command`, :ref:`mkdir_command`, \.\.\.) including creation of storage instances
-   via storage factories
+ * Storage functions (:ref:`ls_command`, :ref:`mkdir_command`, \.\.\.) including :ref:`creation of storage instances
+   <create-storage>` via storage factories
 
  * Support for UNICORE :ref:`workflow submission and management <ucc_workflow>`
 
@@ -28,9 +28,9 @@ It offers the following functions
  
  * Support for :ref:`sharing UNICORE resources <ucc_share>` via ACLs
 
- * Information about the available services is provided via the ``system-info`` command
+ * Information about the available services is provided via the :ref:`system-info <system-info>` command
 
- * Various utilities like a :ref:`shell mode <ucc_shell>`, low-level :ref:`REST API <ucc_jobdescription>` operations and others
+ * Various utilities like a :ref:`shell mode <ucc_shell>`, :ref:`low-level REST API <rest-command>` operations and others
 
  * Extensibility through custom commands and the possibility to 
    :ref:`run scripts <ucc_scripting>` written in the Groovy programming language

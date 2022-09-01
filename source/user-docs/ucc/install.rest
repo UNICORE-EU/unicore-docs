@@ -6,12 +6,12 @@ Installation and configuration
 Prerequisites
 ~~~~~~~~~~~~~  
 
-To run UCC, you need a Java runtime version 11 or later (OpenJDK preferred).
+To run UCC, you need a Java runtime version 11 or later (`OpenJDK <https://openjdk.org/install/>`_ preferred).
 
 Download
 ~~~~~~~~
 
-You can get the latest version from SourceForge 
+You can get the UCC latest version from SourceForge 
 `UNICORE download page <https://sourceforge.net/projects/unicore/files/Clients/Commandline%20Client>`_.
 
 Installation and configuration
@@ -105,8 +105,9 @@ Logging
 UCC writes some messages to the console, more if you choose the
 verbose mode (``-v`` option). If you need real logging (e.g. when using
 the batch mode), you can edit the ``<UCC_HOME>/conf/logging.properties``
-file, which configures the Log4J logging infrastructure used in
-UNICORE.
+file, which configures the `Log4J 
+<https://logging.apache.org/log4j/2.x/manual/configuration.html>`_ logging 
+infrastructure used in UNICORE.
   
 Installing UCC extensions
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -116,6 +117,8 @@ to copy the libraries (``.jar`` files) of the extension into a directory
 that is scanned by UCC: in general these are the UCC ``lib``
 and the ``${HOME}/.ucc/lib`` directory. 
 
+
+.. _system-info:
 
 Testing the installation
 ~~~~~~~~~~~~~~~~~~~~~~~~ 

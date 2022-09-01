@@ -12,13 +12,13 @@ Getting help
 ~~~~~~~~~~~~
 
 Calling UCC with the ``-h`` option will show the available options. 
-To get a list of available commands, type
+To get a list of available commands, type:
 
 .. code:: console
 
   $ ucc -h
 
-To get help on a specific command, type
+To get help on a specific command, type:
 
 .. code:: console
 
@@ -30,7 +30,7 @@ See also :ref:`ucc_options` for a list of common options.
 Connecting
 ~~~~~~~~~~
 
-First, contact UNICORE and make sure you have access to some target systems.
+First, contact UNICORE and make sure you have access to some target systems:
   
 .. code:: console
 
@@ -40,7 +40,7 @@ First, contact UNICORE and make sure you have access to some target systems.
 List available sites
 ~~~~~~~~~~~~~~~~~~~~
 
-Then, list the sites available to you using 
+Then, list the sites available to you using: 
   
 .. code:: console
 
@@ -50,7 +50,10 @@ Then, list the sites available to you using
 Running your first job
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The UCC distribution contains samples that you can run. Let's run the "date" 
+The UCC distribution contains `samples 
+<https://github.com/UNICORE-EU/commandline-client/tree/master/ucc-distribution/src/main/samples>`_ 
+that you can run. Let's run the `"date" 
+<https://github.com/UNICORE-EU/commandline-client/blob/master/ucc-distribution/src/main/samples/date.u>`_ 
 sample. The ``-v`` switch prints more info so you can see what's going on.
 
 .. code:: console
@@ -65,6 +68,8 @@ target system.
   Look for UCC samples in the ``/usr/share/doc/unicore/ucc/samples`` directory.
 
 
+.. _list-jobs:
+
 Listing your jobs
 ~~~~~~~~~~~~~~~~~
 
@@ -75,5 +80,5 @@ The command
   $ ucc list-jobs -l
 
 will print a list of jobs (actually their addresses) with their respective status 
-(``RUNNING``, ``SUCCESSFUL``, etc)
+(``RUNNING``, ``SUCCESSFUL``, etc).
   

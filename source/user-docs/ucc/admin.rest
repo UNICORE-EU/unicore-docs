@@ -28,9 +28,9 @@ Admin commands
 ~~~~~~~~~~~~~~
 
 UCC has dedicated commands for accessing the *AdminService* of a UNICORE/X container.
-To get started, try
+To get started, try:
 
-.. code: console
+.. code:: console
 
   $ ucc admin-info -l
 
@@ -81,7 +81,7 @@ The service will reply::
   $> SUCCESS, service reply: OK - job submission is disabled
 
 If a user now tries to submit, she will receive an error message on submission.
-Running the command again will re-enable the service.
+Running the command again will re-enable the service:
 
 .. code:: console
 
@@ -92,13 +92,13 @@ Running the command again will re-enable the service.
 Getting job details
 ^^^^^^^^^^^^^^^^^^^
 
-To get the full job details (for example in user support), try
+To get the full job details (for example in user support), try:
 
-.. code: console
+.. code:: console
 
   $ ucc admin-runcommand ShowJobDetails jobID=<unique_jobid>
 
-for example
+For example,
 ::
 
   ucc admin-runcommand ShowJobDetails jobID=461f78c7-82a6-4887-9c33-6f538a4b0cb2
@@ -154,18 +154,18 @@ You can also use all normal UCC commands to access the server. Note
 however that due to the authentication and authorisation system in
 UNICORE, this may not always work as expected: the *admin* user might
 not have the required Unix permissions to access files, list
-directories etc.
+directories, etc.
 
-The UCC commands that list server-side things (``list-jobs``, etc) accept 
+The UCC commands that list server-side things (:ref:`list-jobs <list-jobs>`, etc) accept 
 a filtering option, that can be used to limit the results of the operation.
 Filtering works on the XML resource properties of the resource in question.
 
-Filtering is enabled by the ``-f`` or ``--filter`` option of the form
+Filtering is enabled by the ``-f`` or ``--filter`` option of the form:
 ::
 
   -f NAME OPERATOR VALUE
   
-where NAME is the name of an element from the JSON resource properties.
+where *NAME* is the name of an element from the JSON resource properties.
 
 For example, to list all jobs:
 
@@ -179,7 +179,6 @@ To list all jobs submitted on Nov 13, 2007:
 
   $ ucc list-jobs -f submissionTime contains 2007-11-13
 
-etc. 
 
 .. table:: Filtering options
    :widths: 40,60
@@ -202,6 +201,8 @@ etc.
    +--------------------------------+-----------------------------------+
 
 
+.. _rest-command:
+
 Low-level operations
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -209,19 +210,19 @@ UCC supports low-level access to REST API endpoints using the ``rest``
 command, specifically you can execute HTTP GET, PUT, POST and DELETE
 requests with JSON content.
 
-For example, to delete (destroy) a resource,
+For example, to delete (destroy) a resource:
   
 .. code:: console
 
   $ ucc rest delete <Address>
   
-To get a complete property listing (i.e. print the JSON resource property document)
+To get a complete property listing (i.e. print the JSON resource property document):
   
 .. code:: console
 
   $ ucc rest get <Address>
 
-To change properties, use the ``put`` command with JSON content.
+To change properties, use the ``put`` command with JSON content:
    
 .. code:: console
 

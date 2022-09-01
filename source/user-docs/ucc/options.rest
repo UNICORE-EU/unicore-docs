@@ -5,7 +5,7 @@ Common options to UCC
 
 The following table lists the options understood by most UCC commands. Most 
 commands have additional options. You can always get a summary of all available
-options for a command by calling UCC with the ``-h`` or ``--help`` option, for example
+options for a command by calling UCC with the ``-h`` or ``--help`` option, for example,
 
 .. code:: console
 
@@ -13,12 +13,12 @@ options for a command by calling UCC with the ``-h`` or ``--help`` option, for e
 
 Since it is not possible to give all the required options on the commandline, 
 it is mandatory to create a preferences file containing e.g. your settings for 
-keystore, registry etc. 
+keystore, registry, etc. 
 
 
 
 .. table:: Common options for the UCC
-   :width: 100%
+   :width: 100
    :widths: 40,60
    :class: tight-table
 
@@ -53,7 +53,7 @@ User preferences
 If you have multiple user IDs or are a member of multiple Unix Groups on the target system,
 you may wish to control the user attributes that are used when invoking UCC.
 
-Here is a list of options related to user attributes.
+Here is a list of options related to user attributes:
 
 .. table:: User attribute options
    :width: 100%
@@ -67,8 +67,8 @@ Here is a list of options related to user attributes.
    |                              | (e.g. xlogin)                         |
    +------------------------------+---------------------------------------+
 
-The preference option accepts multiple arguments of the form *<name>:<value>* 
-where name
+The ``preference`` option accepts multiple arguments of the form *<name>:<value>* 
+where *name*:
 
 .. table:: User attribute options
    :width: 100%
@@ -90,6 +90,8 @@ where name
    +----------+-----------------------------------------+
 
 
+.. _config-file:
+
 Configuration file
 ~~~~~~~~~~~~~~~~~~
 
@@ -98,7 +100,7 @@ settings from there. As shown above, you can use a different file by specifying
 it on the commandline using the ``-c`` option.
 
 The configuration file can contain default settings for many commandline options,
-which are given in the form ``<option name>=<value>``  where <option name> is the long
+which are given in the form *<option name>=<value>*  where *<option name>* is the long
 form of the option. The property values may contain variables in the form ``${VAR_X}``,
 which are automatically replaced with the environmental variable values with the same name.
 Additionally a special variable ``${UCC_CONFIG}`` is recognized and is replaced with the
@@ -107,13 +109,13 @@ absolute path of your configuration file.
 The most important part of configuration is how UCC should authenticate you to the UNICORE
 server(s) and what server(s) should be trusted.
 
-An overview of the available authentication options can be retrieved using
+An overview of the available authentication options can be retrieved using:
 
 .. code:: console
 
   $ ucc help-auth
 
-A minimal example for using the *quickstart* installation would be
+A minimal example for using the *quickstart* installation would be:
 ::
 
   registry=https://localhost:8080/DEMO-SITE/services/Registry?res=default_registry
@@ -128,7 +130,7 @@ A minimal example for using the *quickstart* installation would be
 
 .. important::
   To protect your passwords, you should make the file non-readable by others,
-  for example on Unix using a command such as ``chmod 600 preferences``
+  for example on Unix using a command such as ``chmod 600 preferences``.
 
 
 .. note::
@@ -140,7 +142,7 @@ A minimal example for using the *quickstart* installation would be
 Username and password authentication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To authenticate with username and password, set the following
+To authenticate with username and password, set the following:
 ::
 
   authenticationMethod=username
@@ -153,7 +155,7 @@ To authenticate with username and password, set the following
 Support for token based authentication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-UCC has three different options for using token-based authentication
+UCC has three different options for using token-based authentication:
 
 * via oidc-agent 
 * directly contact an OIDC server as an OIDC client (requires client ID and secret)
@@ -166,7 +168,7 @@ OIDC-Agent
 UCC supports the `oidc-agent <https://github.com/indigo-dc/oidc-agent>`__ tool that 
 allows to interact with common OIDC servers to retrieve new access tokens.
 
-To configure oidc-agent, UCC supports the following properties
+To configure oidc-agent, UCC supports the following properties:
 
 .. csv-table:: Options for oidc-agent
   :file: tables/oidc-agent-properties.csv
@@ -174,7 +176,8 @@ To configure oidc-agent, UCC supports the following properties
   :header-rows: 1
   :class: tight-table
 
-Your config file would require at least::
+Your :ref:`config file <config-file>` would require at least:
+::
 
   authenticationMethod=oidc-agent
   oidc-agent.account=<oidc-agent account to be used>
@@ -205,7 +208,7 @@ Bearer token in config
 ^^^^^^^^^^^^^^^^^^^^^^
 
 Last not least, if you have a Bearer token via some other means, you
-can directly put the token into your config file::
+can directly put the token into your :ref:`config file <config-file>`::
 
   authenticationMethod=bearer-token
   token=...
@@ -248,13 +251,13 @@ in the following table:
   :class: tight-table
 
 
-Trust store examples
-~~~~~~~~~~~~~~~~~~~~
+Truststore examples
+~~~~~~~~~~~~~~~~~~~
 
 Here are some examples for commonly used trust store 
 configurations.
 
-Most commonly used is a directory (with a minimal set of options)
+Most commonly used is a directory (with a minimal set of options):
 ::
 
   truststore.type=directory
@@ -282,8 +285,8 @@ Java keystore used as a trust store::
 Client options
 ~~~~~~~~~~~~~~
 
-The configuration file may also contain low-level options, for example if you need to 
-specify connection timeouts, http proxies etc. 
+The configuration file may also contain low-level options, for example, if you need to 
+specify connection timeouts, http proxies, etc. 
 
 .. csv-table:: Client options
   :file: tables/ucc-clientProperties.csv
@@ -295,7 +298,7 @@ specify connection timeouts, http proxies etc.
 Other options
 ~~~~~~~~~~~~~
 
-The following table lists other options, that are more rarely used.
+The following table lists other options, that are more rarely used:
 
 .. table:: Other options for the UCC
    :align: left

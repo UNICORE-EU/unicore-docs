@@ -32,7 +32,7 @@ You need a user account on the UNICORE/X container, which is typically configure
 password (or using an OAuth2 bearer token). The supported authentication methods
 depend on the UNICORE server.
 
-For example, when username/password are enabled you can use curl to access the base URL above:
+For example, when username/password are enabled you can use ``curl`` to access the base URL above:
 
 .. code:: console
 

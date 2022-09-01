@@ -6,8 +6,8 @@ Workflows
 Introduction
 ~~~~~~~~~~~~
 
-UCC supports the UNICORE Workflow service and allows to submit workflows
-and manage them.
+UCC supports the UNICORE :ref:`Workflow service <workflow-description>` and allows 
+to submit workflows and manage them.
 
 The workflows are executed server-side, and UCC is used only for
 submitting, managing data and getting results. UCC also provides
@@ -22,19 +22,21 @@ parametrised workflow templates.
 Command overview
 ~~~~~~~~~~~~~~~~
 
-The following commands are provided. More details and examples follow below.
+The following commands are provided:
   
   - ``workflow-submit``: submit a workflow file
   
   - ``workflow-control``:  abort or resume a running workflow 
   
   - ``list-workflows``: list information about workflows
+
+More details and examples follow below.
   
 Basic use
 ~~~~~~~~~
 
 To check the availability of the Workflow service in the configured
-registry, issue the following command
+registry, issue the following command:
 
 .. code:: console
 
@@ -50,7 +52,8 @@ that you can edit and submit.
   $ ucc workflow-submit yourworkflow.json
 
 which will submit the workflow and print the address of the workflow to standard output.
-To get the workflow status,
+
+To get the workflow status:
 
 .. code:: console
 
@@ -58,7 +61,7 @@ To get the workflow status,
 
 
 To list all your workflows, you can use the ``list-workflows`` command without an explicit
-workflow address
+workflow address:
 
 .. code:: console
 
@@ -68,8 +71,8 @@ workflow address
 Workflow description format
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The JSON format used by that the Workflow service can be found here:
-:ref:`workflow-description`.
+The JSON format used by that the Workflow service can be found
+:ref:`here <workflow-description>`.
 
 
 Managing workflow data
@@ -97,7 +100,7 @@ and automatically register them with the workflow upon submission.
 Your workflow JSON can then reference them as ``wf:...`` in the workflow
 activities.
 
-You can also "manually" register files by adding in ``inputs`` section to your
+You can also *manually* register files by adding in ``inputs`` section to your
 workflow JSON.
 
 .. code:: json
@@ -117,7 +120,7 @@ If the workflows contains a ``Template parameters`` section, the
 corresponding replacement will be done by reading parameter values
 from the ``.u`` file. These so-called *workflow templates* can be a very
 simple and safe way to make adjustments in complex workflows before
-submission. As an example, consider the following workflow
+submission. As an example, consider the following workflow:
 
 .. code:: json
 
@@ -140,10 +143,10 @@ submission. As an example, consider the following workflow
     ],
   }
 
-This introduces a parameter with default value *10*.
+This introduces a parameter *SLEEPTIME* with default value *10*.
 
 When the workflow is submitted, you can specify a JSON file with the ``-u`` option,
-which will be checked for a parameter named *SLEEPTIME*.
+which will be checked for a parameter named *SLEEPTIME*
 
 .. code:: json
 

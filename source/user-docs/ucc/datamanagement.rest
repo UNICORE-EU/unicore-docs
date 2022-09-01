@@ -11,17 +11,17 @@ a server-to-server transfer, create directories and so on.
 Specifying remote locations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Remote locations are via URIs that includes protocol, storage
-server (host/port), site name, and filename, for example
+Remote locations are specified via URIs that includes protocol, storage
+server (*host/port*), site name, and filename. For example,
 ::
 
  BFT:https://mygateway:8080/SITE/rest/core/storages/HOME/files/my_file
 
-which specifies a file named "/my_file" on the storage instance 
-"\https://mygateway:8080/SITE/rest/core/storages/HOME",
+specifies a file named */my_file* on the storage instance 
+*\https://mygateway:8080/SITE/rest/core/storages/HOME*,
 using the BFT protocol. 
 
-Paths are always relative to the storage root, not the root of
+Paths are always **relative** to the storage root, not the root of
 the actual file system.
 
 The protocol is optional, and will default to ``BFT`` if not given.
@@ -45,7 +45,7 @@ Examples for client-server transfers:
   $ ucc cp data/*.pdf https://server/rest/core/storages/SHARE/files/pdfs
   $ ucc cp https://server/rest/core/storages/SHARE/files/pdfs .
 
-The ``-R`` option allows to choose whether subdirectories are to be copied, too.
+The ``-R`` option allows to choose whether subdirectories are to be copied too.
 
 The ``-X`` option allows to resume a previous transfer. Missing data will be appended to an
 existing target file (if the chosen protocol supports it).
@@ -62,13 +62,13 @@ For server-to-server transfers, the ``cp`` command supports several
 additional options.
 
 The ``-S`` option allows to schedule a transfer for a certain time.
-For example
+For example,
 
 .. code:: console
 
   $ ucc cp -S "23:00" ...
 
-The format is simply *HH:mm* (hours and minutes). Alternatively you can give 
+The format is simply *HH:mm* (hours and minutes). Alternatively, you can give 
 the time in the full ISO 8601 format including year, date, time 
 and time zone:
 
@@ -141,7 +141,7 @@ mkdir
   
 This will create a directory (including required parent directories) remotely.
   
-Example
+Example:
   
 .. code:: console
 
@@ -154,7 +154,7 @@ This will remove a file or directory remotely. By default, UCC will ask for a co
 Use the ``--quiet`` or ``-q`` option to disable this confirmation (e.g. when using 
 this command in scripts).
   
-Example
+Example:
   
 .. code:: console
 
@@ -166,14 +166,14 @@ rename
   
 This will rename/move a remote file/directory on the same storage.
   
-Examples
+Example:
   
 .. code:: console
 
   $ ucc rename https://mygateway:8080/SITE/rest/core/storages/HOME/files/data/foo1.pdf /files/data/foo2.pdf
 
 
-will rename the file "foo1.pdf" to "foo2.pdf"
+will rename the file *foo1.pdf* to *foo2.pdf*.
 
 
 stat
@@ -182,7 +182,7 @@ stat
 This command shows full information on a certain file or directory.
 Add the ``-m`` flag to also print user-defined metadata.
 
-Example
+Example:
 
 .. code:: console
 
@@ -199,7 +199,9 @@ ls
 ^^
 
 This will list a remote directory. Useful options are: ``-l`` (detailed output), ``-H`` 
-(human-friendly) and ``-R`` (recurse). Example:
+(human-friendly) and ``-R`` (recurse). 
+
+Example:
 
 .. code:: console
 
@@ -219,16 +221,18 @@ UNICORE sites may allow users to dynamically create storage resources,
 which even can be linked to special back-end systems like Apache HDFS, iRODS,
 or cloud storage like Amazon S3.
 
-You can find out if there are sites supporting this "StorageFactory" 
+You can find out if there are sites supporting this *StorageFactory* 
 service either by running the ``system-info -l`` command, or better using
 
 .. code:: console
 
   $ ucc create-storage -i
 
-This will list the available StorageFactory services and also show 
+This will list the available *StorageFactory* services and also show 
 which types of storage are supported and how much space is left on 
 each of them.
+
+.. _create-storage:
 
 UCC supports creating storages via the ``create-storage`` command.
 The simple
@@ -244,7 +248,7 @@ Usually you want to control at least where the storage is created.
 Additionally, the type of storage and some parameters can be passed to 
 UCC. 
 
-As an example, creating a storage of type ``S3`` would look like this
+As an example, creating a storage of type ``S3`` would look like this:
 
 .. code:: console
 
@@ -252,7 +256,7 @@ As an example, creating a storage of type ``S3`` would look like this
 
 
 You can also read parameters from a file. Say you have your S3 keys in a file
-*s3.properties*, then you can use the following syntax
+*s3.properties*, then you can use the following syntax:
 
 .. code:: console
 
@@ -264,6 +268,6 @@ You can also mix this with the normal *key=value* syntax, or mix it like this:
 
   $ ucc create-storage -t S3 accessKey=@s3.accessKey secretKey=@s3.secretKey
 
-The last version ``key=@file`` causes just the value to be read from the 
+The last version *key=@file* causes just the value to be read from the 
 named file.
 

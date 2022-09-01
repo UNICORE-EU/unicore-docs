@@ -11,9 +11,10 @@ custom commands, but it needs a bit of insight into how UCC and UNICORE work.
 Script context
 ~~~~~~~~~~~~~~
 
-Your Groovy scripts can access some predefined variables that are summarized in the following table
+Your Groovy scripts can access some predefined variables that are summarized in the following table:
 
 .. table:: Variables accessible for scripts
+ :widths: 25 40 35
  :class: tight-table
 
  +-----------------------+---------------------------------------------------+---------------------------------------------------+
@@ -38,4 +39,5 @@ Your Groovy scripts can access some predefined variables that are summarized in 
 Examples  
 ~~~~~~~~
   
-Some example Groovy scripts can be found in the ``samples/`` directory of the UCC distribution.
+Some example Groovy scripts can be found in the `samples 
+<https://github.com/UNICORE-EU/commandline-client/tree/master/ucc-distribution/src/main/samples>`_ directory of the UCC distribution.

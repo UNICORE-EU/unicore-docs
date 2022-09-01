@@ -3,8 +3,8 @@
 Job description format
 ----------------------
 
-UCC uses the  JSON :ref:`job-description` that is used by the UNICORE REST API,
-adding support for handling local files.
+UCC uses the  JSON :ref:`job-description` that is used by the UNICORE :ref:`REST API
+<rest-api>`, adding support for handling local files.
 
 Several complete job samples can be found in the `samples 
 <https://github.com/UNICORE-EU/commandline-client/tree/master/ucc-distribution/src/main/samples>`_ 
@@ -12,14 +12,14 @@ directory of the distribution.
 On Linux, check also the ``/usr/share/unicore/ucc/samples`` directory.
 
 
-To view an example job showing most of the available options, run
+To view an example job showing most of the available options, run:
   
 .. code:: console
 
   $ ucc run -H
 
 
-(most of the options shown are not mandatory, of course)
+(most of the options shown are not mandatory, of course).
 
 
 UCC extensions to the UNICORE job description format
@@ -29,7 +29,7 @@ It is often the case that your job requires files from your
 local workstation, or you want UCC to download result files once
 the job has finished.
 
-UCC achieves this by allowing paths to local files in the "To" and/or "From"
+UCC achieves this by allowing paths to local files in the ``To`` and/or ``From``
 directives of the data staging part(s) in your job.
 
 Local files can be given as an absolute or relative path; in the
@@ -40,10 +40,10 @@ Importing local files into the job workspace
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To import files from your local computer, you can use the usual
-``Imports`` keyword, with a path as the "From" argument.
+``Imports`` keyword, with a path as the ``From`` argument.
 
 You can of course mix local and remote files. This example shows
-some of the possibilities
+some of the possibilities:
 ::
 
   {
@@ -85,7 +85,8 @@ some of the possibilities
 
 
 If for some reason an import fails, but you want the job to run anyway,
-there is a flag ``FailOnError`` that can be set to ``false``::
+there is a flag ``FailOnError`` that can be set to ``false``:
+::
 
  "Imports": [ 
 
@@ -97,14 +98,15 @@ there is a flag ``FailOnError`` that can be set to ``false``::
  ],
 
 .. note::
-  UCC supports simple wild cards (``*`` and ``?``) for importing and exporting files
+  UCC supports simple wild cards (``*`` and ``?``) for importing and exporting files.
 
 
 Exporting result files from the job workspace
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To export files from the job's working directory to your local machine, use the normal ``Exports`` keyword,
-with a file path as the "To" arguent. Here is an example ``Exports`` section that specifies two exports::
+with a file path as the ``To`` argument. Here is an example ``Exports`` section that specifies two exports:
+::
 
   {
     "Exports": [ 
@@ -129,7 +131,8 @@ with a file path as the "To" arguent. Here is an example ``Exports`` section tha
   }
 
 As a special case, UCC also supports downloading files from other UNICORE storages
-(after the job has finished), using the ``Exports`` keyword::
+(after the job has finished), using the ``Exports`` keyword:
+::
 
   {
      "Exports": [

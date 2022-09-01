@@ -19,13 +19,13 @@ UCC using a single invocation as follows:
 
   $ ucc batch -i jobs -o out
 
-As job files, UCC will accept files ending in ``.u``
+As job files, UCC will accept files ending in ``.u``.
 
 Options
 ~~~~~~~
 
-You can run in "follow" mode, where UCC will watch the input directory, and will
-process new files as they arrive.
+You can run in *follow* mode, where UCC will watch the input directory, and will
+process new files as they arrive:
 
 .. code:: console
 
@@ -38,6 +38,8 @@ UCC can also process JSDL files, to batch-process these, use the ``-j`` option:
   $ ucc batch -j -i jobs -o out
 
 
+.. _performance-tuning:
+
 Performance tuning options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -48,7 +50,7 @@ factor, etc.
 
 You should experiment a bit to get the best performance for your
 specific setup. UCC has many options available for tuning. Here is an
-overview.
+overview:
 
 .. table:: Tuning options for the UCC batch mode
    :width: 100%
@@ -89,16 +91,16 @@ Resource selection in batch mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 By default, the UCC batch mode will select a random site for running a job. You can modify
-the selection in different ways. 
+the selection in different ways: 
 
 - using the ``-s`` option or a ``Site: <sitename>,`` entry in the job file, you can specify the 
   site directly
   
-- use the ``-W`` option to specify a file containing site weights.
+- use the ``-W`` option to specify a file containing site weights
  
 Say you have two sites where one site is a big cluster and the other a small cluster. To send more
-jobs to the big cluster, you can use the site weights file,
-::
+jobs to the big cluster, you can use the site weights file::
+
 
   #example site weights file for use with "ucc batch -W ..."
   

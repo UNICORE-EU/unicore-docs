@@ -3,10 +3,11 @@
 Rest API Examples
 -----------------
 
-The following are some examples that use Python and the Requests package, check out
-https://requests.readthedocs.io/en/latest/user/quickstart/
+The following are some examples that use Python and the `Requests package
+<https://requests.readthedocs.io/en/latest/>`_.
 
-The API description is here: :ref:`rest-api`.
+
+The REST API description :ref:`here <rest-api>`.
 
 
 Basic job submission
@@ -18,7 +19,7 @@ Basic job submission
 Storages and data management
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|:hammer_and_wrench:| |:soon:| 
+*Work in progress!* |:hammer_and_wrench:| |:soon:|
 
 
 Workflow submission and management

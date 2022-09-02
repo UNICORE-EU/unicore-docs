@@ -18,19 +18,19 @@ Also, have a look at :ref:`rest-api-examples` for some very basic Python example
 Basics
 ------
 
-The REST API supports both the JSON (application/json) and HTML (text/html) content types.
+The REST API supports both the JSON (*application/json*) and HTML (*text/html*) content types.
 
 Base URL
 ~~~~~~~~
 
 The base URL of the the REST API for a single UNICORE/X container is
-``https://gateway_url/SITENAME/rest/core``
+``https://gateway_url/SITENAME/rest/core``.
 
-In the following, we will abbreviate this URL as: ``BASE`` Authentication
+In the following, we will abbreviate this URL as ``BASE`` Authentication.
 
-You need a user account on the UNICORE/X container, which is typically configured to use a 
-password (or using an OAuth2 bearer token). The supported authentication methods
-depend on the UNICORE server.
+You need a user account on the :ref:`UNICORE/X <unicorex>` container, which is typically configured to 
+use a password (or using an OAuth2 bearer token). The supported `authentication methods 
+<../../admin-docs/unicorex/manual.html#authentication>`_ depend on the UNICORE server.
 
 For example, when username/password are enabled you can use ``curl`` to access the base URL above:
 
@@ -56,7 +56,7 @@ header as follows:
  $  curl -k -u user:pass -X GET -H "Accept: application/json"  \
         -H "X-UNICORE-User-Preferences: uid:some.user" BASE
 
-Or, to select role *admin* (if you are worthy)
+Or, to select role *admin* (if you are worthy):
 
 .. code:: console
 
@@ -70,7 +70,7 @@ Security session handling
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If authentication was successful, the server reply will include a security session ID and a 
-security session lifetime as HTTP headers.
+security session lifetime as HTTP headers:
 ::
 
  X-UNICORE-SecuritySession: ....
@@ -121,7 +121,7 @@ Error handling
 ~~~~~~~~~~~~~~
 
 As usual, a HTTP error code that is not in the *2xx* range signifies some sort of problem. For 
-example
+example,
 
 - ``401 Unauthorized`` - your credentials are wrong or you do not have the right to access
 - ``404 Not found`` - the resource does exist, or you have a typo in the URL
@@ -141,7 +141,7 @@ Let's look at an example. To list 5 jobs starting at an offset of 2, you'd do a 
 
  BASE/sites/{id}/jobs?offset=2&num=5
 
-the result would be something like
+The result would be something like:
 ::
 
 	{
@@ -406,7 +406,7 @@ RESTful way is to use ``HTTP GET`` and ``PUT`` requests to download or upload da
 straightforward, the only thing to note is to NOT use the media type ``application/json``, which 
 is reserved for getting information about the file or changing properties.
 
-For example, let's download a file named stdout using ``curl``
+For example, let's download a file named stdout using ``curl``:
 
 .. code:: console
 
@@ -418,7 +418,7 @@ The GET supports the ``Range`` header, if you want to download only part of the 
 
  $ curl -X GET -H "Range: bytes=10-42" ....
 
-Similarly, to upload a file localfile to a remote file newfile
+Similarly, to upload a file localfile to a remote file newfile:
 
 .. code:: console
 
@@ -434,8 +434,8 @@ Similarly, to upload a file localfile to a remote file newfile
  the correct ``Content-Type`` will be used. This will work nicely and automatically for every 
  media type EXCEPT ``application/json``! See the :ref:`rest-api-examples` for a detailed example.
 
-The second way is to create a UNICORE file transfer by POSTing to the /imports or /exports path, 
-which requires custom clients, e.g. to support `UFTP 
+The second way is to create a UNICORE file transfer by POSTing to the ``/imports`` or ``/exports`` 
+path, which requires custom clients, e.g. to support `UFTP 
 <https://uftp-docs.readthedocs.io/en/latest/user-docs/uftp-client/index.html>`_. For 
 this reason, we do not consider this any further here.
 
@@ -469,9 +469,7 @@ Copying data to another server
 
 UNICORE supports server-to-server transfers using one of several protocols including the rather 
 efficient `UFTP protocol <https://uftp-docs.readthedocs.io/en/latest>`_. This is initiated by POSTing to a 
-storage resource's/transfers path:
-
- BASE/storages/{id}/transfers.
+storage resource's/transfers path ``BASE/storages/{id}/transfers``.
 
 The transfer is described using JSON, and can be either ``push`` or ``pull``.
 
@@ -513,7 +511,7 @@ Files on a storage are accessed via the ``files`` subresource, e.g.
 
  BASE/storages/tmp/files/test.txt
 
-would access the file "test.txt" on the storage with id "tmp".
+would access the file *test.txt* on the storage with id *tmp*.
 
 Depending on the media type used, GET and PUT fulfill different functions.
 Using JSON, the file's properties can be accessed or modified. Using 
@@ -559,7 +557,7 @@ a file or a directory.
 
  $ curl -X POST BASE/storages/{id}/files/some_directory/actions/extract --data-binary @params.json -H "Content-Type: application/json"
 
-This would extract metadata from the files in the "some_directory" directory.
+This would extract metadata from the files in the *some_directory* directory.
 
 The POSTed JSON can be empty ``{}``, or it may contain extra parameters controlling the extraction 
 process. Currently only a single parameter is supported, which controls the recursion depth for 
@@ -596,7 +594,7 @@ It is also possible to submit new jobs.
 Job description format
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The job description is described here: :ref:`job-description`
+The job description is described :ref:`here <job-description>`.
 
 
 Data management
@@ -620,7 +618,7 @@ JSON:
 	 "haveClientStageIn": "true",
 	}
 
-In this case, the full job submission sequence is
+In this case, the full job submission sequence is:
 
 #. submit job
 #. upload data from client to server

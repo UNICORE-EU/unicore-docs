@@ -22,28 +22,26 @@ The overall workflow document has the following form
 .. code:: json
 
   {
-     "inputs" : {},
+	"inputs": {},
 
-	 "activities" : {},
+	 "activities": {},
 
 	 "subworkflows": {},
 
 	 "transitions": [],
 
-	 "variables" : [],
+	 "variables": [],
 
-	 "notification" : "optional_notification_url",
+	 "notification": "optional_notification_url",
 
 	 "tags": ["tag1", "tag2", "..." ],
-
   }
- 
 
 Activities, sub-workflows and transitions make up the workflow logic.
 
 Both activities and sub-workflows are JSON maps (since UNICORE 9.0),
-where the key is the unique identifier of the element. (The 8.x format
-of using JSON arrays with "id" elements is still supported)
+where the key is the unique identifier of the element. The 8.x format
+of using JSON arrays with *id* elements is still supported.
 
 Here is a simple example of two tasks that are to be run in a sequence:
 
@@ -68,7 +66,6 @@ Here is a simple example of two tasks that are to be run in a sequence:
     "transitions": [
       {"from": "step1", "to": "step2" }
     ]
-
   }
 
 
@@ -81,7 +78,7 @@ The remaining elements in the workflow description are:
   ``POST`` notification (authenticated via a JWT token signed by the Workflow server) when the 
   workflow has finished processing.
 
-Notification messages sent by the Workflow service have the following content
+Notification messages sent by the Workflow service have the following content:
 
 .. code:: json
  
@@ -110,25 +107,26 @@ Activity elements have the following form
          ...
 	}
 
-The id must be UNIQUE within the workflow. There are different types of activity, which
+The ``id`` must be UNIQUE within the workflow. There are different types of activity, which
 are distinguished by the ``type`` element.
 
 - ``START`` denotes an explicit start activity. If no such activity is present, the processing 
   engine detect the proper starting activities
 
 - ``JOB`` denotes a executable (job) activity. In this case, the job sub element holds the JSON 
-  job definition. (if a ``job`` element is present, you may leave out the ``type``)
+  job definition (if a ``job`` element is present, you may leave out the ``type``)
 
-- ``ModifyVariable`` allows to modify a workflow variable. An option named "variableName" 
-  identifies the variable to be modified, and an option "expression" holds the modification 
-  expression in the Groovy programming language syntax. See also the variables section later
+- ``ModifyVariable`` allows to modify a workflow variable. An option named ``variableName`` 
+  identifies the variable to be modified, and an option ``expression`` holds the modification 
+  expression in the Groovy programming language syntax (see also the :ref:`variables section
+  <workflow-variables>` later).
 
 - ``Split``: this activity can have multiple outgoing transitions. All transitions with matching 
-  conditions will be followed. This is comparable to an "if() … if() … if()" construct in a 
+  conditions will be followed. This is comparable to an "*if() … if() … if()*" construct in a 
   programming language.
 
 - ``Branch``: this activity can have multiple outgoing transitions. The transition with the 
-  first matching condition will be followed. This is comparable to an "if() … elseif() … else()" 
+  first matching condition will be followed. This is comparable to an "*if() … elseif() … else()*" 
   construct in a programming language
 
 - ``Merge`` merges multiple flows without synchronising them
@@ -136,7 +134,7 @@ are distinguished by the ``type`` element.
 - ``Synchronize`` merges multiple flows and synchronises them
 
 - ``HOLD`` stops further processing of the current flow until the client explicitely sends continue 
-  message.
+  message
 
 
 Subworkflows
@@ -154,9 +152,9 @@ that is used to distinguish the different control structure types.
 
     "type": "...",
 
-    "variables" : [],
+    "variables": [],
 
-    "activities" : [],
+    "activities": [],
 
     "subworkflows": [],
 
@@ -178,16 +176,15 @@ will be sent to an execution site (UNICORE/X) for processing.
   {
     "id": "unique_id",
 
-    "type" : "job",
+    "type": "job",
 
-    "job" : {
+    "job": {
 
       "... standard UNICORE job ...": ""
 
     },
 
     "options": {  },
-
   }
 
 The execution site is specified by the optional ``Site name`` element in the job
@@ -197,12 +194,11 @@ The execution site is specified by the optional ``Site name`` element in the job
   {
       "id": "unique_id", "type" : "job",
 
-      "job" : {
+      "job": {
 
         "Site name": "DEMO-SITE",
 
       },
-
   }
 
 .. note::
@@ -212,7 +208,7 @@ The execution site is specified by the optional ``Site name`` element in the job
 The job description is covered in detail in :ref:`job-description`.
 
 The processing of the job can be influenced using the (optional) ``options`` sub-element. 
-Currently the following options (key-value) can be used
+Currently the following options (*key-value*) can be used:
 
 - ``IGNORE_FAILURE`` if set to ``true``, the workflow engine will ignore any failure of the task 
   and continue processing as if the activity had been completed successfully. 
@@ -225,7 +221,7 @@ Currently the following options (key-value) can be used
   retried. By default, the workflow engine will re-try three times (except in those cases where 
   it makes no sense to retry).
 
-For example
+For example,
 ::
 
 	{
@@ -238,11 +234,10 @@ For example
 	 },
 
 	 "options": { "IGNORE_FAILURE": "true",  },
-
 	}
 
 If you need to pass on user preferences to the site, e.g. for selecting your primary group, or 
-choosing between multiple user IDs, you can specify this in the ``job`` element like this
+choosing between multiple user IDs, you can specify this in the ``job`` element like this:
 ::
 
  ...
@@ -267,29 +262,29 @@ Data handling
 
 One of the most common tasks is linking the output of one activity to another activity for
 further processing. The UNICORE workflow system supports this by providing a per-workflow
-file catalog, where jobs can reference files with special URIs starting with ``wf:``
+file catalog, where jobs can reference files with special URIs starting with ``wf:``.
 
-Jobs can register outputs with the file catalog using stage-out directives, for example
+Jobs can register outputs with the file catalog using stage-out directives, for example,
 ::
 
    Exports: [
      { "From": "stdout", "To": "wf:step1_stdout" }
    ]
 
-will register the ``stdout`` file under the name ``wf:step1_stdout``. (note that the file will not be
+will register the ``stdout`` file under the name *wf:step1_stdout* (note that the file will not be
 copied anywhere).
 
-Later jobs can reference files from the catalog using stage-in directives, for example
+Later jobs can reference files from the catalog using stage-in directives, for example,
 ::
 
    Imports: [
      { "From": "wf:step1_stdout", "To": "input_file" }
    ]
 
-The workflow engine will take care of resolving the "wf:..." reference to the actual physical location.
+The workflow engine will take care of resolving the ``wf:...`` reference to the actual physical location.
 
-Apart from registration of files in jobs, the user can also "manually" register files using the 
-``inputs`` section of the main workflow.
+Apart from registration of files in jobs, the user can also *manually* register files using the 
+``inputs`` section of the main workflow:
 ::
 
   "inputs": {
@@ -298,7 +293,7 @@ Apart from registration of files in jobs, the user can also "manually" register 
   }
 
 
-For an example workflow, have a look at :ref:`examples_two_step_with_data`.
+For an example of a workflow, have a look at :ref:`examples_two_step_with_data`.
 
 The Workflow REST API allows you to list (and modify) the file catalog via 
 the ``BASE/{id}/files`` endpoint.
@@ -312,16 +307,16 @@ from and to activities or subflows, and may have conditions attached. If no cond
 the transition is followed unconditionally, otherwise the condition is evaluated and the 
 transition is followed only if the condition matches (i.e. evaluates to true).
 
-The syntax for a Transition is as follows.
+The syntax for a Transition is as follows:
 ::
 
 	{
 
-	 "from" : "from_id",
+	  "from" : "from_id",
 
-	 "to" : "to_id",
+	  "to" : "to_id",
 
-	 "condition": "expression"
+	  "condition": "expression"
 
 	}
 
@@ -332,7 +327,7 @@ An activity can have outgoing (and incoming) transitions. In general, all outgoi
 where only the first matching transition will be followed.
 
 The optional condition element is a string-valued expression. The workflow engine offers some 
-pre-defined functions that can be used in these expressions. For example you can use the exit 
+pre-defined functions that can be used in these expressions. For example, you can use the exit 
 code of a job, or check for the existence of a file within these expressions.
 
 - ``eval(expr)`` Evaluates the expression *expr* in Groovy syntax, which must evaluate to a 
@@ -346,18 +341,20 @@ code of a job, or check for the existence of a file within these expressions.
   *value*.
 
 - ``fileExists(activityID, fileName)`` Checks that the working directory of the UNICORE job 
-  associated with the given Activity contains a file *fileName*
+  associated with the given Activity contains a file *fileName*.
 
 - ``fileLengthGreaterThanZero(activityID, fileName)`` Checks that the working directory of the 
   UNICORE job associated with the given Activity contains the named file, which has a non-zero 
   length.
 
 - ``before(time)`` and ``after(time)`` check whether the current time is before or after the 
-  given time (in "yyyy-MM-dd HH:mm" format).
+  given time (in *yyyy-MM-dd HH:mm* format).
 
 - ``fileContent(activityID, fileName)`` Reads the content of the named file in the working 
   directory of the job associated with the given Activity and returns it as a string.
 
+
+.. _workflow-variables:
 
 Using workflow variables
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -368,11 +365,11 @@ used.
 
 	{
 
-	 "name": "...",
+	  "name": "...",
 
-	 "type": "...",
+	  "type": "...",
 
-	 "initial_value": "..."
+	  "initial_value": "..."
 
 	}
 
@@ -380,7 +377,7 @@ Currently variables of type ``STRING``, ``INTEGER`` , ``FLOAT`` and ``BOOLEAN`` 
 
 Variables can be modified using an activity of type ``ModifyVariable``.
 
-For example, to increment the value of the "COUNTER" variable, the following Activity is used
+For example, to increment the value of the *COUNTER* variable, the following Activity is used
 ::
 
 	{
@@ -408,8 +405,8 @@ Apart from graphs constructed using ``activity`` and ``transition`` elements, th
 supports special looping constructs, *for-each*, *while* and *repeat-until*, which allow to build 
 complex workflows.
 
-While and repeat-until loops
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*While* and *repeat-until* loops
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 These allow to loop a certain part of the workflow while (or until) a condition is met. 
 A *while* loop looks like this
@@ -429,28 +426,28 @@ A *while* loop looks like this
 	 ],
 
 	 "body":
-	 {
-
+	  {
 	   "activities":[
-	   {
+	    {
 		  "id": "job",
 		  "job": { ... }
-	   },
-	   {
-	   # this modifies the variable used in the 'while'
-	   # loop's exit condition
-	  "id": "mod", "type": "ModifyVariable",
-	  "variableName": "C",
-	  "expression": "C++;",
-	   }
+	    },
+	    {
+		  # this modifies the variable used in the 'while'
+		  # loop's exit condition
+		  "id": "mod", "type": "ModifyVariable",
+		  "variableName": "C",
+		  "expression": "C++;",
+	    }
 	   ],
 
 	   "transitions: [
 		 {"from": "job", "to": "mod"}
 	   ]
-
-	   "condition": "eval(C<5)",
-
+	  },
+	  
+	 "condition": "eval(C<5)",
+	  
 	}
 
 The necessary ingredients are that the loop’s ``body`` modifies the loop variable ("C" in the 
@@ -459,31 +456,30 @@ example), and the exit condition eventually terminates the loop.
 For a full workflow example, see :ref:`examples_while_loop`.
 
 
-Completely analogously to the WHILE loop, a *repeat-until* loop is constructed, the only
+Completely analogously to the *while* loop, a *repeat-until* loop is constructed, the only
 syntactic difference is that the subworkflow now has a different type element::
 
 	{
-	 "id": "repeat_example",
+	  "id": "repeat_example",
 
-	 "type": "REPEAT_UNTIL",
+	  "type": "REPEAT_UNTIL",
 
-	 ...
-
+	  ...
 	}
 
 Semantically, the *repeat*-loop will always execute the body at least once, since the condition is 
 checked after executing the body, while in the *while* case, the condition will be checked before 
 executing the body.
 
-For-each loop
-^^^^^^^^^^^^^
+*For-each* loop
+^^^^^^^^^^^^^^^
 
 The *for-each* loop is a complex and powerful feature of the workflow system, since it allows 
 parallel execution of the loop body, and different ways of building the different iterations. 
 Put briefly, one can loop over variables (as in the *while* and *repeat-until* case), but one 
 can also loop over enumerated values and (most importantly) over file sets.
 
-The basic syntax is
+The basic syntax is:
 ::
 
 	{
@@ -515,10 +511,10 @@ The basic syntax is
 	}
 
 The ``iterator_name`` element allows to control how the *loop iterator variable* is to be called, 
-by default it is named "IT".
+by default it is named *IT*.
 
-The values element
-^^^^^^^^^^^^^^^^^^
+The ``values`` element
+^^^^^^^^^^^^^^^^^^^^^^
 
 Using value, iteration over a fixed set of strings can be defined. The main use for this is 
 parameter sweeps, i.e. executing the same job multiple times with different arguments or 
@@ -565,7 +561,7 @@ The ``file_sets`` element
 This variation of the *for-each* loop, allows to loop over a set of files, optionally chunking 
 together several files in a single iteration.
 
-The basic structure of a file set definition is this
+The basic structure of a file set definition is this:
 ::
 
 	"file_sets": [
@@ -585,7 +581,7 @@ complemented according to the include and/or exclude elements. The ``recurse`` a
 to control whether the resolution should be done recursively into any subdirectories. The 
 indirection attribute is explained below.
 
-For example to recursively collect all PDF files (except two files named "unused*.pdf") in a 
+For example, to recursively collect all PDF files (except two files named *unused\*.pdf*) in a 
 certain directory on a storage::
 
 	"file_sets": [
@@ -600,7 +596,7 @@ certain directory on a storage::
 	]
 
 The following variables are set where ``ITERATOR_NAME`` is the loop ``iterator_name`` defined 
-in the for group as shown above.
+in the for group as shown above:
 
 - ``ITERATOR_NAME`` is set to the current iteration index (1, 2, 3, …)
 
@@ -653,7 +649,7 @@ A chunk is either a certain number of files, or a set of files with a certain to
 The ``chunksize`` element is either the number of files in a chunk, or (if type is set to ``SIZE``) 
 the total size of a chunk in kbytes.
 
-For example:
+For example,
 
  - To process 10 files per iteration::
 
@@ -674,7 +670,7 @@ The ``chunksize`` can also be computed at runtime using the expression given in 
 expression element. In the expression, two special variables may be used. The ``TOTAL_NUMBER`` 
 variable holds the total number of files iterated over, while the ``TOTAL_SIZE`` variable holds 
 the aggregated size of all files in kbytes. The script must return an integer-valued result. 
-The type element is used to choose whether the chunk size is interpreted as number of files or 
+The ``type`` element is used to choose whether the chunk size is interpreted as number of files or 
 data size.
 
 For example, to choose a larger chunksize if a certain total file size is exceeded::
@@ -692,7 +688,7 @@ like
   "Imports": [{ "From": "${IT_VALUE}", "To" : "infile.txt" }]
 
 would result in *1_infile.txt* to *N_infile.txt* in each chunk. 
-In the ``filename_format`` pattern you can use the variables "{0}", "{1}" and "{2}", 
+In the ``filename_format`` pattern you can use the variables ``{0}``, ``{1}`` and ``{2}``, 
 which denote the index, filename without extension and extension respectively. 
 ::
 
@@ -701,12 +697,12 @@ which denote the index, filename without extension and extension respectively.
   {2] = "txt"
 
 For example, if you have a set of PDF files, and you want them to be 
-named "file_1.pdf" to "file_N.pdf", you could use the pattern
+named *file_1.pdf* to *file_N.pdf*, you could use the pattern:
 ::
 
   "filename_format": "file_{0}.pdf"
 
-which would ignore the original filename in the "To" field completely.
+which would ignore the original filename in the ``To`` field completely.
 Or, if you prefer to keep the existing extensions, but append an index to the name, use
 ::
 
@@ -734,7 +730,7 @@ This section collects a few simple example workflows. They are intended to be su
 
 .. _examples_two_step_with_data:
 
-Simple "two-step" workflow with data dependency
+Simple *two-step* workflow with data dependency
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example shows how to link output from one task to the input of another task using
@@ -744,17 +740,17 @@ The first task, "step1", registers its ``stdout`` with the file catalog under th
 ``wf:step1_out``, and the second task, "step2", pulls that file in for further processing.
 ::
 
-    {
+	{
 	  "activities": [
 
 	    {
-	     "id": "step1",
-	     "job": {
-	       "ApplicationName": "Date",
-	       "Exports": [
-	         {"From": "stdout", "To": "wf:step1_out"}
-	       ]
-	     }
+	      "id": "step1",
+	      "job": {
+	        "ApplicationName": "Date",
+	        "Exports": [
+	          {"From": "stdout", "To": "wf:step1_out"}
+	        ]
+	      }
 	    },
 
 	    {
@@ -773,53 +769,52 @@ The first task, "step1", registers its ``stdout`` with the file catalog under th
 	  "transitions": [
 	    {"from": "step1", "to": "step2" }
 	  ]
-    }
-    
+	}
 
-Simple "diamond" graph
+
+Simple *diamond* graph
 ^^^^^^^^^^^^^^^^^^^^^^
 
 This example shows how to use transitions for building simple workflow graphs. It consists of 
-four "Date" jobs arranged in a diamond shape, i.e. "date2a" and "date2b" are executed (more 
+four *Date* jobs arranged in a diamond shape, i.e. *date2a* and *date2b* are executed (more 
 or less) simultaneously.
 ::
 
 	{
-	"activities": [
+	 "activities": [
 
-	  {
-	   "id": "date1",
-	   "job": { "ApplicationName": "Date" }
-	  },
+	   {
+	    "id": "date1",
+	    "job": { "ApplicationName": "Date" }
+	   },
 
-	  {
-	   "id": "date2a",
-	   "job": { "ApplicationName": "Date" },
-	  },
+	   {
+	    "id": "date2a",
+	    "job": { "ApplicationName": "Date" },
+	   },
 
-	  {
-	   "id": "date2b",
-	   "job": { "ApplicationName": "Date" },
-	  },
+	   {
+	    "id": "date2b",
+	    "job": { "ApplicationName": "Date" },
+	   },
 
-	  {
-	   "id": "date3",
-	   "job": { "ApplicationName": "Date" },
-	  }
+	   {
+	    "id": "date3",
+	    "job": { "ApplicationName": "Date" },
+	   }
 
-	],
+	 ],
 
-	"transitions": [
+	 "transitions": [
 	   {"from": "date1", "to": "date2a" },
 	   {"from": "date1", "to": "date2b" },
 	   {"from": "date2a", "to": "date3" },
 	   {"from": "date2b", "to": "date3" },
-	],
-
+	 ],
 	}
 
-Conditional execution in an if-else construct
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Conditional execution in an *if-else* construct
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Transitions from one activity to another may be conditional, which allows all sorts of *if-else* 
 constructs. Here is a simple example
@@ -827,26 +822,26 @@ constructs. Here is a simple example
 
 	{
 
-	"activities": [
+	  "activities": [
 
-	  {"id": "branch", "type": "BRANCH" },
+	    {"id": "branch", "type": "BRANCH" },
 
-	  {
-	   "id": "if-job",
-	   "job": { "ApplicationName": "Date" }
-	  },
+	    {
+	     "id": "if-job",
+	     "job": { "ApplicationName": "Date" }
+	    },
 
-	  {
-	   "id": "else-job",
-	   "job": { "ApplicationName": "Date" },
-	  },
+	    {
+	     "id": "else-job",
+	     "job": { "ApplicationName": "Date" },
+	    },
 
-	],
+	  ],
 
-	"transitions": [
-	   {"from": "branch", "to": "if-job", "condition": "2+2==4"},
-	   {"from": "branch", "to": "else-job" },
-	],
+	  "transitions": [
+	    {"from": "branch", "to": "if-job", "condition": "2+2==4"},
+	    {"from": "branch", "to": "else-job" },
+	  ],
 
 	}
 
@@ -855,29 +850,29 @@ Here we use the ``BRANCH`` activity which will only follow the first matching tr
 
 .. _examples_while_loop:
 
-While loop example using workflow variables
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*While* loop example using workflow variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The next example shows some uses of workflow variables in a *while* loop. The loop variable "C" is 
+The next example shows some uses of workflow variables in a *while* loop. The loop variable *C* is 
 copied into the job’s environment. Another possible use is to use workflow variables in data 
 staging sections, for example to name files.
 ::
 
 	{
 
-	"activities":[],
+	  "activities":[],
 
-	"subworkflows": [
+	  "subworkflows": [
 
-	  {
+	   {
 		"id": "while-example", "type": "WHILE",
 
 		"variables": [
-		{
+		 {
 		   "name": "C",
 		   "type": "INTEGER",
 		   "initial_value": "0"
-		}
+		 }
 		],
 
 		"condition": "C<5",
@@ -886,7 +881,7 @@ staging sections, for example to name files.
 
 		   "activities": [
 
-		   {
+		    {
 			 "id": "job",
 			 "job": {
 				"Executable": "echo",
@@ -896,47 +891,50 @@ staging sections, for example to name files.
 				  { "From": "stdout", "To": "wf:/out_${C}" }
 				]
 			  }
-		   },
+		    },
 
-		   {
-			"id": "mod", "type": "MODIFY_VARIABLE",
-			"variable_name": "C",
-			"expression": "C++"
-		   }
+		    {
+			 "id": "mod", "type": "MODIFY_VARIABLE",
+			 "variable_name": "C",
+			 "expression": "C++"
+		    }
 
-		  ],
+		   ],
 
-		  "transitions": [
+		   "transitions": [
 			{"from": "job", "to": "mod" }
-		  ],
-		  }
-
+		   ],
 		}
+
+	   }
+	  
+	  ]
+	
 	}
 
 
-For-each loop example
-^^^^^^^^^^^^^^^^^^^^^
+*For-each* loop example
+^^^^^^^^^^^^^^^^^^^^^^^
 
 The next example shows how to use the *for-each* loop to loop over a set of files. The jobs will 
 stage-in the current file. Also, the name of the current file is placed into the job environment.
 ::
 
 	{
-
-	"subworkflows": [
-
-	{
-	   "id": "for-example", "type": "FOR_EACH",
-	   "iterator_name": "IT",
-
-	   "body":
+	
+	  "subworkflows": [
+	  
 	   {
-		 "activities": [
-
-		   {
-			 "id": "job",
-			 "job": {
+		"id": "for-example", "type": "FOR_EACH",
+		"iterator_name": "IT",
+		
+		"body":
+		  {
+			"activities": [
+			
+			  {
+				"id": "job",
+				"job": {
 				 "Executable": "echo"
 				 "Arguments": ["processing: ", "$NAME"],
 				 "Environment": ["NAME=${IT_FILENAME}"],
@@ -946,18 +944,22 @@ stage-in the current file. Also, the name of the current file is placed into the
 				 "Exports": [
 				   {"From": "stdout", "To": wf:/out_${IT}},
 				 ],
-			 }
-		   },
-
-		  ],
-
-		},
+				}
+			  },
+			  
+			],
+			
+		  },
+		  
 		"file_sets": [
 		  {
-			 "base": "https://mygateway.de:7700/MYSITE/rest/core/storages/my_storage/"
-			 "include": ["*"],
+			"base": "https://mygateway.de:7700/MYSITE/rest/core/storages/my_storage/"
+			"include": ["*"],
 		  }
 		],
-	}
-
+		
+	   }
+	   
+	  ]
+	
 	}

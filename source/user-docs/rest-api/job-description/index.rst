@@ -17,7 +17,7 @@ that are relevant to that client, so make sure to check the client manuals as we
 Overview
 ~~~~~~~~
 
-UNICORE's job description consists of several parts
+UNICORE's job description consists of several parts:
 
 - an ``Imports`` section listing data to be staged in to the job's working directory from remote 
   storage locations (and/or the client's file system, if you use :ref:`ucc`)
@@ -81,7 +81,7 @@ example.
 
 	   "Arguments": ["-l", "-t"],
 
-	   "Environment": [ "PATH=/bin:$PATH", "FOO=bar" ] ,
+	   "Environment": [ "PATH=/bin:$PATH", "FOO=bar" ],
 
 	}
 
@@ -157,7 +157,7 @@ where the ``From``, ``To`` and ``Step`` parameters are floating point or integer
 Job data management
 ~~~~~~~~~~~~~~~~~~~
 
-In general your job will require data files, either from your client machine, or from some 
+In general, your job will require data files either from your client machine or from some 
 remote location. An important concept in UNICORE is the job's workspace, which is the default 
 location into which files are placed. The same applies to result files: by default, files will be 
 downloaded from the job's workspace. However, other remote storage locations are supported, too.
@@ -179,8 +179,8 @@ Importing files into the job workspace
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To import files from remote sites to the job's working directory on the remote UNICORE server, 
-there's the ``Imports`` keyword. Here is an example Imports section which demonstrates some of 
-the possibilities.
+there's the ``Imports`` keyword. Here is an example of ``Imports`` section which demonstrates 
+some of the possibilities.
 
 Note that uploading LOCAL files is the responsibility of the client! Make sure to read the 
 :ref:`client documentation <ucc-manual>` for more information on this topic.
@@ -188,7 +188,6 @@ Note that uploading LOCAL files is the responsibility of the client! Make sure t
 .. code:: json
 
 	{
-
 	"Imports": [ 
 
 	 { 
@@ -217,7 +216,7 @@ that can be set to ``false``:
     "FailOnError": "false",
  }
 
-Special protocols for imports
+Special protocols for imports:
 
 - ``file://`` : copy file(s) residing on the remote machine into the job dir
 - ``link://`` : symlink a file/dir residing on the remote machine into the job dir
@@ -226,10 +225,10 @@ Special protocols for imports
   HTTP URL refers to a UNICORE file or not)
 
 
-Using "inline" data to import a file into the job workspace
+Using *inline* data to import a file into the job workspace
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For short import files, it can be convenient to place the data directly into the job descrition,
+For short import files, it can be convenient to place the data directly into the job description,
 which can speed up and simplify the job submission process.
 
 Here is an example:
@@ -237,9 +236,9 @@ Here is an example:
 .. code:: json
 
 	{ 
-		  "From": "inline://dummy",
-		  "To":   "uspaceFileName",
-		  "Data": "this is some test data", 
+	  "From": "inline://dummy",
+	  "To":   "uspaceFileName",
+	  "Data": "this is some test data", 
 	}
 
 The ``From`` URL has to start with ``inline://``, the rest is not important. Make sure to properly 
@@ -254,13 +253,13 @@ To achieve this, replace the ``From`` parameter by list of values, for example:
 .. code:: json
 
     { 
-       "From": [ 
-              "https://gw:8080/DEMO-SITE/rest/core/storages/HOME/files/file1", 
-              "https://gw:8080/DEMO-SITE/rest/core/storages/HOME/files/file2", 
-              "https://gw:8080/DEMO-SITE/rest/core/storages/HOME/files/file3", 
-            ],
+      "From": [ 
+               "https://gw:8080/DEMO-SITE/rest/core/storages/HOME/files/file1", 
+               "https://gw:8080/DEMO-SITE/rest/core/storages/HOME/files/file2", 
+               "https://gw:8080/DEMO-SITE/rest/core/storages/HOME/files/file3", 
+               ],
       "To": "fileName"
-      }
+    }
 
 Note that only a single stage-in can be sweeped over in this way, and that this will not work 
 with files imported from your local client machine.
@@ -280,20 +279,19 @@ Here is an example:
 .. code:: json
 
 	{
-
-	   "Exports": [ 
+	  "Exports": [ 
 
 		{ 
 		  "From": "stdout", 
 		  "To":   "https://gw:8080/DEMO-SITE/rest/core/storages/HOME/files/results/myjob/stdout" 
-		 },
+		},
 
-	   { 
-		 "From": "results.dat", 
+		{ 
+		  "From": "results.dat", 
 		  "To":   "https://gw:8080/DEMO-SITE/rest/core/storages/HOME/files/results/myjob/results.dat" 
-		 },
+		},
 
-	   ],
+	  ],
 	}
 
 Specifying credentials for data staging
@@ -301,7 +299,7 @@ Specifying credentials for data staging
 
 Some data staging protocols supported by UNICORE require credentials such as username and password.
 
-To pass username and password to the server, the syntax is as follows
+To pass username and password to the server, the syntax is as follows:
 
 .. code:: json
 
@@ -335,27 +333,27 @@ can use the following
 
   "Stdin": "filename",
 
-then the standard input will come from the file named "filename" in the job working directory.
+then the standard input will come from the file named *filename* in the job working directory.
 
 Resources
 ~~~~~~~~~
 
 A job definition can have a ``Resources`` section specifying the resources to request
-on the remote system. For example
+on the remote system. For example,
 
 .. code:: json
 
   {
     "Resources": {
 
-     "Queue" : "fast",  
-     "Runtime": "12h",  
-     "Nodes": "8",
+      "Queue" : "fast",  
+      "Runtime": "12h",  
+      "Nodes": "8",
 
     }
   }
 
-UNICORE has the following built-in resource names.
+UNICORE has the following built-in resource names:
 
 .. include:: tables/resources.rst
 
@@ -443,5 +441,5 @@ Some batch systems support sending email upon completion of jobs. To specify
 your email, use
 ::
 
-  "User email" : "foo@bar.org",
+  "User email": "foo@bar.org",
 

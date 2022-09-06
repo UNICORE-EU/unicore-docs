@@ -15,7 +15,7 @@ configured.
   
   The Gateway is not a complete HTTP reverse proxy implementation. For
   example, it is not possible to run a full, complex web      application
-  "behind" the Gateway, especially not if protocols like    WebSocket are
+  *behind* the Gateway, especially not if protocols like    WebSocket are
   used.
 
 In effect, traffic to a *virtual* URL, e.g.
@@ -125,14 +125,14 @@ The Gateway is configured using a set of configuration files, which
 reside in the ``CONF`` subdirectory.
 
 
-Java and environment settings: startup.properties
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Java and environment settings: ``startup.properties``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This file contains settings related to the Java VM, such as the Java command
-to use, memory settings, library paths etc.
+to use, memory settings, library paths, etc.
 
-Configuring sites: connections.properties
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Configuring sites: ``connections.properties``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is a simple list connecting the names of sites and their physical addresses. 
 An example is::
@@ -144,7 +144,7 @@ An example is::
 If this file is modified, the Gateway will re-read it at runtime, so there is no need to 
 restart the Gateway in order to add or remove sites.
 
-Optionally administrator can enable a possibility for dynamic site registration at runtime, 
+Optionally, an administrator can enable a possibility for dynamic site registration at runtime, 
 see :ref:`dyn-reg` for details. Then this file should contain only the 
 static entries (or none if all sites register dynamically).
 
@@ -152,11 +152,11 @@ Further options for back-end sites configuration are presented in
 :ref:`loadbalance`.
 
 
-Main server settings: gateway.properties
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Main server settings: ``gateway.properties``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Use the ``gateway.hostname`` property to configure the network interface and 
-port the Gateway will listen on. You can also select between https and http protocol,  
+port the Gateway will listen on. You can also select between ``https`` and ``http`` protocol,  
 though in almost all cases https will be used.
 
 Example:: 
@@ -167,7 +167,7 @@ Example::
   If you set the host to ``0.0.0.0``, the Gateway will listen on all network interfaces 
   of the host machine, else it will listen only on the specified one.
 
-If the scheme of the hostname URL is set to https, the Gateway uses the configuration 
+If the scheme of the hostname URL is set to ``https``, the Gateway uses the configuration 
 data from ``security.properties`` to configure the HTTPS settings. 
 
 
@@ -194,7 +194,7 @@ Scalability settings
 ^^^^^^^^^^^^^^^^^^^^
 
 To fine-tune the operational parameters of the embedded Jetty server, you can set 
-advanced HTTP server parameters. See :ref:`ref-jetty` for details. 
+advanced HTTP server parameters (see :ref:`ref-jetty` for details). 
 Among others you can use the non-blocking IO connector offered by Jetty, 
 which will scale up to higher numbers of concurrent connections than the default connector. 
 
@@ -208,11 +208,11 @@ The number of concurrent calls is limited, and controlled by two parameters::
 
 
 You can also control the limit on the maximum SOAP header size which
-is allowed by the Gateway. **Typically you don't have to touch this
-parameter**. However if your clients do produce very big SOAP headers
+is allowed by the Gateway. Typically you **don't have to touch this
+parameter**. However, if your clients do produce very big SOAP headers
 and the Gateway blocks them, you can increase the limit. Note that
 such a giant SOAP header usually means that the client is not behaving
-in a sane way, e.g. is trying to perform a DoS attack.
+as intended, e.g. is trying to perform a DoS attack.
 ::
 
  # maximum size of an accepted SOAP header, in bytes
@@ -221,7 +221,7 @@ in a sane way, e.g. is trying to perform a DoS attack.
 .. note::
  The Gateway may consume this amount of memory (plus some extra amount
  for other data) for each opened connection. Therefore, this value multiplied by 
- the number of maximum allowed connections, should be significantly lower, then the total
+ the number of maximum allowed connections, should be **significantly lower**, then the total
  memory available for the Gateway.
   
 
@@ -235,27 +235,28 @@ Dynamic registration is controlled by three properties in ``CONF/gateway.propert
   gateway.registration.enable=true
   gateway.registration.secret=<your secret>
 
-If set to true, the Gateway will accept dynamic registrations which are made by 
+If set to ``true``, the Gateway will accept dynamic registrations which are made by 
 sending a ``HTTP POST`` request to the URL ``/VSITE_REGISTRATION_REQUEST``
-This request must contain a parameter "secret" which matches the
-value configured in the ``gateway.properties`` file
+This request must contain a parameter ``secret`` which matches the
+value configured in the ``gateway.properties`` file.
 
 Filters can be set to forbid access of certain hosts, or to require certain strings 
-in the Vsite addresses. For example::
+in the Vsite addresses. For example,
+::
 
   gateway.registration.deny=foo.org example.org
 
-will deny registration if the remote hostname contains 'foo.org' or 'example.org'. 
+will deny registration if the remote hostname contains *foo.org* or *example.org*. 
 Conversely,
 ::
 
  gateway.registration.allow=mydomain.org
 
-will only accept registrations if the remote address contains 'mydomain.org'.
+will only accept registrations if the remote address contains *mydomain.org*.
 These two (deny and allow) can be combined.
 
 
-Web interface ("monkey page")
+Web interface (*monkey page*)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For testing and simple monitoring purposes, the Gateway displays a
@@ -314,16 +315,17 @@ Logging
 ^^^^^^^
 
 UNICORE uses Log4j (version 2) as its logging framework, and
-comes with an example configuration file (**CONF/logging.properties**)
+comes with an example configuration file (``CONF/logging.properties``).
 
 Please refer to the `Log4j documentation <https://logging.apache.org/log4j/2.x/manual/configuration.html>`_
-for more information
+for more information.
 
 
 The most important, root log categories used by the Gateway's logging are:
 
-.. table:
+.. table::
  :width: 100
+ :widths: 40 60
  :class: tight-table
  
  +----------------------+-------------------------+
@@ -342,14 +344,14 @@ The most important, root log categories used by the Gateway's logging are:
 Using Apache httpd as a frontend
 --------------------------------
 
-You may wish to use the **Apache webserver** (httpd) as a frontent for the
-Gateway (e.g. for security or fault-tolerance reasons).
+You may wish to use the Apache webserver (httpd) as a 
+frontent for the Gateway (e.g. for security or fault-tolerance reasons).
 
 Requirements
 ~~~~~~~~~~~~
 
- - Apache httpd
- - mod_proxy for Apache httpd
+ - `Apache httpd <https://httpd.apache.org/>`_
+ - `mod_proxy <https://httpd.apache.org/docs/2.4/mod/mod_proxy.html>`_ for Apache httpd
 
 External references
 ~~~~~~~~~~~~~~~~~~~
@@ -368,22 +370,22 @@ high availability and/or higher scalability of UNICORE/X sites without additiona
 A site definition (in ``CONF/connections.properties``) can be extended, so that multiple physical 
 servers are used for a single virtual site. 
 
-An example for such a so-called multi-site declaration in the connections.properties file 
+An example for such a so-called multi-site declaration in the ``connections.properties`` file 
 looks as follows::
 
  #declare a multisite with two physical servers
  
  MYSITE=multisite:vsites=https://localhost:7788 https://localhost:7789
 
-This will tell the Gateway that the virtual site "MYSITE" is indeed a multi-site with the
+This will tell the Gateway that the virtual site *MYSITE* is indeed a multi-site with the
 two given physical sites.
 
 Configuration
 ~~~~~~~~~~~~~
 
 Configuration options for the multi-site can be passed in two ways. On the one hand they can
-go into the connections.properties file, by putting them in the multi-site definition, separated
-by "``;``" characters::
+go into the ``connections.properties`` file, by putting them in the multi-site definition, separated
+by ``;`` characters::
 
   #declare a multisite with parameters
 
@@ -392,8 +394,9 @@ by "``;``" characters::
 
 The following general parameters exist:
 
-.. table:
+.. table::
  :width: 100
+ :widths: 30 70
  :class: tight-table
  
  +--------------+----------------------------------+
@@ -407,7 +410,7 @@ The following general parameters exist:
  +--------------+----------------------------------+
 
 Using the ``config`` option, all the parameters can be placed in a separate file for enhanced 
-readability. For example you could define in ``connections.properties``::
+readability. For example, you could define in ``connections.properties``::
 
   #declare a multisite with parameters read from a separate file
   
@@ -459,7 +462,7 @@ the available ones. To enable it, set
 
 Changes to the site health will be logged at ``INFO`` level, so  you can see when the sites go up or down.
 
-It is very important to be aware that this strategy requires   that all backend sites used in the pool,
+**It is very important** to be aware that this strategy requires   that all backend sites used in the pool,
 share a common persistence. It is because Gateway does not track clients, so particular client requests
 may land at different sites. This is typically solved by using a non-default, shared database for sites,
 such as MySQL.
@@ -482,7 +485,7 @@ Gateway failover and migration
 --------------------------------
 
 The :ref:`loadbalance` covered usage of the Gateway to provide failover of backend services.
-However it may be needed to guarantee high-availabilty for the Gateway itself or to move it
+However, it may be needed to guarantee high-availabilty for the Gateway itself or to move it
 to other machine in case of the original one's failure.
 
 Gateway's migration
@@ -501,7 +504,7 @@ configuration of sites behind the Gateway must be updated accordingly.
 Failover and loadbalancing of the Gateway
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Gateway itself doesn't provide any features related to its own redundancy. However as it 
+Gateway itself doesn't provide any features related to its own redundancy. However, as it 
 is stateless, the standard redundancy solutions can be used.
 
 The simpliest solution is to use Round Robin DNS, where DNS server routes the Gateway's DNS

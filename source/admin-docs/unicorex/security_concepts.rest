@@ -8,33 +8,33 @@ This section describes the basic security concepts and architecture used in
 UNICORE/X. The overall procedure performed by the security infrastructure 
 can be summarised as follows:
 
-  - the incoming message is authenticated first by the SSL layer. In
-    general messages will be relegated through the Gateway, and will
-    not be directly from end user clients.
+- the incoming message is authenticated first by the SSL layer. In
+  general, messages will be relegated through the Gateway, and will
+  not be directly from end user clients.
 
-  - extract authentication information from the HTTP headers, such as
-    username/password, OAuth token, a JWT delegation token or even
-    X509 certificate information.
+- extract authentication information from the HTTP headers, such as
+  username/password, OAuth token, a JWT delegation token or even
+  X509 certificate information.
 
-  - authenticate the message using the configured authentication
-    handlers.  This procedure will assign a X500 distinguished name to
-    the current user, which in UNICORE terms is the user identity.
+- authenticate the message using the configured authentication
+  handlers.  This procedure will assign a X500 distinguished name to
+  the current user, which in UNICORE terms is the user identity.
 
-  - a security session is established (if sessions are enabled), and
-    the client can simply send the security session ID on subsequent
-    requests to avoid having to go through the full authentication
-    process again.
+- a security session is established (if sessions are enabled), and
+  the client can simply send the security session ID on subsequent
+  requests to avoid having to go through the full authentication
+  process again.
 
-  - extract further information used for authorisation from the
-    message sent to the server. This information may include:
-    originator of the message(in case the message passed through a
-    UNICORE gateway), trust delegation tokens, incoming VO membership
-    assertions, etc.
+- extract further information used for authorisation from the
+  message sent to the server. This information may include:
+  originator of the message(in case the message passed through a
+  UNICORE gateway), trust delegation tokens, incoming VO membership
+  assertions, etc.
 
-  - generate or lookup attributes to be used used for authorisation in
-    the configured attribute sources.
+- generate or lookup attributes to be used used for authorisation in
+  the configured attribute sources.
   
-  - perform policy check by executing a PDP request.
+- perform policy check by executing a PDP request.
 
 All these steps can be widely configured.
 
@@ -97,15 +97,15 @@ configured.  See :ref:`use_aip` for more information.
 Policy checks
 ^^^^^^^^^^^^^
 
-Each request is checked based on the following information.
+Each request is checked based on the following information:
   
-  - available security tokens
+- available security tokens
   
-  - the resource owner
+- the resource owner
   
-  - the resource accessed (e.g. service name + instance id)
+- the resource accessed (e.g. *service name* + *instance id*)
   
-  - the activity to be performed (the web method such as ``GET``)
+- the activity to be performed (the web method such as ``GET``)
   
 The validation is performed by the **PDP** (Policy Decision Point). The
 default PDP uses a list of rules expressed in XACML 2.0 format that
@@ -133,8 +133,8 @@ external authentication (e.g. via Unity is used).  These sessions have
 a limited lifetime (8 hours by default).
 
 .. note::
-  The security session only covers authentication - attribute
+  The security session only covers authentication attribute
   assignment and authorization is always done for each request.
 
 For details on how to configure this feature, see the general properties
-overview in section :ref:`ux_configuration`
+overview in section :ref:`ux_configuration`.

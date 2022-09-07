@@ -5,28 +5,31 @@ The UNICORE persistence layer
 
 UNICORE stores its state in data bases. The information that is stored 
 depends on the services that are running in the container, and can
-include
+include:
 
- - user's resources (instances of storage, job and other services)
- - jobs
- - workflows
+- user's resources (instances of storage, job and other services)
 
-etc.
+- jobs
+
+- workflows
+
+- etc.
 
 The job directories themselves reside on the target system, but UNICORE keeps 
 additional information (like, which UNICORE user owns a particular job).
 
 The data on user resources is organised by service name, i.e. each service 
-(for example, JobManagement) stores its information
-in a separate database table (having the same name as the service, e.g. "JobManagement").
+(for example, *JobManagement*) stores its information
+in a separate database table (having the same name as the service, e.g. *JobManagement*).
 
 The UNICORE persistence layer offers three kinds of storage:
 
- - on the filesystem of the UNICORE/X server (using the H2 database engine), which is generally the default;
+- on the filesystem of the UNICORE/X server (using the H2 database engine), which is generally 
+  the default;
 
- - on a database server (MySQL, PostgreSQL, or the "server mode" of H2);
+- on a database server (MySQL, PostgreSQL, or the *server mode* of H2);
 
- - in-memory, i.e. all info is lost on server restart.
+- in-memory, i.e. all info is lost on server restart.
 
 While the first one is very easy to setup, and easy to manage, the second option
 allows advanced setups like clustering/load balancing configurations involving multiple
@@ -44,16 +47,17 @@ Configuring the persistence layer
 
 Peristence properties are configured in two files:
 
- - container.properties for all service data
- - xnjs.properties for job data
+- ``container.properties`` for all service data
+
+- ``xnjs.properties`` for job data
 
 It is recommended to specify a configuration file using the ``persistence.config`` property. Thus, 
 persistence configuration can be easily shared between the job (XNJS) data and other service data.
-If the "persistence.config" property is set, the given file will be read as a Java properties 
+If the ``persistence.config`` property is set, the given file will be read as a Java properties 
 file, and the properties will be used.
 
 .. note::
- All properties can be specified on a "per table" basis, by appending ".<TABLENAME>"
+ All properties can be specified on a *per table* basis, by appending ``.<TABLENAME>``
  to the property name. This means you can even select different storage systems for
  different data, e.g. store service data on the filesystem and jobs in MySQL.
  The table name is case-sensitive.
@@ -82,13 +86,13 @@ The H2 engine
 
 H2 is a pure Java database engine. It can be used in embedded mode (i.e. the engine runs in-process), or
 in server mode, if multiple UNICORE servers should use the same database server. For more information, visit
-http://www.h2database.com
+http://www.h2database.com.
 
 
 Connection URL
 ++++++++++++++
 
-In H2 server mode, the connection URL is constructed as follows
+In H2 server mode, the connection URL is constructed as follows:
 ::
 
   jdbc:h2:tcp://<persistence.host>:<persistence.port>/<persistence.directory>/<table_name>
@@ -106,7 +110,7 @@ data, you need to set
 To use MySQL, you need access to an installed MySQL server. It is beyond the scope
 of this guide to describe in detail how to setup and operate MySQL. 
 The following is a simple sequence of steps to be performed for setting up the required 
-database structures.
+database structures:
 
  - open the mysql console
 
@@ -164,14 +168,14 @@ for how to setup access.
     $ sudo -u postgres createdb -O unicore unicore_data
 
  - Check that the PostgreSQL server allows for password authentication for the UNICORE user.
-   Ensure that in pg_hba.conf you have lines similar to these: ::
+   Ensure that in ``pg_hba.conf`` you have lines similar to these: ::
 
     host   all         all         127.0.0.1/32          md5
     host   all         all         ::1/128               md5
 
  - If UNICORE server(s) and PostgreSQL servers are on different hosts, adapt hostnames accordingly.
 
- - You can check that the connection works by invoking the following on the UNICORE/X server: ::
+ - You can check that the connection works by invoking the following on the UNICORE/X server:
 
    .. code:: console
 

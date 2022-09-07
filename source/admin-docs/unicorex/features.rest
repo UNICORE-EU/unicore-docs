@@ -116,7 +116,7 @@ RESTful APIs for jobs and data management.
 Admin
 ^^^^^
 
-This feature provides the Admin service (see :ref:`ux_admin_service`)
+This feature provides the Admin service (see :ref:`ux_admin_service`).
 
 .. table::
  :width: 100
@@ -146,7 +146,7 @@ A setting
   container.feature.Registry.mode=shared
 
 
-will enable ``shared`` mode. Don't do this on a *normal* UNICORE/X server.
+will enable ``shared`` mode. **Don't do this** on a *normal* UNICORE/X server.
 
 .. table::
  :width: 100

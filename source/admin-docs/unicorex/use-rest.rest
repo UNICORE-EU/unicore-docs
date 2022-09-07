@@ -14,7 +14,7 @@ This configuration is done in the container config file (typically
 ``uas.config`` or ``container.properties``).
 
 The enabled authentication options and their order are configured
-using a list of enabled mechanisms. For example
+using a list of enabled mechanisms. For example,
 ::
 
  container.security.rest.authentication.order=FILE UNITY-OAUTH X509
@@ -23,7 +23,7 @@ As you can see, you can use one or more authentication methods,
 UNICORE will try all configured authentication options in order.
 
 For each enabled option, a set of additional properties is used
-to configure the details (for example the Unity address)
+to configure the details (for example the Unity address).
 
 
 Username-password file
@@ -37,7 +37,7 @@ and the DN. Required configuration is the location of the file.
  container.security.rest.authentication.FILE.class=eu.unicore.services.rest.security.FilebasedAuthenticator
  container.security.rest.authentication.FILE.file=conf/rest-users.txt
 
-The file format is
+The file format is:
 ::
 
 	#
@@ -133,7 +133,7 @@ where the ``%s`` will be replaced by the user name. In the example above, user *
 have the DN "*CN=test-user, OU=pam-local-users*".
 
 There is also a PAM attribute source that you can use to automatically
-assign role=*user* as well the Unix login and groups correctly for
+assign *role=user* as well the Unix login and groups correctly for
 authenticated users.
 ::
 
@@ -145,9 +145,9 @@ OAuth2 authentication using a Bearer token
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It is also possible in principle to directly authenticate to an OAuth2
-server, contact unicore-support for details. However, Unity is much
-more flexible and feature rich, so we strongly recommend using Unity
-as a bridge to any third party IdPs you might want to use.
+server, contact `support mailing list <mailto:unicore-support@lists.sf.net>`_ for details. 
+However, `Unity <https://unity-idm.eu/>`_ is much more flexible and feature rich, so we strongly 
+recommend using Unity as a bridge to any third party IdPs you might want to use.
 
 
 
@@ -179,7 +179,7 @@ are by default distributed via the shared service Registry.
 This works out of the box, and does not require any configuration.
 
 However, if required, you can load additional public keys for trusted
-services from local PEM files using the following
+services from local PEM files using the following:
 ::
 
  container.security.rest.jwt.trustedLocalIssuer.1=<path_to_local_PEM_file>
@@ -196,6 +196,6 @@ at least 32 characters
 This secret must be the same on all the UNICORE servers that are
 supposed to trust each other.
 
-Not that a server with HMAC secret defined will still trust
+Note that a server with HMAC secret defined will still trust
 certificate-based JWT tokens, but will always use HMAC to sign its own
 delegation tokens.

@@ -13,7 +13,7 @@ on the JSON format.
 
 The IDB contains Partitions, Applications, Submit/Execute script
 templates and Info elements, all of which will be described
-below. Additionally the administrator can customize the script
+below. Additionally, the administrator can customize the script
 template that is used to perform special actions, such as loading modules,
 or changing the shell (please read :ref:`script-templates` for more information).
 
@@ -22,16 +22,15 @@ Applications can also be defined in separate files (if using a directory)
 .. code:: json
 
   {
-  "Partitions" : {},
+    "Partitions" : {},
   
-  "Info" : {},
+    "Info" : {},
   
-  "Applications" : [],
+    "Applications" : [],
   
-  "ExecuteScriptTemplate" : "...",
+    "ExecuteScriptTemplate" : "...",
   
-  "SubmitScriptTemplate"  : "...",
-  
+    "SubmitScriptTemplate"  : "...",
   }
 
 
@@ -92,7 +91,7 @@ Here you can specify things like number of nodes, job runtime (wall
 time!)  CPUs per node, total number of CPUs, etc.
 
 Integer-valued capabilities are specified with a range and an
-optional default, for example:
+optional default, for example,
 ::
 
  "Nodes" : "1-64:1",
@@ -117,8 +116,8 @@ A number of standard resource names exist, which a system should
 adhere to, in order to make user jobs as portable as possible. You may
 choose to not specify some of them, if they do not make sense on your
 system. For example, some sites do not allow the user to explicitely
-select nodes and processors per node, but only "total number of CPUs",
-or only "Nodes".
+select nodes and processors per node, but only *total number of CPUs*,
+or only *Nodes*.
 
 :``Runtime``: The wall clock time (integer). You can use the usual units ("m", "h", "d"),
    e.g. "12h"
@@ -155,7 +154,7 @@ are submitted at the same time, where the user can control two things:
 how many jobs are submitted, and how many jobs run at the same time.
 
 To enable this feature, the site administrator needs to define two resources
-in the IDB partition(s), named "ArraySize" and "ArrayLimit".
+in the IDB partition(s), named ``ArraySize`` and ``ArrayLimit``.
 
 Consider the following example:
 
@@ -171,7 +170,7 @@ The array size and limit are passed to the TSI via
   #TSI_ARRAY 0-99
   #TSI_ARRAY_LIMIT 10
 
-The TSI also sets an environment variable in the job script that corresponds to the "task id", i.e.
+The TSI also sets an environment variable in the job script that corresponds to the *task id*, i.e.
 the ID of the current job instance::
 
   UC_ARRAY_TASK_ID = "22"; export UC_ARRAY_TASK_ID
@@ -181,7 +180,7 @@ Other types of resources
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Most HPC sites have special settings that cannot be mapped to the
-generic resource elements shown in the previous section. Therefore
+generic resource elements shown in the previous section. Therefore,
 UNICORE allows to define custom system settings and allow users to
 request these in their UNICORE jobs.
 
@@ -230,7 +229,7 @@ Here are a few examples:
 
 
 For "int" resources, you can alternatively use the abbreviated definition, as shown above
-for the standard resources (such as 'Nodes'). For example
+for the standard resources (such as 'Nodes'). For example,
 
 ::
 
@@ -255,21 +254,21 @@ you can achieve this using two entries in the IDB.
 
   }
 
-(You can give these as an array of strings (lines), or as a single string with
-embedded ``\n`` line breaks)
+You can give these as an array of strings (lines), or as a single string with
+embedded ``\n`` line breaks.
 
 The ``SubmitScriptTemplate`` is used for batch job submission, the ``ExecuteScriptTemplate`` is used for
-everything else (e.g. creating directories, resolving user's home, etc)
+everything else (e.g. creating directories, resolving user's home, etc).
   
 UNICORE/X generates the TSI script as follows:
 
- - "``#COMMAND``" entry will be replaced by the action for the
-   TSI, e.g. "``#TSI_SUBMIT``" (for submit)
+- "``#COMMAND``" entry will be replaced by the action for the
+  TSI, e.g. "``#TSI_SUBMIT``" (for submit)
 
- - "``#RESOURCES``" will be replaced by the
-   resource requirements, e.g. "``#TSI_NODES=...``"
+- "``#RESOURCES``" will be replaced by the
+  resource requirements, e.g. "``#TSI_NODES=...``"
 
- - "``#SCRIPT``" will be the user script / the executed command
+- "``#SCRIPT``" will be the user script / the executed command
  
 Modifying these templates can be used to perform special actions, such as loading modules,
 or changing the shell (but use something compatible to 'sh'). For example, to add some
@@ -289,10 +288,10 @@ special directory to the path for user scripts submitted in batch mode, you coul
 
 .. attention::
   Make sure that the commands added to the  ``ExecuteScriptTemplate`` **DO NOT** generate 
-  any output on standard out or standard error! Always redirect any  output to ``/dev/null``
+  any output on standard out or standard error! Always redirect any  output to ``/dev/null``.
 
 
-For example
+For example,
 
 ::
 
@@ -310,7 +309,7 @@ Simple key-value pairs can be entered into the IDB which are then
 accessible client-side. This is very useful for conveying
 system-specifics to client code and also to users.
 
-Here is an example
+Here is an example:
 
 .. code:: json
 

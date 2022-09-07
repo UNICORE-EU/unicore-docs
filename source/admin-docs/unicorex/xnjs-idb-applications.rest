@@ -7,7 +7,7 @@ Apart from describing the available queues and their associated
 resources, the most important functionality of the IDB is defining
 applications.
 
-Applications can be defined in the main IDB file,
+Applications can be defined in the main IDB file
 
 .. code:: 
 
@@ -21,7 +21,7 @@ Applications can be defined in the main IDB file,
 or in separate files (one application per file).
 
 Here is a quick overview of the available elements, which will
-be documented in detail below.
+be documented in detail below:
 
 .. table:: JSON IDB Application
  :width: 100 
@@ -105,7 +105,7 @@ Here is an example:
 Basic Application definition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Here is an example entry for the "Date" application on a UNIX system
+Here is an example entry for the *Date* application on a UNIX system:
 ::
 
   {
@@ -115,12 +115,12 @@ Here is an example entry for the "Date" application on a UNIX system
   }
 
 
-Invoking the "Date" application will be simply mapped to an invocation of ``/bin/date``.
+Invoking the *Date* application will be simply mapped to an invocation of ``/bin/date``.
 
 Arguments
 ^^^^^^^^^
 
-Command line arguments are specified using ``Argument`` tags:
+Command line arguments are specified using ``Arguments`` tags:
 :: 
 
   {
@@ -138,8 +138,8 @@ Conditional Arguments
 The job submission from a client usually contains environment variables to be
 set when running the application. It often happens that a certain argument
 should only be included if a corresponding environment variable is set.
-This can be achieved by using *"conditional arguments"* in the incarnation
-definition. Conditional arguments are indicated by a quastion mark "``?``" 
+This can be achieved by using *conditional arguments* in the incarnation
+definition. Conditional arguments are indicated by a quastion mark ``?`` 
 appended to the argument value:
 
 .. code::
@@ -178,7 +178,6 @@ To set environment variables, add a map
      "PATH": "/opt/myapp:/usr/bin:$PATH",
      "MYENV": "value",
     },
-  
   }
 
 
@@ -207,7 +206,7 @@ Prologue and epilogue
 ^^^^^^^^^^^^^^^^^^^^^
 
 These commands will be executed as part on a batch node of the user's job script,
-and are placed before / after the application executable command.
+and are placed before/after the application executable command.
 
 .. code::
 
@@ -240,18 +239,18 @@ the login node (i.e. interactively), a flag in the IDB can be set:
 Exit code handing
 ^^^^^^^^^^^^^^^^^
 
-By default, a UNICORE job will be set to NOT_SUCCESSFUL if the application exits
+By default, a UNICORE job will be set to ``NOT_SUCCESSFUL`` if the application exits
 with a non-zero exit code.
-If you want to change this behaviour, you can set a flog
+If you want to change this behaviour, you can set a flag
 
-.. code:: xml
+.. code::
 
   {
     Name: SomeApp,
     Version: 1.0,
       
-  # instruct UNICORE to NOT fail if the application
-  # exits with non-zero exit code
+    # instruct UNICORE to NOT fail if the application
+    # exits with non-zero exit code
   
     IgnoreNonZeroExitCode: true,
   

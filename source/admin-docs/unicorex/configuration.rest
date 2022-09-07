@@ -15,19 +15,19 @@ next sections.
 Mandatory configuration
 ^^^^^^^^^^^^^^^^^^^^^^^
 
- - SSL certificates and basic security: UNICORE uses SSL certificates for all servers. 
-   For UNICORE/X these settings are made in the ``container.properties`` config file
+- SSL certificates and basic security: UNICORE uses SSL certificates for all servers. 
+  For UNICORE/X these settings are made in the ``container.properties`` config file.
 
- - Attribute sources: various ways are available to assign local
-   attributes to users, such as Unix user name, groups and role. For
-   details, please refer to the :ref:`use_aip`.
+- Attribute sources: various ways are available to assign local
+  attributes to users, such as Unix user name, groups and role. For
+  details, please refer to the :ref:`use_aip`.
 
- - Backend / target system access: to access a resource manager like Slurm, the
-   UNICORE TSI needs to be installed and UNICORE/X needs to be configured accordingly. Please
-   see :ref:`ux_xnjs`.
+- Backend / target system access: to access a resource manager like Slurm, the
+  UNICORE TSI needs to be installed and UNICORE/X needs to be configured accordingly. Please
+  see :ref:`ux_xnjs`.
 
- - You can choose to enable/disable certain UNICORE features, for example if you
-   wish to set up a storage-only UNICORE server. Please refer to :ref:`ux_features`.
+- You can choose to enable/disable certain UNICORE features, for example if you
+  wish to set up a storage-only UNICORE server. Please refer to :ref:`ux_features`.
 
 UNICORE/X is configured using several config files residing in the
 *CONF* directory, please see :ref:`ux_install` for the location of the *CONF*
@@ -42,7 +42,7 @@ more files may be present.
 
 UNICORE/X watches some configuration files for changes, and tries to reconfigure 
 if they are modified, at least where possible. This is indicated in the
-"dynamically reloaded" column.
+*dynamically reloaded* column.
 
 .. table:: UNICORE/X configuration files
  :width: 100 
@@ -94,15 +94,14 @@ Settings for the UNICORE/X process (e.g. memory)
 The properties controlling the Java virtual machine running the
 UNICORE/X process are configured in
   
-  - UNIX: the **CONF/startup.properties** configuration file
+  - UNIX: the ``CONF/startup.properties`` configuration file
   
-  - Windows: the "**CONF\\wrapper.conf**" configuration file
+  - Windows: the ``CONF\\wrapper.conf`` configuration file
   
 
 These properties include basic settings (like maximum memory),
 see :ref:`ux_admin` for more on these.
 
-General
   
 Config file formats
 ~~~~~~~~~~~~~~~~~~~
@@ -112,21 +111,21 @@ UNICORE/X uses two different formats for configuration.
 Java properties
 ^^^^^^^^^^^^^^^
 
-    - Each property can be assigned a value using the syntax "``name=value``"
+- Each property can be assigned a value using the syntax ``name=value``
   
-    - Please do not quote values, as the quotes will be    interpreted as part of the value
+- Please do not quote values, as the quotes will be    interpreted as part of the value
 
-    - Comment lines are started by the "``#``" 
+- Comment lines are started by the "``#``" 
   
-    - Multiline values are possible by ending lines with "``\``", e.g.
+- Multiline values are possible by ending lines with ``\``, e.g.
 
-.. code::  
+  .. code::  
 
     name=value1 \
          value2
 
 
-In this example the value of the "name" property will be "value1 value2".
+  In this example the value of the *name* property will be *value1 value2*.
 
 You can use system environment variables within property values, e.g.
 ::
@@ -137,7 +136,7 @@ You can use system environment variables within property values, e.g.
 Only use this syntax ``${...}`` to reference UNICORE/X system variables!
 
 To use UNIX system variables e.g. in storage path definitions use the
-syntax ``$VARIABLE``, i.e. WITHOUT curly braces.
+syntax ``$VARIABLE``, i.e. **WITHOUT** curly braces.
 
 XML
 ^^^
@@ -148,7 +147,7 @@ it is rather easy to introduce typos.
 
 .. hint::
   It is advisable to run a tool such as ``xmllint`` after editing XML files to check for
-  typos
+  typos.
 
 
 UNICORE/X container configuration overview
@@ -156,7 +155,7 @@ UNICORE/X container configuration overview
 
 The following table gives an overview of the basic settings for a
 UNICORE/X server. These can be set in ``uas.config`` or ``container.properties``.
-Many of the settings (e.g. security) will be explained in more detail in
+Many of the settings (e.g. ``security``) will be explained in more detail in
 separate sections.
 
 .. csv-table::
@@ -186,7 +185,7 @@ gateway, and *SITENAME* is the UNICORE/X site name. The gateway address
 **MUST** be accessible from the UNICORE/X node!
 
 On the gateway side, the UNICORE/X address is hard-coded as well,
-using an entry SITENAME=address in the ``connections.properties`` file
+using an entry *SITENAME=address* in the ``connections.properties`` file
 pointing to the network address of the UNICORE/X container.
 
 
@@ -197,7 +196,7 @@ It is possible to configure UNICORE/X to contact one or more external
 or global :ref:`UNICORE Registries <registry>` in order to publish information on crucial
 services there. 
 
-For example
+For example,
 ::
 
   container.externalregistry.use=true
@@ -242,21 +241,21 @@ Overview
 ^^^^^^^^
 
 Security is a complex issue, and many options exist. On a high level, the following items
-need to be configured.
+need to be configured:
    
-   - SSL setup (keystore and truststore settings for securing the
-     basic communication between components)
+- SSL setup (keystore and truststore settings for securing the
+  basic communication between components).
 
-   - Attribute sources configuration which assign an authorisation
-     role, UNIX login, group and other properties to UNICORE users. A
-     number of attribute sources exist, which can be combined using
-     various combining algorithms.  These are configured in the
-     uas.config file. Due to the complexity, the description of the
-     configuration options can be found in :ref:`use_aip`.
+- Attribute sources configuration which assign an authorisation
+  role, UNIX login, group and other properties to UNICORE users. A
+  number of attribute sources exist, which can be combined using
+  various combining algorithms.  These are configured in the
+  ``uas.config`` file. Due to the complexity, the description of the
+  configuration options can be found in :ref:`use_aip`.
     
-   - Access control setup (controlling in detail who can do what on
-     which services). Again, several options exist, which are described
-     in :ref:`use_pdp`.
+- Access control setup (controlling in detail who can do what on
+  which services). Again, several options exist, which are described
+  in :ref:`use_pdp`.
   
 
 .. _use-secref:
@@ -321,7 +320,7 @@ HTTPClient library used for outgoing HTTP(s) calls.
 
 .. _java_ciphers: https://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SupportedCipherSuites
 
-The HTTP server options are shown in the following table.
+The HTTP server options are shown in the following table:
 
 .. csv-table::
   :file: tables/sec-ref-jettyProperties.csv
@@ -330,7 +329,7 @@ The HTTP server options are shown in the following table.
   :class: tight-table
 
 
-The HTTP client options are the following
+The HTTP client options are the following:
 
 .. csv-table::
   :file: tables/sec-ref-clientProperties.csv

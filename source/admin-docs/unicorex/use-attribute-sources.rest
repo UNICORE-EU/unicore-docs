@@ -9,9 +9,9 @@ The authorization process in UNICORE/X requires that each UNICORE user
 authorized user and possibly can be used for other purposes as well
 (for instance for accounting).
 
-Therefore the most important item for security configuration is
+Therefore, the most important item for security configuration is
 selecting and maintaining a so called *attribute source* (called sometimes
-attribute information point, AIP), which is
+**A**\ ttribute **I**\ nformation **P**\ oint, AIP), which is
 used by USE to assign attributes to UNICORE users.
 
 Several attribute sources are available, that can even be combined 
@@ -19,16 +19,16 @@ for maximum flexibility and administrative control.
 
 There are two kinds of attribute sources:
 
-- *Classic* or *static attribute sources*, which are used BEFORE authorization. Those attribute
-  sources maintain a simple mappings of user certificates (or DNs) to some attributes. The primary role
-  of those sources is to provide attributes used for authorization, but also incarnation attributes
-  may be assigned. 
-- *Dynamic attribute sources*, which are used AFTER authorization, only if it was successful. Therefore 
-  these attribute sources can assign only the incarnation attributes. The difference is that 
-  attributes are collected for already authorized users, so the attributes can be assigned in dynamic
-  way not only using the user's identity but also all the static attributes. This feature can be used for
-  assigning pool accounts for authorized users or adding additional supplementary gids basing
-  on user's Virtual Organization.
+- *Classic* or *static attribute sources*, which are used **BEFORE** authorization. Those attribute
+  sources maintain a simple mappings of user certificates (or DNs) to some attributes. The primary 
+  role of those sources is to provide attributes used for authorization, but also incarnation 
+  attributes may be assigned. 
+- *Dynamic attribute sources*, which are used **AFTER** authorization, only if it was successful. 
+  Therefore, these attribute sources can assign only the incarnation attributes. The difference is 
+  that attributes are collected for already authorized users, so the attributes can be assigned in 
+  dynamic way not only using the user's identity but also all the static attributes. This feature 
+  can be used for assigning pool accounts for authorized users or adding additional supplementary 
+  gids basing on user's Virtual Organization.
 
 .. _use_incarnation-attributes:
 
@@ -38,7 +38,7 @@ UNICORE incarnation and authorization attributes
 Note that actual names of the attributes presented here are not very important. Real attribute
 names are defined by attribute source (advanced attribute sources, like Unity/SAML attribute
 source, even provide a possibility to choose what attribute names are mapped to internal UNICORE 
-attributes). Therefore it is only important to know the concepts represented by the 
+attributes). Therefore, it is only important to know the concepts represented by the 
 internal UNICORE attributes. On the other hand the values which are defined below are important.   
 
 The attributes in UNICORE can be multi-valued.
@@ -50,7 +50,7 @@ There are two special authorization attributes:
   possible values that are recognized by the default authorization policy: 
   
   - ``user`` - value specifies that the subject is allowed to use the site as a normal user
-    (submit jobs, get results, ...)
+    (submit jobs, get results, ...).
   - ``admin`` - value specifies that the subject is an administrator and may do everything. 
     For example may submit jobs, get results of jobs of other users and even delete them.
   - ``banned`` - user with this role is explicitly banned and all her request are denied.
@@ -75,11 +75,11 @@ There are several attributes used for incarnation:
 - ``queue`` - define which BSS queues are allowed for the particular user.
 
 
-Finally UNICORE can consume other attributes. All other attributes can be used only for 
-authorization or in more advanced setups (for instance using the UNICORE/X incarnation tweaker).
-Currently all such additional attributes which are received from attribute source are treated
+Finally, UNICORE can consume other attributes. All other attributes can be used only for 
+authorization or in more advanced setups (for instance, using the UNICORE/X incarnation tweaker).
+Currently, all such additional attributes which are received from attribute source are treated
 as XACML attributes and are put into XACML evaluation context. This feature is rather
-rarely used, but it allows for creating a very fine grained authorization policies, using
+rarely used, but it allows for creating a very fine grained authorization policies using
 custom attributes. 
 
 Particular attribute source define how to assign these attribute to users. Not always 
@@ -88,7 +88,7 @@ e.g. XUUDB can not define (among others) per-user queues or VOs.
 
 After introducing all the special UNICORE attributes, it must be noted that those attributes are
 used in two ways. Their primary role is to strictly define what is allowed for the
-user. For instance the ``xlogin`` values specify the valid uids from which the user may
+user. For instance, the ``xlogin`` values specify the valid uids from which the user may
 choose one. One exception here is *Add operating system groups* - user is always able to 
 set this according to his/her preference.
 
@@ -105,18 +105,18 @@ Configuring Attribute Sources
 
 .. note::
  The following description is for configuring the classic, static attribute sources.
- However everything written here applies also to configuration of the dynamic sources: 
+ However, everything written here applies also to configuration of the dynamic sources: 
  the only difference is that instead of ``container.security.attributes.`` property prefix,
  the ``container.security.dynamicAttributes.`` should be used.
  
- The full list of options related to attribute sources is available here: :ref:`use-secref`.
+ The **full list** of options related to attribute sources is available :ref:`here <use-secref>`.
 
 
 To configure the static attribute sources, the ``container.security.attributes.order`` 
 property in the configuration file is used. This is a space-separated 
 list with attribute sources names, where the named attribute sources will 
 be queried one after the other, allowing you to query multiple 
-attribute sources, override values etc. 
+attribute sources, override values, etc. 
 
 A second property, ``container.security.attributes.combiningPolicy``, allows you 
 to control how attributes from different sources are combined.
@@ -143,7 +143,7 @@ Since multiple attribute sources can be queried, it has to be defined how
 attributes will be combined. For example, assume you have both XUUDB and FILE,
 and both return a xlogin attribute for a certain user, say *xlogin_1* and *xlogin_2*.
 
-The different combining policies are
+The different combining policies are:
   
 - ``MERGE_LAST_OVERRIDES``: new attributes override those from previous sources. 
   In our example, the result would be *xlogin_2*. 
@@ -174,8 +174,8 @@ the *XUUDB* and the *FILE* source::
 	container.security.attributes.FILE.file=...
 	...
  
-Additionally you can mix several combining policies together, see :ref:`chain-attr-source` 
-below for details.
+Additionally, you can mix several combining policies together (see :ref:`chain-attr-source` 
+below for details).
 
 
 Available attribute sources
@@ -188,18 +188,18 @@ XUUDB
 
 The :ref:`xuudb` is the standard option in UNICORE. It has the following features:
   
-- Web service interface for querying and administration. It is suitable for serving data for multiple 
-  clients. Usually it is deployed to handle attributes for a whole UNICORE site running multiple service
-  containers.
+- Web service interface for querying and administration. It is suitable for serving data for 
+  multiple clients. Usually, it is deployed to handle attributes for a whole UNICORE site running 
+  multiple service containers.
    
-- Access can be protected by a client-authenticated SSL
+- Access can be protected by a client-authenticated SSL.
    
 - XUUDB can store static mappings of UNICORE users: the local ``xlogin``, ``role`` and ``project`` 
-  attributes (where ``project`` maps to Unix groups)
+  attributes (where ``project`` maps to Unix groups).
    
 - XUUDB since version 2 can also assign attributes in a dynamic way, e.g. from pool accounts.
 
-- Multiple xlogins per DN, where the user can select one
+- Multiple xlogins per DN, where the user can select one.
    
 - Entries are grouped using the so-called **G**\ rid **C**\ omponent **ID** (GCID). This makes it 
   easy to assign users different attributes when accessing different UNICORE/X servers.
@@ -249,7 +249,7 @@ useful when you don't want to setup an additional service like the
 XUUDB, or when you want to locally override attributes for
 selected users (e.g. to ban somebody).
 
-In contrast to the XUUDB, the File attribute source can store all
+In contrast to the XUUDB, the ``File`` attribute source can store all
 types of attributes, while the XUUDB only handles role, uid and group.
   
 To use, set
@@ -345,6 +345,7 @@ redundant Unity servers (both serving the same data) to achieve high availabilit
 Additionally we want to override settings for some
 users using a local file attribute source (e.g. to ban selected users, by assigning them 
 the *banned* role).
+::
 
 	# The main chain configuration:
 	container.security.attributes.order=UNITY_CLUSTER FILE

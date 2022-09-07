@@ -6,8 +6,8 @@ Mail support
 UNICORE supports file staging out using email. An existing SMPT server 
 or some other working email mechanism is required for this to work.
 
-The source/target URL scheme is "``mailto:``". You can append a subject,
-for example "*mailto:user@domain?subject=Your output is ready*"
+The source/target URL scheme is ``mailto:``. You can append a subject,
+for example "*mailto:user@domain?subject=Your output is ready*".
 
 Site setup
 ^^^^^^^^^^
@@ -37,7 +37,7 @@ which is executed (as the current UNICORE user) to send email.
   XNJS.staging.mailSendScript=/path/to/mail-wrapper.sh
 
 This is expected to takes three parameters: email address, file to send and a subject.
-An example invocation is
+An example invocation is:
 
 .. code:: console
 

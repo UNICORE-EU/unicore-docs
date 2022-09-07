@@ -4,20 +4,24 @@ Configuration of storages
 -------------------------
 
 A UNICORE/X server can make storage systems (e.g. file systems)
-accessible to users in several ways. 
+accessible to users in several ways: 
 
-  * storages endpoints can be defined which are available even if there is no compute service;
-  * storages can be "attached" to compute services;
-  * each job has a working directory, which is exposed as a storage 
-    instance and can be freely accessed using a UNICORE client.
-  * the "StorageFactory" service allows users to create dynamic storage instances, which is very 
-    useful if the UNICORE workflow system is used;
+* storages endpoints can be defined which are available even if there is no compute service;
+
+* storages can be *attached* to compute services;
+
+* each job has a working directory, which is exposed as a storage 
+  instance and can be freely accessed using a UNICORE client;
+
+* the ``StorageFactory`` service allows users to create dynamic storage instances, which is very 
+  useful if the UNICORE workflow system is used.
 
 Storages have additional features which are covered in other sections of this
-manual.
+manual:
 
-  * Metadata management is covered in :ref:`ux_metadata`
-  * Data-triggered processing is described in :ref:`ux_dataprocessing`
+* Metadata management is covered in :ref:`Metadata service <ux_metadata>`
+
+* Data-triggered processing is described in :ref:`ux_dataprocessing`
 
 
 Configuring storage services
@@ -33,13 +37,13 @@ They are independent of any compute services and accessible for all users.
   appropriate Unix permissions to access a storage.
 
 
-The basic property controls which storages are enabled
+The basic property controls which storages are enabled:
 ::
 
   coreServices.sms.storage.enabledStorages=HOME WORK SHARE2 ...
 
 
-Each enabled storage is configured using a set of properties. 
+Each enabled storage is configured using a set of properties: 
 
 .. csv-table::
   :file: tables/shared-smsProperties.csv
@@ -49,7 +53,7 @@ Each enabled storage is configured using a set of properties.
 
 
 
-For example to define a storage for accessing the user's ``HOME`` and some shared path
+For example, to define a storage for accessing the user's ``HOME`` and some shared path:
 ::
 
   coreServices.sms.storage.HOME.name=HOME
@@ -79,7 +83,7 @@ and via the SOAP/XML interfaces
   https://<site_address>/services/StorageManagement?res=WORK
 
 
-Usually, the "name" property is not needed, if you set it it should
+Usually, the ``name`` property is not needed, if you set it it should
 match the ID to avoid confusion.
 
 The other storage properties (see the previous section) are also accepted!
@@ -96,7 +100,7 @@ must first create one.
 By default, NO storages are created.
 
 For example, to allows users access their home directory on the target system, 
-you need to add a storage. This is done using configuration entries in ``uas.config``.
+you need to add a storage. This is done using configuration entries in ``uas.config``:
 
 .. csv-table::
   :file: tables/tss-smsProperties.csv
@@ -104,9 +108,9 @@ you need to add a storage. This is done using configuration entries in ``uas.con
   :header-rows: 1
   :class: tight-table
 
-Here, "N" stands for an identifier (e.g. 1,2, 3, ...) to distinguish the storages. For example, 
-to configure three storages (Home, one named ``TEMP`` pointing to ``/tmp`` and the other named ``DEISA_HOME`` 
-pointing to "``$DEISA_HOME``") you would add the following configuration entries in ``uas.config``::
+Here, ``N`` stands for an identifier (e.g. 1, 2, 3, ...) to distinguish the storages. For example, 
+to configure three storages (*Home*, one named *TEMP* pointing to */tmp* and the other named *DEISA_HOME* 
+pointing to *$DEISA_HOME*) you would add the following configuration entries in ``uas.config``::
 
   coreServices.targetsystem.storage.0.name=Home
   coreServices.targetsystem.storage.0.type=HOME
@@ -123,16 +127,16 @@ pointing to "``$DEISA_HOME``") you would add the following configuration entries
   coreServices.targetsystem.storage.3.name=MyStorage
   coreServices.targetsystem.storage.3.type=CUSTOM
   coreServices.targetsystem.storage.3.path=/
-    coreServices.targetsystem.storage.3.class=my.custom.sms.Implement    ationClass
+  coreServices.targetsystem.storage.3.class=my.custom.sms.ImplementationClass
 
 
 Controlling target system's storage resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By default storage resource names (used in storage address) are formed from
-the owning user's xlogin and the storage type name, e.g. "someuser-Home". This is quite useful 
+the owning user's xlogin and the storage type name, e.g. *someuser-Home*. This is quite useful 
 as users can write a URL of the storage without prior searching for its address.
-However if the site's user mapping configuration maps more than one grid certificate to the same
+However, if the site's user mapping configuration maps more than one grid certificate to the same
 xlogin, then this solution is not acceptable: only the first user connecting would be able to access
 her/his storage. This is because resource owners are expressed as grid user names (certificate DNs) and not xlogins.
 To have unique, but dynamically created and non user friendly names of storages 
@@ -146,16 +150,16 @@ Configuring the StorageFactory service
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The StorageFactory service allows clients to dynamically create storage instances.
-These can have different types, for example you could have storages on a normal
-filesystem, and other storages on an S3 cluster.
+These can have different types, for example, you could have storages on a normal
+filesystem and other storages on an S3 cluster.
 
-The basic property controls which storage types are supported
+The basic property controls which storage types are supported:
 ::
 
   coreServices.sms.enabledFactories=TYPE1 TYPE2 ...
 
 
-Each supported storage type is configured using a set of properties
+Each supported storage type is configured using a set of properties:
 
 .. csv-table::
   :file: tables/smf-smsProperties.csv
@@ -163,7 +167,7 @@ Each supported storage type is configured using a set of properties
   :header-rows: 1
   :class: tight-table
 
-For example
+For example,
 ::
 
   coreServices.sms.factory.TYPE1.description=GPFS file system
@@ -176,8 +180,6 @@ For example
   
   # allow the user to pass in a path on storage creation. Defaults to "true"
   coreServices.sms.factory.TYPE1.allowUserDefinedPath=true
-
-
 
 The ``path`` parameter determines the base directory used for the storage instances 
 (i.e. on the backend), and the unique ID of the storage will be appended automatically.
@@ -197,10 +199,11 @@ This will create a storage resource for accessing the given directory.
 In this case, there will be no cleanup, and no appended storage ID.
 
 The normal storage properties (see the previous section) are also
-accepted: ``type``, ``class``, ``filterFiles`` etc.
+accepted: ``type``, ``class``, ``filterFiles``, etc.
 
 If you have a custom storage type, an additional ``class`` parameter defines the
-Java class name to use (as in normal SMS case). For example::
+Java class name to use (as in normal SMS case). For example,
+::
 
   coreServices.sms.factory.TYPE1.type=CUSTOM
   coreServices.sms.factory.TYPE1.class=de.fzj.unicore.uas.jclouds.s3.S3StorageImpl
@@ -223,7 +226,7 @@ for the prefix.
   ``disableMetadata`` properties are ignored, they are set by the
   server.
 
-For example
+For example,
 ::
 
   coreServices.sms.jobDirectories.type=CUSTOM

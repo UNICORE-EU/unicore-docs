@@ -1,11 +1,11 @@
-.. _ux_xnjs-tsi-custom:
+9.. _ux_xnjs-tsi-custom:
 
 
 Application argument metadata
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For client components it can be useful to have a description of an
-application in terms of its arguments. This allows for example the
+application in terms of its arguments. This allows, for example, the
 UNICORE Portal to automatically build a nice GUI for the application.
     
 .. code::
@@ -39,22 +39,22 @@ UNICORE Portal to automatically build a nice GUI for the application.
   }
 
   
-The meaning of the attributes should be fairly obvious.
+The meaning of the attributes should be fairly obvious:
   
- - the ``Description`` attribute contains a human-readable description of the argument
+- the ``Description`` attribute contains a human-readable description of the argument.
  
- - the ``Type`` attribute can have the values (lower/upper case does not
-   matter) "string", "boolean", "int", "double", "filename" or
-   "choice". In the case of "choice", the ``ValidValues`` attribute is
-   used to specify the list of valid values. The type ``filename`` is used
-   to specify that this is an input file for the application, allowing
-   clients to enable special actions for this.
+- the ``Type`` attribute can have the values (lower/upper case does not
+  matter) "string", "boolean", "int", "double", "filename" or
+  "choice". In the case of "choice", the ``ValidValues`` attribute is
+  used to specify the list of valid values. The type ``filename`` is used
+  to specify that this is an input file for the application, allowing
+  clients to enable special actions for this.
 
- - The ``ValidValues`` attribute is used to limit the range of valid
-   values, depending on the ``Type`` of the argument. The processing of
-   this attribute is client-dependent.  The UNICORE Rich Client supports
-   intervals for the numeric types, and Java regular expressions for the
-   string types.
+- The ``ValidValues`` attribute is used to limit the range of valid
+  values, depending on the ``Type`` of the argument. The processing of
+  this attribute is client-dependent.  The UNICORE Rich Client supports
+  intervals for the numeric types, and Java regular expressions for the
+  string types.
 
 Per-application resource requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -63,7 +63,7 @@ If the application requires any default resources, like particular
 node constraints, or a specific queue, you can add resource requests
 in the IDB.
 
-For example:
+For example,
 
 .. code::
 

@@ -7,19 +7,19 @@ Guide to XACML security policies
 
 `XACML`_ authorization policies need not to be modified on a day-to-day basis when 
 running the UNICORE server. The most common tasks as banning or allowing users 
-can be performed very easily using UNICORE Attribute Sources like XUUDB or Unity. 
-This guide is intended for advanced administrators who want to change the 
-non-standard authorization process and for developers who want to provide
+can be performed very easily using UNICORE Attribute Sources like :ref:`XUUDB <xuudb>` or 
+`Unity <https://unity-idm.eu/>`_. This guide is intended for advanced administrators who want 
+to change the non-standard authorization process and for developers who want to provide
 authorization policies for services they create. 
 
 The `XACML`_ standard is a powerful way to express fine grained access control. The idea is to have 
 XML policies describing how and by whom actions on resources can be performed. A very readable introduction 
 into XACML can be found with `Sun's XACML implementation <http://sunxacml.sourceforge.net/guide.html#xacml>`_.
 
-There are several versions of XACML policy language. Currently UNICORE uses version 2.0.
+There are several versions of XACML policy language. Currently, UNICORE uses version 2.0.
 
 UNICORE allows to choose one of several authorization back-end implementations 
-called Policy Decision Points (PDP). The :ref:`use_pdp` shows how 
+called **P**\ olicy **D**\ ecision **P**\ oints (PDP). The :ref:`use_pdp` shows how 
 to choose and configure each of the available PDPs.   
 
 In UNICORE terms XACML is used as follows. Before each operation (i.e. execution of a web
@@ -73,7 +73,7 @@ service call), an XACML request is generated, which currently includes the follo
 
 
 Note that the above list is valid for the default local XACML 2 PDP. For others
-the attributes might be different - see the respective documentation.  
+the attributes might be different (see the respective documentation).  
   
 The request is processed by the server and checked against a (set of) policies. Policies
 contain rules that can either deny or permit a request, using a powerful set of functions.
@@ -91,7 +91,6 @@ When policies are split in multiple files each of those files must contain (at l
 separate policy. A PDP must somehow combine result of evaluation of multiple policies. 
 This is done by so-called policy combining algorithm. The following algorithms are available,
 the part after last colon describes behaviour of each::
-::
 
 	urn:oasis:names:tc:xacml:1.1:policy-combining-algorithm:ordered-permit-overrides
 	urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:permit-overrides
@@ -101,14 +100,14 @@ the part after last colon describes behaviour of each::
 	urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:only-one-applicable
 
 Each policy file can contain one or more rules, so it is important to understand how possible 
-conflicts are resolved. The so-called combining algorithm for the rules in a single policy
-file is specified in the top-level Policy element.
+conflicts are resolved. The so-called *combining algorithm* for the rules in a single policy
+file is specified in the top-level ``Policy`` element.
    
-The XACML specification defines six algorithms:
-permit-overrides, deny-overrides, first-applicable, only-one-applicable, ordered-permit-overrides
-and ordered-deny-overrides. For example, to specify that the first matching
-rule in the policy file is used to make the decision, the Policy element must contain the
-following "RuleCombiningAlgId" attribute:
+The XACML specification defines six algorithms: ``permit-overrides``, ``deny-overrides``, 
+``first-applicable``, ``only-one-applicable``, ``ordered-permit-overrides``
+and ``ordered-deny-overrides``. For example, to specify that the first matching
+rule in the policy file is used to make the decision, the ``Policy`` element must contain the
+following ``RuleCombiningAlgId`` attribute:
 
 .. code:: xml
 
@@ -131,7 +130,7 @@ Role-based access to services
 
 A common use case is to allow/permit access to a certain service based on a user's role
 This can be achieved with the following XACML rule, which describes that a user with role 
-"admin" is given access to all services.
+*admin* is given access to all services.
 
 .. code:: xml
 
@@ -182,12 +181,12 @@ who have the *data-access* role.
 
 By using the ``<Action>`` tag in policies, web service access can be controlled on the method level.
 In principle, XACML supports even control based on the content of some XML document, such as 
-the incoming SOAP request. However this is not yet used in UNICORE/X.
+the incoming SOAP request. However, this is not yet used in UNICORE/X.
 
 Limiting access to services to the service instance owner
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Most service instances (corresponding e.g. to jobs, or files) should only ever
+Most service instances (corresponding e.g. to jobs or files) should only ever
 be accessed by their owner. This rule is expressed as follows:
 
 .. code:: xml

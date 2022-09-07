@@ -15,11 +15,11 @@ an XUUDB.
 
 .. note::
  We write UNICORE/X in the following, but any server based on the UNICORE
- Services Environment (registry, workflow, etc) works the same way
+ Services Environment (registry, workflow, etc) works the same way.
 
 The required steps are:
 	
-#. Add Unity's CA certificate to the UNICORE/X truststore (so SSL connections can be established)
+#. Add Unity's CA certificate to the UNICORE/X truststore (so SSL connections can be established).
 
 #. Add UNICORE/X's CA certificate to the Unity server's truststore (so SSL connections can be 
    established).
@@ -27,7 +27,8 @@ The required steps are:
 #. Add the UNICORE/X server's DN (from its certificate) as a member to the Unity service. 
    You don't have to make it a member of any particular VO (or group). However it must have the 
    **read** permission to all groups where its users will be placed. In Unity, this corresponds 
-   to the "Priviledged Inspector" role (check Unity documentation for details).
+   to the *Priviledged Inspector* role (check `Unity documentation 
+   <https://www.unity-idm.eu/documentation/unity-1.0.0/manual.html>`_ for details).
 
 #. Check that UNICORE/X can properly authenticate to Unity on the SAML endpoint that is used to 
    query attributes. Generally this will be via the UNICORE/X certificate, if that is not 
@@ -89,7 +90,7 @@ The required steps are:
 		vo.unicoreAttribute.queue.default=urn:unicore:attrType:defaultQueue
 		vo.unicoreAttribute.virtualOrganisations=urn:SAML:voprofile:group
 
-#. In the VO truststore directory (/opt/unicore/certs/unity/ in this case) put
+#. In the VO truststore directory (*/opt/unicore/certs/unity/* in this case) put
    the Unity certificate (NOT the CA certificate) as a PEM file, with pem extension.
 
 
@@ -97,9 +98,11 @@ Advanced example: Unity and UNICORE - using fine grained authorization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In this scenario we will enhance the first one to use custom authorization attributes in UNICORE 
-policy. To do so ensure that you have this setting in ``vo.config`` file: 
-``vo.pull.enableGenericAttributes=true``. Then you can modify XACML policy to require certain 
-VO attributes.
+policy. To do so ensure that you have this setting in ``vo.config`` file::
+ 
+ vo.pull.enableGenericAttributes=true 
+
+Then you can modify XACML policy to require certain VO attributes.
 
 Important fact to note here (and in case of PUSH mode too) is how the
 user's group membership is encoded as an XACML attribute.  By default
@@ -109,7 +112,7 @@ it is an attribute of string type (so XACML
 policy below uses this attribute.
 
 The following XACML fragment allows for reaching TargetSystemFactory service only for the users 
-which are both members of VO ``Example-VO`` and a VO group ``/Math-VO/UUDB/SiteA``. Moreover those 
+which are both members of VO *Example-VO* and a VO group */Math-VO/UUDB/SiteA*. Moreover, those 
 users also must have a standard UNICORE/X attribute role with a value *user*. It means that in 
 Unity, UNICORE users must have ``urn:unicore:attrType:role`` attribute defined (it is the 
 standard setting) with a value *user*.

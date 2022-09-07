@@ -38,7 +38,7 @@ or from a Linux package (i.e. RPM or deb) on the `UNICORE project website
 
 To install from the tar.gz or zip archive, unpack the archive in a 
 directory of your choice. You should then review the config files
-in the conf/ directory, and adapt paths, hostname and ports. 
+in the ``conf/`` directory, and adapt paths, hostname and ports. 
 The config files are commented, and you can also
 check :ref:`ux_configuration`.
 
@@ -50,7 +50,7 @@ system to install the archive.
   manual changes). The tar.gz / zip archives are self contained, and you can easily install
   multiple servers per machine.
 
-The following table gives an overview of the file locations for both tar.gz and Linux bundles.
+The following table gives an overview of the file locations for both tar.gz and Linux bundles:
 
 +--------+------------------+--------------------+-------------+
 | Name   | tar.gz,  zip     | rpm                | Description |
@@ -87,7 +87,7 @@ Startup can take some time. After a successful start, the log files (e.g. ``LOG/
 contain a message "**Server started.**" and a report on the status of any connections to 
 other servers (e.g. the TSI or global registry).
 
-To stop the server, do:
+To stop the server, do
 
 .. code:: console
   

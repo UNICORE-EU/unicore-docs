@@ -13,16 +13,16 @@ a back end.
 The front end service allows the user to manipulate and query metadata, as well as manually 
 trigger the metadata extraction process. The back end is the actual implementation of the 
 metadata management, which is pluggable and can be exchanged by custom implementations. 
-The default implementation has the following properties
+The default implementation has the following properties:
 
- - Apache Lucene for indexing,
+- Apache Lucene for indexing
 
- - Apache Tika for extracting metadata,
+- Apache Tika for extracting metadata
 
- - metadata is stored as files directly on the storage resource, in files with a special ".metadata" 
-   suffix
+- metadata is stored as files directly on the storage resource, in files with a special 
+  ``.metadata`` suffix
  
- - the index files are stored on the UNICORE/X server, in a configurable directory
+- the index files are stored on the UNICORE/X server, in a configurable directory
 
 Configuring metadata support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -71,14 +71,16 @@ except those matching a fixed set of patterns (``.svn``, and
 the UNICORE metadata and control files themselves).
 
 The file format is a standard ``key=value`` properties file.
-Currently, the following keys are understood
+Currently, the following keys are understood:
 
- * ``exclude`` a comma-separated list of string patterns of 
-   filenames to exclude
- * ``include`` a comma-separated list of string patterns 
-   of filenames to include
- * ``useDefaultExcludes`` if set to ``false``, the   predefined 
-   exclude list will NOT be used
+* ``exclude`` a comma-separated list of string patterns of 
+  filenames to exclude
+
+* ``include`` a comma-separated list of string patterns 
+  of filenames to include
+
+* ``useDefaultExcludes`` if set to ``false``, the   predefined 
+  exclude list will NOT be used
 
 The include/exclude patterns may include wildcards ``?`` and ``*``.
 

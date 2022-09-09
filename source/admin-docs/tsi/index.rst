@@ -11,8 +11,8 @@ resource (e.g. a cluster login node) which provides a remote interface
 to the operating system, the batch system and the file system of the
 target resource.
 
-The TSI will run as ``root`` on the cluster login node(s).
-It requires an open port (default: ``4433``) where it receives connections
+The TSI will run as *root* on the cluster login node(s).
+It requires an open port (default: **4433**) where it receives connections
 from the UNICORE/X server(s). The TSI will make outgoing connections
 (callbacks) to the UNICORE/X server(s). Please set up your firewall(s)
 accordingly. Operation through an SSH tunnel is possible as well, see

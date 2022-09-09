@@ -48,12 +48,12 @@ particular the UNICORE/X server expects every method to call either
 are implemented in `Connector.py 
 <https://github.com/UNICORE-EU/tsi/blob/master/lib/Connector.py>`_:
 
- * ``ok(string)`` Sends a message to the UNICORE/X server to say that
-   execution of the command was successful.
- 
- * ``failed(string)`` Sends a message to the UNICORE/X server to say
-   that execution of the command failed.  The string is sent to the
-   UNICORE/X server as part of the failure message.
+* ``ok(string)`` Sends a message to the UNICORE/X server to say that
+  execution of the command was successful.
+  
+* ``failed(string)`` Sends a message to the UNICORE/X server to say
+  that execution of the command failed.  The string is sent to the
+  UNICORE/X server as part of the failure message.
 
 Messages have to end with a special tag ``ENDOFMESSAGE``, since the
 command sockets are left open for receiving the next command.
@@ -81,17 +81,17 @@ job is executed. Therefore, the TSI only needs to set a limited user
 environment for any child processes that it creates.  The TSI sets the
 following environment in any child process:
 
- * ``$USER`` This is set to the user name supplied by the UNICORE/X
-   server.
+* ``$USER`` This is set to the user name supplied by the UNICORE/X
+  server.
 
- * ``$LOGNAME`` This is set to the user name supplied by the UNICORE/X
-   server.
+* ``$LOGNAME`` This is set to the user name supplied by the UNICORE/X
+  server.
 
- * ``$HOME`` This is set to the home directory of the user as given by
-   the target system's password file.
+* ``$HOME`` This is set to the home directory of the user as given by
+  the target system's password file.
 
- * ``$PATH`` This is inherited from the parent TSI process (see the
-   ``tsi.properties`` file).
+* ``$PATH`` This is inherited from the parent TSI process (see the
+  ``tsi.properties`` file).
 
 Localisations of the TSI will also need to set any other environment
 necessary to access the BSS.
@@ -121,15 +121,14 @@ Input
 +++++
 
 As input, the script to be executed is expected. The string from the
-UNICORE/X server is processed to replace all instances of $USER by the
-user's name and $HOME by the user's home directory. No further
+UNICORE/X server is processed to replace all instances of ``$USER`` by the
+user's name and ``$HOME`` by the user's home directory. No further
 processing needs to be done on the script.
 
 The UNICORE/X server will embed information in the script that the TSI
 may need to use. This information will be embedded as comments so no
 further processing is needed.  Each piece of information will be on a
 separate line with the format::
-::
 
   #TSI_<name> <value>
 
@@ -142,22 +141,22 @@ is:
    this is ``NONE`` (or is determined to be invalid), the TSI will use a
    default jobname.
 
- * ``#TSI_PROJECT`` The user's project (for accounting)
+ * ``#TSI_PROJECT`` The user's project (for accounting).
 
  * ``#TSI_STDOUT#`` and ``#TSI_STDERR`` The names for standard output and
    error files.
 
  * ``#TSI_OUTCOME_DIR`` The directory where to write the stdout and
-   stderr files to.  In general this is the same as ``#TSI_USPACE_DIR#``
+   stderr files to.  In general this is the same as ``#TSI_USPACE_DIR#``.
 
  * ``#TSI_USPACE_DIR`` The initial working directory of the script
    (i.e. the Uspace directory).
 
  * ``#TSI_TIME`` The run time (wall clock) limit requested by this job
-   in seconds
+   in seconds.
 
  * ``#TSI_MEMORY#`` The memory requirement of the job. The UNICORE/X
-   server supplies this as a "megabytes per node" value
+   server supplies this as a *megabytes per node* value.
 
  * ``#TSI_TOTAL_PROCESSORS`` The number of processors required by the
    job.
@@ -182,7 +181,7 @@ is:
 
  * ``#TSI_ARRAY_LIMIT`` If multiple instances of the same job are to be submitted,
    this optionally limits the number of concurrently running instances.
-   E.g. "5" will limit the number of instances to "5".
+   E.g. *5* will limit the number of instances to *5*.
 
  * ``#TSI_BSS_NODES_FILTER <filterstring>`` Administrators can define a
    string in the IDB which is to be used as nodes filter, if the BSS
@@ -195,11 +194,11 @@ can be defined on the UNICORE/X server, which are passed via
 Output
 ++++++
 
- * Normal: the output is the BSS identifier of the job unless the execution was interactive.
+ * *Normal*: the output is the BSS identifier of the job unless the execution was interactive.
    In this case the execution is complete when the TSI returns from this call and the output
    is that from ``ok()``.
 
- * Error: ``failed()`` called with the reason for failure
+ * *Error*: ``failed()`` called with the reason for failure
 
 
 Raw job submission
@@ -247,59 +246,59 @@ no output will be gathered.
 Output
 ++++++
 
- * Normal: The script has been executed. Concatenated stderr and
+ * *Normal*: The script has been executed. Concatenated stderr and
    stdout from the execution of the script is sent to the UNICORE/X
    server following the ``ok()`` call.
 
- * Error: ``failed()`` called with the reason for failure.
+ * *Error*: ``failed()`` called with the reason for failure.
 
 
 Job control
 ^^^^^^^^^^^
 
- * ``#TSI_ABORTJOB`` The ``BSS.abort_job()`` function sends a command to the
-   BSS to abort the named BSS job. Any stdout and stderr produced by the
-   job before the abort takes effect must be saved.
+* ``#TSI_ABORTJOB`` The ``BSS.abort_job()`` function sends a command to the
+  BSS to abort the named BSS job. Any stdout and stderr produced by the
+  job before the abort takes effect must be saved.
 
- * ``#TSI_CANCELJOB`` The ``BSS.cancel_job()`` function sends a command to
-   the BSS to cancel the named BSS job. Cancelling means both
-   finishing execution on the BSS (as for abort) and removing any
-   stdout and stderr.
+* ``#TSI_CANCELJOB`` The ``BSS.cancel_job()`` function sends a command to
+  the BSS to cancel the named BSS job. Cancelling means both
+  finishing execution on the BSS (as for abort) and removing any
+  stdout and stderr.
  
- * ``#TSI_HOLDJOB`` The ``BSS.hold_job()`` function sends a command to the
-   BSS to hold execution of the named BSS job. Holding means
-   suspending execution of a job that has started or not starting
-   execution of a queued job. Note that suspending execution can
-   result in the resources allocated to the job being held by the job
-   even though it is not executing and so some sites may not allow
-   this. This is dealt with by the relaxed post condition below.  Some
-   sites can hold a job's execution and release the resources held by
-   the job (leaving the job on the BSS so that it can resume
-   execution). This is called freezing. The UNICORE/X server can send
-   a request for a freeze (``#TSI_FREEZE``) which the TSI may execute, if
-   there is no freeze command initialised the TSI may execute a hold
-   in its place An acceptable implementation is for hold_job to return
-   without executing a command.
+* ``#TSI_HOLDJOB`` The ``BSS.hold_job()`` function sends a command to the
+  BSS to hold execution of the named BSS job. Holding means
+  suspending execution of a job that has started or not starting
+  execution of a queued job. Note that suspending execution can
+  result in the resources allocated to the job being held by the job
+  even though it is not executing and so some sites may not allow
+  this. This is dealt with by the relaxed post condition below.  Some
+  sites can hold a job's execution and release the resources held by
+  the job (leaving the job on the BSS so that it can resume
+  execution). This is called freezing. The UNICORE/X server can send
+  a request for a freeze (``#TSI_FREEZE``) which the TSI may execute, if
+  there is no freeze command initialised the TSI may execute a hold
+  in its place An acceptable implementation is for ``hold_job`` to return
+  without executing a command.
 
- * ``#TSI_RESUMEJOB`` The ``BSS.resume_job()`` function sends a command to
-   the BSS to resume execution of the named BSS job. Not that
-   suspending execution can result in the resources allocated to the
-   job being held by the job even though it is not executing and so
-   some sites may not allow this.  An acceptable implementation is for
-   resume_job to return without executing a command (if hold_job did
-   the same).
+* ``#TSI_RESUMEJOB`` The ``BSS.resume_job()`` function sends a command to
+  the BSS to resume execution of the named BSS job. Not that
+  suspending execution can result in the resources allocated to the
+  job being held by the job even though it is not executing and so
+  some sites may not allow this.  An acceptable implementation is for
+  ``resume_job`` to return without executing a command (if ``hold_job`` did
+  the same).
 
 Input
 +++++
 
 All job control functions require the BSS job ID as parameter in the form
-``#TSI_BSSID <identifier>``
+``#TSI_BSSID <identifier>``.
 
 Output
 ++++++
 
- * Normal: the job control function was invoked. No extra output.
- * Error: ``failed()`` called with the reason for failure.
+ * *Normal*: the job control function was invoked. No extra output.
+ * *Error*: ``failed()`` called with the reason for failure.
 
 
 Detailed job info (#TSI_GETJOBDETAILS)
@@ -314,13 +313,13 @@ Input
 +++++
 
 All job control functions require the BSS job ID as parameter in the form
-``#TSI_BSSID <identifier>``
+``#TSI_BSSID <identifier>``.
 
 Output
 ++++++
 
- * Normal: detailed job information sent via ``ok()``
- * Error: ``failed()`` called with the reason for failure.
+ * *Normal*: detailed job information sent via ``ok()``.
+ * *Error*: ``failed()`` called with the reason for failure.
 
 
 Status listing (#TSI_QSTAT)
@@ -344,7 +343,7 @@ None.
 Output
 ++++++
 
- * Normal: The first line is ``QSTAT``. There follows an arbitrary
+ * *Normal*: The first line is ``QSTAT``. There follows an arbitrary
    number of lines, each line containing the status of a job on the
    BSS with the following format: ``id status <queuename>``, where ``id``
    is the BSS identifier of the job and ``status`` is one of: ``QUEUED``,
@@ -354,8 +353,7 @@ Output
    (including all those submitted by TSIs other than the one executing
    this command). The output may include lines for jobs on the BSS
    submitted by other means.
-
- * Error: ``failed()`` called with the reason for failure.
+ * *Error*: ``failed()`` called with the reason for failure.
 
 
 Getting the user's remaining compute budget (#TSI_GET_COMPUTE_BUDGET)
@@ -373,9 +371,8 @@ None.
 Output
 ++++++
 
- * Normal: Budget info (format below) is sent via ``ok()``
-
- * Error: ``failed()`` called with the reason for failure.
+ * *Normal*: Budget info (see format below) is sent via ``ok()``.
+ * *Error*: ``failed()`` called with the reason for failure.
 
 Format
 ++++++
@@ -385,7 +382,7 @@ The output is a multiline string which each line of the form
 
   <PROJECT> <ABSOLUTE_BUDGET> <PERCENTAGE> <UNITS>
 
-where
+where,
 
  :PROJECT: the project / budget account name
  :ABSOLUTE_BUDGET: the absolute value (integer) of compute time remaining
@@ -416,9 +413,9 @@ string ``$HOME`` by the home directory of the user.
 Output
 ++++++
 
- * Normal: The UNICORE/X server has a copy of the request part of the file (sent via the data socket)
-
- * Error: ``failed()`` is called with the reason for failure.
+ * *Normal*: The UNICORE/X server has a copy of the request part of the file 
+   (sent via the data socket).
+ * *Error*: ``failed()`` is called with the reason for failure.
 
 
 Writing files (#TSI_PUTFILECHUNK)
@@ -436,22 +433,22 @@ Input
 	* ``0`` = don't care, 
 	* ``1`` = only write if the file does not exist, 
 	* ``2`` = only write if the file exists, 
-	* ``3`` = append to file
+	* ``3`` = append to file.
 
  * The ``#TSI_FILE`` parameter contains the filname and permissions.
 
  * The ``#TSI_LENGTH`` parameter contains the number of bytes to read from
    the data channel and write to disk.
 
-The TSI replies with TSI_OK, and the data to write is then read from
+The TSI replies with ``TSI_OK``, and the data to write is then read from
 the data channel.
 
 Output
 ++++++
 
- * Normal: The TSI has written the file data.
+ * *Normal*: The TSI has written the file data.
 
- * Error: ``failed()`` called with the reason for failure.
+ * *Error*: ``failed()`` called with the reason for failure.
 
 
 File ACL operations (#TSI_FILE_ACL)
@@ -479,15 +476,15 @@ Input
  
    * ``A`` = info on a single file, 
    * ``R`` = recursive directory listing, 
-   * ``N`` = normal directory listing
+   * ``N`` = normal directory listing.
 
 Output
 ++++++
 
- * Normal: The TSI writes the listing to the command socket, see the 
+ * *Normal*: The TSI writes the listing to the command socket, see the 
    `IO.py <https://github.com/UNICORE-EU/tsi/blob/master/lib/IO.py>`_ file for a 
    detailed description of the format
- * Error: TSI replies with ``TSI_FAILED`` and the reason for failure.
+ * *Error*: TSI replies with ``TSI_FAILED`` and the reason for failure.
 
 
 Getting free disk space (#TSI_DF)
@@ -503,10 +500,10 @@ The ``#TSI_FILE`` parameter contains the file/directory name.
 Output
 ++++++
 
- * Normal: The TSI writes the disk space info to the command socket, see 
+ * *Normal*: The TSI writes the disk space info to the command socket, see 
    the `IO.py <https://github.com/UNICORE-EU/tsi/blob/master/lib/IO.py>`_ file for a detailed 
    description of the format.
- * Error: TSI replies with ``TSI_FAILED`` and the reason for failure.
+ * *Error*: TSI replies with ``TSI_FAILED`` and the reason for failure.
 
 
 Resource reservation functions
@@ -526,16 +523,16 @@ This is used to create a reservation.
 Input
 +++++
 
- * ``#TSI_RESERVATION_OWNER <xlogin>`` The user ID (xlogin) of the reservation owner
- * ``#TSI_STARTTME <time>`` The requested start time in ISO8601 format (yyyy-MM-dd'T'HH:mm:ssZ)
- * The requested resources are passed in in the same way as for job submission
+ * ``#TSI_RESERVATION_OWNER <xlogin>``: The user ID (xlogin) of the reservation owner,
+ * ``#TSI_STARTTIME <time>``: The requested start time in ISO8601 format 
+   (*yyyy-MM-dd*\ ``T`` *HH:mm:ss*\ ``Z``),
+ * The requested resources are passed in in the same way as for job submission.
 
 Output
 ++++++
 
- * Normal: The command replies with a single reservation ID string.
-
- * Error: ``failed()`` called with the reason for failure
+ * *Normal*: The command replies with a single reservation ID string.
+ * *Error*: ``failed()`` called with the reason for failure.
 
 
 Querying a reservation (#TSI_QUERY_RESERVATION)
@@ -546,18 +543,18 @@ This is used to query the status of a reservation.
 Input
 +++++
 
- * ``#TSI_RESERVATION_REFERENCE <reservation_ID>`` The reservation reference
-   that shall be queried
+ * ``#TSI_RESERVATION_REFERENCE <reservation_ID>``: The reservation reference
+   that shall be queried.
    
 Output
 ++++++
 
- * Normal: The command produces two lines. The first line contains the 
+ * *Normal*: The command produces two lines. The first line contains the 
    status (UNKNOWN, INVALID, WAITING, READY, ACTIVE, FINISHED or OTHER) and 
-   an optional start time (ISO 8601). The second line contains a human-readable
-   description
+   an optional start time (*ISO 8601*). The second line contains a human-readable
+   description.
 
- * Error: ``failed()`` called with the reason for failure
+ * *Error*: ``failed()`` called with the reason for failure.
 
 
 Cancelling a reservation (#TSI_CANCEL_RESERVATION)
@@ -568,12 +565,11 @@ This is used to cancel a reservation.
 Input
 +++++
 
- * ``#TSI_RESERVATION_REFERENCE <reservation_ID>`` The reservation reference
-   that is to be cancelled
+ * ``#TSI_RESERVATION_REFERENCE <reservation_ID>``: The reservation reference
+   that is to be cancelled.
  
 Output
 ++++++
 
- * Normal: ``ok()`` called with no special output
-
- * Error: ``failed()`` called with the reason for failure
+ * *Normal*: ``ok()`` called with no special output.
+ * *Error*: ``failed()`` called with the reason for failure.

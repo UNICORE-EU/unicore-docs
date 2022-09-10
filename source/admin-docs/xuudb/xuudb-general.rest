@@ -3,15 +3,16 @@ Overview
 --------
 
 The UNICORE XUUDB is used to map a UNICORE user identity (an X.500
-distinguished name (DN)) to a set of attributes. The attributes are
+**d**\ istinguished **n**\ ame (**DN**)) to a set of attributes. The attributes are
 typically used to provide local account details (uid, gid(s)) and
-sometimes also to provide authorization information: user's role.
+sometimes also to provide authorization information, i.e. the user's role.
 
-The UNICORE XUUDB is best suited as a site-service. Theoretically it can be used for multiple
+The UNICORE XUUDB is best suited as a site-service. Theoretically, it can be used for multiple
 sites, however as it offers limited authorization capabilities and doesn't allow 
-for grouping users, it is better to use the more flexible Unity server in such a case.
-In case of the simple one host-service XUUDB sometimes can be replaced by a simple file
-storing the mappings. Please refer to the UNICORE/X documentation for more information.
+for grouping users, it is better to use the more flexible `Unity server <https://unity-idm.eu/>`_ 
+in such a case. In case of the simple one host-service XUUDB sometimes can be replaced by a 
+simple file storing the mappings. Please refer to the :ref:`UNICORE\/X documentation
+<unicorex-manual>` for more information.
 
 The XUUDB offers two web services, one for querying, and one for 
 administration of the users' database. There are several clients which can use the XUUDB server:
@@ -105,12 +106,14 @@ Installation
 
 The UNICORE XUUDB is distributed in the following formats:
 
- 1. As a part of a platform independent installation bundle called
- `UNICORE core server bundle <https://sourceforge.net/projects/unicore/files/Servers/Core>`_.
- 2. As a `platform-specific binary package <https://sourceforge.net/p/unicore/wiki/Linux_Repositories/>`_
- available for RedHat (Centos) and Debian platforms. Those
- packages are not tested on all possible platforms, but should work
- without any problems with other versions of similar distributions.
+* As a part of a platform independent installation bundle called
+  `UNICORE core server bundle <https://sourceforge.net/projects/unicore/files/Servers/Core>`_.
+
+* As a `platform-specific binary package 
+  <https://sourceforge.net/p/unicore/wiki/Linux_Repositories/>`_.
+  available for RedHat (Centos) and Debian platforms. Those
+  packages are not tested on all possible platforms, but should work
+  without any problems with other versions of similar distributions.
 
 In both cases an installation of XUUDB installs both XUUDB Server and XUUDB admin client.
 
@@ -129,7 +132,7 @@ Installation from RPM or DEB packages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 An up-to-date list of the available repositories is given on the following page
-https://sourceforge.net/p/unicore/wiki/Linux_Repositories/
+https://sourceforge.net/p/unicore/wiki/Linux_Repositories/.
 
 The preferred way is to use Yum or APT to install (and subsequently update) XUUDB.
 
@@ -139,7 +142,7 @@ After the repository is configured, the following command will install the XUUDB
 
   $ yum install unicore-xuudb
 
-or in case of Debian systems
+or in case of Debian systems:
 
 .. code:: console
 

@@ -8,7 +8,7 @@ Security
 
 Usually, client-authenticated SSL is used to protect the XUUDB. For
 this you will need certificates for the XUUDB server and all Grid
-components that want to talk to the XUUDB.  In general the UNICORE
+components that want to talk to the XUUDB.  In general, the UNICORE
 servers (like :ref:`unicorex`) and the XUUDB-admin client need to 
 connect to the XUUDB-server. To make SSL connections possible, you have 
 to put the following certificates as trusted certs into the XUUDB's
@@ -164,14 +164,14 @@ Example mappings (in English):
 
 Precisely speaking, a mapping must have defined:
 
-- what attribute it maps: *uid*, (primary)\ *gid* or *supplementaryGids*,
+- what attribute it maps: *uid*, (primary)\ *gid* or *supplementaryGids*
 - using what method: *fixed*, *pool* or *script*
  
-Additionally one can define an optional parameter stating if the mapping should overwrite
+Additionally, one can define an optional parameter stating if the mapping should overwrite
 an attribute value which was previously set (either by an earlier rule or assigned using a 
 different attribute source).
 
-As it was mentioned there are three kinds of mappings. Let's shortly introduce them one by one.
+As it was mentioned, there are three kinds of mappings. Let's shortly introduce them one by one.
 
 Fixed mappings
 ^^^^^^^^^^^^^^
@@ -183,7 +183,7 @@ fixed value. It can be used to:
 - assign a fixed gid to selected users (very useful to assign a gid to all Grid users, or
   all members of a VO)
 - assign some supplementary gids to selected users (useful to provide additional local permissions
-  to users having a special role/attributes/etc.).
+  to users having a special role/attributes/etc.)
 
 The example in the pool mappings section contains also a fixed mapping. 
  
@@ -194,7 +194,7 @@ Script mappings
 be parsed and invoked. The application must return (on its standard output) a string with a 
 mapping result (depending on what is mapped - gid, uid or a space separated list of supplementary 
 gids). Of course the script can be informed who is actually being mapped, by using parameters 
-enclosed in ``${}``. The list of available parameters is given below.
+enclosed in ``${}``. The list of available parameters is given below:
 
 - ``userDN`` user's DN
 - ``issuerDN`` user's certificate issuer's DN
@@ -207,29 +207,29 @@ enclosed in ``${}``. The list of available parameters is given below.
 - ``xloginSet`` whether uid was set
 - ``gidSet`` whether gid was set
 - ``dryRun`` whether the current invocation is only a simulation, and shouldn't 
-  affect any persisted system settings.
+  affect any persisted system settings
 
 The example below contains also a script mapping. 
 
 Pool mappings
 ^^^^^^^^^^^^^
 
-Finally the *pool mappings* are both flexible and relatively easy to use --- it is the most advanced
+Finally, the *pool mappings* are both flexible and relatively easy to use --- it is the most advanced
 mapping type. Using the pool mapping you have to prepare a set of reserved identifiers (uids or gids
 depending on what is mapped). The related system accounts can be precreated or can be created on-demand.
 The pool mapping is configured with an additional, very important parameter: pool key. Pool key is 
-a name of one of the user's attributes: *userDN*, *issuerDN* (DN of CA which issued user's certificate), 
-*role*, *vo* or any other generic user's attribute. 
+a name of one of the user's attributes: ``userDN``, ``issuerDN`` (DN of CA which issued user's certificate), 
+``role``, ``vo`` or any other generic user's attribute. 
 
-To explain how the pool works let's assume that key is set to *userDN*. Then
+To explain how the pool works let's assume that key is set to ``userDN``. Then
 the pool will map a user as follows: first it is checked if there is an existing mapping 
 bound to the user's DN. If it is found then it is simply returned. If not (the user is trying to use 
 the site for the first time) a new identifier is selected from the pool, and stored under the key
 being the user's DN. Then the new identifier is returned. 
 
-Therefore all users having the same value of the pool key will get the same mapping and vice versa. 
+Therefore, all users having the same value of the pool key will get the same mapping and vice versa. 
 If DN is the key then all users will have a distinct mapping (useful for uids or for gids, if every
-user should get a unique one). If for instance a VO is the key then all VO members will have the same 
+user should get a unique one). If, for instance, a VO is the key then all VO members will have the same 
 mapping (useful for gid, or for uid if all VO members should have the same user account).
 
 The following example should help to understand those concepts and is also providing
@@ -309,7 +309,7 @@ In case a site wants to recycle mappings, XUUDB offers the following mechanism:
   assumed to be occupied, but the mapped user won't have it assigned (in the unprobable case that she
   returns to the site). Freezing is introduced to give a time for tidying up local resources assigned to 
   the identifier. Such cleaning must be done manually and should include removal of all owned 
-  files and killing any processes. Of course this depends whether the identifier was a gid or uid.
+  files and killing any processes. Of course, this depends whether the identifier was a gid or uid.
   Also please note that in case of clusters, all nodes should be cleaned up. 
 - After the clean up is done, the frozen mapping can be removed, again manually using the admin client
   or automatically, after staying in the frozen state for a specified amount of time. Note that

@@ -52,12 +52,12 @@ There are two special authorization attributes:
   - ``user`` - value specifies that the subject is allowed to use the site as a normal user
     (submit jobs, get results, ...).
   - ``admin`` - value specifies that the subject is an administrator and may do everything. 
-    For example may submit jobs, get results of jobs of other users and even delete them.
+    For example, may submit jobs, get results of jobs of other users and even delete them.
   - ``banned`` - user with this role is explicitly banned and all her request are denied.
   - anything else - means that user is not allowed to do anything serious. Some very basic,
     read-only operations are allowed, but this is a technical detail. 
     Also access to owned resources is granted, what can happen if the user had the ``user`` 
-    role before. Typically it is a good practice to use value ``banned`` in such case.
+    role before. Typically, it is a good practice to use value ``banned`` in such case.
 - ``virtualOrganisations`` - represents an abstract federated group of the user. By default it 
   is not used directly anywhere in the core stack, but several subsystems (as dynamic attribute 
   sources or jobs accounting) may be configured to use it.   

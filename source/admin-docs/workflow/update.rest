@@ -4,7 +4,7 @@ Updating an existing UNICORE Workflow service
 ---------------------------------------------
 
 This chapter covers the steps required to update an
-existing workflow installation (v8.x).
+existing workflow installation (version 8.x).
 
 Stop the server
 ~~~~~~~~~~~~~~~
@@ -14,7 +14,7 @@ Stop the workflow server.
 Backup
 ~~~~~~
 
-You should make a backup of your existing data, and, if necessary, your
+You should make a backup of your existing data and, if necessary, your
 config files.
 
 Update jar files

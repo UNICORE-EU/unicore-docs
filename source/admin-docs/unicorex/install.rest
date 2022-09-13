@@ -32,11 +32,11 @@ Installation
 ~~~~~~~~~~~~
 
 UNICORE/X can be installed either as a part of the `UNICORE Server bundle
-<https://sourceforge.net/projects/unicore/files/Servers/Core/>`_ (tar.gz or zip archive) 
+<https://sourceforge.net/projects/unicore/files/Servers/Core/>`_ (*tar.gz* or *zip* archive) 
 or from a Linux package (i.e. RPM or deb) on the `UNICORE project website  
 <https://sourceforge.net/p/unicore/wiki/Linux_Repositories/>`_ at sourceforge. 
 
-To install from the tar.gz or zip archive, unpack the archive in a 
+To install from the *tar.gz* or *zip* archive, unpack the archive in a 
 directory of your choice. You should then review the config files
 in the ``conf/`` directory, and adapt paths, hostname and ports. 
 The config files are commented, and you can also
@@ -47,7 +47,7 @@ system to install the archive.
 
 .. note::
   Using the Linux packages, you can install only a single UNICORE/X instance per machine (without
-  manual changes). The tar.gz / zip archives are self contained, and you can easily install
+  manual changes). The *tar.gz* / *zip* archives are self contained, and you can easily install
   multiple servers per machine.
 
 The following table gives an overview of the file locations for both tar.gz and Linux bundles:
@@ -75,7 +75,7 @@ The following table gives an overview of the file locations for both tar.gz and 
 Starting/Stopping
 ^^^^^^^^^^^^^^^^^
 
-There are two scripts that expect to be run from the installation directory. To start, do
+There are two scripts that expect to be run from the installation directory. To start, do:
 
 .. code:: console
 
@@ -84,17 +84,17 @@ There are two scripts that expect to be run from the installation directory. To 
 
 
 Startup can take some time. After a successful start, the log files (e.g. ``LOG/startup.log``) 
-contain a message "**Server started.**" and a report on the status of any connections to 
+contain a message "*Server started.*" and a report on the status of any connections to 
 other servers (e.g. the TSI or global registry).
 
-To stop the server, do
+To stop the server, do:
 
 .. code:: console
   
   $ cd <basedir>
   $ bin/stop.sh
 
-Using systemd on Linux, you would do (as root)
+Using systemd on Linux, you would do (as *root*):
 
 .. code:: console
   

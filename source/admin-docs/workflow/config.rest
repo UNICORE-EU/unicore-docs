@@ -14,10 +14,10 @@ a lot of the basic configuration options are documented in the
   The configuration files in the distribution are commented, and contain
   example settings for all the options listed here.
   
-  Depending on how you installed the server, the files are located on
+  Depending on how you installed the server, the files are located on:
   
-   * ``/etc/unicore/workflow`` (Linux package)
-   * ``<basedir>/workflow/conf`` (standalone installer)
+  * ``/etc/unicore/workflow`` (Linux package)
+  * ``<basedir>/workflow/conf`` (standalone installer)
 
 Workflow processing
 ~~~~~~~~~~~~~~~~~~~
@@ -30,7 +30,7 @@ Limits
 ^^^^^^
 
 To avoid too many tasks submitted (possibly erroneously) from a
-workflow, various limits can be set.
+workflow, various limits can be set:
 
 * ``workflow.maxActivitiesPerGroup`` limits the total number
   of tasks submitted for a single group (i.e. (sub-)workflow).
@@ -79,11 +79,11 @@ XNJS settings
 
 The workflow engine uses the XNJS library for processing workflows.
 Some settings for modifying the behaviour are available, and
-are usually found in the workflow server's ``container.properties`` file
+are usually found in the workflow server's ``container.properties`` file.
 
 An important characteristic is the number of threads used by the
 workflow engine for processing. Note, this does not control the number
-of concurrent activities etc, since all XNJS processing is
+of concurrent activities, etc., since all XNJS processing is
 asynchronous. The default number (``4``) is usually fine.
 
 This  properties is set via
@@ -96,7 +96,7 @@ Property reference
 ~~~~~~~~~~~~~~~~~~
 
 A complete reference of the properties for configuring the Workflow server
-is given in the following table.
+is given in the following table:
 
 .. csv-table::
   :file: tables/wf-properties.csv

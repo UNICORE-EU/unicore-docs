@@ -9,16 +9,16 @@ integration of the workflow services into an existing UNICORE system.
 As a general note, the Workflow engine is based on a :ref:`UNICORE/X <unicorex>`
 instance. General UNICORE configuration concepts (such as user
 authentication, gateway integration, shared registry, attribute
-sources) fully apply, and you should refer to the UNICORE/X manual for
-such details.
+sources) fully apply, and you should refer to the :ref:`UNICORE/X manual <unicorex-manual>` 
+for such details.
 
 Prerequisites
 ~~~~~~~~~~~~~
 
  * Java 11 or later
  * An existing UNICORE installation with :ref:`gateway`, 
-   :ref:`Shared Registry <registry>` and one ore more :ref:`unicorex` execution systems.
- * (for production use) A server certificate
+   Shared :ref:`Registry <registry>` and one ore more :ref:`unicorex` execution systems.
+ * A server certificate (for production use)
 
 Updating from previous versions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -40,17 +40,15 @@ or as separate Linux packages (deb or rpm) on the `UNICORE project website
 The basic installation procedure is completely analogous to the
 installation of a :ref:`UNICORE/X <unicorex>` server.
 
-If you downloaded the UNICORE server bundle, untar the tar.gz, edit
-``configure.properties`` and run ``configure.py``
+* If you downloaded the UNICORE server bundle, please untar the *tar.gz*, review the 
+  ``configure.properties`` file and edit the parameters
+  to integrate the workflow services into your existing UNICORE
+  environment. Then call ``./configure.py`` to apply your settings to
+  the configuration files. Finally use ``./install.py`` to install the
+  workflow server files to the selected installation directory.
 
- * please review the ``configure.properties`` file and edit the parameters
-   to integrate the workflow services into your existing UNICORE
-   environment. Then call ``./configure.py`` to apply your settings to
-   the configuration files. Finally use ``./install.py`` to install the
-   workflow server files to the selected installation directory.
-
-If using the Linux packages, simply install using the package manager
-of your system and review the config files.
+* If using the Linux packages, simply install using the package manager
+  of your system and review the config files.
 
 Setup
 ~~~~~
@@ -104,7 +102,7 @@ should include output such as
     * authenticated as: 'CN=Demo User, O=UNICORE, C=EU' role='user'
 
 
-The *authenticated as:* line should list you as *user*.
+The "*authenticated as:"* line should list you as *user*.
 
 Some more info about the server can be obtained via
 

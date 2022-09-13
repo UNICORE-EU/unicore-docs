@@ -133,4 +133,4 @@ API documentation
 Since version 8.0, the Workflow engine exclusively uses a 
 :ref:`RESTful API <rest-api>` for all operations including :ref:`job submission <job-description>`.
 
-You can find an API reference and usage examples in :ref:`workflow-description`
+You can find an API reference and usage examples in :ref:`workflow-description`.

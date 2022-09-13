@@ -46,7 +46,7 @@ from a Linux package on the `UNICORE project website
   (without manual changes).
 
 The following table gives an overview of the file locations for both
-tar.gz and Linux packages.
+tar.gz and Linux packages:
 
 .. table::
  :width: 100
@@ -81,12 +81,11 @@ to the Registry. Please, make sure to read the :ref:`UNICORE/X documentation <un
 as well.
 
 
-Registry configuration (CONF/uas.config)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Registry configuration (``CONF/uas.config``)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Apart from hostname, port, and other properties, the ``uas.config`` file must contain the 
-following entry
-::
+following entry::
 
  container.feature.Registry.mode=shared
 
@@ -104,8 +103,8 @@ The Registry is started and stopped like any other
 Access control
 ~~~~~~~~~~~~~~
 
-It is absolutely **VITAL** that the Registry only contains trusted
-entries. Therefore the default access control policies (``CONF/xacml2Policies/*.xml``)
+It is absolutely **VITAL** that the Registry only contains **trusted
+entries**. Therefore the default access control policies (``CONF/xacml2Policies/*.xml``)
 only allow to add entries only for callers with the role *server*.
 
 You will need to map the certificates / DNs of all servers wishing to publish into the registry
@@ -117,14 +116,13 @@ User / server authentication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 While users can read registry content without needing to be authenticated,
-servers MUST be authenticated and mapped to role "server" to be able
+servers **MUST** be authenticated and mapped to role *server* to be able
 to write to the Registry.
 
 To accept servers, the REST interface must be configured for X509
 authentication.
 
-As an example the following configuration will achieve this
-::
+As an example the following configuration will achieve this::
 
   #
   # Authentication for the REST interface
@@ -144,7 +142,7 @@ If running the Registry behind a :ref:`gateway`, you'll need to add an entry
 to the Gateway's site list file (``connections.properties``) that points
 to your Registry server. Another option is to use dynamic
 registration. In the following, we assume the Registry is named
-"REGISTRY".
+*REGISTRY*.
 
 
 UNICORE/X configuration

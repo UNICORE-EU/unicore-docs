@@ -9,19 +9,13 @@ services for building federated systems, making high-performance
 computing and data resources accessible in a seamless and secure way
 for a wide variety of applications in intranets and the internet.
 
-UNICORE Architecture
---------------------
-
-The architecture of UNICORE is three-layered in client layer, service layer and 
-resources layer as shown in the figure below.
-
 .. figure:: _static/unicore-arch.png
    :width: 600
    :alt: UNICORE Architecture
    :align: center
    
    UNICORE Architecture
-  
+
 
 UNICORE Features
 ----------------
@@ -33,7 +27,7 @@ Services and APIs
 ~~~~~~~~~~~~~~~~~
 
 - Batch jobs with pre- and postprocessing
-- Support for common resource managers such as SLURM or LoadLeveler
+- Support for common resource managers such as SLURM or LSF
 - File system access and file transfer
 - Site-to-site file transfer
 - Cross-site workflows featuring graphs, loops, conditions, variables, hold/continue, workflow 
@@ -44,7 +38,7 @@ Services and APIs
 Security
 ~~~~~~~~
 
-- Flexible user authentication: username/password, OpenID Connect, X\.509, ...
+- Flexible user authentication: username/password, OpenID Connect, SSH keys, X\.509, ...
 
 - Flexible mapping of users to local accounts and groups
 
@@ -54,9 +48,9 @@ Clients
 ~~~~~~~
 
 - :ref:`Commandline client <ucc>`: Job execution, data transfer, workflows, scripting, batch mode, extensible
-- Dedicated `client for the UFTP 
+- Dedicated `client for UFTP
   <https://uftp-docs.readthedocs.io/en/latest/user-docs/uftp-client/>`_ 
-  high performance file transfer 
+  high performance file transfer and data management features
 - `pyUNICORE <https://github.com/HumanBrainProject/pyunicore/>`_ Python client library
 
 Add-ons

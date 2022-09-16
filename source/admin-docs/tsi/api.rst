@@ -43,17 +43,21 @@ Messages to the UNICORE/X server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The TSI provides methods to pass messages to the UNICORE/X server.  In
-particular the UNICORE/X server expects every method to call either
-``ok()`` or ``failed()`` at the end of its execution. The messaging methods
+particular the UNICORE/X server expects every method to reply
+at the end of its execution. The messaging methods
 are implemented in `Connector.py 
 <https://github.com/UNICORE-EU/tsi/blob/master/lib/Connector.py>`_:
 
+* ``write_message(string)`` Sends a message to the UNICORE/X server 
+
 * ``ok(string)`` Sends a message to the UNICORE/X server to say that
   execution of the command was successful.
+  This message always starts with a line ``TSI_OK``
   
 * ``failed(string)`` Sends a message to the UNICORE/X server to say
   that execution of the command failed.  The string is sent to the
   UNICORE/X server as part of the failure message.
+  This message always starts with a line ``TSI_FAILED``
 
 Messages have to end with a special tag ``ENDOFMESSAGE``, since the
 command sockets are left open for receiving the next command.
@@ -573,3 +577,51 @@ Output
 
  * *Normal*: ``ok()`` called with no special output.
  * *Error*: ``failed()`` called with the reason for failure.
+
+ 
+Miscellaneous functions
+~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Getting TSI version information (#TSI_PING)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The ``TSI.ping()`` function returns the TSI version.
+
+Input
++++++
+
+None.
+
+Output
+++++++
+ * TSI version string as defined in the TSI.py file
+
+
+Getting user information (#TSI_GET_USER_INFO)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The ``TSI.get_user_info()`` function returns the user's HOME directory,
+and a list of public keys, which is read froma list of configurable files in
+the user's HOME directory (defaulting to ``.ssh/accepted_keys``).
+
+Input
++++++
+
+None.
+
+Output
+++++++
+
+ * User info (format below) is sent via +message()+
+
+Format
+++++++
+The output is a multiline string
+::
+
+  home: <user_home_directory>
+  Accepted key 1: <public_key_1>
+  Accepted key 2: <public_key_2>
+   ...
+  status: <status message>
+

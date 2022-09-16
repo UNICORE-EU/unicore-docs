@@ -62,13 +62,14 @@ random string as the salt. Enter these together with the username, and
 the DN of the user into the password file.
 
 
-Unity authentication using OAuth2 Bearer token
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Unity authentication using OAuth Bearer token
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This mechanism uses the OAuth2 token sent from the client (HTTP
+This mechanism uses the OAuth token sent from the client (HTTP
 ``Authorization: Bearer ...`` header) to authenticate to Unity.
-In Unity terms, this uses the endpoint of type ``SAMLUnicoreSoapIdP``
-with authenticator of type ``oauth-rp with cxf-oauth-bearer``.
+In Unity terms, this uses the endpoint of type ``SAMLSoapIdP`` 
+(or ``SAMLUnicoreSoapIdP``) with authenticator of 
+type ``oauth-rp with cxf-oauth-bearer``.
 ::
 
  container.security.rest.authentication.UNITY-OAUTH.class=eu.unicore.services.rest.security.UnityOAuthAuthenticator
@@ -104,6 +105,33 @@ For this to work, UNICORE needs to public key of the Unity server as
 one of the *trusted assertion issuers*, please refer to the relevant
 section on trusted assertion issuers in the manual.
 
+OAuth token authentication with an OIDC server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This mechanism checks the OAuth token issued by an OIDC server such as Keycloak
+directly with the issuing server.
+::
+
+ container.security.rest.authentication.OAUTH.class=eu.unicore.services.rest.security.UnitySAMLAuthenticator
+ container.security.rest.authentication.OAUTH.address=https://your.server/auth/realms/your_realm/protocol/openid-connect/userinfo
+
+UNICORE will use the OAuth token to make a call to the user info endpoint,
+effectively checking if that token is (still) valid.
+
+You can configure an additional validation step, where UNICORE acts as an
+OAuth client with client ID and secret to query the token introspection endpoint::
+
+ container.security.rest.authentication.OAUTH.validate=true
+ container.security.rest.authentication.OAUTH.clientID=your-client-id
+ container.security.rest.authentication.OAUTH.clientSecret=your-client-secret
+ container.security.rest.authentication.OAUTH.validationAddress=https://your.server/auth/realms/your_realm/protocol/openid-connect/token/introspect
+
+
+The parameter ``dnTemplate`` is used to define the DN that will be assigned to authenticated users,
+
+where the ``%param`` parameters will be replaced by the corresponding parameters from the (validated OIDC token)
+The default template is ``UID=%email``.
+
 
 X.509 certificate
 ~~~~~~~~~~~~~~~~~
@@ -120,35 +148,17 @@ PAM
 ~~~
 
 This authentication module allows to authenticate users with the
-username and password that they have on the UNICORE/X system.
+username and password that they have on the host running UNICORE/X.
 ::
 
 	container.security.rest.authentication.order= ... PAM ...
 
 	container.security.rest.authentication.X509.class=eu.unicore.services.rest.security.PAMAuthenticator
-	container.security.rest.authentication.X509.DNTemplate=CN=%s, OU=pam-local-users
+	container.security.rest.authentication.X509.dnTemplate=CN=%s, OU=pam-local-users
 
-The parameter ``DNTemplate`` is used to define which DN will be assigned to authenticated users,
+The parameter ``dnTemplate`` is used to define which DN will be assigned to authenticated users,
 where the ``%s`` will be replaced by the user name. In the example above, user *test-user* will 
 have the DN "*CN=test-user, OU=pam-local-users*".
-
-There is also a PAM attribute source that you can use to automatically
-assign *role=user* as well the Unix login and groups correctly for
-authenticated users.
-::
-
- container.security.attributes.order= ... PAM ...
- container.security.attributes.PAM.class=eu.unicore.services.rest.security.PAMAttributeSource
-
-
-OAuth2 authentication using a Bearer token
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-It is also possible in principle to directly authenticate to an OAuth2
-server, contact `support mailing list <mailto:unicore-support@lists.sf.net>`_ for details. 
-However, `Unity <https://unity-idm.eu/>`_ is much more flexible and feature rich, so we strongly 
-recommend using Unity as a bridge to any third party IdPs you might want to use.
-
 
 
 Customizing JWT Delegation

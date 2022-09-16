@@ -5,8 +5,8 @@ Job description format
 
 A UNICORE job describes a *single job* on the target system.
 
-By default, the job will be submitted to the batch system and run on a compute node. To execute 
-the job on a login node, the ``Job type`` can be set to ``interactive`` (see below).
+By default, the job will be submitted to the batch system and run on a compute node.
+However, UNICORE supports :ref:`other job types<jd_job_types>` as well.
 
 UNICORE uses a JSON format that allows you to specify the application or executable you want to 
 run, arguments and environment settings, any files to stage in from remote servers and any result 
@@ -17,10 +17,10 @@ that are relevant to that client, so make sure to check the client manuals as we
 Overview
 ~~~~~~~~
 
-UNICORE's job description consists of several parts:
+UNICORE's job description consists of several parts (their order does not matter):
 
 - an ``Imports`` section listing data to be staged in to the job's working directory from remote 
-  storage locations (and/or the client's file system, if you use :ref:`ucc`)
+  storage locations (and/or the client's file system, if you use :ref:`UCC<ucc>`)
 - pre-processing
 - a section describing the main executable
 - post-processing
@@ -33,15 +33,34 @@ Here is a table listing the supported elements, these will be described in more 
 
 .. include:: tables/job-desc.rest
 
-..
- .. csv-table::
-  :file: tables/job-desc.csv
-  :widths: 30, 20, 50
-  :header-rows: 1
-  :class: tight-table
 
 Job elements
 ~~~~~~~~~~~~
+
+.. _jd_job_types:
+
+Job types
+^^^^^^^^^
+
+UNICORE supports four types if jobs. They are selected by the ``Job type``
+element. If not given, ``batch`` is the default.
+
+
+ * ``batch`` (or ``normal``) - this is the default. UNICORE submits the job to the batch system.
+   After being scheduled, the launched on the requested number of compute nodes.
+   The job's resource requests (like number of nodes or requested run time) are taken
+   from the job's ``Resources`` section.
+
+ * ``on_login_node`` (or ``interactive``) - the user job will be launched on a login node.
+   If applicable, you can select the login node with the ``Login node`` element.
+   
+ * ``raw`` - the job goes to the batch system, but the resources are taken from an additional file,
+   which contains BSS directives (e.g."#SBATCH ..." in the case of Slurm.
+   
+ * ``allocate`` - this is basically the same as "batch", but it only creates an allocation on
+   the batch system, without launching any user tasks. You can submit tasks "into" the allocation
+   later.
+
 
 Specifying the executable or application
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -235,14 +254,13 @@ Here is an example:
 
 .. code:: json
 
-	{ 
-	  "From": "inline://dummy",
+	{
 	  "To":   "uspaceFileName",
-	  "Data": "this is some test data", 
+	  "Data": "this is some test data"
 	}
 
-The ``From`` URL has to start with ``inline://``, the rest is not important. Make sure to properly 
-escape any special characters.
+In this case, the ``From`` URL is not needed. If you give one, it HAS to start with ``inline://``,
+the rest is not important. Make sure to properly escape any special characters.
 
 Sweeping over a stage-in file
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

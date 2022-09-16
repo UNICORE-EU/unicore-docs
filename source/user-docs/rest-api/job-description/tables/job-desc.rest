@@ -56,11 +56,12 @@
  |haveClientStageIn                   |"true" \/ "false"|Tell the server that the client does \/ does not|
  |                                    |                 |want to send any additional files               |
  +------------------------------------+-----------------+------------------------------------------------+
- |Job type                            |'normal',        |Whether to run the job via the batch system     |
- |                                    |'interactive',   |('normal', default) or on a login node          |
- |                                    |'raw'            |('interactive'), or as a batch job but with a   |
- |                                    |                 |user\-specified file containing the batch system|
- |                                    |                 |directives                                      |
+ |Job type                            |'batch',         |Whether to run the job via the batch system     |
+ |                                    |'on_login_node', |('batch', default) or on a login node           |
+ |                                    |'raw',           |('on_login_node'), or as a batch job with       |
+ |                                    |'allocate'       |user\-specified file containing the batch       |
+ |                                    |                 |batch system directives ('raw'), or to only     |
+ |                                    |                 |'allocate' resoures but not start anything      |
  +------------------------------------+-----------------+------------------------------------------------+
  |Login node                          |String           |For 'interactive' jobs, select a login node (by |
  |                                    |                 |name, as configured server side. Wildcards '\*' |

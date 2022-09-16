@@ -1,7 +1,7 @@
 .. _tsi-manual:
 
-User Manual
-===========
+TSI Manual
+==========
 
 The TSI performs the work on behalf of UNICORE users and so must be
 able to execute processes under different uids and gids. Therefore, in
@@ -25,7 +25,7 @@ system. This is described in section :ref:`tsi_localization`.
 Prerequisites
 -------------
 
-The TSI requires Python Version 3.4 or later. It works only on
+The TSI requires Python Version 3.6 or later. It works only on
 Unix-style operating systems (e.g. Linux or Mac OS/X), Windows is not
 directly supported.
 
@@ -153,6 +153,40 @@ Verifying
 
 Before starting the TSI, you should make sure that the batch system integration
 is working correctly. See the section on :ref:`tsi_localization` below!
+
+TSI networking configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In tsi.properties, the TSI host interface and port are defined, as well 
+as the allowed UNICORE/X host(s).
+::
+
+  # TSI host interface, use "0.0.0.0" to bind to all interfaces
+  tsi.my_addr=localhost
+
+  # The port on which the TSI will listen for UNICORE/X requests
+  tsi.my_port=14433
+
+  # Comma-separated list of UNICORE/X machine(s) from where
+  # connections are allowed
+  tsi.unicorex_machine=my-unicorex-a.server.org, my-unicorex-b.server.org
+
+  # Optionally, define a fixed callback port to UNICORE/X
+  # (If not set, the TSI will use the port requested by UNICORE/X)
+  tsi.unicorex_port=7654
+
+
+NOTE: if using SSL (see section :ref:`tsi_ssl`), the ``tsi.unicorex_machine``
+is ignored.
+
+
+You can optionally configure a range of local ports for the TSI to use.
+If this is set, the TSI will use free ports from that range only. Per UNICORE/X
+connection, two local ports are required, so make sure to not set this range
+too small (should be at least 20 ports).
+::
+
+   tsi.local_portrange=50000:50100
 
 
 UNICORE/X configuration
@@ -570,10 +604,24 @@ the logs via ``journalctl``, for example,
   $ sudo journalctl -u unicore-tsi-variant
 
 
-To print logging output to stdout instead, set ``tsi.use_syslog=false`` in
-the ``tsi.properties`` file.
+To print logging output to stdout instead, set 
+::
+
+  tsi.use_syslog=false``
+
+in the ``CONF/tsi.properties`` file.
 
 
+Since stdout is redirected to a file (see the STARTLOG definition in ``CONF/startup.properties``)
+the logging output will be in that file.
+
+
+For more verbose logging, set
+::
+
+  tsi.debug=true
+
+in ``CONF/tsi.properties``
 
 Porting the TSI to other batch systems
 --------------------------------------
@@ -583,8 +631,7 @@ to a new BSS usually requires changes to the following files:
 
 * `BSS.py <https://github.com/UNICORE-EU/tsi/blob/master/lib/BSS.py>`_
 
-* `Reservation.py 
-  <https://github.com/UNICORE-EU/tsi/blob/master/lib/Reservation.py>`_ 
+* `Reservation.py <https://github.com/UNICORE-EU/tsi/blob/master/lib/Reservation.py>`_ 
   (reservation functions if applicable)
 
 It is recommended to start from a up-to-date and well-documented TSI, e.g.

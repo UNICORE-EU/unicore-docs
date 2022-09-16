@@ -1,10 +1,16 @@
 .. _tsi-building:
 
-This is the UNICORE TSI server, used to interface to a batch sub
-system such as Slurm.
 
 Building
 ========
+
+Clone the git repository
+
+.. code:: console
+
+  $ git clone https://github.com/UNICORE-EU/tsi
+  $ cd tsi
+
 
 Use the supplied ``Makefile`` to run tests and/or build packages for
 the various supported batch systems.
@@ -20,7 +26,7 @@ Run
 
   $ make <bss>-<type>
 
-where <bss> is one of: ``nobatch``, ``torque``, ``slurm``, ``lsf``
+where <bss> is one of: ``nobatch``, ``slurm``, ``torque``, ``lsf``
 and <type> is one of: ``tgz``, ``deb``, ``rpm``.
 
 

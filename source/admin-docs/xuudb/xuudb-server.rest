@@ -438,29 +438,6 @@ In case if XUUDB was installed with binary package use:
 
 .. include:: sec-logging.rest
 
-Several logging categories common in XUUDB:
 
-.. table::
- :width: 100
- :widths: 30 70
- :class: tight-table
-
- +------------------------+----------------------------------+
- |Log category            | Description                      |
- +========================+==================================+
- |unicore                 | All of UNICORE                   |
- +------------------------+----------------------------------+
- |unicore.security        | Security layer                   |
- +------------------------+----------------------------------+
- |unicore.client          | Client calls (to other servers)  |
- +------------------------+----------------------------------+
- |unicore.xuudb           | XUUDB related                    |
- +------------------------+----------------------------------+
- |unicore.xuudb.server    | XUUDB server                     |
- +------------------------+----------------------------------+
- |unicore.xuudb.server.db | XUUDB server database layer      |
- +------------------------+----------------------------------+
- |unicore.xuudb.client    | XUUDB admin client               |
- +------------------------+----------------------------------+
 
 

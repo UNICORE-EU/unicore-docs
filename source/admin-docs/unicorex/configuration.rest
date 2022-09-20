@@ -94,9 +94,9 @@ Settings for the UNICORE/X process (e.g. memory)
 The properties controlling the Java virtual machine running the
 UNICORE/X process are configured in
   
-  - UNIX: the ``CONF/startup.properties`` configuration file
+  - UNIX: the :file:`{CONF}/startup.properties` configuration file
   
-  - Windows: the ``CONF\\wrapper.conf`` configuration file
+  - Windows: the :file:`{CONF}\\wrapper.conf` configuration file
   
 
 These properties include basic settings (like maximum memory),
@@ -175,7 +175,7 @@ a :ref:`registry`.
 Gateway
 ^^^^^^^
 
-The gateway address is hard-coded into ``CONF/container.properties``, using
+The gateway address is hard-coded into :file:`{CONF}/container.properties`, using
 the ``container.baseurl`` property::
 
   container.baseurl=https://Gateway_HOST:Gateway_PORT/SITENAME/services
@@ -318,7 +318,6 @@ HTTP proxy, timeout and web server settings
 A number of settings exist that control the the web server and the
 HTTPClient library used for outgoing HTTP(s) calls.
 
-.. _java_ciphers: https://docs.oracle.com/javase/8/docs/technotes/guides/security/SunProviders.html#SupportedCipherSuites
 
 The HTTP server options are shown in the following table:
 

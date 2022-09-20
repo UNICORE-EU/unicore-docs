@@ -71,7 +71,7 @@ Here is a simple example of two tasks that are to be run in a sequence:
 
 The remaining elements in the workflow description are:
 
-- ``inputs`` allows to register external files with the workflow file catalog. See :ref:`datahandling`
+- ``inputs`` allows to register external files with the workflow file catalog. See :ref:`datahandling`.
 - ``tags`` is an optional list of initial tags, that can later be used to conveniently filter the 
   list of workflows.
 - ``notification`` (optional) denotes an URL to where UNICORE Workflow server will send a 
@@ -99,8 +99,7 @@ In the next sections the elements of the workflow description will be discussed 
 Activities
 ~~~~~~~~~~
 
-Activity elements have the following form
-::
+Activity elements have the following form::
 
 	"id": {
 	   "type": "...",
@@ -111,10 +110,10 @@ The ``id`` must be UNIQUE within the workflow. There are different types of acti
 are distinguished by the ``type`` element.
 
 - ``START`` denotes an explicit start activity. If no such activity is present, the processing 
-  engine detect the proper starting activities
+  engine detect the proper starting activities.
 
 - ``JOB`` denotes a executable (job) activity. In this case, the job sub element holds the JSON 
-  job definition (if a ``job`` element is present, you may leave out the ``type``)
+  job definition (if a ``job`` element is present, you may leave out the ``type``).
 
 - ``ModifyVariable`` allows to modify a workflow variable. An option named ``variableName`` 
   identifies the variable to be modified, and an option ``expression`` holds the modification 
@@ -127,14 +126,14 @@ are distinguished by the ``type`` element.
 
 - ``Branch``: this activity can have multiple outgoing transitions. The transition with the 
   first matching condition will be followed. This is comparable to an "*if() … elseif() … else()*" 
-  construct in a programming language
+  construct in a programming language.
 
-- ``Merge`` merges multiple flows without synchronising them
+- ``Merge`` merges multiple flows without synchronising them.
 
-- ``Synchronize`` merges multiple flows and synchronises them
+- ``Synchronize`` merges multiple flows and synchronises them.
 
 - ``HOLD`` stops further processing of the current flow until the client explicitely sends continue 
-  message
+  message.
 
 
 Subworkflows
@@ -237,8 +236,7 @@ For example,
 	}
 
 If you need to pass on user preferences to the site, e.g. for selecting your primary group, or 
-choosing between multiple user IDs, you can specify this in the ``job`` element like this:
-::
+choosing between multiple user IDs, you can specify this in the ``job`` element like this::
 
  ...
 
@@ -736,8 +734,8 @@ Simple *two-step* workflow with data dependency
 This example shows how to link output from one task to the input of another task using
 the internal file catalog.
 
-The first task, "step1", registers its ``stdout`` with the file catalog under the name
-``wf:step1_out``, and the second task, "step2", pulls that file in for further processing.
+The first task, *step1*, registers its ``stdout`` with the file catalog under the name
+``wf:step1_out``, and the second task, *step2*, pulls that file in for further processing.
 ::
 
 	{
@@ -817,8 +815,7 @@ Conditional execution in an *if-else* construct
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Transitions from one activity to another may be conditional, which allows all sorts of *if-else* 
-constructs. Here is a simple example
-::
+constructs. Here is a simple example::
 
 	{
 

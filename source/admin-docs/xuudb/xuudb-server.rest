@@ -65,7 +65,7 @@ Configuration
 ~~~~~~~~~~~~~
 
 By default, the configuration is defined in the file
-``CONF/xuudb_server.conf``. To use a different configuration file, edit the start script, 
+:file:`{CONF}/xuudb_server.conf`. To use a different configuration file, edit the start script, 
 or use ``--start <config_file>`` as command line arguments when starting.
 
 The server's configuration file allows for setting the general XUUDB settings, 
@@ -436,7 +436,7 @@ In case if XUUDB was installed with binary package use:
   $ /etc/init.d/unicore-xuudb stop
 
 
-.. literalinclude::sec-logging.txt
+.. include:: sec-logging.rest
 
 Several logging categories common in XUUDB:
 

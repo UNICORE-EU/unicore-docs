@@ -136,8 +136,8 @@ never leave any TSI files (or directories) writable after any update.
 Configuring the TSI
 -------------------
 
-The TSI is configured by editing the ``CONF/tsi.properties`` and 
-``CONF/startup.properties`` files. Please review these two files 
+The TSI is configured by editing the :file:`{CONF}/tsi.properties` and 
+:file:`{CONF}/startup.properties` files. Please review these two files 
 carefully.
 
 Changes outside the config files should not be necessary, except for
@@ -609,7 +609,7 @@ To print logging output to stdout instead, set
 
   tsi.use_syslog=false``
 
-in the ``CONF/tsi.properties`` file.
+in the :file:`{CONF}/tsi.properties` file.
 
 
 Since stdout is redirected to a file (see the STARTLOG definition in ``CONF/startup.properties``)
@@ -621,7 +621,7 @@ For more verbose logging, set
 
   tsi.debug=true
 
-in ``CONF/tsi.properties``
+in :file:`{CONF}/tsi.properties`.
 
 Porting the TSI to other batch systems
 --------------------------------------

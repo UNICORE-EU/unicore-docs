@@ -24,7 +24,7 @@ Base URL
 ~~~~~~~~
 
 The base URL of the the REST API for a single UNICORE/X container is
-``https://gateway_url/SITENAME/rest/core``.
+:file:`https://{gateway_url}/{SITENAME}/rest/core`.
 
 In the following, we will abbreviate this URL as ``BASE`` Authentication.
 
@@ -353,7 +353,7 @@ where the *application ID* is again composed of the application name and version
 Listing jobs
 ^^^^^^^^^^^^
 
-You can list all the jobs submitted to a site using the ``BASE/site/{id}/jobs`` endpoint, by doing 
+You can list all the jobs submitted to a site using the ``BASE/sites/{id}/jobs`` endpoint, by doing 
 a GET for
 ::
 
@@ -699,7 +699,7 @@ UNICORE/X server.
 
 NOTE that the BASE url for workflows is:
 
-``https://gateway_url/WORKFLOW_SITENAME/rest/workflows``
+:file:`https://{gateway_url}/{WORKFLOW_SITENAME}/rest/workflows`
 
 This base *workflows* URL is used to list the workflows available to the user and submit new
 ones.

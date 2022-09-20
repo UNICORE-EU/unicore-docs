@@ -27,7 +27,7 @@ Administrator Documentation
 - :ref:`workflow` - provides advanced workflow processing
   capabilities using UNICORE resources.  The Workflow service provides
   graphs of activities including high-level control constructs
-  (for-each, while, if-then-else, etc), and submits and manages the
+  (*for-each*, *while*, *if-then-else*, etc.), and submits and manages the
   execution of single UNICORE jobs.
   
 - :ref:`registry` - the Registry server is a specially configured

@@ -36,7 +36,7 @@ where *UCC_HOME* is the directory you installed UCC in.
   limit on command line length.
   
   Setting environment variables can be done (as *administrator*) 
-  using the :kbd:`Control panel --> System --> Extras panel`.
+  using the :menuselection:`Control panel --> System --> Extras panel`.
 
 
 Though you can specify many parameters on the commandline, it is
@@ -46,7 +46,7 @@ information repeatedly.
 Preferences file
 ~~~~~~~~~~~~~~~~
 
-UCC checks by default whether the file ``<userhome>/.ucc/preferences`` exists, and reads it.
+UCC checks by default whether the file :file:`{<userhome>}/.ucc/preferences` exists, and reads it.
 
 A minimal example that specifies username, password and your preferred UNICORE registry URL
 would look as follows::
@@ -72,14 +72,14 @@ Please refer to :ref:`ucc_options` for a full description of available options.
 
 .. note:: *Windows only* 
 
-  The preferences are usually searched in the ``c:\Users\<user_name>\.ucc`` 
+  The preferences are usually searched in the :file:`c:\\Users\\\\{<user_name>}\\.ucc` 
   folder.
   
   To create the ``.ucc`` folder, you might have to use the 
   command prompt ``mkdir`` command. 
   
   When specifying paths in the preferences file, the backslash ``\`` 
-  character needs to be written using an extra backslash ``\\``
+  character needs to be written using an extra backslash ``\\``.
 
 
 For example, if you are using a local UNICORE installation for 
@@ -104,7 +104,7 @@ Logging
 
 UCC writes some messages to the console, more if you choose the
 verbose mode (``-v`` option). If you need real logging (e.g. when using
-the batch mode), you can edit the ``<UCC_HOME>/conf/logging.properties``
+the batch mode), you can edit the :file:`{<UCC_HOME>}/conf/logging.properties`
 file, which configures the `Log4J 
 <https://logging.apache.org/log4j/2.x/manual/configuration.html>`_ logging 
 infrastructure used in UNICORE.

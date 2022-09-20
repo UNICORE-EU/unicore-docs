@@ -8,7 +8,7 @@ Controlling UNICORE/X memory usage
 
 You can set a limit on the number of service instances (e.g. jobs) per user.
 This allows you to make sure your server stays nicely up and running even if 
-flooded by jobs. To enable, edit ``CONF/container.properties`` and
+flooded by jobs. To enable, edit :file:`{CONF}/container.properties` and
 add properties, e.g.
 ::
 
@@ -37,7 +37,7 @@ logging framework. The config file is specified with a Java property
   The new configuration will take effect a few seconds after the  file has been modified.
 
 
-By default, log files are written to the the ``LOGS`` directory. 
+By default, log files are written to the the :file:`{LOGS}` directory. 
 
 Within the logging pattern, you can use special variables to output information.
 In addition to the variables defined by Log4j (such as ``%d``), UNICORE defines several variables
@@ -240,7 +240,7 @@ Migration of a UNICORE/X server to another physical host
 
 If you want to migrate a UNICORE/X server to another host, there are
 several things to consider.  The hostname and port are listed in
-``CONF/container.properties`` and usually in the :ref:`Gateway's <gateway>`
+:file:`{CONF}/container.properties` and usually in the :ref:`Gateway's <gateway>`
 ``connection.properties`` file. These you will have to change. Otherwise,
 you can copy the relevant files in ``CONF`` to the new machine. Also, the
 persisted state data needs to be moved to the new machine, if it is

@@ -156,7 +156,7 @@ UNICORE, this may not always work as expected: the *admin* user might
 not have the required Unix permissions to access files, list
 directories, etc.
 
-The UCC commands that list server-side things (:ref:`list-jobs <list-jobs>`, etc) accept 
+The UCC commands that list server-side things (:ref:`list-jobs <list-jobs>`, etc.) accept 
 a filtering option, that can be used to limit the results of the operation.
 Filtering works on the XML resource properties of the resource in question.
 

@@ -198,7 +198,7 @@ services from local PEM files using the following:
 
 For very simple cases, e.g. when no shared registry is used, a shared
 hmac secret can be configured as well. The length of the secret must be
-at least 32 characters
+at least 32 characters.
 ::
 
  container.security.rest.jwt.hmacSecret=.... 

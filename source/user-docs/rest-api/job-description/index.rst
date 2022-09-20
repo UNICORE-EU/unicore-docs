@@ -55,10 +55,10 @@ element. If not given, ``batch`` is the default.
    If applicable, you can select the login node with the ``Login node`` element.
    
  * ``raw`` - the job goes to the batch system, but the resources are taken from an additional file,
-   which contains BSS directives (e.g."#SBATCH ..." in the case of Slurm.
+   which contains BSS directives (e.g.``#SBATCH ...`` in the case of Slurm).
    
- * ``allocate`` - this is basically the same as "batch", but it only creates an allocation on
-   the batch system, without launching any user tasks. You can submit tasks "into" the allocation
+ * ``allocate`` - this is basically the same as *batch*, but it only creates an allocation on
+   the batch system, without launching any user tasks. You can submit tasks *into* the allocation
    later.
 
 

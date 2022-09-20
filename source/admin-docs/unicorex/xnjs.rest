@@ -84,7 +84,7 @@ the necessary steps.
 Required TSI Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Configuration is done by editing ``<tsi_conf_dir>/tsi.properties``
+Configuration is done by editing :file:`{<tsi_conf_dir>}/tsi.properties`.
 At least check the following settings::
 
   # UNICORE/X machine
@@ -101,8 +101,7 @@ UNICORE/X configuration
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Edit ``unicorex/conf/uas.config`` and check that the ``xnjs.properties`` file
-is included
-::
+is included::
 
   # read XNJS/TSI config
   $include.XNJS conf/xnjs.properties

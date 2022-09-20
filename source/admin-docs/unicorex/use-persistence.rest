@@ -114,7 +114,7 @@ database structures:
 
  - open the mysql console
 
- - create a dedicated user, say *unicore* who will connect from some server in the domain "yourdomain.com" or
+ - create a dedicated user, say *unicore* who will connect from some server in the domain *yourdomain.com* or
    from the local host::
 
 	CREATE USER 'unicore'@'%.yourdomain.com' identified by 'some_password' ;
@@ -155,7 +155,7 @@ You will need access to a PostgreSQL server, and configure access to
 a database. We recommend a dedicated PostgreSQL user. Here is an example
 for how to setup access.
 
- - create a dedicated PostgreSQL user 'unicore' (and set a password)
+ - create a dedicated PostgreSQL user *unicore* (and set a password)
 
    .. code:: console
 

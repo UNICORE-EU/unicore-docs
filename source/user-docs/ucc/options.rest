@@ -95,7 +95,7 @@ where *name*:
 Configuration file
 ~~~~~~~~~~~~~~~~~~
 
-By default, UCC checks for the existence of a file ``<userhome>/.ucc/preferences`` and reads
+By default, UCC checks for the existence of a file :file:`{<userhome>}/.ucc/preferences` and reads
 settings from there. As shown above, you can use a different file by specifying
 it on the commandline using the ``-c`` option.
 

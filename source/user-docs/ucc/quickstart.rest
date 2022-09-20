@@ -52,15 +52,15 @@ Running your first job
 
 The UCC distribution contains `samples 
 <https://github.com/UNICORE-EU/commandline-client/tree/master/ucc-distribution/src/main/samples>`_ 
-that you can run. Let's run the `"date" 
+that you can run. Let's run the `date.u 
 <https://github.com/UNICORE-EU/commandline-client/blob/master/ucc-distribution/src/main/samples/date.u>`_ 
 sample. The ``-v`` switch prints more info so you can see what's going on.
 
 .. code:: console
 
-  $ ucc run -v [UCC_HOME]/samples/date.u
+  $ ucc run -v <UCC_HOME>/samples/date.u
 
-This will run "date" on a randomly chosen site, and retrieve the output. 
+This will run *date* on a randomly chosen site, and retrieve the output. 
 To run on a particular site, use the ``-s`` option to specify a particular 
 target system.
 

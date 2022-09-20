@@ -236,7 +236,7 @@ Dynamic registration is controlled by three properties in ``CONF/gateway.propert
   gateway.registration.secret=<your secret>
 
 If set to ``true``, the Gateway will accept dynamic registrations which are made by 
-sending a ``HTTP POST`` request to the URL ``/VSITE_REGISTRATION_REQUEST``
+sending a ``HTTP POST`` request to the URL ``/VSITE_REGISTRATION_REQUEST``.
 This request must contain a parameter ``secret`` which matches the
 value configured in the ``gateway.properties`` file.
 
@@ -262,7 +262,7 @@ Web interface (*monkey page*)
 For testing and simple monitoring purposes, the Gateway displays a
 website showing detailed site information (the details view can be
 disabled).  Once the Gateway is running, open up a browser and
-navigate to ``https://<gateway_host>:8080`` (or whichever URL the gateway
+navigate to :file:`https://{<gateway_host>}:8080` (or whichever URL the gateway
 is running on).  If the Gateway is configured to do SSL
 authentication, you will need to import a suitable client certificate
 into your web browser.
@@ -315,7 +315,7 @@ Logging
 ^^^^^^^
 
 UNICORE uses Log4j (version 2) as its logging framework, and
-comes with an example configuration file (``CONF/logging.properties``).
+comes with an example configuration file (:file:`{CONF}/logging.properties`).
 
 Please refer to the `Log4j documentation <https://logging.apache.org/log4j/2.x/manual/configuration.html>`_
 for more information.
@@ -367,7 +367,7 @@ Using the Gateway for failover and/or loadbalancing of UNICORE sites
 The Gateway can be used as a simple failover solution and/or loadbalancer to achieve 
 high availability and/or higher scalability of UNICORE/X sites without additional tools.
 
-A site definition (in ``CONF/connections.properties``) can be extended, so that multiple physical 
+A site definition (in :file:`{CONF}/connections.properties`) can be extended, so that multiple physical 
 servers are used for a single virtual site. 
 
 An example for such a so-called multi-site declaration in the ``connections.properties`` file 

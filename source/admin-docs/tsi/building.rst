@@ -1,10 +1,10 @@
 .. _tsi-building:
 
 
-Building
-========
+Building the TSI
+================
 
-Clone the git repository
+Clone the git repository:
 
 .. code:: console
 
@@ -15,7 +15,7 @@ Clone the git repository
 Use the supplied ``Makefile`` to run tests and/or build packages for
 the various supported batch systems.
 
-You will need Java, Maven and Ant to build RPM/DEB packages.
+You will need Java, Maven and Ant to build *RPM/DEB* packages.
 
 Packaging
 ---------
@@ -26,14 +26,14 @@ Run
 
   $ make <bss>-<type>
 
-where <bss> is one of: ``nobatch``, ``slurm``, ``torque``, ``lsf``
-and <type> is one of: ``tgz``, ``deb``, ``rpm``.
+where **<bss>** is one of: ``nobatch``, ``slurm``, ``torque``, ``lsf``
+and **<type>** is one of: ``tgz``, ``deb``, ``rpm``.
 
 
 Generic binary TGZ
 ------------------
 
-To create a "generic" binary archive that can be used to install
+To create a *generic* binary archive that can be used to install
 any version of the TSI via the ``Install.sh`` script, run
 
 .. code:: console

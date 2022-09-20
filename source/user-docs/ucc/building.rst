@@ -1,7 +1,7 @@
 .. _ucc-building:
 
-Building UCC packages
-=====================
+Building the UCC
+================
 
 Prerequisites
 -------------
@@ -24,7 +24,7 @@ Creating distribution packages
 ------------------------------
 
 The following commands create the distribution packages
-in ``tgz``, ``deb`` and ``rpm`` formats (**Maven 2!**). The versions
+in *tgz*, *deb* and *rpm* formats (**Maven 2!**). The versions
 are taken from the `pom.xml 
 <https://github.com/UNICORE-EU/commandline-client/blob/master/pom.xml>`_.
 

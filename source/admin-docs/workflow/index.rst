@@ -1,6 +1,6 @@
 .. _workflow:
 
-Workflow service
+Workflow Service
 ****************
 
 The Workflow service is a server component that supports submission

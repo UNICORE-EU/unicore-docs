@@ -4,7 +4,7 @@
 User Documentation
 ==================
 
-- :ref:`ucc` - a full featured commandline client for UNICORE.
+- :ref:`ucc` - a full featured commandline client for UNICORE
 - :ref:`rest-api` - REST-API for job submission and management, 
   data access and transfer, workflow submission and management
 

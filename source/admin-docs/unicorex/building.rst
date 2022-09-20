@@ -29,7 +29,7 @@ Creating distribution packages
 ------------------------------
 
 The following commands create the distribution packages
-in tgz, deb and rpm formats
+in *tgz*, *deb* and *rpm* formats.
 
 Do a ``cd unicorex-dist`` or ``cd registry-dist`` for UNICORE/X or
 Registry.

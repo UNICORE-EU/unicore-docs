@@ -35,7 +35,7 @@ Administrator Documentation
   services to clients and other services. 
 
 - `UFTPD <https://uftp-docs.readthedocs.io/en/latest/admin-docs/uftpd/>`_ - 
-  the UNICORE File Transfer Server for high performance data transfer
+  the UNICORE File Transfer Server for high performance data transfer.
   
 
 .. figure:: _static/unicore-components.png

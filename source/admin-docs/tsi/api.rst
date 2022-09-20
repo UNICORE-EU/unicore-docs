@@ -1,7 +1,7 @@
 .. _tsi_api:
 
-API
----
+TSI API
+-------
 
 This document describes the API to the TSI as used by 
 :ref:`UNICORE/X <unicorex>` (more concretely, the :ref:`XNJS <ux_xnjs>` subsystem of UNICORE/X).  

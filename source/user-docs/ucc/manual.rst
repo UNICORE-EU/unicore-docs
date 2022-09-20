@@ -1,7 +1,7 @@
 .. _ucc-manual:
 
-User Manual
-===========
+UCC Manual
+==========
 
 Overview
 --------

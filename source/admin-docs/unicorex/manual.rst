@@ -1,7 +1,7 @@
 .. _unicorex-manual:
 
-User Manual
-===========
+UNICORE/X Manual
+================
 
 The UNICORE/X server is the central component of a UNICORE site.
 It hosts the services such as job submission, job management, 

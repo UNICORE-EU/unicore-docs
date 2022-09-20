@@ -4,7 +4,7 @@
 Welcome to UNICORE Documentation
 ================================
 
-`UNICORE <https://www.unicore.eu>`_ (**U**\ niform **I**\ nterface to **CO**\ mputing 
+`UNICORE <https://www.unicore.eu>`_ (**UN**\ iform **I**\ nterface to **CO**\ mputing 
 **RE**\ sources) offers a ready-to-run system including client and server software. 
 It makes distributed computing and data resources available in a seamless and secure way 
 in intranets and the internet. 

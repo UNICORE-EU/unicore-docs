@@ -1,7 +1,7 @@
 .. _workflow-building:
 
-Building packages 
-=================
+Building the Workflow Service 
+=============================
 
 Prerequisites
 -------------
@@ -12,7 +12,7 @@ You need Java, Apache Ant and Apache Maven 3.
 Building
 --------
 
-The following commands create the distribution packages
+The following commands create the distribution packages.
 
 deb
 ~~~

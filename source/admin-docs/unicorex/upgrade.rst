@@ -1,6 +1,6 @@
 .. _unicorex-update:
 
-Update procedure
+UNICORE/X Update
 ----------------
 
 As a first step and precaution, you should make backups of your 

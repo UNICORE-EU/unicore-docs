@@ -1,7 +1,7 @@
 .. _gateway-building:
 
-Building distribution packages
-==============================
+Building the Gateway
+====================
 
 Prerequisites
 -------------
@@ -29,7 +29,7 @@ Creating distribution packages
 ------------------------------
 
 The following commands create the distribution packages
-in tgz, deb and rpm formats
+in *tgz*, *deb* and *rpm* formats.
 
 The package versions are defined in the `pom.xml 
 <https://github.com/UNICORE-EU/gateway/blob/master/pom.xml>`_ file!

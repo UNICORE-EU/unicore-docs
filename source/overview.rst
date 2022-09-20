@@ -4,7 +4,8 @@
 Overview
 ********
 
-UNICORE (UNiform Interface to COmputing REsources) provides tools and
+`UNICORE <https://www.unicore.eu>`_ (**UN**\ iform **I**\ nterface to 
+**CO**\ mputing **RE**\ sources) provides tools and
 services for building federated systems, making high-performance
 computing and data resources accessible in a seamless and secure way
 for a wide variety of applications in intranets and the internet.

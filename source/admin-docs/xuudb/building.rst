@@ -7,7 +7,7 @@ Prerequisites
 -------------
 
 Apart from the Java SDK, you will need a Git client and Maven3, 
-available at https://maven.apache.org
+available at https://maven.apache.org.
 
 Buiding
 -------
@@ -62,7 +62,7 @@ Buiding
       $ mvn eclipse:eclipse
 
    which will generate Eclipse project files and in Eclipse use 
-   ":menuselection:`Import --> Existing projects into Workspace...`" to import the 
+   :menuselection:`Import --> Existing projects into Workspace...` to import the 
    projects into Eclipse.
 
 

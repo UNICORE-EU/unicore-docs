@@ -1,7 +1,7 @@
 .. _workflow-manual:
 
-User Manual
-===========
+Workflow Service Manual
+=======================
 
 The UNICORE Workflow service provides advanced workflow processing
 capabilities using UNICORE resources.  The Workflow service provides

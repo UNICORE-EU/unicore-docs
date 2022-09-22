@@ -63,9 +63,9 @@
  |                                    |                 |batch system directives ('raw'), or to only     |
  |                                    |                 |'allocate' resoures but not start anything      |
  +------------------------------------+-----------------+------------------------------------------------+
- |Login node                          |String           |For 'interactive' jobs, select a login node (by |
- |                                    |                 |name, as configured server side. Wildcards '\*' |
- |                                    |                 |and '?' can be used)                            |
+ |Login node                          |String           |For 'on_login_node' jobs, select a login node   |
+ |                                    |                 |by name, as configured server side. Wildcards   |
+ |                                    |                 |'\*' and '?' can be used)                       |
  +------------------------------------+-----------------+------------------------------------------------+
  |BSS file                            |String           |For 'raw' jobs, specify the relative or absolute|
  |                                    |                 |file name of a file containing batch system     |

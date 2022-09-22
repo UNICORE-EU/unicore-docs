@@ -13,11 +13,13 @@ Check the versions given in the `pom.xml
 Building Java code 
 ------------------
 
-If not already done, build the jars from the *root* dir:
+Clone the git repo and build the jars from the *root* dir:
 
 .. code:: console
 
- $ cd .. ; mvn clean install -DskipTests
+ $ git clone https://github.com/UNICORE-EU/commandline-client.git
+ $ cd commandline-client
+ $ mvn clean install -DskipTests
 
 
 Creating distribution packages
@@ -33,6 +35,7 @@ tgz
 
 .. code:: console
 
+ $ cd distribution
  $ mvn package -DskipTests -Ppackman -Dpackage.type=bin.tar.gz
  
 deb
@@ -40,6 +43,7 @@ deb
 
 .. code:: console
 
+ $ cd distribution
  $ mvn package -DskipTests -Ppackman -Dpackage.type=deb -Ddistribution=Debian
 
 
@@ -48,4 +52,5 @@ rpm redhat
 
 .. code:: console
 
+ $ cd distribution
  $ mvn package -DskipTests -Ppackman -Dpackage.type=rpm -Ddistribution=RedHat

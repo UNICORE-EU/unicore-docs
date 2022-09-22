@@ -3,11 +3,16 @@
 Rest API Examples
 -----------------
 
-The following are some examples that use Python and the `Requests package
-<https://requests.readthedocs.io/en/latest/>`_.
+The following are some examples that use Python and the `PyUNICORE library
+<https://github.com/HumanBrainProject/pyunicore/>`_.
+
+PyUNICORE can be installed from PyPI using
+::
+
+  pip install -U pyunicore
 
 
-The REST API description :ref:`here <rest-api>`.
+For the descripion of the underlying REST API, check :ref:`here <rest-api>`.
 
 
 Basic job submission

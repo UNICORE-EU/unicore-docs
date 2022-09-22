@@ -47,15 +47,16 @@ element. If not given, ``batch`` is the default.
 
 
  * ``batch`` (or ``normal``) - this is the default. UNICORE submits the job to the batch system.
-   After being scheduled, the launched on the requested number of compute nodes.
+   After being scheduled, the specified executable is launched on the requested number of compute nodes.
    The job's resource requests (like number of nodes or requested run time) are taken
    from the job's ``Resources`` section.
 
- * ``on_login_node`` (or ``interactive``) - the user job will be launched on a login node.
+ * ``on_login_node`` (or ``interactive``) - the specified executable will be launched on a login node.
    If applicable, you can select the login node with the ``Login node`` element.
    
  * ``raw`` - the job goes to the batch system, but the resources are taken from an additional file,
    which contains BSS directives (e.g.``#SBATCH ...`` in the case of Slurm).
+   The name of the file containing BSS directives is given via the ``BSS file`` element.
    
  * ``allocate`` - this is basically the same as *batch*, but it only creates an allocation on
    the batch system, without launching any user tasks. You can submit tasks *into* the allocation
@@ -177,13 +178,22 @@ Job data management
 ~~~~~~~~~~~~~~~~~~~
 
 In general, your job will require data files either from your client machine or from some 
-remote location. An important concept in UNICORE is the job's workspace, which is the default 
-location into which files are placed. The same applies to result files: by default, files will be 
-downloaded from the job's workspace. However, other remote storage locations are supported, too.
+remote location. Also, result files and other output files need to be accessible, or need
+to be exported (staged out) when the user task has finished executing.
+
+Most of the job data management will be handled via the job's workspace, which is a unique,
+per-job directory that UNICORE creates when the job is submitted, and that is linked to the
+job. The job directory can be accessed at any time during the job's life time.
 
 
 Jobs without client-controlled stage in
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Some jobs require additional files from the client machine to be uploaded before the
+user task can be started.
+
+Uploading LOCAL files is the responsibility of the client! Make sure to read the 
+:ref:`client documentation <ucc-manual>` for more information on this topic.
 
 To tell UNICORE/X that the client does not wish to send any local files, use the flag
 ::
@@ -191,18 +201,15 @@ To tell UNICORE/X that the client does not wish to send any local files, use the
  "haveClientStageIn": "false",
 
 Otherwise, the server will wait for an explicit *start* command (see the :ref:`rest-api` spec for 
-details) before submitting / executing the user job.
+details) before submitting / executing the user task.
 
 
 Importing files into the job workspace
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To import files from remote sites to the job's working directory on the remote UNICORE server, 
+To import (i.e. stage in) files from remote sites to the job's working directory on the remote UNICORE server, 
 there's the ``Imports`` keyword. Here is an example of ``Imports`` section which demonstrates 
 some of the possibilities.
-
-Note that uploading LOCAL files is the responsibility of the client! Make sure to read the 
-:ref:`client documentation <ucc-manual>` for more information on this topic.
 
 .. code:: json
 
@@ -255,12 +262,18 @@ Here is an example:
 .. code:: json
 
 	{
-	  "To":   "uspaceFileName",
-	  "Data": "this is some test data"
+	  "To":   "myscript.sh",
+	  "Data": [
+		"this is some test data",
+		"multi line data",
+		"another line"
+	    ]
 	}
 
 In this case, the ``From`` URL is not needed. If you give one, it HAS to start with ``inline://``,
-the rest is not important. Make sure to properly escape any special characters.
+the rest is not important. 
+
+Make sure to properly escape any special characters.
 
 Sweeping over a stage-in file
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -311,6 +324,7 @@ Here is an example:
 
 	  ],
 	}
+
 
 Specifying credentials for data staging
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -366,7 +380,7 @@ on the remote system. For example,
 
       "Queue" : "fast",  
       "Runtime": "12h",  
-      "Nodes": "8",
+      "Nodes": "8"
 
     }
   }

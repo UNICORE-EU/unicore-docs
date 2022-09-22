@@ -3,35 +3,31 @@
 Workflow submission and management
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-List of all examples :ref:`rest-api-examples`
-
-We assume the reader knows how the :ref:`UNICORE Workflow system <workflow>` works, and has used 
-it from a low-level tool such as :ref:`UCC <ucc>`.
-
 .. code:: python
 
-	#!/usr/bin/env python
+	#!/usr/bin/env python3
 
-	# Basic setup (URL etc)
-
-	import requests
 	import json
-	import time
-
-	requests.packages.urllib3.disable_warnings()
+	import pyunicore.client as uc_client
+	import pyunicore.credentials as uc_credentials
 
 	base = "https://localhost:8080/WORKFLOW/rest/workflows"
-	print "Accessing Workflow REST API at ", base
+	print ("Accessing Workflow REST API at ", base)
 
 	#
-	# setup simple auth using username and password
+	# setup authentication using username and password
 	#
-	credentials=("demouser","test123")
-
+	credentials = uc_credentials.UsernamePassword("demouser", "test123")
+	
 	#
-	# create the actual workflow
+	# Create a client for the Workflow service
 	#
-	# https://unicore-dev.zam.kfa-juelich.de/documentation/workflow-8.0.0/workflow-manual.html#wf_dialect
+	tr = uc_client.Transport(credentials)
+	workflow_client = uc_client.WorkflowService(tr, base)
+	
+	#
+	# create the workflow description
+	#
 
 	wf_json = {
 		"activities": [
@@ -46,18 +42,11 @@ it from a low-level tool such as :ref:`UCC <ucc>`.
 	}
 
 	#
-	# post the workflow JSON to create a new 
-	# workflow instance on the server
+	# create a new workflow instance on the server
 	#
+	workflow = workflow_service.new_workflow(workflow_description)
+	
+	# see the workflow properties
+	print (json.dumps(workflow.properties, sort_keys=True, indent=4))
 
-	headers = {'Content-Type': 'application/json'}
-	r = requests.post(base, data=wf_json, headers=headers, auth=credentials, verify=False)
-	r.raise_for_status()
 
-	workflow = r.headers['Location']
-
-	# to see the workflow properties:
-	headers = {'Accept': 'application/json'}
-	r = requests.get(workflow, headers=headers, auth=credentials, verify=False)
-	r.raise_for_status()
-	print(r.json())

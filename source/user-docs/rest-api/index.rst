@@ -13,12 +13,13 @@ A `Python client library <https://github.com/HumanBrainProject/pyunicore/>`_
 is under development on GitHub and can be installed from PyPI via
 ``pip install pyunicore``.
 
-Also, have a look at :ref:`rest-api-examples` for some very basic Python examples.
+Also, have a look at :ref:`rest-api-examples` for some examples using PyUNICORE.
 
 Basics
 ------
 
 The REST API supports both the JSON (*application/json*) and HTML (*text/html*) content types.
+
 
 Base URL
 ~~~~~~~~

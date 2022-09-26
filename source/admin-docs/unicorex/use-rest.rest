@@ -112,19 +112,22 @@ This mechanism checks the OAuth token issued by an OIDC server such as Keycloak
 directly with the issuing server.
 ::
 
- container.security.rest.authentication.OAUTH.class=eu.unicore.services.rest.security.UnitySAMLAuthenticator
+ container.security.rest.authentication.OAUTH.class=eu.unicore.services.rest.security.OAuthAuthenticator
  container.security.rest.authentication.OAUTH.address=https://your.server/auth/realms/your_realm/protocol/openid-connect/userinfo
 
-UNICORE will use the OAuth token to make a call to the user info endpoint,
+UNICORE will use the user's OAuth token to make a call to the ``userinfo`` endpoint,
 effectively checking if that token is (still) valid.
 
-You can configure an additional validation step, where UNICORE acts as an
-OAuth client with client ID and secret to query the token introspection endpoint::
+You can alternatively use the ``introspect`` endpoint, where UNICORE acts as an
+OAuth client with client ID and secret to check the token's validity and get user info.
+In this case you need to set ``validate=true`` and provide client ID and secret
 
+::
+
+ container.security.rest.authentication.OAUTH.address=https://your.server/auth/realms/your_realm/protocol/openid-connect/token/introspect
  container.security.rest.authentication.OAUTH.validate=true
  container.security.rest.authentication.OAUTH.clientID=your-client-id
  container.security.rest.authentication.OAUTH.clientSecret=your-client-secret
- container.security.rest.authentication.OAUTH.validationAddress=https://your.server/auth/realms/your_realm/protocol/openid-connect/token/introspect
 
 
 The parameter ``dnTemplate`` is used to define the DN that will be assigned to authenticated users,
@@ -153,8 +156,8 @@ username and password that they have on the host running UNICORE/X.
 
 	container.security.rest.authentication.order= ... PAM ...
 
-	container.security.rest.authentication.X509.class=eu.unicore.services.rest.security.PAMAuthenticator
-	container.security.rest.authentication.X509.dnTemplate=CN=%s, OU=pam-local-users
+	container.security.rest.authentication.PAM.class=eu.unicore.services.rest.security.PAMAuthenticator
+	container.security.rest.authentication.PAM.dnTemplate=CN=%s, OU=pam-local-users
 
 The parameter ``dnTemplate`` is used to define which DN will be assigned to authenticated users,
 where the ``%s`` will be replaced by the user name. In the example above, user *test-user* will 

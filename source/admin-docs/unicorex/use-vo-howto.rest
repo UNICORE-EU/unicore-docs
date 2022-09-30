@@ -1,21 +1,21 @@
 .. _use-vo-howto:
    
-VO configuration HOWTOs
-~~~~~~~~~~~~~~~~~~~~~~~
+VO (SAML) configuration HOWTOs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-SAML-PULL and UNICORE - basic case
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SAML and UNICORE - basic case
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section shows all the steps which are required to setup a
-UNICORE/X server and Unity to work in the SAML-PULL mode.  In this
-scenario we will use Unity to store at a central point mappings of DNs
-to UNIX logins (Xlogins) and roles of of our users. The UNICORE/X
+UNICORE/X server and Unity to work as SAML attribute source.  In this
+scenario we will use Unity to centrally store mappings of user DNs
+to UNIX logins (Xlogins) and roles of of those users. The UNICORE/X
 server will then query (pull) attributes from Unity, similar to using
 an XUUDB.
 
 .. note::
  We write UNICORE/X in the following, but any server based on the UNICORE
- Services Environment (registry, workflow, etc) works the same way.
+ Services Environment (Registry, Workflow, etc) works the same way.
 
 The required steps are:
 	
@@ -28,7 +28,7 @@ The required steps are:
    You don't have to make it a member of any particular VO (or group). However it must have the 
    **read** permission to all groups where its users will be placed. In Unity, this corresponds 
    to the *Priviledged Inspector* role (check `Unity documentation 
-   <https://www.unity-idm.eu/documentation/unity-1.0.0/manual.html>`_ for details).
+   <https://www.unity-idm.eu/>`_ for details).
 
 #. Check that UNICORE/X can properly authenticate to Unity on the SAML endpoint that is used to 
    query attributes. Generally this will be via the UNICORE/X certificate, if that is not 
@@ -43,68 +43,63 @@ The required steps are:
    Note that if you want to assign the same Xlogin/role to multiple users then you can
    define Unity *group attributes* and set them for the whole */Math-VO/UUDB/SiteA* group.
 
-#. Enable VO attribute source (``SAML PULL``) in the UNICORE server. Here we will configure it as 
+#. Enable the SAML attribute source in the UNICORE server. Here we will configure it as 
    the primary source and leave XUUDB to provide local mappings (which can override data fetched 
    from Unity). You should have the following entries::
 
-		container.security.attributes.order=SAML-PULL XUUDB
+		container.security.attributes.order=SAML XUUDB
 		container.security.attributes.combiningPolicy=MERGE_LAST_OVERRIDES
 		# ...  xuudb configuration omitted
 
-		container.security.attributes.SAML-PULL.class=eu.unicore.uas.security.vo.SAMLPullAuthoriser
+		container.security.attributes.SAML.class=eu.unicore.uas.security.saml.SAMLAttributeSource
 
 
-#. Configure VO attribute source (typically in the ``vo.config``) file as follows::
+#. Configure the SAML attribute source (typically in the ``saml.config``) file as follows::
 
-		vo.group=/Math-VO/UUDB/SiteA
+		saml.group=/Math-VO/UUDB/SiteA
 
-		vo.truststore.type=directory
-		vo.truststore.directoryLocations.1=/opt/unicore/certs/unity/*.pem
+		saml.verifySignatures=true
+		saml.truststore.type=directory
+		saml.truststore.directoryLocations.1=/opt/unicore/certs/unity/*.pem
 
-		vo.localServerURI=https://example.org:7777
+		saml.localServerURI=https://example.org:7777
 
-		# ##########################
-		# PULL mode configuration
-		# ##########################
-
-		vo.pull.enable=true
-
-		vo.pull.cacheTtl=20
-
-		vo.pull.voServerURL=https://unity.example.org/unicore-soapidp/saml2unicoreidp-soap/AssertionQueryService
-
-		vo.pull.verifySignatures=false
+		saml.cacheTtl=20
+		
+		saml.attributeQueryURL=https://unity.example.org/unicore-soapidp/saml2unicoreidp-soap/AssertionQueryService
+		#saml.attributeQuery.username=UX-VENUS
+		#saml.attributeQuery.password=the!njs!!
 
 		# Mapping of Unity attributes (right side) to the special, recognized by UNICORE 
 		#  incarnation attributes (left)  
-		vo.unicoreAttribute.xlogin=urn:unicore:attrType:xlogin
-		vo.unicoreAttribute.xlogin.default=urn:unicore:attrType:defaultXlogin
-		vo.unicoreAttribute.role=urn:unicore:attrType:role
-		vo.unicoreAttribute.role.default=urn:unicore:attrType:defaultRole
-		vo.unicoreAttribute.group=urn:unicore:attrType:primaryGid
-		vo.unicoreAttribute.group.default=urn:unicore:attrType:defaultPrimaryGid
-		vo.unicoreAttribute.supplementaryGroups=urn:unicore:attrType:supplementaryGids
-		vo.unicoreAttribute.supplementaryGroups.default=urn:unicore:attrType:defaultSupplementaryGids
-		vo.unicoreAttribute.addDefaultGroups=urn:unicore:attrType:addDefaultGroups
-		vo.unicoreAttribute.queue=urn:unicore:attrType:queue
-		vo.unicoreAttribute.queue.default=urn:unicore:attrType:defaultQueue
-		vo.unicoreAttribute.virtualOrganisations=urn:SAML:voprofile:group
+		saml.unicoreAttribute.xlogin=urn:unicore:attrType:xlogin
+		saml.unicoreAttribute.xlogin.default=urn:unicore:attrType:defaultXlogin
+		saml.unicoreAttribute.role=urn:unicore:attrType:role
+		saml.unicoreAttribute.role.default=urn:unicore:attrType:defaultRole
+		saml.unicoreAttribute.group=urn:unicore:attrType:primaryGid
+		saml.unicoreAttribute.group.default=urn:unicore:attrType:defaultPrimaryGid
+		saml.unicoreAttribute.supplementaryGroups=urn:unicore:attrType:supplementaryGids
+		saml.unicoreAttribute.supplementaryGroups.default=urn:unicore:attrType:defaultSupplementaryGids
+		saml.unicoreAttribute.addDefaultGroups=urn:unicore:attrType:addDefaultGroups
+		saml.unicoreAttribute.queue=urn:unicore:attrType:queue
+		saml.unicoreAttribute.queue.default=urn:unicore:attrType:defaultQueue
+		saml.unicoreAttribute.virtualOrganisations=urn:SAML:voprofile:group
 
-#. In the VO truststore directory (*/opt/unicore/certs/unity/* in this case) put
+#. In the SAML truststore directory (*/opt/unicore/certs/unity/* in this case) put
    the Unity certificate (NOT the CA certificate) as a PEM file, with pem extension.
 
 
-Advanced example: Unity and UNICORE - using fine grained authorization
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(Very) advanced example: Unity and UNICORE - using fine grained authorization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In this scenario we will enhance the first one to use custom authorization attributes in UNICORE 
-policy. To do so ensure that you have this setting in ``vo.config`` file::
+policy. To do so ensure that you have this setting in the ``saml.config`` file::
  
- vo.pull.enableGenericAttributes=true 
+ saml.enableGenericAttributes=true 
 
-Then you can modify XACML policy to require certain VO attributes.
+Then you can modify the XACML policy to require certain VO attributes.
 
-Important fact to note here (and in case of PUSH mode too) is how the
+Important fact to note here is how the
 user's group membership is encoded as an XACML attribute.  By default
 it is an attribute of string type (so XACML
 *DataType="http://www.w3.org/2001/XMLSchema#string"*) with its name

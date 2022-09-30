@@ -20,9 +20,9 @@ Overview
 Features
 ^^^^^^^^
 
-All the below features can be used in any combinations, independently:
+All features below can be used in any combinations, independently:
 
-- Unity can provide all user attributes to by used for authorization
+- Unity can provide all user attributes to be used for authorization
   and for accessing resources, also those which are unsupported by the
   more simple attribute sources (including full support for default and
   allowed attributes).  Therefore, it can be used as a central attribute
@@ -42,10 +42,9 @@ All the below features can be used in any combinations, independently:
   dynamic source assigns local uids/gids.
  
 
-The system works in *PULL mode*, i.e. as an attribute source.
-Attributes are pulled (fetched) by the module from a VO service
-specified in a configuration file when a new request arrives. This
-mode is transparent for clients.
+The system works in as an attribute source, attributes are pulled (fetched)
+by the module from a VO service specified in a configuration file when
+a new request arrives. This mode is transparent for clients.
  
 VO selection
 ^^^^^^^^^^^^
@@ -75,8 +74,8 @@ doesn't have the selectedVO authorization attribute. See
 :ref:`use_policies` for details.
 
 
-Supported VO servers
-^^^^^^^^^^^^^^^^^^^^
+Supported VO (SAML) servers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This module was tested and works well with the Unity system.
 

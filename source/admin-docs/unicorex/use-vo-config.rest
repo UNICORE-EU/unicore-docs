@@ -4,7 +4,7 @@ Configuration
 ~~~~~~~~~~~~~
 
 This sections describes the default configuration file format which is
-used to configure the VO attribute source and provides a
+used to configure the SAML attribute source and provides a
 detailed and comrehensive information on all configuration options. In
 the most cases defaults are fine - you can refer to the :ref:`HOWTO <use-vo-howto>`
 for a short *quick start* information.

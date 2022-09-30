@@ -90,6 +90,17 @@ To disable only one service, e.g. the Storage Factory
   container.feature.StorageAccess.StorageFactory.enable=false
 
 
+Workflow
+^^^^^^^^
+This feature provides workflow processing involving only this UNICORE/X server,
+(i.e. NO cross-site workflows)
+
+To disable the whole feature
+::
+
+  container.feature.WorkflowEngine.enable=false
+
+
 Base
 ^^^^
 
@@ -106,9 +117,7 @@ RESTful APIs for jobs and data management.
  +================+==============================================+	
  | core           | RESTful APIs for jobs and data               |
  +----------------+----------------------------------------------+
- | Enumeration    | SOAP/XML service for long lists (jobs,...)   |
- +----------------+----------------------------------------------+
- | Task           | SOAP/XML service for async tasks (metadata   |
+ | Task           | Service for async tasks (like metadata       |
  |                | extraction)                                  |
  +----------------+----------------------------------------------+
 
@@ -128,9 +137,7 @@ This feature provides the Admin service (see :ref:`ux_admin_service`).
  +==================+============================================+
  | admin            | RESTful API to the admin service           |
  +------------------+--------------------------------------------+
- | AdminService     | SOAP/XML API to the admin service          |
- +------------------+--------------------------------------------+
-
+ 
 
 Registry
 --------
@@ -158,7 +165,7 @@ will enable ``shared`` mode. **Don't do this** on a *normal* UNICORE/X server.
  +===================+===========================================+
  | registries        | RESTful API to the Registry service       |
  +-------------------+-------------------------------------------+
- | Registry          | Registry service and SOAP/XML API         |
+ | Registry          | Registry service                          |
  +-------------------+-------------------------------------------+
- | ServiceGroupEntry | Registry entries service and SOAP/XML API |
+ | ServiceGroupEntry | Registry entries service                  |
  +-------------------+-------------------------------------------+

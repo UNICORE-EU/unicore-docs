@@ -196,7 +196,7 @@ UNICORE/X configuration is described fully in the relevant :ref:`UNICORE/X manua
 <unicorex-manual>`. Here we just give the most important steps to get the TSI up 
 and running.
 
-The relevant UNICORE/X config file is usually called ``xnjs.properties``.
+The relevant UNICORE/X config file is usually called ``tsi.config``.
 
 Hostnames and ports
 ^^^^^^^^^^^^^^^^^^^

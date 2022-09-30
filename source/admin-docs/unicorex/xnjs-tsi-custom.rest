@@ -5,8 +5,8 @@ Application argument metadata
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For client components it can be useful to have a description of an
-application in terms of its arguments. This allows, for example, the
-UNICORE Portal to automatically build a nice GUI for the application.
+application in terms of its arguments. This allows clients to automatically
+build a nice GUI for the application.
     
 .. code::
 
@@ -50,11 +50,9 @@ The meaning of the attributes should be fairly obvious:
   to specify that this is an input file for the application, allowing
   clients to enable special actions for this.
 
-- The ``ValidValues`` attribute is used to limit the range of valid
+- The ``ValidValues`` attribute can be used to limit the range of valid
   values, depending on the ``Type`` of the argument. The processing of
-  this attribute is client-dependent.  The UNICORE Rich Client supports
-  intervals for the numeric types, and Java regular expressions for the
-  string types.
+  this attribute is client-dependent.
 
 Per-application resource requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

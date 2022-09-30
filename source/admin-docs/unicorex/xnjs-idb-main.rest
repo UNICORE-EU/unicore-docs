@@ -5,11 +5,7 @@ Starting with UNICORE 8.0, the IDB is written in JSON. This documentation focuse
 on the JSON format.
 
 .. note::
-  The older XML format is deprecated, but still supported in UNICORE 8. It is limited
-  to a single partition, i.e. a single set of resource limits (number of
-  nodes / CPUs etc). For reference, the schema for the XML IDB can be found at
-  http://svn.code.sf.net/p/unicore/svn/xnjs/trunk/src/main/schema/idb.xsd.
-  Support for this format will be removed in UNICORE 9.
+  The older XML format was deprecated in UNICORE 8 and removed in UNICORE 9.
 
 The IDB contains Partitions, Applications, Submit/Execute script
 templates and Info elements, all of which will be described

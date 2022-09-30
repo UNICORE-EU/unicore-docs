@@ -36,9 +36,6 @@ Last not least, the Gateway can be configured as a HTTP load balancer.
 :doc:`manual`
   Installation and Operating the Gateway.
 
-:doc:`building`
-  Buiding the distribution packages.
-    
 
 .. toctree::
 	:maxdepth: 5
@@ -46,8 +43,6 @@ Last not least, the Gateway can be configured as a HTTP load balancer.
 	:hidden:
 	
 	manual
-	building
-
 .. toctree::
 	:maxdepth: 1
 	:hidden:

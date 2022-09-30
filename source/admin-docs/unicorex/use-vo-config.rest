@@ -4,9 +4,9 @@ Configuration
 ~~~~~~~~~~~~~
 
 This sections describes the default configuration file format which is
-used to configure the SAML attribute source and provides a
-detailed and comrehensive information on all configuration options. In
-the most cases defaults are fine - you can refer to the :ref:`HOWTO <use-vo-howto>`
+used to configure the SAML attribute source and provides detailed and
+comprehensive information on all configuration options. In most cases,
+the defaults are fine - you can refer to the :ref:`HOWTO <use-vo-howto>`
 for a short *quick start* information.
 
 Some of the configuration options require a value of a VO/GROUP type. 
@@ -18,7 +18,7 @@ where elements in square brackets are optional. E.g. */Math/users*
 denotes a group *users* of a VO called *Math*.
 
 In case of UNICORE/X and other USE servers the configuration is
-provided in a separate file, by default the ``vo.config`` from the
+provided in a separate file, by default the ``saml.config`` from the
 configuration directory of the server (you can change location and
 name of this file, see below). It holds generic VO configuration which
 is not dependent to the actual server used - the most of settings is
@@ -26,38 +26,37 @@ configured there. This file options are described
 :ref:`below <use_vo-configfile>`.
 
 To enable the VO subsystem certain settings are also required in the
-main server's configuration file. You have to define an appropriate
-Attribute Source. You can use only one or even use multiple
-instances. The latter situation occurs when you want to support
-multiple VOs (from one or multiple VO servers) - then you have to
-define one attribute source per VO (or VO group).
+main server's configuration file. You have to enable the SAML Attribute Source.
+You can use only one or even use multiple instances. The latter situation occurs
+when you want to support multiple VOs (from one or multiple VO servers) - then
+you have to define one attribute source per VO (or VO group).
 
 Example with a VO attribute sources and also with local XUUDB.  Local
 data from XUUDB (if it exists) will override attributes received from
 VOs::
 
-	container.security.attributes.order=SAML-PULL XUUDB
-	# ... here comes xuudb configuration
+	container.security.attributes.order=SAML XUUDB
 
-	container.security.attributes.SAML-PULL.class=eu.unicore.uas.security.vo.SAMLPullAuthoriser
-	container.security.attributes.SAML-PULL.configurationFile=conf/vo.config
+	container.security.attributes.SAML.class=eu.unicore.uas.security.saml.SAMLAttributeSource
+	container.security.attributes.SAML.configurationFile=conf/saml.config
 
-Before proceeding to fill the VO configuration it is suggested to prepare the VO truststore, 
-which should contain **ONLY** the certificates of the trusted VO servers. Note that
+	# ... xuudb configuration omitted ...
+
+Before proceeding to fill the SAML/VO configuration it is suggested to prepare a truststore, 
+which should contain **ONLY** the certificates of the trusted SAML servers. Note that
 this file must not contain any CA certificates, only the trusted VO servers' certificates!
 This file is optional, but will increase security.
 
-Logging configuration is done by means of standard UNICORE logging configuration file. See
-:ref:`use_vo_logging` section for possible settings related to 
-the VO subsystem.
+Logging configuration is done by means of the standard UNICORE logging configuration file.
+See :ref:`use_vo_logging` section for possible settings related to the SAML subsystem.
 
 .. _use_vo-configfile:
 
-Main VO configuration file
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Main SAML (VO) configuration file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following sections provide complete reference of available options
-for the main configuration file (usually ``vo.config``).
+for the main configuration file (usually ``saml.config``).
 
 .. csv-table::
   :file: tables/use-ref-voProperties.csv
@@ -74,50 +73,50 @@ provided in :ref:`use_incarnation-attributes`).
  :widths: 30 20 50
  :class: tight-table
 
- +----------------------------------+----------------+-----------------------------------------------------------+
- |Property name                     |Range of values |Description                                                |
- +==================================+================+===========================================================+
- |vo.unicoreAttribute.NAME          |URI             |Value must be a SAML attribute name which will be used     |
- |                                  |                |as a UNICORE internal incarnation attribute NAME.          |
- +----------------------------------+----------------+-----------------------------------------------------------+
- |vo.unicoreAttribute.NAME.default  |URI             |Value must be a SAML attribute name which will be used as  |
- |                                  |                |a default for UNICORE internal incarnation attribute NAME. |
- +----------------------------------+----------------+-----------------------------------------------------------+
- |vo.unicoreAttribute.NAME.disabled |ANY, IGNORED    |When this attribute is present regardless of its value the |
- |                                  |                |NAME attribute won't be mapped.                            |
- +----------------------------------+----------------+-----------------------------------------------------------+
+ +-----------------------------------+----------------+-----------------------------------------------------------+
+ |Property name                      |Range of values |Description                                                |
+ +===================================+================+===========================================================+
+ |saml.unicoreAttribute.NAME         |URI             |Value must be a SAML attribute name which will be used     |
+ |                                   |                |as a UNICORE internal incarnation attribute NAME.          |
+ +-----------------------------------+----------------+-----------------------------------------------------------+
+ |saml.unicoreAttribute.NAME.default |URI             |Value must be a SAML attribute name which will be used as  |
+ |                                   |                |a default for UNICORE internal incarnation attribute NAME. |
+ +-----------------------------------+----------------+-----------------------------------------------------------+
+ |saml.unicoreAttribute.NAME.disabled|ANY, IGNORED    |When this attribute is present regardless of its value the |
+ |                                   |                |NAME attribute won't be mapped.                            |
+ +-----------------------------------+----------------+-----------------------------------------------------------+
 
 Example mapping for Unity attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Note that your distribution should contain a sensible default for
+Note that your distribution should contain sensible defaults for
 Unity attribute mappings, which does not need to be modified.
 ::
 
 	# standard settings for the xlogin mapping, however let's ignore pushed xlogins
-	vo.unicoreAttribute.xlogin=urn:unicore:attrType:xlogin
-	vo.unicoreAttribute.xlogin.default=urn:unicore:attrType:defaultXlogin
-	vo.unicoreAttribute.xlogin.pushDisabled=
+	saml.unicoreAttribute.xlogin=urn:unicore:attrType:xlogin
+	saml.unicoreAttribute.xlogin.default=urn:unicore:attrType:defaultXlogin
+	saml.unicoreAttribute.xlogin.pushDisabled=
 
 	#standard role mapping
-	vo.unicoreAttribute.role=urn:unicore:attrType:role
-	vo.unicoreAttribute.role.default=urn:unicore:attrType:defaultRole
+	saml.unicoreAttribute.role=urn:unicore:attrType:role
+	saml.unicoreAttribute.role.default=urn:unicore:attrType:defaultRole
 
 	#supplementary groups are stored in a non standard attribute
-	vo.unicoreAttribute.supplementaryGroups=urn:ourCompany:secondaryGids
+	saml.unicoreAttribute.supplementaryGroups=urn:ourCompany:secondaryGids
 
 	#and group - without default
-	vo.unicoreAttribute.group=urn:unicore:attrType:primaryGid
+	saml.unicoreAttribute.group=urn:unicore:attrType:primaryGid
 
 	#queue mapping is defined, but will be ignored (disabled)
-	vo.unicoreAttribute.queue=urn:unicore:attrType:queue
-	vo.unicoreAttribute.queue.default=urn:unicore:attrType:defaultQueue
-	vo.unicoreAttribute.queue.disable=
+	saml.unicoreAttribute.queue=urn:unicore:attrType:queue
+	saml.unicoreAttribute.queue.default=urn:unicore:attrType:defaultQueue
+	saml.unicoreAttribute.queue.disable=
 
 	# addDefaultGroups - is not defined, so won't be mapped
 
 	#getting the user's groups is always a good idea
-	vo.unicoreAttribute.virtualOrganisations=urn:SAML:voprofile:group
+	saml.unicoreAttribute.virtualOrganisations=urn:SAML:voprofile:group
 
 
 
@@ -127,11 +126,11 @@ Logging configuration
 ^^^^^^^^^^^^^^^^^^^^^
 
 All components use the usual log4j/2 logging mechanism. All events are
-logged with ``unicore.security.vo`` prefix. The reporting class name is
+logged with ``unicore.security.saml`` prefix. The reporting class name is
 appended.
 
-As an example, a configuration for logging all events for the VO
+As an example, a configuration for logging all events for the SAML / VO
 subsystem can be specified as follows::
 
-	logger.vo.name=unicore.security.vo
-	logger.vo.level=trace
+	logger.saml.name=unicore.security.saml
+	logger.saml.level=debug

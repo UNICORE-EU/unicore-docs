@@ -25,15 +25,10 @@ user's role.
       User Manual with detailed instructions and examples for using the XUUDB.
 
 
-:doc:`building`
-      Building the XUUDB distribution packages.
-
-
 .. toctree::
 	:maxdepth: 5
 	:caption: XUUDB Documentation
 	:hidden:
       
 	manual
-	building
 	

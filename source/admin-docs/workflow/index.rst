@@ -19,18 +19,12 @@ and control constructs:
       User Manual with detailed instructions and examples for using the Workflow service.
 
 
-:doc:`building`
-      Building the Workflow service distribution packages.
-
-
-
 .. toctree::
 	:maxdepth: 5
 	:caption: Workflow Documentation
 	:hidden:
       
 	manual
-	building
 	
 	  
 

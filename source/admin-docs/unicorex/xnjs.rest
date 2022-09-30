@@ -1,11 +1,11 @@
 .. _ux_xnjs:
 
-Configuring the XNJS
---------------------
+Interfacing UNICORE/X to the TSI 
+--------------------------------
 
-The XNJS is an internal UNICORE/X component that deals with the actual
-job execution and file system access. It is configured using a properties 
-file named ``xnjs.properties``. It is included from the main config file.
+The link from UNICORE/X  to the UNICORE TSI, the component that deals with the actual
+job execution and file system access is configured using a properties 
+file named ``tsi.config``. It is included from the main config file.
 
 Here's an overview of the most important properties that can be set in this file:
 
@@ -16,7 +16,7 @@ Here's an overview of the most important properties that can be set in this file
   :class: tight-table
 
 Most of the other settings in this file are used to configure the
-internals of the XNJS and should usually be left at their default
+internals and should usually be left at their default
 values.
 
 The UNICORE TSI
@@ -32,11 +32,11 @@ such as Slurm to efficiently use a compute cluster.
 
 In a nutshell, you have to perform the following steps:
 
-- Install the UNICORE TSI on your cluster front end node
+- Install the UNICORE TSI on your cluster front end node(s)
 
-- Edit the ``tsi.properties`` file
+- In the UNICORE TSI configuration, edit the ``tsi.properties`` file
 
-- On the UNICORE/X server, edit ``uas.config``, ``simpleidb`` and ``xnjs.properties``
+- On the UNICORE/X server, edit ``tsi.config`` and ``simpleidb``.
 
 - Start the newly installed TSI (as root in a multiuser setting)
 
@@ -50,15 +50,15 @@ The :ref:`TSI <tsi>` is a service that is running on the target system.
 In case of a cluster system, you'll need to install it on the frontend
 machine(s), i.e. the machine from where your jobs are submitted to the
 batch system.  There are different variants available for the
-different batch systems such as Torque or SGE.
+different batch systems such as SLURM or Torque.
 
 Usually, installation and start of the TSI will be performed as the
-root user.  The TSI will then be able to change to the current Grid
+root user.  The TSI will then be able to change to the current UNICORE
 user's id for performing work (Note: nothing will ever be executed as
 *root*).  You can also use a normal user, but then all commands will
-be executed under this user's id.
+be executed under that user's id.
 
-As the TSI is a central and sensitive service, make sure to read
+As the TSI is a crucial and sensitive service, make sure to read
 its :ref:`documentation <tsi-manual>`. This guide serves just as a quick overview of
 the necessary steps.
 
@@ -88,10 +88,10 @@ Configuration is done by editing :file:`{<tsi_conf_dir>}/tsi.properties`.
 At least check the following settings::
 
   # UNICORE/X machine
-  tsi.njs_machine=<UNICORE/X host>
+  tsi.unicorex_machine=<UNICORE/X host>
   
-  # UNICORE/X listener port (check unicorex/conf/xnjs_legacy.xml  variable ``CLASSICTSI.replyport``
-  tsi.njs_port=7654
+  # UNICORE/X listener port (check unicorex/conf/tsi.config  variable ``CLASSICTSI.replyport``
+  tsi.unicorex_port=7654
 
   # TSI listener port (check unicorex/conf/xnjs_legacy.xml variable ``CLASSICTSI.port``
   tsi.my_port=4433
@@ -100,13 +100,13 @@ At least check the following settings::
 UNICORE/X configuration
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Edit ``unicorex/conf/uas.config`` and check that the ``xnjs.properties`` file
+Edit ``unicorex/conf/main.config`` and check that the ``tsi.config`` file
 is included::
 
-  # read XNJS/TSI config
-  $include.XNJS conf/xnjs.properties
+  # read TSI-related settings
+  $include.TSI conf/tsi.config
 
-Edit ``unicorex/conf/xnjs.properties``. Check the filespace location,
+Edit ``unicorex/conf/tsi.config``. Check the filespace location,
 this is where the local job directories will be created. On a cluster,
 these have to be on a shared part of the filesystem. Also, the
 filespace location has to be read/write/executable for the current
@@ -117,7 +117,7 @@ Check the ``CLASSICTSI`` related properties. Set the correct value for
 the machine and the ports (these can usually be left at their default
 values). The ``CLASSICTSI.machine`` property is a comma separated list of
 machines names or IP addresses. Optionally, a port number can be added
-to each entry, separated from the machine by a colon. The XNJS will
+to each entry, separated from the machine by a colon. UNICORE/X will
 establish connections to each of these machines and ports in a
 round-robin fashion to ensure that jobs can be submitted and job
 statuses retrieved even if one of the TSI instances is
@@ -141,9 +141,9 @@ Here is an small example:
 Communication parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Some additional parameters exist for tuning the XNJS-TSI communication.
+Some additional parameters exist for tuning the UNICORE/X-TSI communication.
 
-.. table:: XNJS-TSI communication settings
+.. table:: UNICORE/X-TSI communication settings
  :width: 100 
  :widths: 25 15 15 45 
  :class: tight-table
@@ -172,23 +172,23 @@ finished. However, in some cases this is not true, and UNICORE will
 have a wrong job status.  To work around, there is a special property
 ::
 
-  # how often the XNJS will re-try to get the status of a job
+  # how often UNICORE/X will re-try to get the status of a job
   # in case the job is not listed in the status listing
   CLASSICTSI.statusupdate.grace=2
 
 If the value is larger than zero, UNICORE will re-try to get the job status. 
 
 .. hint::
-  When changing TSIs, it's a good idea to remove the UNICORE/X   state and any
+  When changing TSIs, it's a good idea to remove the UNICORE/X state and any
   files before restarting. See :ref:`ux_persistence` for details.
 
 
-Enabling SSL for the XNJS to TSI communication
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Enabling SSL for the UNICORE/X to TSI communication
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The UNICORE/X server can be set up to use SSL for communicating with
 the UNICORE TSI. On the UNICORE/X side, this is very simple to switch
-on. In the XNJS config file, set the following property to ``false`` (by
+on. In the tsi.config file, set the following property to ``false`` (by
 default it is set to ``true``):
 ::
 
@@ -198,16 +198,16 @@ default it is set to ``true``):
 To setup the TSI side, please refer to the :ref:`TSI manual <tsi-manual>`!
 
 
-Using an SSH tunnel for the XNJS to TSI communication
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Using an SSH tunnel for the UNICORE/X to TSI communication
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In the special case that the XNJS callback port is not accessible from
-the TSI server, you may want to use an SSH tunnel configuration. For
-example, this case occurs if the TSI is running in a different
+In the special case that the callback port on the UNICORE/X server is not 
+accessible from the TSI server, you may want to use an SSH tunnel configuration.
+For example, this case occurs if the TSI is running in a different
 location (e.g. an Amazon cloud) than the UNICORE/X server.
 
-We recommend using the tool ``autossh``, and adding the tunnel setup to to your UNICORE/X start
-script.
+We recommend using the tool ``autossh``, and adding the tunnel setup to to your
+UNICORE/X start script.
 
 Here is an example how to do this:
 
@@ -238,13 +238,13 @@ Operation without a UNICORE TSI
 
 In some situations (e.g. in a Windows-only environment) you will not
 use the UNICORE TSI, which is designed for multi-user Unix
-environments. The XNJS can run code in an *embedded* mode on the
+environments. UNICORE/X can run code in an *embedded* mode on the
 UNICORE/X machine. Note that this is without user switching, and
 inherently not secure as user code can access potentially sensitive
 information, such as configuration data. Also, there is no separation
 of users.
 
-Embedded mode is enabled in xnjs.properties file  by setting
+Embedded mode is enabled in the tsi.config file  by setting
 ::
 
   coreServices.targetsystemfactory.tsiMode=embedded
@@ -272,18 +272,16 @@ The IDB
 Data staging
 ------------
 
-When executing user jobs, the XNJS also performs data staging, 
+When executing user jobs, UNICORE/X also performs data staging, 
 i.e. getting data from remote locations before starting the job, and
 uploading data when the job has finished. A variety of protocols
 can be used for data movement, including UNICORE-specific protocols such 
-as BFT or UFTP, but also standard protocols like ftp, scp, and e-mail.
+as BFT or UFTP, but also standard protocols like ftp and scp.
 
-Some of these (like mail) have additional configuration options, which
+Some of these have additional configuration options, which
 are given in this section.
 
 .. include:: scp.rest
-
-.. include:: mailto.rest
 
 
 GridFTP
@@ -294,8 +292,7 @@ the client uploads the required proxy certificate. The proxy cert is
 expected in a file ``.proxy`` in the job's working directory.
 
 
-GridFTP usage can be customised using two settings in the XNJS config
-file (``xnjs.properties``).
+GridFTP usage can be customised using two settings in ``tsi.config``.
 ::
 
   # name / path of the executable

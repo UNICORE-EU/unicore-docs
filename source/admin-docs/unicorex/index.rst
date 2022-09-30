@@ -19,11 +19,8 @@ for a single compute cluster (or just a file system).
 :doc:`manual`
   Installation and Operating the UNICORE/X server.
 
-:doc:`upgrade`
-  Upgrade the UNICORE/X server to this version.
-
-:doc:`building`
-  Creating the UNICORE/X and Registry distribution packages.
+:doc:`update`
+  Update a UNICORE/X server to this version.
 
     
 .. toctree::
@@ -32,8 +29,7 @@ for a single compute cluster (or just a file system).
 	:hidden:
 
 	manual
-   	upgrade
-	building
+   	update
 	
 .. toctree::
 	:maxdepth: 1

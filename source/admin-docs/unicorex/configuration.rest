@@ -58,14 +58,14 @@ if they are modified, at least where possible. This is indicated in the
  |logging.properties    |Logging levels, logfiles and their    |yes                       |
  |                      |properties                            |                          |
  +----------------------+--------------------------------------+--------------------------+
- |uas.config            |Main server config file. Defines      |no                        |
+ |main.config           |Main server config file. Defines      |no                        |
  |                      |features, storages, AuthN\/AuthZ,     |                          |
  |                      |AIPs\/PDPs                            |                          |
  +----------------------+--------------------------------------+--------------------------+
  |container.properties  |Server address, SSL settings, Web     |no                        |
  |                      |server settings                       |                          |
  +----------------------+--------------------------------------+--------------------------+
- |xnjs.properties       |Backend properties for the UNICORE TSI|no                        |
+ |tsi.config            |Configuration to access the TSI       |no                        |
  +----------------------+--------------------------------------+--------------------------+
  |simpleidb             |Backend, installed applications,      |yes                       |
  |                      |resources                             |                          |
@@ -83,7 +83,7 @@ if they are modified, at least where possible. This is indicated in the
  |xacml2.config         |Configure the XACML2 access control   |yes                       |
  |                      |component                             |                          |
  +----------------------+--------------------------------------+--------------------------+
- |vo.config             |Configure the use of Unity as an      |no                        |
+ |saml.config           |Configure the use of Unity as an      |no                        |
  |                      |attribute source (optional)           |                          |
  +----------------------+--------------------------------------+--------------------------+
 
@@ -207,7 +207,8 @@ For example,
 Unity
 ^^^^^
 
-If you want to support user authentication via `Unity <https://unity-idm.eu/>`_, 
+If you want to support user authentication via `Unity <https://unity-idm.eu/>`_,
+and add an extra level of security by validating the replies from Unity,
 you have to configure UNICORE/X to trust one or more Unity servers. This is done
 using the ``container.security.trustedAssertionIssuers`` property. This
 configures a truststore containing the certificates of all trusted
@@ -246,13 +247,23 @@ need to be configured:
 - SSL setup (keystore and truststore settings for securing the
   basic communication between components).
 
+- Authentication options for selecting what kind of credentials users
+  can use to identify themselves to the UNICORE/X server.
+  A number of authentication options exist, from various forms of username/password
+  authentication to OIDC tokens. Even X.509 certificates and SSH keys are supported.
+  If multiple options are configured, the first successful authentication
+  will be used. The description of the configuration options can be found in :ref:`use_auth`
+
 - Attribute sources configuration which assign an authorisation
   role, UNIX login, group and other properties to UNICORE users. A
   number of attribute sources exist, which can be combined using
   various combining algorithms.  These are configured in the
   ``uas.config`` file. Due to the complexity, the description of the
   configuration options can be found in :ref:`use_aip`.
-    
+
+
+In very rare cases, you might want to change the
+
 - Access control setup (controlling in detail who can do what on
   which services). Again, several options exist, which are described
   in :ref:`use_pdp`.

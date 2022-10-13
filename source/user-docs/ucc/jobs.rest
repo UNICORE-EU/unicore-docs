@@ -88,8 +88,6 @@ in :ref:`ucc_options`):
    | -B,--broker                  | Select the type of resource broker to use (see ``run -h`` for        |
    |                              | a list)                                                              |
    +------------------------------+----------------------------------------------------------------------+
-   | -d,--dryRun                  | Only show candidate sites, but do not submit the job                 |
-   +------------------------------+----------------------------------------------------------------------+
    | -s,--sitename <SITE>         | Site where the job shall be run                                      |
    +------------------------------+----------------------------------------------------------------------+
    | -S,--schedule <Time>         | Schedule the submission of the job at the given time                 |
@@ -231,6 +229,9 @@ For example, try
 
   $ ucc exec /bin/date
 
-Watch out to properly escape any arguments, in order not to interfere with the 
-arguments to UCC.
+To safely pass arguments to the executable, use "--" to end the UCC part of
+the command line, for example
 
+.. code:: console
+
+  $ ucc exec -- date --rfc-email

@@ -53,7 +53,7 @@ would look as follows::
 
   registry=<your registry>
   
-  authenticationMethod=username
+  authentication-method=username
   username=demouser
   password=test123
   

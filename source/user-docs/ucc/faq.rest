@@ -47,8 +47,3 @@ Usage
 
 	will list the content of the registry.
 
-
-|:thinking_face:| **I get strange errors related to security**.
- 
-	|:point_right:| Please read the general `UNICORE FAQ <https://sourceforge.net/p/unicore/wiki/FAQ/>`_ 
-	which contains descriptions of many common errors.

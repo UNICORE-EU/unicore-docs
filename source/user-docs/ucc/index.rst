@@ -16,19 +16,19 @@ The UCC offers
 * Storage functions (:ref:`ls_command`, :ref:`mkdir_command`, \.\.\.) including creation of storage instances 
   via storage factories
 
-* :ref:`UNICORE Workflow service <workflow>` support (see :ref:`workflow-description`)
+* :ref:`UNICORE Workflow <workflow>` support (see :ref:`workflow-description`)
 
 and much more.
 
 .. topic:: User Documentation
 
   :doc:`manual`
-      User Manual with detailed instructions and examples for using the UNICORE Client.
+      User Manual with detailed instructions and examples for using the UNICORE Commandline Client.
 
 .. topic:: Administrator Documentation
 
   :doc:`building`
-      Building the UNICORE Client distribution packages.
+      Building the UNICORE Commandline Client distribution packages.
 
 
 

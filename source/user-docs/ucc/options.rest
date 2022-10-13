@@ -27,11 +27,11 @@ keystore, registry, etc.
    +========================================+=======================================+
    | -c,--configuration <Properties_file>   | Properties file containing your       |
    |                                        | preferences. By default, a file       |
-   |                                        | ``userhome/.ucc/preferences`` is      |
+   |                                        | ``$HOME/.ucc/preferences`` is         |
    |                                        | checked.                              |
    +----------------------------------------+---------------------------------------+
-   | -k,--authenticationMethod <auth>       | Authentication method to use          |
-   |                                        | (default: X509)                       |
+   | -k,--authentication-method <auth>      | Authentication method to use          |
+   |                                        | (default: UsernamePassword)           |
    +----------------------------------------+---------------------------------------+
    | -o,--output <Output_dir>               | Directory for any output produced     |
    |                                        | (default is the current directory)    |
@@ -120,7 +120,7 @@ A minimal example for using the *quickstart* installation would be:
 
   registry=https://localhost:8080/DEMO-SITE/services/Registry?res=default_registry
   
-  authenticationMethod=username
+  authentication-method=username
   username=demouser
   password=test123
   
@@ -145,7 +145,7 @@ Username and password authentication
 To authenticate with username and password, set the following:
 ::
 
-  authenticationMethod=username
+  authentication-method=username
   username=<your remote username>
   password=<your remote password>
 
@@ -179,7 +179,7 @@ To configure oidc-agent, UCC supports the following properties:
 Your :ref:`config file <config-file>` would require at least:
 ::
 
-  authenticationMethod=oidc-agent
+  authentication-method=oidc-agent
   oidc-agent.account=<oidc-agent account to be used>
 
 
@@ -199,7 +199,7 @@ ID and secret.
 
 ::
 
-  authenticationMethod=oidc-server
+  authentication-method=oidc-server
   oidc.endpoint=<oidc server token endpoint>
   oidc.username=...
   oidc.password=...
@@ -210,7 +210,7 @@ Bearer token in config
 Last not least, if you have a Bearer token via some other means, you
 can directly put the token into your :ref:`config file <config-file>`::
 
-  authenticationMethod=bearer-token
+  authentication-method=bearer-token
   token=...
 
 Certificate-based authentication
@@ -219,7 +219,7 @@ Certificate-based authentication
 For UNICORE installations that support (or even require) client
 certficates for authentication, set::
 
-  authenticationMethod=X509
+  authentication-method=X509
   
   credential.path=<your keystore>
   credential.password=XXXXXXX

@@ -31,12 +31,6 @@ process new files as they arrive:
 
   $ ucc batch -f -i jobs -o out
 
-UCC can also process JSDL files, to batch-process these, use the ``-j`` option:
-
-.. code:: console
-
-  $ ucc batch -j -i jobs -o out
-
 
 .. _performance-tuning:
 
@@ -72,18 +66,18 @@ overview:
    | -u,--update <UpdateInterval> | Minimum time in milliseconds between status requests   |
    |                              | on a single job (Default: 1000)                        |
    +------------------------------+--------------------------------------------------------+
-   | -R,--noResourceCheck         | Do not check if the necessary application is available | 
+   | -R,--no-resource-check       | Do not check if the necessary application is available | 
    |                              | on the target system (will increase performance a bit) |
    +------------------------------+--------------------------------------------------------+
-   | -X,--noFetchOutcome          | Do not fetch standard output and error                 |
+   | -X,--no-fetch-outcome        | Do not fetch standard output and error                 |
    +------------------------------+--------------------------------------------------------+
-   | -S,--submitOnly              | Only submit the jobs, do not wait for them to finish   |
+   | -S,--submit-only             | Only submit the jobs, do not wait for them to finish   |
    +------------------------------+--------------------------------------------------------+
-   | -M,--maxNewJobs              | Limit the number of job submissions (default: 100)     |
+   | -M,--max-new-jobs            | Limit the number of job submissions (default: 100)     |
    +------------------------------+--------------------------------------------------------+ 
    | -s,--sitename                | Specify which site to use                              |
    +------------------------------+--------------------------------------------------------+
-   | -W,--siteWeights             | Specify a file containing site weights                 |
+   | -W,--site-weights            | Specify a file containing site weights                 |
    +------------------------------+--------------------------------------------------------+ 
 
 

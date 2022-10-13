@@ -31,7 +31,7 @@ keystore, registry, etc.
    |                                        | checked.                              |
    +----------------------------------------+---------------------------------------+
    | -k,--authentication-method <auth>      | Authentication method to use          |
-   |                                        | (default: UsernamePassword)           |
+   |                                        | (default: USERNAME)                   |
    +----------------------------------------+---------------------------------------+
    | -o,--output <Output_dir>               | Directory for any output produced     |
    |                                        | (default is the current directory)    |

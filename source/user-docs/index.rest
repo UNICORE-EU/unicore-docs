@@ -20,6 +20,3 @@ User Documentation
 	user-docs/rest-api/index
 	user-docs/rest-api/job-description/index
 	user-docs/rest-api/workflow-description/index
-
-
-

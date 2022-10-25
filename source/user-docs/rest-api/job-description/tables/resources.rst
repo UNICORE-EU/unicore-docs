@@ -15,7 +15,7 @@
  +----------------+--------------------------+
  |Nodes           |Number of nodes           |
  +----------------+--------------------------+
- |CPUs            |Total number of CPUs      |
+ |TotalCPUs       |Total number of CPUs      |
  +----------------+--------------------------+
  |CPUsPerNode     |Number of CPUs per node   |
  +----------------+--------------------------+

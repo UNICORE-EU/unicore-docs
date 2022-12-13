@@ -51,7 +51,7 @@ Let's look at an example first. In the IDB file
     "CPUArchitecture": "x86_64",
     "Resources": {
       "Nodes": "1-64:1",
-      "CPUsPerNode": "4",
+      "CPUsPerNode": "4:4",
       "TotalCPUs": "4-256",
       "Runtime": "1-72000:3600",
     },
@@ -63,7 +63,7 @@ Let's look at an example first. In the IDB file
     "CPUArchitecture": "x86_64",
     "Resources": {
       "Nodes": "1-4:1",
-      "CPUsPerNode": "4",
+      "CPUsPerNode": "4:4",
       "TotalCPUs": "4-16",
       "Runtime": "1-3600:10m",
     },

@@ -1,22 +1,20 @@
 .. _ucc:
 
-UCC
-***
+UNICORE Commandline Client
+**************************
 
-The **U**\ NICORE **C**\ ommandline **C**\ lient (UCC) is a full featured
-client for UNICORE.
-
-The UCC offers
+The **U**\ NICORE **C**\ ommandline **C**\ lient (UCC) is a client for :ref:`UNICORE <unicore-overview>`,
+supporting all of UNICORE's features, such as:
 
 * :ref:`Job submission and management <ucc_jobs>`
 
-* :ref:`Data movement <ucc_datamanagement>` (upload, download, server-to-server copy, etc) using the UNICORE 
+* :ref:`Data access and management <ucc_datamanagement>` (upload, download, server-to-server copy, etc) using the UNICORE 
   storage management functions and the available data transfer protocols
 
 * Storage functions (:ref:`ls_command`, :ref:`mkdir_command`, \.\.\.) including creation of storage instances 
   via storage factories
 
-* :ref:`UNICORE Workflow <workflow>` support (see :ref:`workflow-description`)
+* :ref:`Workflow execution <workflow>` using UNICORE's own :ref:`workflow description<workflow-description>`
 
 and much more.
 

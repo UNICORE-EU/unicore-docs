@@ -389,12 +389,6 @@ UNICORE has the following built-in resource names:
 
 .. include:: tables/resources.rst
 
-..
- .. csv-table::
-  :file: tables/resources.csv
-  :widths: 30, 70
-  :header-rows: 1
-  :class: tight-table
 
 Sites may define additional, *custom* resources, which you can use, too.
 

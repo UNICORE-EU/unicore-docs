@@ -68,6 +68,8 @@ https://www.unicore.eu.
 
 .. include:: share.rest
 
+.. include:: tunneling.rest
+
 .. include:: admin.rest
 
 .. include:: scripting.rest

@@ -1,0 +1,97 @@
+.. _ucc_tunneling:
+
+Port forwarding / tunneling
+---------------------------
+
+Starting with UNICORE 9.1.0, it is possible to open a tunnel (TCP socket connection) from
+the client to a service running on the HPC cluster. The service can run on the login node
+or even on a compute node.
+
+Traffic is forwarded from the client through the UNICORE HTTPS stack, and a process
+running on the on the cluster login node is in charge of connecting to the backend service,
+and forwarding data back through the UNICORE stack to the client.
+So there are two TCP streams forwarding data between
+
+Client application - client side listener (e.g. UCC) - Gateway - UNICORE/X - TSI on the Login node - service.
+ 
+That is quite a number of "hops", so latency and throughput will be limited accordingly.
+
+To establish the client side, UCC has a command ``open-tunnel``, which behaves similarly to an
+SSH tunnel ("ssh -L ...")
+ 
+It is started by
+ 
+.. code:: console
+
+  $ ucc open-tunnel -L <listen-port> <endpoint>
+
+The ``listen-port`` is the port where a local application can connect. You can use "0" to use any free port.
+
+The ``endpoint`` is a UNICORE job endpoint URL, with a few extra parameters added:
+
+``/forward-port?port=<service_port>&host=<service_host>&loginNode=<tsinode``
+
+The ``port`` parameter is mandatory, and denotes the port where the backend service is listening.
+
+The ``host`` and ``loginNode`` are optional:
+
+ * ``host`` is the host where the service is running, must be reachable from the TSI. It defaults to "localhost" (as seen from the TSI!)
+
+ * ``loginNode`` is useful in cases where there are multiple login nodes, and you wish to control on which login node the forwarding process is launched.
+
+Upon connection, the tunneling process is initiated, and the forwarding of data is started.
+To stop listening and forwarding, press "CTRL-C", or use some other method to stop the UCC process.
+
+
+
+Example
+~~~~~~~
+
+Whie usually the backend service is also started via UNICORE, but that is not really necessary.
+In this example, however, we launch a Python web server via UNICORE, and then connect to
+via a tunnel.
+
+Launch a :ref:`UCC shell <ucc_shell>` with "ucc shell..." and run the following to launch a service
+listening on port 8877:
+
+.. code:: console
+
+  run -a
+
+  { "Executable" : "python3 -m http.server 8877" }
+
+  (type CTRL-D)
+
+Make sure that this job is running, i.e.
+
+.. code:: console
+
+  job-status $_
+  
+shows it as running.
+
+To open the tunnel:
+
+.. code:: console
+
+  open-tunnel -L 4321 $_/forward-port?port=8877
+  
+
+this will open a local listener on port 4321.
+
+
+To see that it worked, run something like the following (from ANOTHER terminal, don't kill UCC):
+
+.. code:: console
+
+  wget http://localhost:4321/stdout
+  
+(you might also try and open "http://localhost:4321" in a browser)
+
+Final notes
+~~~~~~~~~~~
+
+USE RESPONSIBLY! This tool is not intended for high volume data streaming or a very high number of concurrent connections,
+since it does incur some overhead on the UNICORE infrastructure.
+
+

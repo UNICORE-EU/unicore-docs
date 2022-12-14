@@ -33,6 +33,7 @@ Services and APIs
 - Site-to-site file transfer
 - Cross-site workflows featuring graphs, loops, conditions, variables, hold/continue, workflow 
   data management
+- Direct access to applications running on HPC (e.g. for steering or visualisation)
 - Metadata
 - Service Registry
 

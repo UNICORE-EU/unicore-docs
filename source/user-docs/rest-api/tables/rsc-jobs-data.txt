@@ -1,5 +1,0 @@
-:widths: 20 20 60
-
-URL 	Method 	Description
-/ 	GET 	Get info about the client, the server and links to other resources
-/certificate 	GET 	Get the server's public key (needs "Accept: text/plain" or "Accept: *" header)

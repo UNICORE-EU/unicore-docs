@@ -227,13 +227,6 @@ The base URL of the the REST API for a single UNICORE/X container is
 ``https://gateway_url/SITENAME/rest/core``.
 
 .. include:: tables/rsc-jobs-data.rest
-
-..
- .. csv-table::
-  :file: tables/rsc-jobs-data.csv
-  :widths: 20, 20, 60
-  :header-rows: 1
-  :class: tight-table
   
 Synopsis
 ~~~~~~~~
@@ -247,13 +240,6 @@ API Summary
 ~~~~~~~~~~~
 
 .. include:: tables/jobs-data-api.rest
-
-..
- .. csv-table::
-  :file: tables/jobs-data-api.csv
-  :widths: 20, 20, 60
-  :header-rows: 1
-  :class: tight-table
 
 
 Site factories
@@ -273,12 +259,6 @@ API Summary
 
 .. include:: tables/site-factories-api.rest
 
-..
- .. csv-table::
-  :file: tables/site-factories-api.csv
-  :widths: 30, 20, 50
-  :header-rows: 1
-  :class: tight-table
 
 Site properties
 ^^^^^^^^^^^^^^^
@@ -366,13 +346,6 @@ API Summary
 ^^^^^^^^^^^
 
 .. include:: tables/list-jobs-api.rest
-
-..
- .. csv-table::
-  :file: tables/list-jobs-api.csv
-  :widths: 30 20 50
-  :header-rows: 1
-  :class: tight-table
 
 
 Storages and files
@@ -476,12 +449,6 @@ The transfer is described using JSON, and can be either ``push`` or ``pull``.
 
 .. include:: tables/copy-to-server.rest
 
-..
- .. csv-table::
-  :file: tables/copy-to-server.csv
-  :widths: 30, 70
-  :header-rows: 1
-  :class: tight-table
 
 Note that to push data from a storage, you'd use the file and target parameters,
 while for data pull, you need the file and source.
@@ -574,13 +541,6 @@ API Summary
 
 .. include:: tables/storages-files-api.rest
 
-..
- .. csv-table::
-  :file: tables/storages-files-api.csv
-  :widths: 30, 20, 50
-  :header-rows: 1
-  :class: tight-table
-
 
 Jobs
 ~~~~
@@ -641,13 +601,6 @@ API Summary
 
 .. include:: tables/jobs-api.rest
 
-..
- .. csv-table::
-  :file: tables/jobs-api.csv
-  :widths: 30, 20, 50
-  :header-rows: 1
-  :class: tight-table
-
 
 Job properties
 ^^^^^^^^^^^^^^
@@ -655,13 +608,6 @@ Job properties
 To get information about a job, do a ``GET`` request to the ``/jobs/ID`` endpoint.
 
 .. include:: tables/job-props.rest
-
-..
- .. csv-table::
-  :file: tables/jobs-props.csv
-  :widths: 25, 35, 40
-  :header-rows: 1
-  :class: tight-table
 
 
 Transfers
@@ -710,13 +656,6 @@ API Summary
 ^^^^^^^^^^^
 
 .. include:: tables/workflow-api.rest
-
-..
- .. csv-table::
-  :file: tables/workflow-api.csv
-  :widths: 30, 20, 50
-  :header-rows: 1
-  :class: tight-table
 
 
 Workflow submission

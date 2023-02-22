@@ -50,7 +50,7 @@ system to install the archive.
   manual changes). The *tar.gz* / *zip* archives are self contained, and you can easily install
   multiple servers per machine.
 
-The following table gives an overview of the file locations for both tar.gz and Linux bundles:
+The following table gives an overview of the file locations for both *tar.gz* and Linux bundles:
 
 +--------+------------------+--------------------+-------------+
 | Name   | tar.gz,  zip     | rpm                | Description |
@@ -85,7 +85,7 @@ There are two scripts that expect to be run from the installation directory. To 
 
 Startup can take some time. After a successful start, the log files (e.g. ``LOG/startup.log``) 
 contain a message "*Server started.*" and a report on the status of any connections to 
-other servers (e.g. the TSI or global registry).
+other servers (e.g. the :ref:`TSI <tsi>` or global :ref:`registry <registry>`).
 
 To stop the server, do:
 

@@ -28,7 +28,7 @@ The required steps are:
    You don't have to make it a member of any particular VO (or group). However it must have the 
    **read** permission to all groups where its users will be placed. In Unity, this corresponds 
    to the *Priviledged Inspector* role (check `Unity documentation 
-   <https://www.unity-idm.eu/>`_ for details).
+   <https://unity-idm.eu/>`_ for details).
 
 #. Check that UNICORE/X can properly authenticate to Unity on the SAML endpoint that is used to 
    query attributes. Generally this will be via the UNICORE/X certificate, if that is not 

@@ -36,9 +36,9 @@ In a nutshell, you have to perform the following steps:
 
 - In the UNICORE TSI configuration, edit the ``tsi.properties`` file
 
-- On the UNICORE/X server, edit ``tsi.config`` and ``simpleidb``.
+- On the UNICORE/X server, edit ``tsi.config`` and ``simpleidb`` files
 
-- Start the newly installed TSI (as root in a multiuser setting)
+- Start the newly installed TSI (as *root* in a multiuser setting)
 
 - Restart UNICORE/X
 
@@ -64,7 +64,7 @@ the necessary steps.
 
 - First, download and install the UNICORE TSI package. The `UNICORE
   core server bundle <https://sourceforge.net/projects/unicore/files/Servers/Core/>`_ 
-  ("quickstart" package) includes the TSI in the ``tsi`` subdirectory. You should copy 
+  (*quickstart* package) includes the TSI in the ``tsi`` subdirectory. You should copy 
   this folder to the correct machine first.  In the following this will be denoted by 
   ``<tsidir>``.
 

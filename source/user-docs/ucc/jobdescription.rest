@@ -7,7 +7,7 @@ UCC uses the  JSON :ref:`job-description` that is used by the UNICORE :ref:`REST
 <rest-api>`, adding support for handling local files.
 
 Several complete job samples can be found in the `samples 
-<https://github.com/UNICORE-EU/commandline-client/tree/master/ucc-distribution/src/main/samples>`_ 
+<https://github.com/UNICORE-EU/commandline-client/tree/master/distribution/src/main/samples>`_ 
 directory of the distribution.
 On Linux, check also the ``/usr/share/unicore/ucc/samples`` directory.
 

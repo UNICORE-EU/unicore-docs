@@ -40,4 +40,4 @@ Examples
 ~~~~~~~~
   
 Some example Groovy scripts can be found in the `samples 
-<https://github.com/UNICORE-EU/commandline-client/tree/master/ucc-distribution/src/main/samples>`_ directory of the UCC distribution.
+<https://github.com/UNICORE-EU/commandline-client/tree/master/distribution/src/main/samples>`_ directory of the UCC distribution.

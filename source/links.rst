@@ -1,8 +1,12 @@
 .. _links:
 
-Links
-*****
+Links |links_img|
+*****************
 
+.. |links_img| image:: _static/links.png
+	:height: 70px
+	:align: middle
+	
 .. |sf-logo|  image:: _static/sf-logo.png
 	:height: 20px 
 	:target: https://sourceforge.net/projects/unicore/

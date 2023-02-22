@@ -1,7 +1,12 @@
 .. _support:
+	
+	
+Support |support_img|
+=====================
 
-Support
-=======
+.. |support_img| image:: _static/support.png
+	:height: 70px
+	:align: middle
 
 If you encounter any issues with the software, please consider opening a ticket
 on the general issue tracker https://sourceforge.net/p/unicore/issues.

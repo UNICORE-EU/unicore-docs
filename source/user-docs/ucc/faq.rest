@@ -1,7 +1,11 @@
 .. _ucc_faq:
 
-Frequently asked questions
---------------------------
+Frequently asked questions |faq_img|
+------------------------------------
+
+.. |faq_img| image:: ../../_static/FAQ.png
+	:height: 60px
+	:align: middle
 
 Configuration
 ~~~~~~~~~~~~~

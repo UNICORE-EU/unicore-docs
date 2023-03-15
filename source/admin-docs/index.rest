@@ -1,9 +1,13 @@
 .. _admin-docs:
 
 
-Administrator Documentation
-===========================
+|admin-img| Administrator Documentation
+=======================================
 
+.. |admin-img| image:: _static/admin.png
+	:height: 32px
+	:align: middle
+	
 - :ref:`gateway` - an optional server component that
   provides a reverse https proxy, allowing you to run several backend
   servers (:ref:`unicorex`, :ref:`Registery <registry>`, ...) behind a single address.

@@ -1,8 +1,12 @@
 .. _user-docs:
 
 
-User Documentation
-==================
+|user-img| User Documentation
+=============================
+
+.. |user-img| image:: _static/user.png
+	:height: 32px
+	:align: middle
 
 - :ref:`ucc` - a full featured commandline client for UNICORE
 - :ref:`rest-api` - REST-API for job submission and management, 

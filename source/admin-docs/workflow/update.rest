@@ -1,7 +1,11 @@
 .. _wf_update:
 
-Updating an existing UNICORE Workflow service
----------------------------------------------
+|update-img| Updating an existing UNICORE Workflow service
+----------------------------------------------------------
+
+.. |update-img| image:: ../../_static/update.png
+	:height: 32px
+	:align: middle
 
 This chapter covers the steps required to update an
 existing workflow installation (version 8.x).

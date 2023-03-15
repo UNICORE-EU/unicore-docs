@@ -1,8 +1,13 @@
 .. _tsi-building:
 
 
-Building the TSI
-================
+|app-package-img| Building the TSI
+==================================
+
+.. |app-package-img| image:: ../../_static/app-package.png
+	:height: 32px
+	:align: middle
+
 
 Clone the git repository:
 
@@ -17,9 +22,13 @@ the various supported batch systems.
 
 You will need Java, Maven and Ant to build *RPM/DEB* packages.
 
-Packaging
----------
+Packaging |app-package|
+-----------------------
 
+.. |app-package| image:: ../../_static/app-package.png
+	:height: 40px
+	:align: middle
+	
 Run
 
 .. code:: console

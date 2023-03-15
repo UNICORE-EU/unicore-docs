@@ -1,7 +1,11 @@
 .. _rest-api:
 
-REST API
-********
+|api-img| REST API
+******************
+
+.. |api-img| image:: ../../_static/api.png
+	:height: 32px
+	:align: middle
 
 This document describes and documents the REST APIs for the :ref:`UNICORE/X <unicorex>` server (job 
 submission and management, data access and data transfer) and the :ref:`Workflow <workflow>` server 

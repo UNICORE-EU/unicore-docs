@@ -1,7 +1,11 @@
 .. _workflow-manual:
 
-Workflow Service Manual
-=======================
+|user-guide-img| Workflow Service Manual
+========================================
+
+.. |user-guide-img| image:: ../../_static/user-guide.png
+	:height: 32px
+	:align: middle
 
 The UNICORE Workflow service provides advanced workflow processing
 capabilities using UNICORE resources.  The Workflow service provides

@@ -21,9 +21,12 @@ user's role.
   
   UNICORE XUUDB
 
-:doc:`manual`
+|user-guide-img| :doc:`manual`
       User Manual with detailed instructions and examples for using the XUUDB.
 
+.. |user-guide-img| image:: ../../_static/user-guide.png
+	:height: 22px
+	:align: middle
 
 .. toctree::
 	:maxdepth: 5

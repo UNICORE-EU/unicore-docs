@@ -1,8 +1,12 @@
 .. _job-description:
 
-Job description format
-----------------------
+|job-desc-img| Job description format
+-------------------------------------
 
+.. |job-desc-img| image:: ../../../_static/job-desc.png
+	:height: 32px
+	:align: middle
+	
 A UNICORE job describes a *single job* on the target system.
 
 By default, the job will be submitted to the batch system and run on a compute node.

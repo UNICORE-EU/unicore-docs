@@ -25,16 +25,27 @@ is possible as well, see the :ref:`tsi-manual` for details.
   
   UNICORE TSI
 
-.. topic:: Documentation for TSI
 
-  :doc:`manual`
-      TSI Manual with detailed instructions and examples for using the TSI.
+|user-guide-img| :doc:`manual`
+    TSI Manual with detailed instructions and examples for using the TSI.
 
-  :doc:`api`
-      The API to the TSI as used by :ref:`UNICORE/X <unicorex>`.
+.. |user-guide-img| image:: ../../_static/user-guide.png
+	:height: 22px
+	:align: middle
 
-  :doc:`building`
-      Building TSI distribution packages.
+|api-img| :doc:`api`
+    The API to the TSI as used by :ref:`UNICORE/X <unicorex>`.
+
+.. |api-img| image:: ../../_static/api.png
+	:height: 22px
+	:align: middle
+
+|app-package-img| :doc:`building`
+    Building TSI distribution packages.
+
+.. |app-package-img| image:: ../../_static/app-package.png
+	:height: 22px
+	:align: middle
 
 	
 	

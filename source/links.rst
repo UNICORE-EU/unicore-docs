@@ -1,10 +1,10 @@
 .. _links:
 
-Links |links_img|
+|links_img| Links
 *****************
 
 .. |links_img| image:: _static/links.png
-	:height: 70px
+	:height: 32px
 	:align: middle
 	
 .. |sf-logo|  image:: _static/sf-logo.png

@@ -1,7 +1,11 @@
 .. _unicorex-manual:
 
-UNICORE/X Manual
-================
+|user-guide-img| UNICORE/X Manual
+=================================
+
+.. |user-guide-img| image:: ../../_static/user-guide.png
+	:height: 32px
+	:align: middle
 
 The UNICORE/X server is the central component of a UNICORE site.
 It hosts the services such as job submission, job management, 

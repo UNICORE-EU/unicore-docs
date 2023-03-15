@@ -1,7 +1,11 @@
 .. _unicorex-update:
 
-UNICORE/X Update
-----------------
+|update-img| UNICORE/X Update
+-----------------------------
+
+.. |update-img| image:: ../../_static/update.png
+	:height: 32px
+	:align: middle
 
 As a first step and precaution, you should make backups of your 
 existing config files and put them in a safe place.

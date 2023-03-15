@@ -1,7 +1,11 @@
 .. _ucc-manual:
 
-UCC Manual
-==========
+|user-guide-img| UCC Manual
+===========================
+
+.. |user-guide-img| image:: ../../_static/user-guide.png
+	:height: 32px
+	:align: middle
 
 Overview
 --------

@@ -1,10 +1,10 @@
 .. _workflow-description:
 
-Workflow description |workflow_img|
+|workflow-img| Workflow description
 -----------------------------------
 
-.. |workflow_img| image:: ../../../_static/workflow.png
-	:height: 70px
+.. |workflow-img| image:: ../../../_static/workflow.png
+	:height: 32px
 	:align: middle
 
 

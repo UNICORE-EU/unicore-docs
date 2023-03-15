@@ -1,16 +1,16 @@
 .. _ucc_faq:
 
-Frequently asked questions |faq_img|
+|faq-img| Frequently asked questions
 ------------------------------------
 
-.. |faq_img| image:: ../../_static/FAQ.png
-	:height: 60px
+.. |faq-img| image:: ../../_static/FAQ.png
+	:height: 32px
 	:align: middle
 
 Configuration
 ~~~~~~~~~~~~~
 
-|:thinking_face:| **Do I really have to store my password in the preferences file? Isn't 
+|:question:| **Do I really have to store my password in the preferences file? Isn't 
 this insecure?**
    
 	|:point_right:| Putting the password in a file or giving it as a commandline parameter can be 
@@ -18,7 +18,7 @@ this insecure?**
 	visible in for example in the output of the ``ps`` command.  
 	Thus, UCC will simply ask for the password in case you did not specify it.
 
-|:thinking_face:| **How can I enable more detailed logging?**
+|:question:| **How can I enable more detailed logging?**
 
 	|:point_right:| UCC uses `Log4j 2 <https://logging.apache.org/log4j/2.x/manual/configuration.html>`_, 
 	by default the configuration is done in ``<UCC_HOME>/conf/logging.properties``. You can edit 
@@ -28,19 +28,19 @@ this insecure?**
 Usage
 ~~~~~
 
-|:thinking_face:| **Can I use multiple registries with UCC?**
+|:question:| **Can I use multiple registries with UCC?**
  
 	|:point_right:| Yes. Simply use a comma-separated list of URLs for the ``-c`` option. 
 	However, you may only use a single key/truststore, so all registries (and sites listed in 
 	them) must accept the same security credentials. 
 
 
-|:thinking_face:| **Can I upload and execute my own executable?**
+|:question:| **Can I upload and execute my own executable?**
  
 	|:point_right:| Yes. Check :ref:`ucc_jobs`.
 
 
-|:thinking_face:| **Can I use UCC to list the contents of the registry?**
+|:question:| **Can I use UCC to list the contents of the registry?**
  
 	|:point_right:| Using the :ref:`rest command <rest-command>` (and optionally the UNIX ``jq`` utility for formatting the output),
 	this is very easy. For example,

@@ -9,15 +9,18 @@ and control constructs:
 
 * :ref:`RESTful APIs <rest-api>`
 
-* JSON :ref:`workflow description <workflow-description>`
+* :ref:`JSON workflow description <workflow-description>`
 
 * Full range of UNICORE user authentication options and AAI
   integration
 
 
-:doc:`manual`
+|user-guide-img| :doc:`manual`
       User Manual with detailed instructions and examples for using the Workflow service.
 
+.. |user-guide-img| image:: ../../_static/user-guide.png
+	:height: 22px
+	:align: middle
 
 .. toctree::
 	:maxdepth: 5

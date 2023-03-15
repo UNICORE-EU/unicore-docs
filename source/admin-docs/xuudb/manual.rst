@@ -1,7 +1,11 @@
 .. _xuudb-manual:
 
-XUUDB Manual
-============
+|user-guide-img| XUUDB Manual
+=============================
+
+.. |user-guide-img| image:: ../../_static/user-guide.png
+	:height: 32px
+	:align: middle
 
 The XUUDB server is an Attribute Source implementation which can be used by 
 UNICORE servers. It is used to map a UNICORE identity (an X500 distinguished name) 

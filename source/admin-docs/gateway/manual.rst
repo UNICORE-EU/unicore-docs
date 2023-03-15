@@ -1,8 +1,12 @@
 .. _gateway-manual:
 
 
-Gateway Manual
-==============
+|user-guide| Gateway Manual
+===========================
+
+.. |user-guide| image:: ../../_static/user-guide.png
+	:height: 32px
+	:align: middle
 
 The Gateway is the entry point into a UNICORE site, routing HTTPS
 traffic to servers like :ref:`unicorex`. It forwards client traffic to the

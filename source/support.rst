@@ -1,11 +1,11 @@
 .. _support:
 	
 	
-Support |support_img|
+|support_img| Support
 =====================
 
 .. |support_img| image:: _static/support.png
-	:height: 70px
+	:height: 32px
 	:align: middle
 
 If you encounter any issues with the software, please consider opening a ticket

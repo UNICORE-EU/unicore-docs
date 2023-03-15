@@ -18,16 +18,25 @@ supporting all of UNICORE's features, such as:
 
 and much more.
 
+
 .. topic:: User Documentation
 
-  :doc:`manual`
+  |user-guide-img| :doc:`manual`
       User Manual with detailed instructions and examples for using the UNICORE Commandline Client.
+
+  .. |user-guide-img| image:: ../../_static/user-guide.png
+  	:height: 22px
+  	:align: middle
+
 
 .. topic:: Administrator Documentation
 
-  :doc:`building`
+  |app-package-img| :doc:`building`
       Building the UNICORE Commandline Client distribution packages.
 
+  .. |app-package-img| image:: ../../_static/app-package.png
+  	:height: 22px
+  	:align: middle
 
 
 .. toctree::

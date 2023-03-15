@@ -1,7 +1,11 @@
 .. _tsi-manual:
 
-TSI Manual
-==========
+|user-guide-img| TSI Manual
+===========================
+
+.. |user-guide-img| image:: ../../_static/user-guide.png
+	:height: 32px
+	:align: middle
 
 The TSI performs the work on behalf of UNICORE users and so must be
 able to execute processes under different uids and gids. Therefore, in

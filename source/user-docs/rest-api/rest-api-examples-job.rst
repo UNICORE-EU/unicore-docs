@@ -23,8 +23,7 @@ Job submission and management
 	#
 	# Create a client
 	#
-	tr = uc_client.Transport(credentials)
-	site_client = uc_client.Client(tr, base)
+	site_client = uc_client.Client(credentials, base)
 	
 	#
 	# Run a test job

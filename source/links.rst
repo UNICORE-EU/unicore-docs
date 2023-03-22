@@ -12,21 +12,28 @@
 	:target: https://sourceforge.net/projects/unicore/
 	:align: middle 
 	
-.. _UNICORE at SourceForge: https://sourceforge.net/projects/unicore/
+.. _UNICORE on SourceForge: https://sourceforge.net/projects/unicore/
+
+.. |gh-logo|  image:: _static/github-logo.png
+	:height: 20px 
+	:target: https://github.com/UNICORE-EU
+	:align: middle 
+	
+.. _UNICORE on GitHub: https://github.com/UNICORE-EU
 
 .. |youtube-logo|  image:: _static/youtube-logo.png 
 	:height: 20px
 	:target: https://www.youtube.com/channel/UCKgNmuu1kjzUn4Uav-cZONw
 	:align: middle
 
-.. _UNICORE at YouTube: https://www.youtube.com/channel/UCKgNmuu1kjzUn4Uav-cZONw
+.. _UNICORE on YouTube: https://www.youtube.com/channel/UCKgNmuu1kjzUn4Uav-cZONw
 
 .. |twitter-logo|  image:: _static/twitter-logo.png
 	:height: 20px
 	:target: https://twitter.com/UNICORE_EU
 	:align: middle
 
-.. _UNICORE at Twitter: https://twitter.com/UNICORE_EU
+.. _UNICORE on Twitter: https://twitter.com/UNICORE_EU
 
 .. table::
  :width: 100
@@ -34,11 +41,13 @@
  :class: noborder-tight-table
 
  +----------------+---------------------------+
- | |sf-logo|      | `UNICORE at SourceForge`_ |
+ | |gh-logo|      | `UNICORE on GitHub`_      |
  +----------------+---------------------------+
- | |youtube-logo| | `UNICORE at YouTube`_     |
+ | |sf-logo|      | `UNICORE on SourceForge`_ |
  +----------------+---------------------------+
- | |twitter-logo| | `UNICORE at Twitter`_     |
+ | |youtube-logo| | `UNICORE on YouTube`_     |
+ +----------------+---------------------------+
+ | |twitter-logo| | `UNICORE on Twitter`_     |
  +----------------+---------------------------+
  
  

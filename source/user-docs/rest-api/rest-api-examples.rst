@@ -11,9 +11,8 @@ PyUNICORE can be installed from PyPI using
 
   pip install -U pyunicore
 
-
-For the descripion of the underlying REST API, check :ref:`here <rest-api>`.
-
+The full documentation for PyUNICORE can be found  
+`here <https://pyunicore.readthedocs.io/>`_.
 
 Basic job submission
 ~~~~~~~~~~~~~~~~~~~~
@@ -24,7 +23,7 @@ Basic job submission
 Storages and data management
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*Work in progress!* |:hammer_and_wrench:| |:soon:|
+:ref:`rest-api-examples-storage`
 
 
 Workflow submission and management

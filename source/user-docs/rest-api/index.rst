@@ -708,6 +708,48 @@ variables, e.g.
 	"Variable2": "true",
 	}
 
+Utility endpoints
+-----------------
+
+Getting the server certificate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A GET request to ``BASE/certificate`` will retrieve the server's certificate in PEM format
+
+.. code:: console
+
+ $  curl -k BASE/certificate
+ -----BEGIN CERTIFICATE-----
+ MIIC3j...
+ -----END CERTIFICATE-----
+
+
+
+Creating a token
+~~~~~~~~~~~~~~~~
+
+The GET request to endpoint ``BASE/token`` allows you to create a JWT token signed by the server, that
+can be used for authentication later.
+
+.. code:: console
+
+ $  curl -k BASE/token
+ eyJh...
+
+The token will (of course) give the same level of authentication that was used when creating it!
+
+The endpoint accepts parameters as query parameters to the GET request
+
+ * ``lifetime`` token lifetime in seconds. If not set, the server's default is used (usually 300 seconds)
+ * ``limited=true`` will make the token only valid for the issuing server
+ * ``renewable=true`` will allow to get new tokens using the issued token 
+ 
+For example
+
+.. code:: console
+
+ $  curl -k -u demouser:test123 "BASE/token?lifetime=3600&limited=true&renewable=true"
+ eyJh...
 
 Examples and HowTos
 -------------------

@@ -374,8 +374,14 @@ then the standard input will come from the file named *filename* in the job work
 Resources
 ~~~~~~~~~
 
-A job definition can have a ``Resources`` section specifying the resources to request
-on the remote system. For example,
+For batch jobs, you will want to control the resources allocated to your job.
+If you don't do this, UNICORE will use the default settings configured by the site.
+
+
+Specifying resources
+^^^^^^^^^^^^^^^^^^^^
+  
+Resources are requested using a ``Resources`` section:
 
 .. code:: json
 
@@ -388,6 +394,7 @@ on the remote system. For example,
 
     }
   }
+  
 
 UNICORE has the following built-in resource names:
 
@@ -397,17 +404,20 @@ UNICORE has the following built-in resource names:
 Sites may define additional, *custom* resources, which you can use, too.
 
 
-Miscellaneous options
-~~~~~~~~~~~~~~~~~~~~~
+Specifying an accounting project
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Specifying a project
-^^^^^^^^^^^^^^^^^^^^
-
-If the system you're submitting to requires a project name for accounting purposes, you 
-can specify the account (or project) you want to charge the job to using the ``Project`` tag:
+If the system you're submitting to requires a project name for accounting purposes, you
+can specify the account (or project) you want to charge the job to using the ``Project`` element:
 ::
 
   "Project" : "my_project",
+
+(putting the "Project" into the "Resources" element will work, too)
+
+Miscellaneous options
+~~~~~~~~~~~~~~~~~~~~~
+
 
 Job tags
 ^^^^^^^^
@@ -455,6 +465,39 @@ system.
 
 If you want to verify that the sender of the notification is really UNICORE/X, you will need to 
 check and validate the JWT Bearer token UNICORE/X sends in the Authorization header.
+
+
+Advanced notification settings (UNICORE 9.2.0 and later)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+By default, UNICORE will send notifications when the job enters ``RUNNING`` state or is done, and
+the status changes to ``SUCCESSFUL`` or ``FAILED``.
+
+For special use cases, you may need to use more detailed notification settings, for example when
+
+  - you want notifications on certain low-level (e.g. Slurm level) status changes
+  - you want notifications on more or other UNICORE-level status changes.
+
+This advanced notification setup looks like this:
+
+.. code:: json
+
+   {
+     "NotificationSettings" : {
+	    "URL" : "https://your-service-url",
+	    "status" : [ "STAGINGOUT", "SUCCESSFUL" ],
+		"bssStatus": [ "CONFIGURING" ]
+	  }
+   }
+
+where ``status`` is a list of UNICORE-level status strings, and ``bssStatus``
+is a list of BSS-level status strings. If ``status`` is not given explicitly,
+the default (RUNNING, SUCCESSFUL, FAILED) are used.
+
+The notifications sent by UNICORE contain the ``href`` job URL, and either
+a ``bssStatus`` field, or a ``status``, depending on what triggered the
+notification message.
+
 
 Specifying the job name
 ^^^^^^^^^^^^^^^^^^^^^^^

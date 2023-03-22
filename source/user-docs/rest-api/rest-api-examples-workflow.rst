@@ -22,8 +22,7 @@ Workflow submission and management
 	#
 	# Create a client for the Workflow service
 	#
-	tr = uc_client.Transport(credentials)
-	workflow_client = uc_client.WorkflowService(tr, base)
+	workflow_client = uc_client.WorkflowService(credentials, base)
 	
 	#
 	# create the workflow description

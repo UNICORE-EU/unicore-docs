@@ -1,7 +1,11 @@
 .. _ucc_jobs:
 
-Running jobs
-------------
+|run-jobs-img| Running jobs
+---------------------------
+
+.. |run-jobs-img| image:: ../../_static/run-jobs.png
+	:height: 32px
+	:align: middle
 
 Introduction
 ~~~~~~~~~~~~

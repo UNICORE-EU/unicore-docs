@@ -1,7 +1,11 @@
 .. _ucc_options:
 
-Common options to UCC
----------------------
+|options-list-img| Common options to UCC
+----------------------------------------
+
+.. |options-list-img| image:: ../../_static/options-list.png
+	:height: 32px
+	:align: middle
 
 The following table lists the options understood by most UCC commands. Most 
 commands have additional options. You can always get a summary of all available

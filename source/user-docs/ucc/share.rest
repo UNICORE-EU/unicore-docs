@@ -1,7 +1,11 @@
 .. _ucc_share:
 
-Sharing resources
------------------
+|share-img| Sharing resources
+-----------------------------
+
+.. |share-img| image:: ../../_static/share.png
+	:height: 32px
+	:align: middle
 
 Accessing UNICORE resources (jobs, storages, ...) is usually only
 possible when you *own* the resource or when there are special

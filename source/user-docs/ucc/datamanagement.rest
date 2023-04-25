@@ -1,7 +1,11 @@
 .. _ucc_datamanagement:
 
-Data management functions
--------------------------
+|data-img| Data management functions
+------------------------------------
+
+.. |data-img| image:: ../../_static/data-management.png
+	:height: 32px
+	:align: middle
 
 UCC offers access to all the data management functions in UNICORE.
 You can upload or download data from a remote server, initiate

@@ -1,7 +1,11 @@
 .. _tsi_api:
 
-TSI API
--------
+|api-img| TSI API
+-----------------
+
+.. |api-img| image:: ../../_static/api.png
+	:height: 22px
+	:align: middle
 
 This document describes the API to the TSI as used by 
 :ref:`UNICORE/X <unicorex>` (more concretely, the :ref:`XNJS <ux_xnjs>` subsystem of UNICORE/X).  

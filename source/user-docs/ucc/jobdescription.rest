@@ -1,7 +1,11 @@
 .. _ucc_jobdescription:
 
-Job description format
-----------------------
+|job-desc-img| Job description format
+-------------------------------------
+
+.. |job-desc-img| image:: ../../_static/job-desc.png
+	:height: 32px
+	:align: middle
 
 UCC uses the  JSON :ref:`job-description` that is used by the UNICORE :ref:`REST API
 <rest-api>`, adding support for handling local files.

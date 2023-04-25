@@ -1,7 +1,11 @@
 .. _ucc_workflow:
 
-Workflows 
----------
+|workflow-img| Workflows 
+------------------------
+
+.. |workflow-img| image:: ../../_static/workflow.png
+	:height: 32px
+	:align: middle
 
 Introduction
 ~~~~~~~~~~~~

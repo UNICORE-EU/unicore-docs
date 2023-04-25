@@ -1,7 +1,11 @@
 .. _ucc_tunneling:
 
-Port forwarding / tunneling
----------------------------
+|tunneling-img| Port forwarding / tunneling
+-------------------------------------------
+
+.. |tunneling-img| image:: ../../_static/tunneling.png
+	:height: 32px
+	:align: middle
 
 Starting with UNICORE 9.1.0, it is possible to open a tunnel (TCP socket connection) from
 the client to a service running on the HPC cluster. The service can run on a login node

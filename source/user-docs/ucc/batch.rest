@@ -1,7 +1,11 @@
 ﻿.. _ucc_batch:
 
-Batch processing
-----------------
+|clock-img| Batch processing
+----------------------------
+
+.. |clock-img| image:: ../../_static/clock.png
+	:height: 32px
+	:align: middle
 
 The ``batch`` command allows you to run many jobs without having to start 
 UCC each time. You can control how many jobs should go to which site. 

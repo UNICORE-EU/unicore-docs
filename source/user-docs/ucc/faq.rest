@@ -10,17 +10,17 @@
 Configuration
 ~~~~~~~~~~~~~
 
-|:question:| **Do I really have to store my password in the preferences file? Isn't 
+|:thinking:| **Do I really have to store my password in the preferences file? Isn't 
 this insecure?**
    
-	|:point_right:| Putting the password in a file or giving it as a commandline parameter can be 
+	Putting the password in a file or giving it as a commandline parameter can be 
 	considered insecure. The file could be read by others, and the commandline parameters may be 
-	visible in for example in the output of the ``ps`` command.  
+	visible in for example in the output of the ``ps`` command. 
 	Thus, UCC will simply ask for the password in case you did not specify it.
 
-|:question:| **How can I enable more detailed logging?**
+|:thinking:| **How can I enable more detailed logging?**
 
-	|:point_right:| UCC uses `Log4j 2 <https://logging.apache.org/log4j/2.x/manual/configuration.html>`_, 
+	UCC uses `Log4j 2 <https://logging.apache.org/log4j/2.x/manual/configuration.html>`_, 
 	by default the configuration is done in ``<UCC_HOME>/conf/logging.properties``. You can edit 
 	this file and increase the logging levels, choose to log to a file or to the console, etc.
 
@@ -28,21 +28,21 @@ this insecure?**
 Usage
 ~~~~~
 
-|:question:| **Can I use multiple registries with UCC?**
+|:thinking:| **Can I use multiple registries with UCC?**
  
-	|:point_right:| Yes. Simply use a comma-separated list of URLs for the ``-c`` option. 
+	Yes. Simply use a comma-separated list of URLs for the ``-c`` option. 
 	However, you may only use a single key/truststore, so all registries (and sites listed in 
-	them) must accept the same security credentials. 
+	them) must accept the same security credentials.
 
 
-|:question:| **Can I upload and execute my own executable?**
+|:thinking:| **Can I upload and execute my own executable?**
  
-	|:point_right:| Yes. Check :ref:`ucc_jobs`.
+	Yes. Check :ref:`ucc_jobs`.
 
 
-|:question:| **Can I use UCC to list the contents of the registry?**
+|:thinking:| **Can I use UCC to list the contents of the registry?**
  
-	|:point_right:| Using the :ref:`rest command <rest-command>` (and optionally the UNIX ``jq`` utility for formatting the output),
+	Using the :ref:`rest command <rest-command>` (and optionally the UNIX ``jq`` utility for formatting the output),
 	this is very easy. For example,
 
 	.. code:: console

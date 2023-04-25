@@ -37,4 +37,5 @@ Workflow submission and management
 	:hidden:
 
 	rest-api-examples-job
+	rest-api-examples-storage
 	rest-api-examples-workflow

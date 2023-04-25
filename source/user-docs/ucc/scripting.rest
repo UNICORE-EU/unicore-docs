@@ -1,7 +1,11 @@
 .. _ucc_scripting:
 
-Scripting
----------
+|groovy-img| Scripting
+----------------------
+
+.. |groovy-img| image:: ../../_static/groovy.png
+	:height: 32px
+	:align: middle
 
 UCC can execute Groovy scripts. `Groovy <https://groovy-lang.org>`_ is a dynamic
 scripting language similar to Python or Ruby, but very closely integrated with Java.

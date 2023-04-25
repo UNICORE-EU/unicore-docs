@@ -1,7 +1,11 @@
 .. _ucc_quickstart:
 
-Getting started with UCC
-------------------------
+|start-img| Getting started with UCC
+------------------------------------
+
+.. |start-img| image:: ../../_static/start.png
+	:height: 32px
+	:align: middle
 
 Assuming you have successfully installed UCC, this section
 shows how to get going quickly.

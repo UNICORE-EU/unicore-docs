@@ -1,8 +1,12 @@
 .. _ucc_install:
 
-Installation and configuration
-------------------------------
+|config-img| Installation and configuration
+-------------------------------------------
 
+.. |config-img| image:: ../../_static/configuration.png
+	:height: 32px
+	:align: middle
+	
 Prerequisites
 ~~~~~~~~~~~~~  
 

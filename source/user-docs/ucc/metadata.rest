@@ -1,7 +1,11 @@
 .. _ucc_metadata:
 
-Metadata management functions
------------------------------
+|metadata-img| Metadata management functions
+--------------------------------------------
+
+.. |metadata-img| image:: ../../_static/metadata.png
+	:height: 32px
+	:align: middle
 
 UCC offers a simple interface to access the metadata 
 management service in UNICORE.

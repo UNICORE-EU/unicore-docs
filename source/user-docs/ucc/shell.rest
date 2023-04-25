@@ -1,7 +1,11 @@
 .. _ucc_shell:
 
-The UCC shell
--------------
+|usage-img| The UCC shell
+-------------------------
+
+.. |usage-img| image:: ../../_static/usage.png
+	:height: 32px
+	:align: middle
 
 If you want to run a larger number of UCC commands, the overhead of starting
 the Java VM or checking the registry may become annoying. For this scenario, 

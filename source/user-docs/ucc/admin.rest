@@ -1,7 +1,11 @@
 .. _ucc_admin:
 
-UCC for site administrators
----------------------------
+|admin-img| UCC for site administrators
+---------------------------------------
+
+.. |admin-img| image:: ../../_static/admin.png
+	:height: 32px
+	:align: middle
 
 UCC can be used for administrative and user support tasks, like
 checking server status, or getting the full details of a user job.

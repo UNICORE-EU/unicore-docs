@@ -12,8 +12,12 @@ Since such a registry is vital to the functioning of a UNICORE-based federation,
 more than one.
 
 
-Installation
-------------
+|install-img| Installation
+--------------------------
+
+.. |install-img| image:: ../../_static/installer.png
+	:height: 32px
+	:align: middle
 
 Prerequisites
 ~~~~~~~~~~~~~ 
@@ -69,8 +73,13 @@ tar.gz and Linux packages:
  +---------+--------------------+-----------------------------------+----------------+
 
 
-Registry configuration
-----------------------
+|config-img| Registry configuration
+-----------------------------------
+
+.. |config-img| image:: ../../_static/configuration.png
+	:height: 32px
+	:align: middle
+
 
 A Registry is running in a *normal* :ref:`UNICORE/X <unicorex>` container, however, you
 should use a dedicated UNICORE/X instance for the Registry, making sure no other services 

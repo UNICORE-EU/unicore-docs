@@ -1,7 +1,11 @@
 .. _wf_install:
 
-Installing and setting up the UNICORE Workflow engine
------------------------------------------------------
+|install-img| Installing and setting up the UNICORE Workflow engine
+-------------------------------------------------------------------
+
+.. |install-img| image:: ../../_static/installer.png
+	:height: 32px
+	:align: middle
 
 This chapter covers basic installation of the Workflow engine and the
 integration of the workflow services into an existing UNICORE system.

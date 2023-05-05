@@ -1,7 +1,11 @@
 .. _wf_config:
 
-Configuration of the Workflow server
-------------------------------------
+|config-img| Configuration of the Workflow server
+-------------------------------------------------
+
+.. |config-img| image:: ../../_static/configuration.png
+	:height: 32px
+	:align: middle
 
 This chapter covers configuration options for the Workflow server.
 Since the Workflow server is running in the same underlying 

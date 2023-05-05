@@ -63,8 +63,12 @@ Last not least, the Gateway can be configured as a HTTP load balancer.
   this manual.
 
 
-Installation 
-------------
+|install-img| Installation 
+--------------------------
+
+.. |install-img| image:: ../../_static/installer.png
+	:height: 32px
+	:align: middle
 
 The UNICORE Gateway is distributed in the following formats:
 
@@ -107,8 +111,12 @@ Installation from a Linux package (rpm or deb)
 Use your distribution's package manager to install.
 
 
-Upgrading
----------
+|update-img| Upgrading
+----------------------
+
+.. |update-img| image:: ../../_static/update.png
+	:height: 32px
+	:align: middle
 
 The general update procedure is presented below, with possible variations:
 
@@ -122,8 +130,12 @@ The general update procedure is presented below, with possible variations:
 #. Verify log file and fix any problems reported.
 
 
-Configuration
--------------
+|config-img| Configuration
+--------------------------
+
+.. |config-img| image:: ../../_static/configuration.png
+	:height: 32px
+	:align: middle
 
 The Gateway is configured using a set of configuration files, which
 reside in the ``CONF`` subdirectory.
@@ -345,8 +357,12 @@ The most important, root log categories used by the Gateway's logging are:
 
 .. _apache:
 
-Using Apache httpd as a frontend
---------------------------------
+|apache-img| Using Apache httpd as a frontend
+---------------------------------------------
+
+.. |apache-img| image:: ../../_static/apache.png
+	:height: 32px
+	:align: middle
 
 You may wish to use the Apache webserver (httpd) as a 
 frontent for the Gateway (e.g. for security or fault-tolerance reasons).
@@ -365,8 +381,13 @@ External references
 
 .. _loadbalance:
 
-Using the Gateway for failover and/or loadbalancing of UNICORE sites
---------------------------------------------------------------------
+|load-balance-img| Using the Gateway for failover and/or loadbalancing of UNICORE sites
+---------------------------------------------------------------------------------------
+
+.. |load-balance-img| image:: ../../_static/load-balancer.png
+	:height: 32px
+	:align: middle
+
 
 The Gateway can be used as a simple failover solution and/or loadbalancer to achieve 
 high availability and/or higher scalability of UNICORE/X sites without additional tools.
@@ -485,8 +506,12 @@ strategy name::
   strategy=your_class_name
 
 
-Gateway failover and migration
---------------------------------
+|failover-img| Gateway failover and migration
+---------------------------------------------
+
+.. |failover-img| image:: ../../_static/failover.png
+	:height: 32px
+	:align: middle
 
 The :ref:`loadbalance` covered usage of the Gateway to provide failover of backend services.
 However, it may be needed to guarantee high-availabilty for the Gateway itself or to move it

@@ -1,7 +1,11 @@
 .. _ux_metadata:
 
-The UNICORE metadata service
-----------------------------
+|metadata-img| The UNICORE metadata service
+-------------------------------------------
+
+.. |metadata-img| image:: ../../_static/metadata.png
+	:height: 32px
+	:align: middle
 
 UNICORE supports metadata management on a per-storage basis. This means, each storage
 instance (for example, the user's home, or  a job working directory) has its own

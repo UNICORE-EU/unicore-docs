@@ -1,7 +1,11 @@
 .. _use_auth:
 
-Authentication
---------------
+|auth-img| Authentication
+-------------------------
+
+.. |auth-img| image:: ../../_static/authentication.png
+	:height: 32px
+	:align: middle
 
 Introduction
 ~~~~~~~~~~~~

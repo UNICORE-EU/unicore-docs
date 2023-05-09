@@ -1,7 +1,11 @@
 .. _ux_install:
 
-Getting started
----------------
+|start-img| Getting started
+---------------------------
+
+.. |start-img| image:: ../../_static/start.png
+	:height: 32px
+	:align: middle
 
 Prerequisites
 ~~~~~~~~~~~~~ 

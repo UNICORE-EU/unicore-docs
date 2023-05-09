@@ -1,7 +1,11 @@
 .. _ux_admin:
 
-Administration
---------------
+|admin-img| Administration
+--------------------------
+
+.. |admin-img| image:: ../../_static/admin.png
+	:height: 32px
+	:align: middle
 
 Controlling UNICORE/X memory usage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

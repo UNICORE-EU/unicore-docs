@@ -1,7 +1,11 @@
 .. _ux_uftp:
 
-UFTP setup
-------------
+|uftp-img| UFTP setup
+---------------------
+
+.. |uftp-img| image:: ../../_static/uftp.png
+	:height: 32px
+	:align: middle
 
 UFTP is a high-performance file transfer protocol.  For using UFTP as
 a data staging and file upload/download solution in UNICORE, a

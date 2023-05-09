@@ -1,7 +1,11 @@
 .. _ux_storages:
 
-Configuration of storages
--------------------------
+|data-management-img| Configuration of storages
+-----------------------------------------------
+
+.. |data-management-img| image:: ../../_static/data-management.png
+	:height: 32px
+	:align: middle
 
 A UNICORE/X server can make storage systems (e.g. file systems)
 accessible to users in several ways: 

@@ -1,8 +1,11 @@
 ﻿.. _ux_dataprocessing:
 
+|move-files-img| Data-triggered processing
+------------------------------------------
 
-Data-triggered processing
--------------------------
+.. |move-files-img| image:: ../../_static/move-files.png
+	:height: 32px
+	:align: middle
 
 UNICORE can be set up to automatically scan storages and trigger processing
 steps (e.g. submit batch jobs or run processing tasks) according to 

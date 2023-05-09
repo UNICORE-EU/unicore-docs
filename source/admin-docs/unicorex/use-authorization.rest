@@ -1,7 +1,11 @@
 .. _use_pdp:
 
-Authorization back-end (PDP) guide
-----------------------------------
+|pdp-img| Authorization back-end (PDP) guide
+--------------------------------------------
+
+.. |pdp-img| image:: ../../_static/pdp.png
+	:height: 32px
+	:align: middle
 
 The authorization process in UNICORE/X requires that nearly all operations 
 must be authorized prior to execution (exceptions may be safely ignored).

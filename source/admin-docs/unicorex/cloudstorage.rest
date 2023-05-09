@@ -1,7 +1,11 @@
 .. _ux_cloud_storage:
    
-Cloud storages support (S3, Swift, CDMI)
-----------------------------------------
+|cloud-services-img| Cloud storages support (S3, Swift, CDMI)
+-------------------------------------------------------------
+
+.. |cloud-services-img| image:: ../../_static/cloud-services.png
+	:height: 32px
+	:align: middle
 
 UNICORE/X can use S3, Swift or CDMI storages as backend. These 
 storages can be configured both as a normal storage (shared or attached

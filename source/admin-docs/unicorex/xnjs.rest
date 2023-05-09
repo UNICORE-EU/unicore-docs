@@ -1,7 +1,11 @@
 .. _ux_xnjs:
 
-Interfacing UNICORE/X to the TSI 
---------------------------------
+|unicorex-tsi-img| Interfacing UNICORE/X to the TSI 
+---------------------------------------------------
+
+.. |unicorex-tsi-img| image:: ../../_static/unicorex-tsi-interface.png
+	:height: 32px
+	:align: middle
 
 The link from UNICORE/X  to the UNICORE TSI, the component that deals with the actual
 job execution and file system access is configured using a properties 
@@ -258,8 +262,12 @@ listed in the following table:
   :header-rows: 1
   :class: tight-table
 
-The IDB
--------
+|idb-img| The IDB
+-----------------
+
+.. |idb-img| image:: ../../_static/idb.png
+	:height: 32px
+	:align: middle
 
 .. include:: xnjs-idb.rest
 
@@ -269,8 +277,12 @@ The IDB
 
 .. include:: xnjs-tsi-custom.rest
 
-Data staging
-------------
+|data-transfer-img| Data staging
+--------------------------------
+
+.. |data-transfer-img| image:: ../../_static/data-transfer.png
+	:height: 32px
+	:align: middle
 
 When executing user jobs, UNICORE/X also performs data staging, 
 i.e. getting data from remote locations before starting the job, and

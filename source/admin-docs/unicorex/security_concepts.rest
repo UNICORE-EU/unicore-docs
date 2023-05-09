@@ -1,8 +1,11 @@
 .. _ux_security_concepts:
 
+|security-img| Security concepts in UNICORE/X
+---------------------------------------------
 
-Security concepts in UNICORE/X
-------------------------------
+.. |security-img| image:: ../../_static/security.png
+	:height: 32px
+	:align: middle
 
 This section describes the basic security concepts and architecture used in 
 UNICORE/X. The overall procedure performed by the security infrastructure 

@@ -1,7 +1,11 @@
 .. _use_policies:
 
-Guide to XACML security policies
---------------------------------
+|xacml-img| Guide to XACML security policies
+--------------------------------------------
+
+.. |xacml-img| image:: ../../_static/xacml.png
+	:height: 32px
+	:align: middle
 
 .. _XACML: https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=xacml
 

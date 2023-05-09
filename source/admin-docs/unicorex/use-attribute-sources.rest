@@ -1,7 +1,11 @@
 .. _use_aip:
 
-Attribute sources
------------------
+|attr-services-img| Attribute sources
+-------------------------------------
+
+.. |attr-services-img| image:: ../../_static/attr-services.png
+	:height: 32px
+	:align: middle
 
 The authorization process in UNICORE/X requires that each UNICORE user
 (identified by an X.500 DN) is assigned some *attributes* such as her

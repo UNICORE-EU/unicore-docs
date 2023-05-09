@@ -1,7 +1,11 @@
 .. _use_vo:
    
-Virtual Organisations (VO) Support
-----------------------------------
+|VO-img| Virtual Organisations (VO) Support
+-------------------------------------------
+
+.. |VO-img| image:: ../../_static/VO.png
+	:height: 32px
+	:align: middle
 
 VO (**V**\ irtual **O**\ rganisation) is a quite broad concept. VO server software
 (such as Unity) is used to store identities of federated entities

@@ -1,9 +1,9 @@
 ﻿.. _ucc_batch:
 
-|clock-img| Batch processing
+|batch-img| Batch processing
 ----------------------------
 
-.. |clock-img| image:: ../../_static/clock.png
+.. |batch-img| image:: ../../_static/batch.png
 	:height: 32px
 	:align: middle
 

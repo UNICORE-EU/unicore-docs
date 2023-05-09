@@ -1,7 +1,11 @@
 .. _ux_configuration:
 
-Configuration of UNICORE/X
---------------------------
+|config-img| Configuration of UNICORE/X
+---------------------------------------
+
+.. |config-img| image:: ../../_static/configuration.png
+	:height: 32px
+	:align: middle
 
 Overview of the main configuration options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

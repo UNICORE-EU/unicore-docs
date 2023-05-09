@@ -139,8 +139,12 @@ This feature provides the Admin service (see :ref:`ux_admin_service`).
  +------------------+--------------------------------------------+
  
 
-Registry
---------
+|registry-img| Registry
+-----------------------
+
+.. |registry-img| image:: ../../_static/registry.png
+	:height: 32px
+	:align: middle
 
 This feature provides the Registry service. This covers both the
 *internal* version running in every UNICORE/X server, as well as the

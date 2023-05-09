@@ -1,7 +1,11 @@
 .. _ux_persistence:
 
-The UNICORE persistence layer 
------------------------------
+|data-persistence-img| The UNICORE persistence layer 
+----------------------------------------------------
+
+.. |data-persistence-img| image:: ../../_static/data-persistence.png
+	:height: 32px
+	:align: middle
 
 UNICORE stores its state in data bases. The information that is stored 
 depends on the services that are running in the container, and can

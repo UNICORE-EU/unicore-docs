@@ -506,7 +506,7 @@ The basic syntax is:
 
 	# OR files
 
-	 "file_sets": [...],
+	 "filesets": [...],
 
 	  # with optional chunking
 	 "chunking":
@@ -793,17 +793,17 @@ or less) simultaneously.
 
 	   {
 	    "id": "date2a",
-	    "job": { "ApplicationName": "Date" },
+	    "job": { "ApplicationName": "Date" }
 	   },
 
 	   {
 	    "id": "date2b",
-	    "job": { "ApplicationName": "Date" },
+	    "job": { "ApplicationName": "Date" }
 	   },
 
 	   {
 	    "id": "date3",
-	    "job": { "ApplicationName": "Date" },
+	    "job": { "ApplicationName": "Date" }
 	   }
 
 	 ],
@@ -812,8 +812,8 @@ or less) simultaneously.
 	   {"from": "date1", "to": "date2a" },
 	   {"from": "date1", "to": "date2b" },
 	   {"from": "date2a", "to": "date3" },
-	   {"from": "date2b", "to": "date3" },
-	 ],
+	   {"from": "date2b", "to": "date3" }
+	 ]
 	}
 
 Conditional execution in an *if-else* construct
@@ -835,15 +835,15 @@ constructs. Here is a simple example::
 
 	    {
 	     "id": "else-job",
-	     "job": { "ApplicationName": "Date" },
-	    },
+	     "job": { "ApplicationName": "Date" }
+	    }
 
 	  ],
 
 	  "transitions": [
 	    {"from": "branch", "to": "if-job", "condition": "2+2==4"},
-	    {"from": "branch", "to": "else-job" },
-	  ],
+	    {"from": "branch", "to": "else-job" }
+	  ]
 
 	}
 
@@ -905,7 +905,7 @@ staging sections, for example to name files.
 
 		   "transitions": [
 			{"from": "job", "to": "mod" }
-		   ],
+		   ]
 		}
 
 	   }
@@ -937,28 +937,28 @@ stage-in the current file. Also, the name of the current file is placed into the
 			  {
 				"id": "job",
 				"job": {
-				 "Executable": "echo"
+				 "Executable": "echo",
 				 "Arguments": ["processing: ", "$NAME"],
 				 "Environment": ["NAME=${IT_FILENAME}"],
 				 "Imports": [
-				   {"From": "${IT_VALUE}", "To": "infile"},
+				   {"From": "${IT_VALUE}", "To": "infile"}
 				 ],
 				 "Exports": [
-				   {"From": "stdout", "To": wf:/out_${IT}},
-				 ],
+				   {"From": "stdout", "To": "wf:/out_${IT}"}
+				 ]
 				}
-			  },
+			  }
 			  
 			],
 			
 		  },
 		  
-		"file_sets": [
+		"filesets": [
 		  {
-			"base": "https://mygateway.de:7700/MYSITE/rest/core/storages/my_storage/"
+			"base": "https://mygateway.de:7700/MYSITE/rest/core/storages/my_storage/",
 			"include": ["*"],
 		  }
-		],
+		]
 		
 	   }
 	   

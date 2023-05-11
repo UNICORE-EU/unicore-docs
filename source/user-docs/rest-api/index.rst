@@ -70,6 +70,13 @@ Or, to select role *admin* (if you are worthy):
 
 You can find out the available values for these attributes with a ``GET`` to the ``BASE`` URL!
 
+To give more than one user preference, you can separate the values via commas, for example:
+
+.. code:: console
+
+ $  curl -k -u user:pass -X GET -H "Accept: application/json"  \
+        -H "X-UNICORE-User-Preferences: uid:myuser,group:mygroup" BASE
+
 
 Security session handling
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -93,7 +100,8 @@ If the session is no longer valid the server will reply with a ``HTTP 432`` erro
 must re-send the authentication information.
 
 Using security sessions is recommend especially when third-party IdPs for used for authentication, 
-because it greatly reduces the load on the servers.
+because it reduces the load on the servers and improves throughput and turnaround time for your
+API requests.
 
 
 General API features
@@ -130,7 +138,7 @@ example,
 
 - ``401 Unauthorized`` - your credentials are wrong or you do not have the right to access
 - ``404 Not found`` - the resource does exist, or you have a typo in the URL
-- ``500 Internal server error`` - a server-side error occured
+- ``500 Internal server error`` - a server-side error occurred
 
 In many cases a JSON document containing an error message is returned.
 

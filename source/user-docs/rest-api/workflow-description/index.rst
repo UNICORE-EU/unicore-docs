@@ -114,38 +114,38 @@ Activity elements have the following form::
 The ``id`` must be UNIQUE within the workflow. There are different types of activity, which
 are distinguished by the ``type`` element.
 
-- ``START`` denotes an explicit start activity. If no such activity is present, the processing 
+- ``START`` denotes an explicit start activity. If no such activity is present, the processing
   engine detect the proper starting activities.
 
-- ``JOB`` denotes a executable (job) activity. In this case, the job sub element holds the JSON 
+- ``JOB`` denotes a executable (job) activity. In this case, the job sub element holds the JSON
   job definition (if a ``job`` element is present, you may leave out the ``type``).
 
-- ``ModifyVariable`` allows to modify a workflow variable. An option named ``variableName`` 
-  identifies the variable to be modified, and an option ``expression`` holds the modification 
+- ``MODIFY_VARIABLE`` allows to modify a workflow variable. An option named ``variable_name``
+  identifies the variable to be modified, and an option ``expression`` holds the modification
   expression in the Groovy programming language syntax (see also the :ref:`variables section
   <workflow-variables>` later).
 
-- ``Split``: this activity can have multiple outgoing transitions. All transitions with matching 
-  conditions will be followed. This is comparable to an "*if() … if() … if()*" construct in a 
+- ``SPLIT``: this activity can have multiple outgoing transitions. All transitions with matching
+  conditions will be followed. This is comparable to an "*if() … if() … if()*" construct in a
   programming language.
 
-- ``Branch``: this activity can have multiple outgoing transitions. The transition with the 
-  first matching condition will be followed. This is comparable to an "*if() … elseif() … else()*" 
+- ``BRANCH``: this activity can have multiple outgoing transitions. The transition with the
+  first matching condition will be followed. This is comparable to an "*if() … elseif() … else()*"
   construct in a programming language.
 
-- ``Merge`` merges multiple flows without synchronising them.
+- ``MERGE`` merges multiple flows without synchronising them.
 
-- ``Synchronize`` merges multiple flows and synchronises them.
+- ``SYNCHRONIZE`` merges multiple flows and synchronises them.
 
-- ``HOLD`` stops further processing of the current flow until the client explicitely sends continue 
-  message.
+- ``HOLD`` stops further processing of the current flow until the client explicitly sends a
+  continue message.
 
 
 Subworkflows
 ~~~~~~~~~~~~
 
-The workflow description allows nested sub workflows, which have the same formal structure as 
-the main workflow (without the ``tags`` and ``inputs``). There is an additional ``type`` element 
+The workflow description allows nested sub workflows, which have the same formal structure as
+the main workflow (without the ``tags`` and ``inputs``). There is an additional ``type`` element
 that is used to distinguish the different control structure types.
 
 .. code:: json
@@ -172,7 +172,7 @@ that is used to distinguish the different control structure types.
 Job activities
 ~~~~~~~~~~~~~~
 
-Job activities are the basic executable pieces of a workflow. The embedded JSON job definition 
+Job activities are the basic executable pieces of a workflow. The embedded JSON job definition
 will be sent to an execution site (UNICORE/X) for processing.
 
 .. code:: json
@@ -378,18 +378,18 @@ used.
 
 Currently variables of type ``STRING``, ``INTEGER`` , ``FLOAT`` and ``BOOLEAN`` are supported.
 
-Variables can be modified using an activity of type ``ModifyVariable``.
+Variables can be modified using an activity of type ``MODIFY_VARIABLE``.
 
 For example, to increment the value of the *COUNTER* variable, the following Activity is used
 ::
 
 	{
 
-	 "type": "ModifyVariable",
+	 "type": "MODIFY_VARIABLE",
 
 	 "id": "incrementCounter",
 
-	 "variableName": "COUNTER",
+	 "variable_name": "COUNTER",
 
 	 "expression": "COUNTER += 1;"
 
@@ -438,8 +438,8 @@ A *while* loop looks like this
 	    {
 		  # this modifies the variable used in the 'while'
 		  # loop's exit condition
-		  "id": "mod", "type": "ModifyVariable",
-		  "variableName": "C",
+		  "id": "mod", "type": "MODIFY_VARIABLE",
+		  "variable_name": "C",
 		  "expression": "C++;",
 	    }
 	   ],
@@ -526,8 +526,14 @@ environment variables.
 
  "values": ["1", "2", "3", ],
 
-In each iteration, the workflow variables ``CURRENT_ITERATOR_VALUE`` and 
-``CURRENT_ITERATOR_INDEX`` will be set to the current value and index.
+
+The following variables are set where ``IT`` is the loop ``iterator_name`` defined
+in the for group as shown above:
+
+- ``IT`` is set to the current iteration index (1, 2, 3, …)
+
+- ``IT_VALUE`` is set to the current value
+
 
 The ``variables`` element
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -557,6 +563,15 @@ The sub-elements should be self-explanatory.
 
 Note that you can use more than one variable range, allowing you to quickly create things like 
 parameter studies.
+
+The following variables are set where ``IT`` is the loop ``iterator_name`` defined
+in the for group as shown above:
+
+- ``IT`` is set to the current iteration index (1, 2, 3, …)
+
+- ``IT_VALUE`` is set to the current value
+
+
 
 The ``file_sets`` element
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -598,14 +613,14 @@ certain directory on a storage::
 
 	]
 
-The following variables are set where ``ITERATOR_NAME`` is the loop ``iterator_name`` defined 
+The following variables are set where ``IT`` is the loop ``iterator_name`` defined
 in the for group as shown above:
 
-- ``ITERATOR_NAME`` is set to the current iteration index (1, 2, 3, …)
+- ``IT`` is set to the current iteration index (1, 2, 3, …)
 
-- ``ITERATOR_NAME_VALUE`` is set to the current full file path
+- ``IT_VALUE`` is set to the current full file path
 
-- ``ITERATOR_NAME_FILENAME`` is set to the current file name (last element of the path)
+- ``IT_FILENAME`` is set to the current file name (last element of the path)
 
 
 Indirection
@@ -646,7 +661,7 @@ A chunk is either a certain number of files, or a set of files with a certain to
   "chunksize": ... ,
   "type": "NORMAL|SIZE",
   "filename_format": "...,
-  "chunksize_formula": "expression",
+  "expression": "... formula to compute chunksize ...",
  }
 
 The ``chunksize`` element is either the number of files in a chunk, or (if type is set to ``SIZE``) 
@@ -721,7 +736,21 @@ which would result in filenames like below:
 You can also keep the original filenames by setting:
 ::
   
-   "Imports": [{ "From": "${IT_VALUE}", "To" : "${ORIGINAL_FILENAME}"}]
+   "Imports": [{ "From": "${IT_VALUE}", "To" : "${IT_ORIGINAL_FILENAME}"}]
+
+
+The following variables are set where ``IT`` is the loop ``iterator_name`` defined
+in the for group as shown above:
+
+- ``IT`` is set to the current iteration index (1, 2, 3, …)
+
+- ``IT_VALUE`` is set to the current full file path
+
+- ``IT_ORIGINAL_FILENAME_x`` is set to the current file name (last element of the path)
+
+- ``IT_ORIGINAL_FILENAMES`` is set to a ";"-separated list of all the
+  file names (last elements of the paths) in the current chunk
+
 
 .. _examples:
 

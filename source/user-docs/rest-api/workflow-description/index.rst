@@ -158,9 +158,9 @@ that is used to distinguish the different control structure types.
 
     "variables": [],
 
-    "activities": [],
+    "activities": {},
 
-    "subworkflows": [],
+    "subworkflows": {},
 
     "transitions": [],
 
@@ -430,22 +430,21 @@ A *while* loop looks like this
 
 	 "body":
 	  {
-	   "activities":[
-	    {
-		  "id": "job",
-		  "job": { ... }
+	   "activities": {
+	     "task" : {
+		    "job": { ... }
 	    },
-	    {
+	    "mod": {
 		  # this modifies the variable used in the 'while'
 		  # loop's exit condition
-		  "id": "mod", "type": "MODIFY_VARIABLE",
+		  "type": "MODIFY_VARIABLE",
 		  "variable_name": "C",
 		  "expression": "C++;",
 	    }
-	   ],
+	   },
 
 	   "transitions: [
-		 {"from": "job", "to": "mod"}
+		 {"from": "task", "to": "mod"}
 	   ]
 	  },
 	  
@@ -773,10 +772,9 @@ The first task, *step1*, registers its ``stdout`` with the file catalog under th
 ::
 
 	{
-	  "activities": [
+	  "activities": {
 
-	    {
-	      "id": "step1",
+	    "step1": {
 	      "job": {
 	        "ApplicationName": "Date",
 	        "Exports": [
@@ -785,8 +783,7 @@ The first task, *step1*, registers its ``stdout`` with the file catalog under th
 	      }
 	    },
 
-	    {
-	      "id": "step2",
+	    "step2": {
 	      "job": { 
 	        "Executable": "md5sum", 
 	        "Arguments": ["infile" ],
@@ -796,7 +793,7 @@ The first task, *step1*, registers its ``stdout`` with the file catalog under th
 	      }
 	    }
 	  
-	  ],
+	  },
 	  
 	  "transitions": [
 	    {"from": "step1", "to": "step2" }
@@ -813,29 +810,25 @@ or less) simultaneously.
 ::
 
 	{
-	 "activities": [
+	 "activities": {
 
-	   {
-	    "id": "date1",
-	    "job": { "ApplicationName": "Date" }
+	   "date1": {
+	      "job": { "ApplicationName": "Date" }
 	   },
 
-	   {
-	    "id": "date2a",
-	    "job": { "ApplicationName": "Date" }
+	   "date2a": {
+	      "job": { "ApplicationName": "Date" }
 	   },
 
-	   {
-	    "id": "date2b",
-	    "job": { "ApplicationName": "Date" }
+	   "date2b": {
+	      "job": { "ApplicationName": "Date" }
 	   },
 
-	   {
-	    "id": "date3",
-	    "job": { "ApplicationName": "Date" }
+	   "date3": {
+	      "job": { "ApplicationName": "Date" }
 	   }
 
-	 ],
+	 },
 
 	 "transitions": [
 	   {"from": "date1", "to": "date2a" },
@@ -853,21 +846,19 @@ constructs. Here is a simple example::
 
 	{
 
-	  "activities": [
+	  "activities": {
 
-	    {"id": "branch", "type": "BRANCH" },
+	    "branch": { "type": "BRANCH" },
 
-	    {
-	     "id": "if-job",
-	     "job": { "ApplicationName": "Date" }
+	    "if-job": {
+	       "job": { "ApplicationName": "Date" }
 	    },
 
-	    {
-	     "id": "else-job",
-	     "job": { "ApplicationName": "Date" }
+	    "else-job": {
+	       "job": { "ApplicationName": "Date" }
 	    }
 
-	  ],
+	  },
 
 	  "transitions": [
 	    {"from": "branch", "to": "if-job", "condition": "2+2==4"},
@@ -891,12 +882,13 @@ staging sections, for example to name files.
 
 	{
 
-	  "activities":[],
+	  "activities":{},
 
-	  "subworkflows": [
+	  "subworkflows": {
 
-	   {
-		"id": "while-example", "type": "WHILE",
+	   "while-example": {
+
+		"type": "WHILE",
 
 		"variables": [
 		 {
@@ -910,10 +902,9 @@ staging sections, for example to name files.
 
 		"body": {
 
-		   "activities": [
+		   "activities": {
 
-		    {
-			 "id": "job",
+		   "job": {
 			 "job": {
 				"Executable": "echo",
 				"Arguments": ["$TEST"],
@@ -924,22 +915,22 @@ staging sections, for example to name files.
 			  }
 		    },
 
-		    {
-			 "id": "mod", "type": "MODIFY_VARIABLE",
-			 "variable_name": "C",
-			 "expression": "C++"
+		    "mod": {
+			   "type": "MODIFY_VARIABLE",
+			   "variable_name": "C",
+			   "expression": "C++"
 		    }
 
-		   ],
+		   },
 
 		   "transitions": [
-			{"from": "job", "to": "mod" }
+			  {"from": "job", "to": "mod" }
 		   ]
 		}
 
 	   }
 	  
-	  ]
+	  }
 	
 	}
 
@@ -953,17 +944,17 @@ stage-in the current file. Also, the name of the current file is placed into the
 
 	{
 	
-	  "subworkflows": [
+	  "subworkflows": {
 	  
-	   {
-		"id": "for-example", "type": "FOR_EACH",
-		"iterator_name": "IT",
+	   "for-example": {
+		  "type": "FOR_EACH",
+		  "iterator_name": "IT",
 		
 		"body":
 		  {
-			"activities": [
+			"activities": {
 			
-			  {
+			  "job": {
 				"id": "job",
 				"job": {
 				 "Executable": "echo",
@@ -978,7 +969,7 @@ stage-in the current file. Also, the name of the current file is placed into the
 				}
 			  }
 			  
-			],
+			},
 			
 		  },
 		  
@@ -991,6 +982,6 @@ stage-in the current file. Also, the name of the current file is placed into the
 		
 	   }
 	   
-	  ]
+	  }
 	
 	}

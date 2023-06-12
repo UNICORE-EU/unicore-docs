@@ -347,7 +347,20 @@ To pass username and password to the server, the syntax is as follows:
 
 and similarly for exports.
 
-You may also directly specify an OAuth Bearer token for HTTPS data transfers.
+You caan specify Token value for HTTPS data transfers, which will go into
+an HTTP "Authorization: Token ..." header
+
+.. code:: json
+
+     { 
+       "From": "https://someserver/some/file", 
+       "To": "input_data",
+       "Credentials": { "Token": "some_token" },
+     }
+
+
+You may also specify an OAuth Bearer token for HTTPS data transfers,
+which will go into an HTTP "Authorization: Bearer ..." header
 
 .. code:: json
 
@@ -357,8 +370,8 @@ You may also directly specify an OAuth Bearer token for HTTPS data transfers.
        "Credentials": { "BearerToken": "some_token" },
      }
 
-You can leave the token value empty, set to "", if the server already has your token by some 
-other means.
+You can leave the token value empty, set to "", if the server already has a valid Bearer token by some 
+other means (e.g. from the incoming job submission call).
 
 Redirecting standard input
 ~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -18,8 +18,12 @@ for a wide variety of applications in intranets and the internet.
    UNICORE Architecture
 
 
-UNICORE Features
-----------------
+|features-img| UNICORE Features
+-------------------------------
+
+.. |features-img| image:: ./_static/options-list.png
+	:height: 32px
+	:align: middle
 
 UNICORE provides a comprehensive set of :ref:`RESTful APIs <rest-api>` for HPC access and workflows,
 dealing with user authentication, user account mapping and authorization in a highly flexible way.

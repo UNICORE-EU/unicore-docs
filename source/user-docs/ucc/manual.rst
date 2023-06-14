@@ -7,12 +7,8 @@
 	:height: 32px
 	:align: middle
 
-|overview-img| Overview
------------------------
-
-.. |overview-img| image:: ../../_static/overview.png
-	:height: 32px
-	:align: middle
+Overview
+--------
 
 The **U**\ NICORE **C**\ ommandline **C**\ lient (UCC) is a full-featured client for the 
 UNICORE middleware. UCC has client commands for all the UNICORE basic 

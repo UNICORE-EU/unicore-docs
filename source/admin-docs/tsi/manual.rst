@@ -26,8 +26,12 @@ system. This is described in section :ref:`tsi_localization`.
   the system.
 
 
-Prerequisites
--------------
+|checklist-img| Prerequisites
+-----------------------------
+
+.. |checklist-img| image:: ../../_static/checklist.png
+	:height: 32px
+	:align: middle
 
 The TSI requires Python Version 3.6 or later. It works only on
 Unix-style operating systems (e.g. Linux or Mac OS/X), Windows is not
@@ -55,8 +59,12 @@ enable PAM, which requires an appropriate PAM module file, by
 default this is called ``unicore-tsi``.
 
 
-Installation
-------------
+|install-img| Installation
+--------------------------
+
+.. |install-img| image:: ../../_static/installer.png
+	:height: 32px
+	:align: middle
 
 The TSI is available either as a generic distribution (part of the
 `UNICORE core server 
@@ -130,15 +138,19 @@ TSI. This has the following sub-directories:
 .. _tsi_permissions:
 
 File permissions
-----------------
+~~~~~~~~~~~~~~~~
 
-The permissions on the TSI files should be set to read only for the
-owner. The default installation procedure will initially take care of
+The permissions on the TSI files should be set to **read only for the
+owner**. The default installation procedure will initially take care of
 this. As the TSI is executed with elevated privileges, you should
 never leave any TSI files (or directories) writable after any update.
 
-Configuring the TSI
--------------------
+|config-img| Configuring the TSI
+--------------------------------
+
+.. |config-img| image:: ../../_static/configuration.png
+	:height: 32px
+	:align: middle
 
 The TSI is configured by editing the :file:`{CONF}/tsi.properties` and 
 :file:`{CONF}/startup.properties` files. Please review these two files 
@@ -386,8 +398,12 @@ the ``xnjs.properties`` file)::
 
 .. _tsi_localization:
 
-Adapting the TSI to your system
--------------------------------
+|settings-img| Adapting the TSI to your system
+----------------------------------------------
+
+.. |settings-img| image:: ../../_static/settings.png
+	:height: 32px
+	:align: middle
 
 Environment and paths
 ~~~~~~~~~~~~~~~~~~~~~
@@ -482,8 +498,13 @@ responsible for interacting with the reservation system of your batch system.
  Note that this feature is not available for all batch systems. Currently, it is 
  included in Torque and SLURM.
 
-Execution model
----------------
+
+|connections-img| Execution model
+---------------------------------
+
+.. |connections-img| image:: ../../_static/connections.png
+	:height: 32px
+	:align: middle
 
 The main TSI process will respond to UNICORE/X requests and start
 up TSI workers to do the work for the UNICORE/X server.
@@ -513,8 +534,15 @@ If a TSI worker stops execution, UNICORE/X will request a new one to replace it.
 If the main TSI process stops execution, then all TSI processes will also be killed.
 The TSI must then be restarted, this does not happen automatically.
 
-PAM, systemd and user slices
-----------------------------
+
+|authentication-img| PAM, systemd and user slices
+-------------------------------------------------
+
+.. |authentication-img| image:: ../../_static/authentication.png
+	:height: 32px
+	:align: middle
+
+
 By default, user tasks (such as user scripts on the TSI node) will run in the same
 slice as the TSI itself.
 
@@ -539,8 +567,12 @@ For example, this could contain:
   session     required      pam_systemd.so
 
 
-Directories used by the TSI
----------------------------
+|folders-img| Directories used by the TSI
+-----------------------------------------
+
+.. |folders-img| image:: ../../_static/folders.png
+	:height: 32px
+	:align: middle
 
 The TSI must have access to the *filespace* directory specified in the
 UNICORE/X configuration (usually the property ``XNJS.filespace`` in
@@ -550,8 +582,12 @@ being performed. If you use a shared directory for all users,
 this directory must be world writable. The required Unix access mode is ``1777``.
 
 
-Running the TSI
----------------
+|start-img| Running the TSI
+---------------------------
+
+.. |start-img| image:: ../../_static/start.png
+	:height: 32px
+	:align: middle
 
 For the Linux packages, the TSI is pre-configured for systemd, and
 if you want to run it as a a system service, you can use ``systemctl``:
@@ -627,8 +663,13 @@ For more verbose logging, set
 
 in :file:`{CONF}/tsi.properties`.
 
-Porting the TSI to other batch systems
---------------------------------------
+
+|integration-img| Porting the TSI to other batch systems
+--------------------------------------------------------
+
+.. |integration-img| image:: ../../_static/integration.png
+	:height: 32px
+	:align: middle
 
 Most variations are found in the batch subsystem commands, porting
 to a new BSS usually requires changes to the following files:
@@ -646,8 +687,12 @@ to a new batch system, please use the `unicore-support
 
 .. _tsi_security:
 
-Securing and hardening the system
----------------------------------
+|security-img| Securing and hardening the system
+------------------------------------------------
+
+.. |security-img| image:: ../../_static/security.png
+	:height: 32px
+	:align: middle
 
 In a normal multi-user production setting, the TSI runs with elevated
 privileges, and thus it is critical to prevent illicit access to the

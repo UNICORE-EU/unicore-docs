@@ -31,7 +31,7 @@ dealing with user authentication, user account mapping and authorization in a hi
 Services and APIs
 ~~~~~~~~~~~~~~~~~
 
-- Batch jobs with pre- and postprocessing
+- Batch jobs with pre- and post-processing
 - Support for common resource managers such as SLURM or LSF
 - File system access and file transfer
 - Site-to-site file transfer
@@ -57,7 +57,7 @@ Clients
 - Dedicated `client for UFTP
   <https://uftp-docs.readthedocs.io/en/latest/user-docs/uftp-client/>`_ 
   high performance file transfer and data management features
-- `pyUNICORE <https://github.com/HumanBrainProject/pyunicore/>`_ Python client library
+- `pyUNICORE <https://pyunicore.readthedocs.io/>`_ Python client library
 
 Add-ons
 ~~~~~~~

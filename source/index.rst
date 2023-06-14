@@ -26,6 +26,8 @@ in intranets and the internet.
 
 	overview
 
+	gettingstarted
+
 
 .. include:: user-docs/index.rest
 

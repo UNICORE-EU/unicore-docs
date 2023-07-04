@@ -1,8 +1,12 @@
 .. _unicore-gettingstarted:
 
+|start-img| Getting started
+***************************
 
-Getting started
-***************
+.. |start-img| image:: _static/start.png
+	:height: 32px
+	:align: middle
+
 
 Using UNICORE
 -------------

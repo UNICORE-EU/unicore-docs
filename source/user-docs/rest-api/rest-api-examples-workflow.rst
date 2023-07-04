@@ -1,7 +1,11 @@
 .. _rest-api-examples-workflow:
 
-Workflow submission and management
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|workflow-img| Workflow submission and management
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. |workflow-img| image:: ../../_static/workflow.png
+	:height: 32px
+	:align: middle
 
 .. code:: python
 

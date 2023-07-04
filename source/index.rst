@@ -4,8 +4,10 @@
 Welcome to UNICORE Documentation
 ================================
 
-`UNICORE <https://www.unicore.eu>`_ (**UN**\ iform **I**\ nterface to **CO**\ mputing 
-**RE**\ sources) offers a ready-to-run system including client and server software. 
+.. role:: blue
+
+`UNICORE <https://www.unicore.eu>`_ (:blue:`UN`\ iform :blue:`I`\ nterface to :blue:`CO`\ mputing 
+:blue:`RE`\ sources) offers a ready-to-run system including client and server software. 
 It makes distributed computing and data resources available in a seamless and secure way 
 in intranets and the internet. 
 
@@ -17,22 +19,21 @@ in intranets and the internet.
    Federating HPC with UNICORE
    
 
-* :ref:`unicore-overview` gives an overview of the UNICORE features and the UNICORE architecture. 
-  
+* :ref:`unicore-overview` gives an overview of the UNICORE features and the UNICORE architecture
+* :ref:`unicore-gettingstarted` shows how to get going quickly 
+
 .. toctree::
 	:maxdepth: 5
 	:caption: UNICORE Documentation
 	:hidden:
-
+	
 	overview
-
 	gettingstarted
 
 	howto-singlecluster
 
 
 .. include:: user-docs/index.rest
-
 .. include:: admin-docs/index.rest
 
 
@@ -56,17 +57,10 @@ UNICORE software is available as Open Source under the :ref:`BSD License <licens
 while the software repository is hosted on `SourceForge <https://sourceforge.net/projects/unicore/>`_
 and the source code is available on `GitHub <https://github.com/UNICORE-EU>`_. 
 
-
 .. toctree::
 	:caption: LICENSE
 	:hidden:
 	
 	license
 
-
-Indices and tables
-******************
-
-* :ref:`genindex`
-* :ref:`search`
 

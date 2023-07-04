@@ -1,7 +1,11 @@
 .. _rest-api-examples-storage:
 
-Storages and data management
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|data-img| Storages and data management
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. |data-img| image:: ../../_static/data-management.png
+	:height: 32px
+	:align: middle
 
 .. code:: python
 

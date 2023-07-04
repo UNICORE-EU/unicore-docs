@@ -1,6 +1,6 @@
 .tight-table td {
    white-space: normal!important;
-   word-break: break-word;
+   word-break: break-all;
    word-wrap: break-word;
 }
 
@@ -10,7 +10,7 @@
 
 .noborder-tight-table td, th {
    white-space: normal !important;
-   word-break: break-word;
+   word-break: break-all;
    word-wrap: break-word;
    border: none!important;
 }

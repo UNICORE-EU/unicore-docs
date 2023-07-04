@@ -1,8 +1,12 @@
 .. _unicore-overview:
 
 
-Overview
-********
+|overview-img| Overview
+***********************
+
+.. |overview-img| image:: _static/overview.png
+	:height: 32px
+	:align: middle
 
 .. role:: blue
 

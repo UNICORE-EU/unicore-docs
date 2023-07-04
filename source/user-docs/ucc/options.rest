@@ -176,7 +176,7 @@ To configure oidc-agent, UCC supports the following properties:
 
 .. csv-table:: Options for oidc-agent
   :file: tables/oidc-agent-properties.csv
-  :widths: 20, 20, 20, 40
+  :widths: 20, 20, 25, 35
   :header-rows: 1
   :class: tight-table
 
@@ -196,7 +196,7 @@ ID and secret.
 
 .. csv-table:: Options for oidc-server
   :file: tables/oidc-server-properties.csv
-  :widths: 20, 20, 20, 40
+  :widths: 20, 20, 25, 35
   :header-rows: 1
   :class: tight-table
 

@@ -317,7 +317,7 @@ To check that the authentication and user mapping works as intended, you can run
 
 .. code:: console
 
-  export BASE=https://localhost:8080/TEST/rest/core
+  export BASE=https://unicore-host:8080/TEST/rest/core
 
   curl -k -u demouser:test123 -H "Accept: application/json" $BASE?fields=client | python3 -m json.tool
 
@@ -352,7 +352,7 @@ To check the available batch queues,
 
 .. code:: console
 
-  export BASE=https://localhost:8080/TEST/rest/core
+  export BASE=https://unicore-host:8080/TEST/rest/core
 
   curl -k -H "Accept: application/json" $BASE/factories/default_target_system_factory?fields=resources | python3 -m json.tool
 
@@ -388,7 +388,7 @@ and submit it using
 
 .. code:: console
 
-  export BASE=https://localhost:8080/TEST/rest/core
+  export BASE=https://unicore-host:8080/TEST/rest/core
 
   curl -k -i -u demouser:test123 -H "Content-Type: application/json" --data-ascii @test1.json  $BASE/jobs
 
@@ -402,7 +402,7 @@ which should result in something like this
   Content-Type: application/json;charset=utf-8
   X-UNICORE-SecuritySession: 192ae773-650b-45bf-93fb-5552739f5460
   X-UNICORE-SecuritySession-Lifetime: 28799354
-  Location: https://localhost:8080/TEST/rest/core/jobs/78b1a586-3f66-4f5b-bb8d-7fe1d8fe7b87
+  Location: https://unicore-host:8080/TEST/rest/core/jobs/78b1a586-3f66-4f5b-bb8d-7fe1d8fe7b87
   Transfer-Encoding: chunked
 
 Check the UNICORE/X logs in case of errors. To check whether the job runs properly, check the logs.
@@ -411,9 +411,9 @@ You can also access the job via the REST API, the URL to use is given in the "Lo
 
 .. code:: console
 
-  export JOB=https://localhost:8080/TEST/rest/core/jobs/78b1a586-3f66-4f5b-bb8d-7fe1d8fe7b87
+  export JOB=https://unicore-host:8080/TEST/rest/core/jobs/78b1a586-3f66-4f5b-bb8d-7fe1d8fe7b87
 
-  curl -k -i -u demouser:test123 -H "Accept: application/json" $JOB | python3 -m json.tool
+  curl -k -u demouser:test123 -H "Accept: application/json" $JOB | python3 -m json.tool
 
 
 Further testing

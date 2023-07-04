@@ -8,7 +8,7 @@ Overview
 --------
 
 This How-To covers in detail the steps required to install a minimal set
-of UNICORE services for a single HPC cluster.
+of UNICORE services for a single HPC cluster that is running Slurm.
 
 The following steps will be described:
 
@@ -26,7 +26,6 @@ The following steps will be described:
    :align: center
    
    Example deployment for a single cluster
-
 
 
 Prerequisites 
@@ -104,7 +103,7 @@ Installing the UNICORE Gateway and UNICORE/X
 --------------------------------------------
 
 The two Java-based server components will be installed on the host named ``unicore-host``.
-We assume the Java 11 or later (JRE or headless version) is installed.
+We assume that Java 11 or later is installed.
 
 Check that 
 

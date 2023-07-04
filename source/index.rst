@@ -20,7 +20,7 @@ in intranets and the internet.
    
 
 * :ref:`unicore-overview` gives an overview of the UNICORE features and the UNICORE architecture
-* :ref:`unicore-gettingstarted`  shows how to get going quickly 
+* :ref:`unicore-gettingstarted` shows how to get going quickly 
 
 .. toctree::
 	:maxdepth: 5

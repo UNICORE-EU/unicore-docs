@@ -1,7 +1,11 @@
 .. _rest-api-examples-job:
 
-Job submission and management
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|job-desc-img| Job submission and management
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. |job-desc-img| image:: ../../_static/job-desc.png
+	:height: 32px
+	:align: middle
 
 .. code:: python
 

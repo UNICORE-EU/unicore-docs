@@ -35,7 +35,7 @@ In the following, we will abbreviate this URL as ``BASE`` Authentication.
 
 You need a user account on the :ref:`UNICORE/X <unicorex>` container, which is typically configured to 
 use a password (or using an OAuth2 bearer token). The supported `authentication methods 
-<../../admin-docs/unicorex/manual.html#authentication>`_ depend on the UNICORE server.
+<../../admin-docs/unicorex/manual.html#auth-img-authentication>`_ depend on the UNICORE server.
 
 For example, when username/password are enabled you can use ``curl`` to access the base URL above:
 

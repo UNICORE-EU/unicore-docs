@@ -542,16 +542,65 @@ This would extract metadata from the files in the *some_directory* directory.
 The POSTed JSON can be empty ``{}``, or it may contain extra parameters controlling the extraction 
 process. Currently only a single parameter is supported, which controls the recursion depth for 
 the extraction process, e.g.
-::
+
+.. code:: json
 
 	{
-	  depth: "2",
+	  "depth": "2"
 	}
 
 API Summary
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 .. include:: tables/storages-files-api.rest
+
+
+Storage factories
+~~~~~~~~~~~~~~~~~
+
+Synopsis
+^^^^^^^^
+
+Storage factory endpoints allow the user to create Storage instances. Depending on the
+UNICORE server configuration there may be several types of Storages available, which may
+accept parameters to configure them.
+
+The ``storagefactories`` resource is used to access the storage factory services available
+to the user, which then can be used to create new Storage endpoints.
+
+These Storage endpoints are typically used as temporary resources, since they will eventually
+get cleaned up automatically by the server.
+
+Creating storages
+^^^^^^^^^^^^^^^^^
+To create a Storage, you would POST to the appropriate endpoint:
+
+.. code:: console
+
+ $ curl -X POST BASE/storages/default_storage_factory --data-binary @params.json -H "Content-Type: application/json"
+
+
+The POSTed JSON can be empty ``{}``, which will create a Storage pointing to some pre-configured directory
+on the HPC file system.
+
+It may contain extra parameters controlling the type of storage that is created, and also extra parameters
+depending on the type. You can get more information about the possible types and parameters by
+inspecting the properties of the ``storagefactories`` endpoint, and the properties of the
+actual factories that are configured.
+
+For example, the ``storagefactories/default_storage_factory`` endpoint supports a 'path' parameter, which controls
+the path the new Storage should access.
+
+.. code:: json
+
+	{
+	  "path": "/opt/data/"
+	}
+
+API Summary
+^^^^^^^^^^^
+
+.. include:: tables/storage-factories-api.rest
 
 
 Jobs

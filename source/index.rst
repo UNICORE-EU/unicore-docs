@@ -30,6 +30,8 @@ in intranets and the internet.
 	overview
 	gettingstarted
 
+	howto-singlecluster
+
 
 .. include:: user-docs/index.rest
 .. include:: admin-docs/index.rest

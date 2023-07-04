@@ -10,7 +10,7 @@ Using UNICORE
 If you are an end-user or application developer who wishes to use
 an existing UNICORE installation, have a look at the user documentation
 for the :ref:`UNICORE Commandline Client <ucc>`, the 
-`pyUNICORE <https://pyunicore.readthedocs.io/>`_ client library
+`PyUNICORE <https://pyunicore.readthedocs.io/>`_ client library
 or the API documentation.
 
 Evaluating UNICORE

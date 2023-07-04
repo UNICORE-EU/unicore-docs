@@ -28,6 +28,8 @@ in intranets and the internet.
 
 	gettingstarted
 
+	howto-singlecluster
+
 
 .. include:: user-docs/index.rest
 

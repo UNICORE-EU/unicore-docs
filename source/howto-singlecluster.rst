@@ -14,12 +14,13 @@ The following steps will be described:
 
  - setup the Slurm TSI on a HPC login node
  - deploy UNICORE Gateway and UNICORE/X on one VM or physical server
- - create a self-signed certificate for Gateway and UNICORE/X
  - connect UNICORE/X and TSI
  - add test user(s)
  - make a Slurm queue accessible via UNICORE
  - test the installation via 'curl'
-
+ - replace the "demo" certificate by a more secure self-signed
+   certificate for Gateway and UNICORE/X
+ 
 .. figure:: _static/example-single-cluster.png
    :width: 600
    :alt: Example deployment of UNICORE for a single cluster
@@ -428,8 +429,8 @@ Up to now, the so-called "demo certificates" that come with the download have be
 While this is OK for testing and setup, it is VERY BAD to expose such a server to the outside world,
 since anyone who knows what they are doing can easily get access to your installation.
 
-Ideally you will get an SSL certificate for your machine and use that. It's however beyond the scope of this
-how-to to give a full introduction to SSL certificates.
+Ideally you will get an SSL certificate from a CA (Certification Authority) for your machine and
+use that. It's however beyond the scope of this how-to to give a full introduction to SSL certificates.
 
 As an improvement over the demo certificates, we will create a so-called self-signed
 certificate and use that, which is secure enough to expose the system to outside users, but is usually
@@ -439,16 +440,45 @@ UNICORE installation into a bigger setup or federation.
 Generating the self-signed certificate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TBD
+The following uses OpenSSL to create a self-signed certificate
+
+.. code:: console
+
+  cd /opt/unicore/certs
+
+  openssl req -x509 -newkey rsa:4096 -sha256 -nodes -days 3650 \
+      -keyout server-key.pem   \
+      -out server-cert.pem     \
+      -subj "/C=EU/O=Test/CN=unicore-host"
+
+  chown unicore:unicore server-*.pem
+  
+  cat server-cert.pem >> server-key.pem
+
+
+The file `server-key.pem` is now suitable as server credential, and the `server-cert.pem` 
+will be used as the server truststore. We will use the same key and cert for
+both UNICORE/X and Gateway.
+
 
 Gateway config
 ~~~~~~~~~~~~~~
 
-TBD
+We configure our new credential and trusted certificate in the 
+file `/opt/unicore/gateway/conf/gateway.properties` :
+
+.. code:: console
+
+  cd /opt/unicore/gateway/conf
+
+  sed -i "s%credential.path=.*%credential.path=/opt/unicore/certs/server-key.pem%" gateway.properties
+  sed -i "s%credential.password=.*%credential.password=%" gateway.properties
+
+  sed -i "s%directoryLocations.1=.*%directoryLocations.1=/opt/unicore/certs/server-cert.pem%" gateway.properties 
 
 Restart via:
 
-.. code::console
+.. code:: console
 
   cd /opt/unicore/gateway
   bin/stop.sh
@@ -459,11 +489,23 @@ Check the logs for any errors!
 UNICORE/X config
 ~~~~~~~~~~~~~~~~
 
-TBD
+We configure our new credential and trusted certificate in the 
+file `/opt/unicore/unicorex/conf/container.properties` :
+
+.. code:: console
+
+  cd /opt/unicore/unicorex/conf
+
+  sed -i "s%credential.path=.*%credential.path=/opt/unicore/certs/server-key.pem%" container.properties
+  sed -i "s%credential.password=.*%credential.password=%" container.properties
+
+  sed -i "s%directoryLocations.1=.*%directoryLocations.1=/opt/unicore/certs/server-cert.pem%" container.properties 
+
+
 
 Restart via:
 
-.. code::console
+.. code:: console
 
   cd /opt/unicore/unicorex
   bin/stop.sh

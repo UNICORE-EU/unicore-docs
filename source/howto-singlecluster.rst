@@ -1,8 +1,12 @@
 .. _unicore-howto-singlecluster:
 
 
-How to setup UNICORE for a single HPC cluster
-*********************************************
+|user-guide| How to setup UNICORE for a single HPC cluster
+**********************************************************
+
+.. |user-guide| image:: _static/user-guide.png
+	:height: 32px
+	:align: middle
 
 Overview
 --------
@@ -17,8 +21,8 @@ The following steps will be described:
  - connect UNICORE/X and TSI
  - add test user(s)
  - make a Slurm queue accessible via UNICORE
- - test the installation via 'curl'
- - replace the "demo" certificate by a more secure self-signed
+ - test the installation via ``curl``
+ - replace the *demo* certificate by a more secure self-signed
    certificate for Gateway and UNICORE/X
  
 .. figure:: _static/example-single-cluster.png
@@ -29,21 +33,30 @@ The following steps will be described:
    Example deployment for a single cluster
 
 
-Prerequisites 
--------------
 
- - a server or VM with Java 11 or later and Python3 installed
+|checklist-img| Prerequisites
+-----------------------------
 
- - port 8080 on this server must be accessible from the Internet if you want to
-   let external users access your cluster.
+.. |checklist-img| image:: _static/checklist.png
+	:height: 32px
+	:align: middle
+
+- a server or VM with Java 11 or later and Python3 installed
+
+- port ``8080`` on this server must be accessible from the Internet if you want to
+  let external users access your cluster.
 
 In the following, we will refer to this machine as ``unicore-host``. Adapt the following code
 examples according to your actual machine name.
 
 
 
-Installing the TSI
-------------------
+|installer-img| Installing the TSI
+----------------------------------
+
+.. |installer-img| image:: _static/installer.png
+	:height: 32px
+	:align: middle
 
 The TSI is a server daemon written in Python and is installed on (one or more)
 HPC login nodes.
@@ -53,9 +66,9 @@ The HPC login node will be named ``hpc-login`` in the following.
 Preparations
 ~~~~~~~~~~~~
 
- - SSH as "root" into the login node:
+ - SSH as ``root`` into the login node:
 
- - Add a "unicore" user and a directory for the UNICORE TSI:
+ - Add a ``unicore`` user and a directory for the UNICORE TSI:
 
 .. code:: console
 
@@ -100,8 +113,8 @@ You can start the TSI now and see if there are any errors in the log file:
   cat /opt/unicore/tsi/logs/TSILog_*
 
 
-Installing the UNICORE Gateway and UNICORE/X
---------------------------------------------
+|installer-img| Installing the UNICORE Gateway and UNICORE/X
+------------------------------------------------------------
 
 The two Java-based server components will be installed on the host named ``unicore-host``.
 We assume that Java 11 or later is installed.
@@ -117,7 +130,7 @@ works and shows the correct version.
 
 After this step, the UNICORE installation will be accessible at
 
-`` https://unicore-host:8080/TEST/rest/core ``
+``https://unicore-host:8080/TEST/rest/core``.
 
 
 Preparations
@@ -155,7 +168,7 @@ We will install the Gateway to ``/opt/unicore/gateway`` and UNICORE/X to
 ``/opt/unicore/unicorex`` using the `configure.py` and `install.py` scripts.
 
 Here we can already set the TSI host (``hpc-login``) and configure the Gateway to
-listen on all addresses and route requests to UNICORE/X under the "TEST" alias.
+listen on all addresses and route requests to UNICORE/X under the *TEST* alias.
 
 We also tell UNICORE/X what the public hostname of the UNICORE installation
 will be (``unicore-host``) and where the job directories should be created
@@ -217,23 +230,28 @@ The Gateway should now be accessible. A simple test using ``curl`` would be:
 (which will return some HTML)
 
 
-UNICORE/X configuration
------------------------
+|config-img| UNICORE/X configuration
+------------------------------------
 
-The UNICORE/X files are now in ``/opt/unicore/unicorex``
+.. |config-img| image:: _static/configuration.png
+	:height: 32px
+	:align: middle
+
+The UNICORE/X files are now in ``/opt/unicore/unicorex``.
 
 UNICORE/X is the central component in a UNICORE installation, and consequently has quite a
 few configuration options.
 
-Here we focus on a very basic setup, and refer to the full manual for more information.
+Here we focus on a very basic setup, and refer to the :ref:`full manual <unicorex-manual>` 
+for more information.
 
 
 Connecting UNICORE/X and TSI
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This part is configured in the file ``/opt/unicore/unicorex/conf/tsi.config``
+This part is configured in the file ``/opt/unicore/unicorex/conf/tsi.config``.
 
-UNICORE/X and TSI communicate via TCP. There are two connections
+UNICORE/X and TSI communicate via TCP. There are two connections:
 
 1. From the UNICORE/X host to the TSI (HPC login node) on port ``4433``
 2. From the HPC login node to the UNICORE/X host on port ``7654``
@@ -278,7 +296,7 @@ are configured in a file
 
 ``/opt/unicore/unicorex/conf/rest-users.txt``
 
-A default user "demouser" with password "test123" is pre-configured, you can add others.
+A default user *demouser* with password *test123* is pre-configured, you can add others.
 
 Many other options for authentication exist, and we can only refer to the :ref:`Authentication section <use_auth>`
 in the UNICORE/X manual.
@@ -307,8 +325,12 @@ A partition named ``batch`` is already in there, make sure to have a look and ad
 For more information, we refer to the :ref:`IDB syntax section <ux_idb_syntax>`
 in the UNICORE/X manual.
 
-Testing
--------
+|testing-img| Testing
+---------------------
+
+.. |testing-img| image:: _static/testing.png
+	:height: 32px
+	:align: middle
 
 Authentication and user mapping
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -376,7 +398,7 @@ which will look similar to this
 Test job
 ~~~~~~~~
 
-Create a file "test1.json" with the following content
+Create a file *test1.json* with the following content
 
 .. code:: json
 
@@ -406,7 +428,7 @@ which should result in something like this
   Transfer-Encoding: chunked
 
 Check the UNICORE/X logs in case of errors. To check whether the job runs properly, check the logs.
-You can also access the job via the REST API, the URL to use is given in the "Location" field above
+You can also access the job via the REST API, the URL to use is given in the ``Location`` field above
 
 
 .. code:: console
@@ -422,18 +444,22 @@ Further testing
 We recommend downloading the :ref:`UNICORE commandline client<ucc>`, or using
 `PyUNICORE <https://pyunicore.readthedocs.io/>`_ for further tests.
 
-Server certificate
-------------------
+|certificate-img| Server certificate
+------------------------------------
 
-Up to now, the so-called "demo certificates" that come with the download have been used.
+.. |certificate-img| image:: _static/certificate.png
+	:height: 32px
+	:align: middle
+
+Up to now, the so-called *demo certificates* that come with the download have been used.
 While this is OK for testing and setup, it is VERY BAD to expose such a server to the outside world,
 since anyone who knows what they are doing can easily get access to your installation.
 
-Ideally you will get an SSL certificate from a CA (Certification Authority) for your machine and
+Ideally you will get an SSL certificate from a **CA** (**C**\ ertification **A**\ uthority) for your machine and
 use that. It's however beyond the scope of this how-to to give a full introduction to SSL certificates.
 
-As an improvement over the demo certificates, we will create a so-called self-signed
-certificate and use that, which is secure enough to expose the system to outside users, but is usually
+As an improvement over the demo certificates, we will create a so-called *self-signed
+certificate* and use that, which is secure enough to expose the system to outside users, but is usually
 not good enough when integrating UNICORE access with external applications, or integrating your
 UNICORE installation into a bigger setup or federation.
 
@@ -465,7 +491,7 @@ Gateway config
 ~~~~~~~~~~~~~~
 
 We configure our new credential and trusted certificate in the 
-file `/opt/unicore/gateway/conf/gateway.properties` :
+file `/opt/unicore/gateway/conf/gateway.properties`:
 
 .. code:: console
 
@@ -490,7 +516,7 @@ UNICORE/X config
 ~~~~~~~~~~~~~~~~
 
 We configure our new credential and trusted certificate in the 
-file `/opt/unicore/unicorex/conf/container.properties` :
+file `/opt/unicore/unicorex/conf/container.properties`:
 
 .. code:: console
 
@@ -514,7 +540,11 @@ Restart via:
 Check the logs for any errors!
 
 
-Getting support
----------------
+|support-img| Getting support
+-----------------------------
+
+.. |support-img| image:: _static/support.png
+	:height: 32px
+	:align: middle
 
 You can always :ref:`contact us<support>` for advice in your specific situation.

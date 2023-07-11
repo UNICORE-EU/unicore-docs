@@ -19,10 +19,22 @@ in intranets and the internet.
    Federating HPC with UNICORE
    
 
-* :ref:`unicore-overview` gives an overview of the UNICORE features and the UNICORE architecture
-* :ref:`unicore-gettingstarted` shows how to get going quickly
-* :ref:`unicore-howto-singlecluster` covers the steps required to install a minimal set of UNICORE services 
+* |overview-img| :ref:`unicore-overview` gives an overview of the UNICORE features and the UNICORE architecture
+* |start-img| :ref:`unicore-gettingstarted` shows how to get going quickly
+* |user-guide-img| :ref:`unicore-howto-singlecluster` covers the steps required to install a minimal set of UNICORE services 
   for a single HPC cluster that is running Slurm
+
+.. |overview-img| image:: _static/overview.png
+	:height: 32px
+	:align: middle
+
+.. |start-img| image:: _static/start.png
+	:height: 32px
+	:align: middle
+
+.. |user-guide-img| image:: _static/user-guide.png
+	:height: 32px
+	:align: middle
 
 .. toctree::
 	:maxdepth: 5

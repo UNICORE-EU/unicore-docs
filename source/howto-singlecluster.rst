@@ -8,8 +8,12 @@
 	:height: 32px
 	:align: middle
 
-Overview
---------
+|overview-img| Overview
+-----------------------
+
+.. |overview-img| image:: _static/overview.png
+	:height: 32px
+	:align: middle
 
 This How-To covers in detail the steps required to install a minimal set
 of UNICORE services for a single HPC cluster that is running Slurm.

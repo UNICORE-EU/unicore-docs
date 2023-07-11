@@ -20,7 +20,9 @@ in intranets and the internet.
    
 
 * :ref:`unicore-overview` gives an overview of the UNICORE features and the UNICORE architecture
-* :ref:`unicore-gettingstarted` shows how to get going quickly 
+* :ref:`unicore-gettingstarted` shows how to get going quickly
+* :ref:`unicore-howto-singlecluster` covers the steps required to install a minimal set of UNICORE services 
+  for a single HPC cluster that is running Slurm
 
 .. toctree::
 	:maxdepth: 5

@@ -39,8 +39,12 @@ in intranets and the internet.
 .. include:: admin-docs/index.rest
 
 
-Getting Support
-===============
+|support-img| Getting Support
+=============================
+
+.. |support-img| image:: _static/support.png
+	:height: 32px
+	:align: middle
 
 For more information, please see the :ref:`links` and :ref:`support` page.
 
@@ -52,8 +56,12 @@ For more information, please see the :ref:`links` and :ref:`support` page.
 	support
 
 
-License
-=======
+|bsd-img| License
+=================
+
+.. |bsd-img| image:: _static/bsd-license.png
+	:height: 32px
+	:align: middle
 
 UNICORE software is available as Open Source under the :ref:`BSD License <license>` 
 while the software repository is hosted on `SourceForge <https://sourceforge.net/projects/unicore/>`_

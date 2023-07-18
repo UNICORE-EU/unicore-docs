@@ -30,6 +30,8 @@ For each enabled option, a set of additional properties is used
 to configure the details (for example the Unity address).
 
 
+.. _password-auth:
+
 Username-password file
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -65,6 +67,8 @@ which will output the salted and hashed password. Here we generate a
 random string as the salt. Enter these together with the username, and
 the DN of the user into the password file.
 
+
+.. _oauth2-bearer-token:
 
 Unity authentication using OAuth Bearer token
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

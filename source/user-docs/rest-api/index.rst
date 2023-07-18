@@ -19,6 +19,11 @@ is under development on GitHub and can be installed from PyPI via
 
 Also, have a look at :ref:`rest-api-examples` for some examples using PyUNICORE.
 
+.. figure:: ../../_static/REST-APIs.png
+   :width: 600
+   :alt: Federating HPC with UNICORE
+   :align: center
+
 Basics
 ------
 
@@ -34,7 +39,9 @@ The base URL of the the REST API for a single UNICORE/X container is
 In the following, we will abbreviate this URL as ``BASE`` Authentication.
 
 You need a user account on the :ref:`UNICORE/X <unicorex>` container, which is typically configured to 
-use a password (or using an OAuth2 bearer token). The supported `authentication methods 
+use a `password <../../admin-docs/unicorex/manual.html#password-auth>`_ 
+(or using an `OAuth2 bearer token <../../admin-docs/unicorex/manual.html#oauth2-bearer-token>`_). 
+The supported `authentication methods 
 <../../admin-docs/unicorex/manual.html#auth-img-authentication>`_ depend on the UNICORE server.
 
 For example, when username/password are enabled you can use ``curl`` to access the base URL above:

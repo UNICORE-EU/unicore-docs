@@ -24,6 +24,7 @@ Please note also the following places for getting more information:
 
 :|source-code-img| Source code: https://github.com/UNICORE-EU
 
+
 .. |unicore-img| image:: _static/logo-unicore.png
 	:height: 24px
 	:target: https://www.unicore.eu

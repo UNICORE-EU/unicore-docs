@@ -208,6 +208,20 @@ ID and secret.
   oidc.username=...
   oidc.password=...
 
+UCC also supports sending an OTP (one-time password) to Keycloak. To enable, add
+
+::
+
+  oidc.otp=QUERY
+
+to your config. The OTP token is queried from the command-line (the OTP value can also be placed verbatim
+in the preferences as ``oidc.otp=your_otp_value`` ).
+
+
+UCC stores the refresh token (if any) and tries to use it, before using the username/password
+again, also accross UCC invocations. (The token is stored in a file "$HOME/.ucc/refresh-tokens",
+this default can be changed via a config variable)
+
 Bearer token in config
 ^^^^^^^^^^^^^^^^^^^^^^
 

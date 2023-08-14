@@ -6,3 +6,7 @@ Property name,Type, Default value \/ mandatory,Description
 "oidc.grantType","string","client_credentials","Grant type to request."
 "oidc.password","string","","Password used to log in. It is suggested not to use this option for security reasons. If not given in configuration, it will be asked interactively."
 "oidc.username","string","","Username used to log in. If not given in configuration, it will be asked interactively."
+"oidc.otp","string","","Additional one-time password for two-factor authentication. Set this to 'QUERY' to query it interactively."
+"oidc.request_key_for_otp","string","otp","(internal) How to send the OTP value to the server."
+"oidc.refreshInterval","integer","300","Interval (seconds) before refreshing the token."
+"oidc.refreshTokenFilename","string","","(internal) Filename for storing the refresh token."

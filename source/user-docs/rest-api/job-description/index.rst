@@ -431,6 +431,18 @@ can specify the account (or project) you want to charge the job to using the ``P
 Miscellaneous options
 ~~~~~~~~~~~~~~~~~~~~~
 
+Umask
+^^^^^
+
+The umask controls the permissions of files created by the job and any
+processes that are launched from it. UNICORE's default will usually be
+"077" if not otherwise conigured. If you want to change the initial umask 
+value, you can use the ``Umask`` keyword, e.g.
+::
+
+  "Umask": "022",
+
+(the value will interpreted as an octal string)
 
 Job tags
 ^^^^^^^^

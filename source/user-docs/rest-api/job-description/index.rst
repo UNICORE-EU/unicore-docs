@@ -509,10 +509,10 @@ This advanced notification setup looks like this:
 
    {
      "NotificationSettings" : {
-	    "URL" : "https://your-service-url",
-	    "status" : [ "STAGINGOUT", "SUCCESSFUL" ],
-		"bssStatus": [ "CONFIGURING" ]
-	  }
+       "URL": "https://your-service-url",
+       "status": [ "STAGINGOUT", "SUCCESSFUL" ],
+       "bssStatus": [ "CONFIGURING" ]
+     }
    }
 
 where ``status`` is a list of UNICORE-level status strings, and ``bssStatus``

@@ -411,6 +411,13 @@ The GET supports the ``Range`` header, if you want to download only part of the 
 
  $ curl -X GET -H "Range: bytes=10-42" ....
 
+You can also get the "tail" of the file, e.g. to get the last 100 bytes
+
+.. code:: console
+
+ $ curl -X GET -H "Range: bytes=-100" ....
+
+
 Similarly, to upload a file localfile to a remote file newfile:
 
 .. code:: console

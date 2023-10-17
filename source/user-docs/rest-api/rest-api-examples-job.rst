@@ -41,7 +41,7 @@
 	job.poll()
 
 	# print job properties
-	print json.dumps(job.properties, sort_keys=True, indent=4)
+	print (json.dumps(job.properties, sort_keys=True, indent=4))
 
 	# Accessing job outputs
 

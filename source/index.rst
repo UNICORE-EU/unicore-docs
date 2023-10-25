@@ -19,21 +19,26 @@ in intranets and the internet.
    Federating HPC with UNICORE
    
 
-* |overview-img| :ref:`unicore-overview` gives an overview of the UNICORE features and the UNICORE architecture
-* |start-img| :ref:`unicore-gettingstarted` shows how to get going quickly
-* |user-guide-img| :ref:`unicore-howto-singlecluster` covers the steps required to install a minimal set of UNICORE services 
-  for a single HPC cluster that is running Slurm
+* |overview-img| :ref:`unicore-overview`
+	gives an overview of the UNICORE features and the UNICORE architecture.
+
+* |start-img| :ref:`unicore-gettingstarted`
+	shows how to get going quickly.
+
+* |user-guide-img| :ref:`unicore-howto-singlecluster`
+	covers the steps required to install a minimal set of UNICORE services 
+	for a single HPC cluster that is running Slurm.
 
 .. |overview-img| image:: _static/overview.png
-	:height: 32px
+	:height: 24px
 	:align: middle
 
 .. |start-img| image:: _static/start.png
-	:height: 32px
+	:height: 24px
 	:align: middle
 
 .. |user-guide-img| image:: _static/user-guide.png
-	:height: 32px
+	:height: 24px
 	:align: middle
 
 .. toctree::
@@ -58,7 +63,7 @@ in intranets and the internet.
 	:height: 32px
 	:align: middle
 
-For more information, please see the :ref:`links` and :ref:`support` page.
+For getting more information or support, please see the :ref:`links` and :ref:`support` page.
 
 .. toctree::
 	:caption: Getting Support

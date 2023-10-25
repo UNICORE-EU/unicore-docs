@@ -1,7 +1,11 @@
 .. _ucc:
 
-UNICORE Commandline Client
-**************************
+|usage-img| UNICORE Commandline Client
+**************************************
+
+.. |usage-img| image:: ../../_static/usage.png
+	:height: 24px
+	:align: middle
 
 The **U**\ NICORE **C**\ ommandline **C**\ lient (UCC) is a client for :ref:`UNICORE <unicore-overview>`,
 supporting all of UNICORE's features, such as:

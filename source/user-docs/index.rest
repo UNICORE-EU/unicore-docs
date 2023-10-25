@@ -1,19 +1,40 @@
 .. _user-docs:
 
 
-|user-img| User Documentation
-=============================
+User Documentation
+==================
 
-.. |user-img| image:: _static/user.png
-	:height: 32px
+- |usage-img| :ref:`ucc`
+	A full featured commandline client for UNICORE.
+
+- |api-img| :ref:`rest-api`
+	REST-API for the :ref:`UNICORE/X server <unicorex>` (job submission and management, 
+	data access and data transfer) and the :ref:`Workflow server <workflow>` (workflow submission 
+	and management).
+
+- |job-desc-img| :ref:`job-description`
+	The job description format that allows you to specify the application or executable you want 
+	to run, arguments and environment settings, any files to stage in from remote servers and any 
+	result files to stage out.
+
+- |workflow-img| :ref:`workflow-description`
+	The workflow description language that is supported by the :ref:`Workflow engine <workflow>`. 
+
+.. |usage-img| image:: _static/usage.png
+	:height: 24px
 	:align: middle
 
-- :ref:`ucc` - a full featured commandline client for UNICORE
-- :ref:`rest-api` - REST-API for the :ref:`UNICORE/X server <unicorex>` (job submission and management, 
-  data access and data transfer) and the :ref:`Workflow server <workflow>` (workflow submission 
-  and management)
-- :ref:`job-description` - the job description format 
-- :ref:`workflow-description` - the workflow description language 
+.. |api-img| image:: _static/api.png
+	:height: 24px
+	:align: middle
+
+.. |job-desc-img| image:: _static/job-desc.png
+	:height: 24px
+	:align: middle
+
+.. |workflow-img| image:: _static/workflow.png
+	:height: 32px
+	:align: middle
 
 .. toctree::
 	:maxdepth: 3

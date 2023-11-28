@@ -50,10 +50,13 @@ The following steps will be described:
 - port ``8080`` on this server must be accessible from the Internet if you want to
   let external users access your cluster.
 
-In the following, we will refer to this machine as ``unicore-host``. Adapt the following code
-examples according to your actual machine name.
+In the following, we will refer to this machine as ``unicore-host``. 
+Adapt the following code examples according to your actual machine name.
 
-
+- access to the HPC login node(s) with Python3 installed. Since UNICORE requires
+  a TCP connection from the ``unicore-host`` to the login node(s), and another
+  TCP connection from the login node(s) to the ``unicore-host``, the local firewall
+  rules might need to be adapted accordingly. Details will be given below.
 
 |installer-img| Installing the TSI
 ----------------------------------
@@ -89,11 +92,11 @@ Download and install the Slurm TSI
 
   cd /opt/unicore
 
-  wget https://sourceforge.net/projects/unicore/files/Servers/Core/9.3.0/unicore-tsi-9.3.0.tgz -O unicore-tsi-9.3.0.tgz
+  wget https://sourceforge.net/projects/unicore/files/Servers/Core/9.3.1/unicore-tsi-9.3.1.tgz -O unicore-tsi-9.3.1.tgz
   
-  tar xf unicore-tsi-9.3.0.tgz
-  rm unicore-tsi-9.3.0.tgz
-  cd unicore-tsi-9.3.0
+  tar xf unicore-tsi-9.3.1.tgz
+  rm unicore-tsi-9.3.1.tgz
+  cd unicore-tsi-9.3.1
   
   ./Install.sh slurm /opt/unicore/tsi
   
@@ -158,11 +161,11 @@ Download and extract the UNICORE Server bundle
 
   cd /opt/unicore
 
-  wget https://sourceforge.net/projects/unicore/files/Servers/Core/9.3.0/unicore-servers-9.3.0.tgz -O unicore-servers-9.3.0.tgz
+  wget https://sourceforge.net/projects/unicore/files/Servers/Core/9.3.1/unicore-servers-9.3.1.tgz -O unicore-servers-9.3.1.tgz
   
-  tar xf unicore-servers-9.3.0.tgz
-  chown -R unicore:unicore unicore-servers-9.3.0
-  rm unicore-servers-9.3.0.tgz
+  tar xf unicore-servers-9.3.1.tgz
+  chown -R unicore:unicore unicore-servers-9.3.1
+  rm unicore-servers-9.3.1.tgz
 
 
 Installing UNICORE Gateway and UNICORE/X
@@ -180,7 +183,7 @@ on the HPC cluster.
 
 .. code:: console
 
-  cd unicore-servers-9.3.0
+  cd unicore-servers-9.3.1
 
   # TSI is running on 'hpc-login'
   sed -i "s/uxTSIHost=.*/uxTSIHost=hpc-login/" configure.properties

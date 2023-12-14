@@ -19,6 +19,8 @@
  +----------------+--------------------------+
  |CPUsPerNode     |Number of CPUs per node   |
  +----------------+--------------------------+
+ |GPUsPerNode     |Number of GPUs per node   |
+ +----------------+--------------------------+
  |Memory          |Memory per node           |
  +----------------+--------------------------+
  |Reservation     |Reservation ID            |
@@ -27,3 +29,7 @@
  +----------------+--------------------------+
  |QoS             |Batch system QoS          |
  +----------------+--------------------------+
+ |Exclusive       |Request exclusive use of  |
+ |                |the allocated node(s)     |
+ +----------------+--------------------------+
+

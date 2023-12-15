@@ -56,7 +56,7 @@ element. If not given, ``batch`` is the default.
    from the job's ``Resources`` section.
 
  * ``on_login_node`` (or ``interactive``) - the specified executable will be launched on a login node.
-   If applicable, you can select the login node with the ``Login node`` element.
+   If you want, you can select the login node with the ``Login node`` element.
    
  * ``raw`` - the job goes to the batch system, but the resources are taken from an additional file,
    which contains BSS directives (e.g.``#SBATCH ...`` in the case of Slurm).
@@ -177,6 +177,48 @@ or a range:
 
 where the ``From``, ``To`` and ``Step`` parameters are floating point or integer numbers.
 
+
+Pre- and postprocessing
+^^^^^^^^^^^^^^^^^^^^^^^
+
+In addition to the main executable (or application), a UNICORE job can contain
+pre- and/or postprocessing tasks that are run before / after the main executable.
+
+The main elements for this are
+
+ * ``User precommand`` - this will be run after the data stage-in and before the main
+   executable
+
+ * ``User postcommand`` - this will be run after the main executable and before starting to
+   stage-out data
+    
+For example
+
+.. code:: json
+
+	{
+	  "User precommand": "./preprocessing.sh",
+	  
+	  "Executable": "./main.sh",
+	  
+	  "User postcommand": "./post-processing.sh"
+
+	}
+
+The pre/post commands will be run on a login node by default. Failure of the pre/post
+commands will cause the job to fail.
+
+The default behaviour can be modified via the following options:
+
+ * ``RunUserPrecommandOnLoginNode: 'false'`` - add pre processing as a prolog to the main
+   job script
+
+ * ``UserPrecommandIgnoreNonZeroExitCode`` - don't fail the job if the pre command exits with a
+   non-zero exit code
+
+ * ``Login node`` - select a preferred login node
+
+and the same for the post command.
 
 Job data management
 ~~~~~~~~~~~~~~~~~~~

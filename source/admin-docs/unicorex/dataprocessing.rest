@@ -29,18 +29,18 @@ usually will be) edited and uploaded by the user.
 
 The file must be in JSON format, and has the following elements:
 
-.. code::
+.. code:: json
 
  {
   "DirectoryScan": {
   
     "IncludeDirs": [
-        "project.*",
+        "project.*"
     ],
     "ExcludeDirs": [
-        "project42",
+        "project42"
     ],
-    "Interval": "30",
+    "Interval": "30"
   
   },
   
@@ -109,19 +109,19 @@ an *action*, i.e. what should be done for those files that match.
 
 The general syntax is:
 
-.. code::
+.. code:: json
 
  {
    "DirectoryScan": {
-     "IncludeDirs": [...],
-     "ExcludeDirs": [...]
+     "IncludeDirs": [ ],
+     "ExcludeDirs": [ ]
    },
   
    "Rules": [
      {
        "Name": "foo",
        "Match": ".*incoming/file_.*",
-       "Action": { ... }
+       "Action": {  }
      }
    ]
  }
@@ -199,3 +199,34 @@ Automated metadata extraction
 
 This action will extract metadata from the file. The ``Settings`` element 
 is currently unused.
+
+Sending notifications
+^^^^^^^^^^^^^^^^^^^^^
+
+.. code::
+
+  "Action":
+  {
+    "Name": "notification_exam ple",
+    "Type": "NOTIFY",
+    "URL": "https://url-to-notification-receiver"
+  }
+
+This action will send out a HTTP POST request in JSON format to the specified URL.
+The JSON will contain information about new files, as well as the base directory
+that is being watched.
+
+An example notification could look like this:
+
+.. code:: json
+
+  {
+    "href": "https://unicorex-server-url/rest/core",
+    "directory": "/path/to/watched/directory",
+    "files": [
+      "/path-to-new-file1",
+      "/path-to-new-file2"
+    ]
+}
+
+(File paths are relative to the base directory)

@@ -1,7 +1,7 @@
 Property name,Type, Default value \/ mandatory,Description
 "persistence.cache.enable.\* ","[true, false] *can have subkeys* ","true","Enable caching."
 "persistence.cache.maxSize.\* ","integer number *can have subkeys* ","10","Maximum number of elements in the cache (default: 10)."
-"persistence.class.\* ","string *can have subkeys* ","de.fzj.unicore.persist.impl.H2Persist","The persistence implementation class, which controls with DB backend is used."
+"persistence.class.\* ","string *can have subkeys* ","eu.unicore.persist.impl.H2Persist","The persistence implementation class, which controls with DB backend is used."
 "persistence.cluster.config.\* ","string *can have subkeys* ","","Clustering configuration file."
 "persistence.config","filesystem path","","Allows to specify a separate properties file containing the persistence configuration."
 "persistence.database.\* ","string *can have subkeys* ","","The name of the database to connect to (e.g. when using MySQL)."

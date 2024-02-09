@@ -11,8 +11,6 @@ Property name,Type, Default value \/ mandatory,Description
 "container.httpServer.fastRandom","[true, false]","false","Use insecure, but fast pseudo random generator to generate session ids instead of secure generator for SSL sockets."
 "container.httpServer.gzip.enable","[true, false]","false","Controls whether to enable compression of HTTP responses."
 "container.httpServer.gzip.minGzipSize","integer number","100000","Specifies the minimal size of message that should be compressed."
-"container.httpServer.highLoadConnections","integer number","200","deprecated"
-"container.httpServer.lowResourceMaxIdleTime","integer >= 1","100","deprecated"
 "container.httpServer.maxConnections","integer >= 0","0","Maximum number of incoming connections to this server. If set to a value larger than 0, incoming connections will be limited to that number. Default is 0 = unlimited."
 "container.httpServer.maxIdleTime","integer >= 1","200000","Time (in ms.) before an idle connection will time out. It should be large enough not to expire connections with slow clients, values below 30s are getting quite risky."
 "container.httpServer.maxThreads","integer number","255","Maximum number of threads to have in the thread pool for processing HTTP connections. Note that this number will be increased with few additional threads to handle connectors."

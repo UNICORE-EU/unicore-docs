@@ -8,11 +8,11 @@
   <property name="jproperties-version" value="1.1.2"/>
 
   <!-- Component versions -->
-  <property name="unicorex-version" value="9.0.0"/>
-  <property name="gateway-version" value="1.8.0"/>
-  <property name="xuudb-version" value="2.7.0"/>
-  <property name="workflow-version" value="3.4.0"/>
-  <property name="ucc-version" value="9.0.0"/>
+  <property name="unicorex-version" value="10.0.0"/>
+  <property name="gateway-version" value="2.0.0"/>
+  <property name="xuudb-version" value="2.9.0"/>
+  <property name="workflow-version" value="3.6.0"/>
+  <property name="ucc-version" value="10.0.0"/>
 
   <target name="prepare"
           description="Downloads required tools if not present">
@@ -20,30 +20,30 @@
          dest="tools//maven-resolver-ant-tasks.jar" verbose="true" skipexisting="true" />
     <taskdef uri="antlib:org.apache.maven.resolver.ant" resource="org/apache/maven/resolver/ant/antlib.xml">
       <classpath>
-	<fileset dir="tools" includes="maven-resolver-ant-tasks.jar"/>
+	      <pathelement location="tools/maven-resolver-ant-tasks.jar"/>
       </classpath>
     </taskdef>
     <get src="https://repo1.maven.org/maven2/ant-contrib/ant-contrib/1.0b3/ant-contrib-1.0b3.jar"
          dest="tools/ant-contrib-1.0b3.jar" verbose="true" skipexisting="true" />
     <taskdef resource="net/sf/antcontrib/antlib.xml">
       <classpath>
-	<pathelement location="tools/ant-contrib-1.0b3.jar" />
+	      <pathelement location="tools/ant-contrib-1.0b3.jar" />
       </classpath>
     </taskdef>
   </target>
 
-  <target name="update-unicorex" depends="prepare"
+  <target name="update-unicorex" depends="clean,prepare"
           description="Updates the UNICORE/X config properties tables">
     <echo>... UNICORE/X version ${unicorex-version}</echo>
     
     <mvn:resolve>
       <remoterepo id="unicore-public" url="https://unicore-dev.zam.kfa-juelich.de/maven"/> 
       <dependencies>
-	<dependency coords="eu.unicore:jproperties-conf:${jproperties-version}"/>
-	<dependency groupId="eu.unicore"
-		    artifactId="unicorex-distribution"
-		    version="${unicorex-version}"
-		    type="pom"/>
+	      <dependency coords="eu.unicore:jproperties-conf:${jproperties-version}"/>
+	      <dependency groupId="eu.unicore"
+		                artifactId="unicorex-distribution"
+		                version="${unicorex-version}"
+		                type="pom"/>
       </dependencies>
       <files dir="lib" layout="{artifactId}-{version}.{extension}"/> 
     </mvn:resolve>
@@ -55,15 +55,15 @@
     <antcall target="generate-csv"/>
   </target>  
 
-  <target name="update-gateway" depends="prepare"
+  <target name="update-gateway" depends="clean,prepare"
           description="Updates the Gateway config properties tables">
     <echo>... Gateway version ${gateway-version}</echo>
     
     <mvn:resolve>
       <remoterepo id="unicore-public" url="https://unicore-dev.zam.kfa-juelich.de/maven"/> 
       <dependencies>
-	<dependency coords="eu.unicore:jproperties-conf:${jproperties-version}"/>
-	<dependency coords="eu.unicore:gateway:${gateway-version}"/>
+	      <dependency coords="eu.unicore:jproperties-conf:${jproperties-version}"/>
+	      <dependency coords="eu.unicore:gateway:${gateway-version}"/>
       </dependencies>
       <files dir="lib" layout="{artifactId}-{version}.{extension}"/> 
     </mvn:resolve>
@@ -75,15 +75,15 @@
     <antcall target="generate-csv"/>
   </target>  
  
-  <target name="update-xuudb" depends="prepare"
+  <target name="update-xuudb" depends="clean,prepare"
           description="Updates the XUUDB config properties tables">
     <echo>... XUUDB version ${xuudb-version}</echo>
     
     <mvn:resolve>
       <remoterepo id="unicore-public" url="https://unicore-dev.zam.kfa-juelich.de/maven"/> 
       <dependencies>
-	<dependency coords="eu.unicore:jproperties-conf:${jproperties-version}"/>
-	<dependency coords="de.fzj.unicore.xuudb:xuudb-server:${xuudb-version}"/>
+	      <dependency coords="eu.unicore:jproperties-conf:${jproperties-version}"/>
+	      <dependency coords="eu.unicore.xuudb:xuudb-server:${xuudb-version}"/>
       </dependencies>
       <files dir="lib" layout="{artifactId}-{version}.{extension}"/> 
     </mvn:resolve>
@@ -96,15 +96,15 @@
   </target>  
 
   
-  <target name="update-workflow" depends="prepare"
+  <target name="update-workflow" depends="clean,prepare"
           description="Updates the Workflow config properties tables">
     <echo>... Workflow version ${workflow-version}</echo>
     
     <mvn:resolve>
       <remoterepo id="unicore-public" url="https://unicore-dev.zam.kfa-juelich.de/maven"/> 
       <dependencies>
-	<dependency coords="eu.unicore:jproperties-conf:${jproperties-version}"/>
-	<dependency coords="eu.unicore.workflow:workflowservice:${workflow-version}"/>
+	      <dependency coords="eu.unicore:jproperties-conf:${jproperties-version}"/>
+	      <dependency coords="eu.unicore.workflow:workflowservice:${workflow-version}"/>
       </dependencies>
       <files dir="lib" layout="{artifactId}-{version}.{extension}"/> 
     </mvn:resolve>
@@ -116,18 +116,18 @@
     <antcall target="generate-csv"/>
   </target>  
 
-  <target name="update-ucc" depends="prepare"
+  <target name="update-ucc" depends="clean,prepare"
           description="Updates the UCC config properties tables">
     <echo>... UCC version ${ucc-version}</echo>
     
     <mvn:resolve>
       <remoterepo id="unicore-public" url="https://unicore-dev.zam.kfa-juelich.de/maven"/> 
       <dependencies>
-	<dependency coords="eu.unicore:jproperties-conf:${jproperties-version}"/>
-	<dependency groupId="de.fzj.unicore"
-		    artifactId="ucc-distribution"
-		    version="${ucc-version}"
-		    type="pom"/>
+	      <dependency coords="eu.unicore:jproperties-conf:${jproperties-version}"/>
+	      <dependency groupId="eu.unicore.ucc"
+		                artifactId="ucc-distribution"
+		                version="${ucc-version}"
+		                type="pom"/>
       </dependencies>
       <files dir="lib" layout="{artifactId}-{version}.{extension}"/> 
     </mvn:resolve>
@@ -139,8 +139,7 @@
     <antcall target="generate-csv"/>
   </target>  
   
-  <target name="generate-csv" depends="prepare"
-          description="Updates config properties tables for one component">
+  <target name="generate-csv" description="Updates config properties tables for one component">
 
     <property file="${doc-properties-file}"/>
 
@@ -151,16 +150,16 @@
 
     <for list="${toGenerate}" param="genvar" delimiter="|">
       <sequential>
-	<echo message="Generating from: ${@{genvar}}" />
-	<java fork="true"
-	      classname="eu.unicore.util.configuration.CSVFormatter">
-	  <arg line="${output-dir} ${@{genvar}}"/>
-	  <classpath>
-	    <fileset dir="lib">
-	      <include name="*.jar"/>
-	    </fileset>
-	  </classpath>
-	</java>
+	      <echo message="Generating from: ${@{genvar}}" />
+	      <java fork="true"
+	            classname="eu.unicore.util.configuration.CSVFormatter">
+	        <arg line="${output-dir} ${@{genvar}}"/>
+	        <classpath>
+	          <fileset dir="lib">
+	            <include name="*.jar"/>
+	          </fileset>
+	        </classpath>
+	      </java>
       </sequential>
     </for>
 

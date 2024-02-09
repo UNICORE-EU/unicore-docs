@@ -5,3 +5,4 @@ Property name,Type, Default value \/ mandatory,Description
 "gateway.credential.keyPath","string","","Location of the private key if stored separately from the main credential (applicable for 'pem' and 'der' types only),"
 "gateway.credential.keyPassword","string","","Private key password, which might be needed only for 'jks' or 'pkcs12', if key is encrypted with different password then the main credential password."
 "gateway.credential.keyAlias","string","","Keystore alias of the key entry to be used. Can be ignored if the keystore contains only one key entry. Only applicable for 'jks' and 'pkcs12'."
+"gateway.credential.reloadOnChange","[true, false]","true","Monitor credential location and trigger dynamical reload if file changes."

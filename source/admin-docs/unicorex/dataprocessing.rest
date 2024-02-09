@@ -25,9 +25,10 @@ Controlling the scanning process
 
 To control which directories should be scanned, a file named ``.UNICORE_Rules``
 at the top-level of the storage is read and evaluated. This file can be (and 
-usually will be) edited and uploaded by the user.
+usually will be) edited and uploaded by the user. It can be modified at any time.
 
-The file must be in JSON format, and has the following elements:
+
+The file is expected to be in JSON format, and has the following elements:
 
 .. code:: json
 
@@ -44,8 +45,14 @@ The file must be in JSON format, and has the following elements:
   
   },
   
-  "Rules": [ ]
+  "Rules": [ ],
+
+  "Enabled": "true | false",
+
+  "Logging": "true | false"
+
  }
+  
 
 
 The ``IncludeDirs`` and ``ExcludeDirs`` are lists of Java regular expression strings that denote 
@@ -54,6 +61,13 @@ the scan.
 
 The ``Rules`` section controls which files are to be processed, and what is to 
 be done (actions). This is described below.
+
+The optional ``Enabled`` element allows you to (temporarily) disable the processing,
+if you wish.
+
+The optional ``Logging`` element allows you to disable the writing of log files.
+Logging is enabled by default, see below.
+
 
 Special case: shared storages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -227,6 +241,12 @@ An example notification could look like this:
       "/path-to-new-file1",
       "/path-to-new-file2"
     ]
-}
+  }
 
 (File paths are relative to the base directory)
+
+Logging
+~~~~~~~
+
+If new files are detected, and rules are executed, the server will write a short log file
+to a directory ".UNICORE_data_processing".

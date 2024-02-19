@@ -25,7 +25,7 @@ https://www.unicore.eu.
 
 .. include:: security_concepts.rest
 
-.. include:: use-rest.rest
+.. include:: use-authentication.rest
   
 .. include:: use-attribute-sources.rest
 
@@ -46,5 +46,3 @@ https://www.unicore.eu.
 .. include:: use-authorization.rest
   
 .. include:: use-policies.rest
-
-.. include:: cloudstorage.rest

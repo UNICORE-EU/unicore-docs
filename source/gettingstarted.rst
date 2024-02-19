@@ -15,7 +15,7 @@ If you are an end-user or application developer who wishes to use
 an existing UNICORE installation, have a look at the user documentation
 for the :ref:`UNICORE Commandline Client <ucc>`, the 
 `PyUNICORE <https://pyunicore.readthedocs.io/>`_ client library
-or the API documentation.
+or the :ref:`REST API documentation <rest-api>`.
 
 Evaluating UNICORE
 ------------------

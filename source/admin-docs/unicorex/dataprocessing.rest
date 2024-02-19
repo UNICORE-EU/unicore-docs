@@ -11,72 +11,18 @@ UNICORE can be set up to automatically scan storages and trigger processing
 steps (e.g. submit batch jobs or run processing tasks) according to 
 user-defined rules.
 
-Enabling and disabling data-triggered processing
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 By default, data-triggered processing is disabled on all storages.
 
 Explicit control is available via the configuration properties 
 for storages, as listed in :ref:`ux_storages`. Set the ``enableTrigger`` property 
 to ``true`` to enable the data-triggered processing for the given storage.
 
-Controlling the scanning process
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To control which directories should be scanned, a file named ``.UNICORE_Rules``
-at the top-level of the storage is read and evaluated. This file can be (and 
-usually will be) edited and uploaded by the user. It can be modified at any time.
-
-
-The file is expected to be in JSON format, and has the following elements:
-
-.. code:: json
-
- {
-  "DirectoryScan": {
-  
-    "IncludeDirs": [
-        "project.*"
-    ],
-    "ExcludeDirs": [
-        "project42"
-    ],
-    "Interval": "30"
-  
-  },
-  
-  "Rules": [ ],
-
-  "Enabled": "true | false",
-
-  "Logging": "true | false"
-
- }
-  
-
-
-The ``IncludeDirs`` and ``ExcludeDirs`` are lists of Java regular expression strings that denote 
-directories (as always relative to the storage root) that should be included or excluded from
-the scan.
-
-The ``Rules`` section controls which files are to be processed, and what is to 
-be done (actions). This is described below.
-
-The optional ``Enabled`` element allows you to (temporarily) disable the processing,
-if you wish.
-
-The optional ``Logging`` element allows you to disable the writing of log files.
-Logging is enabled by default, see below.
-
-
-Special case: shared storages
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Since shared storages are *owned* by the UNICORE server and used by multiple users,
-data-triggered processing requires a valid Unix user ID in order to list files independently
-of any actual user. Therefore the ``triggerUserID`` property is used to configure which user
-ID should be used (as always in UNICORE, this cannot be *root*, and multiuser operation 
-requires the TSI!).
+Since shared storages (HOME, ROOT, etc) are *owned* by the UNICORE server and
+used by multiple users, data-triggered processing requires a valid Unix user ID
+in order to list files independently of any actual user.
+Therefore the ``triggerUserID`` property is used to configure which user ID
+should be used (as always in UNICORE, this cannot be *root*, and multiuser
+operation requires the TSI!).
 
 For example, you might have a project storage configured like this::
 
@@ -113,140 +59,3 @@ structure could look like this::
 The top-level ``.UNICORE_Rules`` file must list the included directories.
 Processing the included directories is then done using the owner of
 that directory.
-
-Rules
-~~~~~
-
-The ``Rules`` section in the ``.UNICORE_Rules`` file is a list
-of file match specifications together with a definition of
-an *action*, i.e. what should be done for those files that match.
-
-The general syntax is:
-
-.. code:: json
-
- {
-   "DirectoryScan": {
-     "IncludeDirs": [ ],
-     "ExcludeDirs": [ ]
-   },
-  
-   "Rules": [
-     {
-       "Name": "foo",
-       "Match": ".*incoming/file_.*",
-       "Action": {  }
-     }
-   ]
- }
-
-The mandatory elements are:
-
-* ``Name`` : the name of the rule. This is useful when checking the logfiles.
-
-* ``Match`` : a regular expression defining which file paths (relative to 
-  storage root) should be processed.
-
-* ``Action`` : the action to be taken.
-
-Variables
-^^^^^^^^^
-
-The following variables can be used in the ``Action`` description:
-
-* ``UC_BASE_DIR`` : the storage root directory
-
-* ``UC_CURRENT_DIR`` : the absolute path to the parent directory of the current file 
-
-* ``UC_FILE_PATH`` : the full path to the current file
-
-* ``UC_FILE_NAME`` : the file name
-
-Scripts
-^^^^^^^
-
-This type of action defines a script that is executed on the cluster 
-login node (TSI node): 
-
-.. code::
-
-  "Action":
-  {
-    "Name": "local_example",
-    "Type": "LOCAL",
-    "Command": "/bin/md5sum ${UC_FILE_PATH}",
-    "Outcome": "output_directory",
-    "Stdout": "${UC_FILE_NAME}.md5",
-    "Stderr": "${UC_FILE_NAME}.error"
-  }
-
-Batch jobs
-^^^^^^^^^^
-
-This type of action defines a batch job that is submitted to the resource 
-management system of your cluster:
-
-.. code::
-
-  "Action":
-  {
-    "Name": "batch_example",
-    "Type": "BATCH",
-    "Job": { ... }
-  }
-
-
-The ``Job`` element is a normal UNICORE job in the same syntax as used for
-the :ref:`UCC <ucc>` commandline client.
-
-Automated metadata extraction
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code::
-
-  "Action":
-  {
-    "Name": "extract_example",
-    "Type": "EXTRACT",
-    "Settings": { ... }
-  }
-
-This action will extract metadata from the file. The ``Settings`` element 
-is currently unused.
-
-Sending notifications
-^^^^^^^^^^^^^^^^^^^^^
-
-.. code::
-
-  "Action":
-  {
-    "Name": "notification_exam ple",
-    "Type": "NOTIFY",
-    "URL": "https://url-to-notification-receiver"
-  }
-
-This action will send out a HTTP POST request in JSON format to the specified URL.
-The JSON will contain information about new files, as well as the base directory
-that is being watched.
-
-An example notification could look like this:
-
-.. code:: json
-
-  {
-    "href": "https://unicorex-server-url/rest/core",
-    "directory": "/path/to/watched/directory",
-    "files": [
-      "/path-to-new-file1",
-      "/path-to-new-file2"
-    ]
-  }
-
-(File paths are relative to the base directory)
-
-Logging
-~~~~~~~
-
-If new files are detected, and rules are executed, the server will write a short log file
-to a directory ".UNICORE_data_processing".

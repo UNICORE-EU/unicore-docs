@@ -33,12 +33,12 @@ The REST API supports both the JSON (*application/json*) and HTML (*text/html*) 
 Base URL
 ~~~~~~~~
 
-The base URL of the the REST API for a single UNICORE/X container is
+The base URL of the the REST API for a single UNICORE/X server is
 :file:`https://{gateway_url}/{SITENAME}/rest/core`.
 
 In the following, we will abbreviate this URL as ``BASE`` Authentication.
 
-You need a user account on the :ref:`UNICORE/X <unicorex>` container, which is typically configured to 
+You need a user account on the :ref:`UNICORE/X <unicorex>` server, which is typically configured to 
 use a `password <../../admin-docs/unicorex/manual.html#password-auth>`_ 
 (or using an `OAuth2 bearer token <../../admin-docs/unicorex/manual.html#oauth2-bearer-token>`_). 
 The supported `authentication methods 
@@ -167,17 +167,17 @@ The result would be something like:
 	{
 	  "_links": {
 		"self": {
-			"href": "BASE/sites/fc2ab923-4971-4a11-a8cf-958bb966a54c/jobs?offset=2&num=5"
+			"href": "BASE/sites/4q0b44VfBP2/jobs?offset=2&num=5"
 		},
 		"next": {
-			"href": "BASE/sites/fc2ab923-4971-4a11-a8cf-958bb966a54c/jobs?offset=7&num=5"
+			"href": "BASE/sites/4q0b44VfBP2/jobs?offset=7&num=5"
 		},
 		"previous": {
-			"href": "BASE/sites/fc2ab923-4971-4a11-a8cf-958bb966a54c/jobs?offset=0&num=5"
+			"href": "BASE/sites/4q0b44VfBP2/jobs?offset=0&num=5"
 		}
 	  },
 	  "jobs": [
-		"BASE/jobs/2d0217b4-a717-4bba-aea5-d27318e06e6e",
+		"BASE/jobs/DZBiAG5O0kH",
 		... rest of job URLs omitted ...
 	  ]
 	}
@@ -196,7 +196,7 @@ via another query parameter ``fields`` which works on all resources (jobs, stora
 which allows you to limit results to the named fields.
 ::
 
- BASE/sites/{id}/jobs/2f6836ca-6bf7-4cbc-b8df-627f9c7ba08c?fields=status
+ BASE/sites/{id}/jobs/DZBiAG5O0kH?fields=status
 
 .. table::
  :widths: 20, 35, 45
@@ -242,7 +242,7 @@ modified, or if errors occurred:
 REST resources for jobs and data management
 -------------------------------------------
 
-The base URL of the the REST API for a single UNICORE/X container is
+The base URL of the the REST API for a single UNICORE/X server is
 ``https://gateway_url/SITENAME/rest/core``.
 
 .. include:: tables/rsc-jobs-data.rest

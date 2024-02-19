@@ -1,5 +1,6 @@
 Property name,Type, Default value \/ mandatory,Description
-"coreServices.sms.storage.N.allowUserDefinedPath","[true, false]","true","Whether the allow the user to set the storage base directory when creating the storage via the StorageFactory."
+"coreServices.sms.storage.N.allowTrigger","[true, false]","true","(if creating via factory) If user is allowed to enable the triggering feature."
+"coreServices.sms.storage.N.allowUserDefinedPath","[true, false]","true","(if creating via factory) Whether the allow the user to set the storage base directory."
 "coreServices.sms.storage.N.checkExistence","[true, false]","true","Whether the existence of the base directory should be checked when creating the storage."
 "coreServices.sms.storage.N.class","Class extending eu.unicore.uas.impl.sms.SMSBaseImpl","","Storage implementation class used (and mandatory) in case of the CUSTOM type."
 "coreServices.sms.storage.N.cleanup","[true, false]","false","Whether files of the storage should be removed when the storage is destroyed. This is mostly useful for storage factories.(runtime updateable)"

@@ -45,6 +45,7 @@ Services and APIs
   data management
 - Direct access to applications running on HPC (e.g. for steering or visualisation)
 - Metadata
+- Rule based file processing
 - Service Registry
 
 Security

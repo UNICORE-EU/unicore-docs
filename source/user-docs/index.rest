@@ -4,6 +4,9 @@
 User Documentation
 ==================
 
+- |info-img| :ref:`introduction`
+	Introduction for UNICORE users.
+
 - |usage-img| :ref:`ucc`
 	A full featured commandline client for UNICORE.
 
@@ -19,6 +22,13 @@ User Documentation
 
 - |workflow-img| :ref:`workflow-description`
 	The workflow description language that is supported by the :ref:`Workflow engine <workflow>`. 
+
+- |data-triggered-img| :ref:`data-triggered`
+	Reference for the data-triggered processing in UNICORE/X.
+
+.. |info-img| image:: _static/user-guide.png
+	:height: 32px
+	:align: middle
 
 .. |usage-img| image:: _static/usage.png
 	:height: 24px
@@ -36,12 +46,19 @@ User Documentation
 	:height: 32px
 	:align: middle
 
+
+.. |data-triggered-img| image:: _static/move-files.png
+	:height: 24px
+	:align: middle
+
 .. toctree::
 	:maxdepth: 3
 	:caption: User Documentation
 	:hidden:
 
+	user-docs/introduction
 	user-docs/ucc/index
 	user-docs/rest-api/index
 	user-docs/rest-api/job-description/index
 	user-docs/rest-api/workflow-description/index
+	user-docs/data-triggered-processing

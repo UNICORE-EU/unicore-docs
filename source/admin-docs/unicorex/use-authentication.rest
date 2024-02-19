@@ -139,9 +139,26 @@ In this case you need to set ``validate=true`` and provide client ID and secret
 
 
 The parameter ``dnTemplate`` is used to define the DN that will be assigned to authenticated users,
-
 where the ``%param`` parameters will be replaced by the corresponding parameters from the (validated OIDC token)
 The default template is ``UID=%email``.
+
+::
+
+ container.security.rest.authentication.OAUTH.dnTemplate=UID=%email
+
+
+Successful OAuth authentication can assign the role and set the username based on the reply from the OIDC
+server. To enable this, you need to define templates for setting the role and/or the user ID.
+For example, to assign role "user" to each successfully authenticated request, and to
+use the "login_name" attribute in the token as the UNIX uid,
+
+::
+
+ container.security.rest.authentication.OAUTH.roleTemplate=user
+ container.security.rest.authentication.OAUTH.uidTemplate=%login_name
+
+
+This can be overriden later by the configured :ref:`attribute sources <use_aip>`. 
 
 
 X.509 certificate
@@ -171,6 +188,8 @@ The parameter ``dnTemplate`` is used to define which DN will be assigned to auth
 where the ``%s`` will be replaced by the user name. In the example above, user *test-user* will 
 have the DN "*CN=test-user, OU=pam-local-users*".
 
+A successful PAM authentication will also assign a "user" role, and will set the username as the
+UNIX login, which can be overriden later by the configured :ref:`attribute sources <use_aip>`. 
 
 Customizing JWT Delegation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~

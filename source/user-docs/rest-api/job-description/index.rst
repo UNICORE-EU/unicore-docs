@@ -259,26 +259,56 @@ some of the possibilities.
 
 .. code:: json
 
-	{
-	"Imports": [ 
+  {
+    "Imports": [
+      {
+        "From": "UFTP:https://gw:8080/DEMO-SITE/rest/core/storages/HOME/files/testfile",
+        "To":   "testfile"
+      },
+      {
+        "From": "link:/work/data/testfile",
+        "To":   "linked-file"
+      },
+      {
+        "From": "link:/work/data/testfile",
+        "To":   "copied-file"
+      }
+    ]
+  }
 
-	 { 
-	  "From": "UFTP:https://gw:8080/DEMO-SITE/rest/core/storages/HOME/files/testfile",
-	  "To":   "testfile" },
+An Import can have the following elements.
 
-	{ 
-	  "From": "link:/work/data/testfile", 
-	  "To": "linked-file" },
+.. code:: json
 
-	 {
-	 "From": "link:/work/data/testfile", 
-	 "To": "copied-file" },
+  {
+    "From": "source-url",
+    "To":   "target-path",
+    "FailOnError": "true | false",
+    "Permissions": "unix-style-rwx-permissions",
+    "Credentials": { },
+    "ExtraParameters": { },
+    "Mode": "overwrite | append | nooverwrite",
+  }
 
-	],
-	}
+The mandatory ``From`` element is a URL denoting the source of the file(s).
+UNICORE knows the following stage-in protocols:
 
-If you want the job to run even if an import operation fails, there is a flag ``FailOnError`` 
-that can be set to ``false``:
+- ``https://``  : download a file from an HTTP(s) server (UNICORE will try to *guess* whether the
+  HTTP URL refers to a UNICORE file or not)
+- ``file://``   : copy file(s) residing on the remote machine into the job dir
+- ``link://``   : symlink a file/dir residing on the remote machine into the job dir
+- ``ftp://``    : download a file from an FTP server
+- ``git:``      : download the files from the given git repository
+- ``inline://`` : ascii data is given directly, see below
+
+The mandatory ``To`` element is the target path.  As usual in UNICORE, this is relative
+to the base directory of the storage endpoint, in this case the job working
+directory. You can import into sub-directories, if these do not exist,
+they will be created as needed.
+
+The optional flag ``FailOnError`` lets you you control if the job
+should continue even if an import operation fails. To do that, set this
+flag to ``false``:
 
 .. code:: json
 
@@ -288,13 +318,27 @@ that can be set to ``false``:
     "FailOnError": "false",
  }
 
-Special protocols for imports:
+The optional ``Permissions`` element allows you to explicitely set file permissions.
 
-- ``file://`` : copy file(s) residing on the remote machine into the job dir
-- ``link://`` : symlink a file/dir residing on the remote machine into the job dir
-- ``ftp://`` : download a file from an FTP server
-- ``https://`` : download a file from an HTTP(s) server (UNICORE will try to *guess* whether the 
-  HTTP URL refers to a UNICORE file or not)
+
+.. code:: json
+
+ {
+    "From":        "/work/data/fileName",
+    "To":          "myscript.sh",
+    "Permissions": "r-xr--r--"
+ }
+
+(An abbreviated version like "r-x" also works).
+
+The optional ``Mode`` element has three valid options: "overwrite" (default) will simply
+write the file. "append" will append if existing, and "nooverwrite" will fail if the
+file already exists.
+
+The optional ``Credentials`` element can hold e.g. a required username/password
+and is discussed below.
+
+The optional ``ExtraParameters`` element is used for protocol-specific extra settings.
 
 
 Using *inline* data to import a file into the job workspace
@@ -307,19 +351,46 @@ Here is an example:
 
 .. code:: json
 
-	{
-	  "To":   "myscript.sh",
-	  "Data": [
-		"this is some test data",
-		"multi line data",
-		"another line"
-	    ]
-	}
+  {
+    "To":   "myscript.sh",
+    "Data": [
+      "this is some test data",
+      "multi line data",
+      "another line"
+    ]
+  }
 
-In this case, the ``From`` URL is not needed. If you give one, it HAS to start with ``inline://``,
+In this case, the ``From`` URL is not needed. If you give one, it has to start with ``inline://``,
 the rest is not important. 
 
 Make sure to properly escape any special characters.
+
+Staging in from *git*
+^^^^^^^^^^^^^^^^^^^^^
+
+You can stage-in a git repository, optionally allowing you to choose a
+particular commit, and to pass any required credentials.
+
+For example
+
+.. code:: json
+
+  {
+    "From": "git:https://github.com/github/testrepo.git",
+    "To":   "testrepo",
+    "ExtraParameters": {
+      "commit" : "26fc7091"
+    },
+    "Credentials": { 
+      "Password" : "some_api_token",
+      "Username" : "test"
+    }
+  }
+
+If the git repo contains any submodules, these will be downloaded as well.
+
+Please note that this operation will not result in a functional git repo,
+only the files will be downloaded.
 
 Sweeping over a stage-in file
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -329,14 +400,14 @@ To achieve this, replace the ``From`` parameter by list of values, for example:
 
 .. code:: json
 
-    { 
-      "From": [ 
-               "https://gw:8080/DEMO-SITE/rest/core/storages/HOME/files/file1", 
-               "https://gw:8080/DEMO-SITE/rest/core/storages/HOME/files/file2", 
-               "https://gw:8080/DEMO-SITE/rest/core/storages/HOME/files/file3", 
-               ],
-      "To": "fileName"
-    }
+  { 
+    "From": [
+      "https://gw:8080/DEMO-SITE/rest/core/storages/HOME/files/file1", 
+      "https://gw:8080/DEMO-SITE/rest/core/storages/HOME/files/file2", 
+      "https://gw:8080/DEMO-SITE/rest/core/storages/HOME/files/file3", 
+    ],
+    "To": "fileName"
+  }
 
 Note that only a single stage-in can be sweeped over in this way, and that this will not work 
 with files imported from your local client machine.
@@ -355,21 +426,38 @@ Here is an example:
 
 .. code:: json
 
-	{
-	  "Exports": [ 
+  {
+    "Exports": [
+      { 
+        "From": "stdout", 
+        "To":   "https://gw:8080/DEMO-SITE/rest/core/storages/HOME/files/results/myjob/stdout" 
+      },
+      {
+        "From": "results.dat", 
+        "To":   "https://gw:8080/DEMO-SITE/rest/core/storages/HOME/files/results/myjob/results.dat" 
+      },
+    ]
+  }
 
-		{ 
-		  "From": "stdout", 
-		  "To":   "https://gw:8080/DEMO-SITE/rest/core/storages/HOME/files/results/myjob/stdout" 
-		},
+An Export can have the following elements.
 
-		{ 
-		  "From": "results.dat", 
-		  "To":   "https://gw:8080/DEMO-SITE/rest/core/storages/HOME/files/results/myjob/results.dat" 
-		},
+.. code:: json
 
-	  ],
-	}
+  {
+    "From": "file-path",
+    "To":   "target-URL",
+    "FailOnError": "true | false",
+    "Credentials": { },
+    "ExtraParameters": { },
+  }
+
+The mandatory ``To`` element is a URL denoting the target of the export.
+UNICORE knows the following stage-out protocols:
+
+- ``https://``  : upload a file to an HTTP(s) server (UNICORE will try to *guess* whether the
+  HTTP URL refers to a UNICORE server or not)
+- ``file://``   : copy file(s) from the job dir to another directory on the remote machine
+- ``ftp://``    : upload a file to an FTP server
 
 
 Specifying credentials for data staging
@@ -381,11 +469,14 @@ To pass username and password to the server, the syntax is as follows:
 
 .. code:: json
 
-     { 
-       "From": "ftp://someserver:25/some/file", 
-       "To": "input_data",
-       "Credentials": { "Username": "myname", "Password": "mypassword" },
-     }
+  { 
+    "From": "ftp://someserver:25/some/file", 
+    "To": "input_data",
+    "Credentials": {
+      "Username": "myname",
+      "Password": "mypassword"
+    }
+  }
 
 and similarly for exports.
 
@@ -394,11 +485,13 @@ an HTTP "Authorization: Token ..." header
 
 .. code:: json
 
-     { 
-       "From": "https://someserver/some/file", 
-       "To": "input_data",
-       "Credentials": { "Token": "some_token" },
-     }
+  { 
+    "From": "https://someserver/some/file", 
+    "To": "input_data",
+    "Credentials": {
+      "Token": "some_token"
+    }
+  }
 
 
 You may also specify an OAuth Bearer token for HTTPS data transfers,
@@ -406,11 +499,13 @@ which will go into an HTTP "Authorization: Bearer ..." header
 
 .. code:: json
 
-     { 
-       "From": "https://someserver/some/file", 
-       "To": "input_data",
-       "Credentials": { "BearerToken": "some_token" },
-     }
+  { 
+    "From": "https://someserver/some/file", 
+    "To": "input_data",
+    "Credentials": {
+      "BearerToken": "some_token"
+    }
+  }
 
 You can leave the token value empty, set to "", if the server already has a valid Bearer token by some 
 other means (e.g. from the incoming job submission call).

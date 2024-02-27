@@ -41,14 +41,7 @@ It offers the following functions
 
  * :ref:`Built-in help <ucc_help>`
 
-.. note::
-
- Starting with Version 8 of the UCC, the :ref:`UNICORE REST API <rest-api>` is used
- exclusively for client-server communications.
-
-
-For more information about UNICORE visit
-https://www.unicore.eu.
+For more information about UNICORE visit https://www.unicore.eu.
 
 .. include:: install.rest
 

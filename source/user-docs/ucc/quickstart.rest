@@ -83,6 +83,6 @@ The command
 
   $ ucc list-jobs -l
 
-will print a list of jobs (actually their addresses) with their respective status 
+will print a list of job URLs with their respective status 
 (``RUNNING``, ``SUCCESSFUL``, etc).
   

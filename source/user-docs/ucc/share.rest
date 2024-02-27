@@ -11,13 +11,12 @@ Accessing UNICORE resources (jobs, storages, ...) is usually only
 possible when you *own* the resource or when there are special
 server-side policies in place that allow you access.
 
-Starting with server version 7.3, UNICORE supports ACLs on a
-*per-service* instance basis. This means, that you can give other users
-access to your target systems, jobs, storages,
+UNICORE supports ACLs on a *per-service* instance basis.
+This means, that you can give other users access to your jobs,
+storages, etc.
 
-For example, you might have access to an S3 cloud storage via UNICORE,
-and you want to securely share data on this resource. Or, you want to
-allow others to check job status, or even allow them to abort jobs.
+For example, you might want to allow others to check your jobs' status,
+or even allow them to abort jobs.
 
 Note that to access actual files the permissions on file system
 level still need to match. Usually this is achieved by using Unix
@@ -33,7 +32,7 @@ Use the basic
 
   $ ucc share <URL>
 
-to share the current ACL for the given resource, where *URL* is the full WSRF service URL
+to share the current ACL for the given resource, where *URL* is the full URL
 of the resource, e.g.
 
 .. code:: console
@@ -79,6 +78,3 @@ The permissions controlled by ACLs are as follows:
  * ``modify``: perform actions e.g. job submission or creating a file export
 
 Only the **owner** of a resource can edit the ACL or destroy the resource.
-
-
-

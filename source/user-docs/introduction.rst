@@ -63,7 +63,7 @@ For more complex cases, you can create a JSON job description and run that via U
   {
     "Job type": "ON_LOGIN_NODE",
     "Executable": "/bin/bash ./myscript.sh",
-    "Imports" [
+    "Imports": [
       {
         "From": "inline://dummy", "To": "myscript.sh",
         "Data": [
@@ -98,7 +98,7 @@ like this:
 
   {
     "Executable": "srun -ntasks=4 date",
-    "Resources" {
+    "Resources": {
       "Nodes": 1,
       "Runtime": 30
     }
@@ -140,8 +140,8 @@ containing resource requests, e.g. for Slurm, and tell UNICORE to use that via s
     ]
   }
 
-For simplicity, this example again puts the script directly in the job via an "inline"
-data transfer.
+For simplicity, this example contains the script directly in the job description
+via an "inline" data transfer.
 
 Note that this only needs to contain resource requests, the actual execution part will be document
 by UNICORE. UNICORE will then track this batch job as usual.

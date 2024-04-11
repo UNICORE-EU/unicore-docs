@@ -483,7 +483,7 @@ For example, to pull a file via UFTP, you would POST a JSON that looks something
 
  {
     file: "localFile.txt",
-    source: "UFTP:https://somehost/SITE/services/StorageManagement?res=..#/file"
+    source: "UFTP:https://somehost/SITE/rest/core/storages/{id}/files/path_to_file"
     extraParameters: {
       "uftp.compression" : true,
     }

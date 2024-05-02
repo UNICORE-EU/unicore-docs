@@ -36,7 +36,10 @@ Base URL
 The base URL of the the REST API for a single UNICORE/X server is
 :file:`https://{gateway_url}/{SITENAME}/rest/core`.
 
-In the following, we will abbreviate this URL as ``BASE`` Authentication.
+In the following, we will abbreviate this URL as ``BASE``.
+
+Authentication
+~~~~~~~~~~~~~~
 
 You need a user account on the :ref:`UNICORE/X <unicorex>` server, which is typically configured to 
 use a `password <../../admin-docs/unicorex/manual.html#password-auth>`_ 
@@ -800,19 +803,21 @@ Creating a token
 ~~~~~~~~~~~~~~~~
 
 The GET request to endpoint ``BASE/token`` allows you to create a JWT token signed by the server, that
-can be used for authentication later.
+can be used for authentication later. For example, this can be very useful for automation tasks,
+where you don't want to put a potentially sensitive password into a script.
+In this case you would create an authentication token and use that for the automation task.
 
 .. code:: console
 
  $  curl -k BASE/token
  eyJh...
 
-The token will (of course) give the same level of authentication that was used when creating it!
+The token will of course only give the same level of authentication that was used when creating it!
 
 The endpoint accepts parameters as query parameters to the GET request
 
  * ``lifetime`` token lifetime in seconds. If not set, the server's default is used (usually 300 seconds)
- * ``limited=true`` will make the token only valid for the issuing server
+ * ``limited=true`` will make the token only valid for the UNICORE/X server that you got it from
  * ``renewable=true`` will allow to get new tokens using the issued token 
  
 For example

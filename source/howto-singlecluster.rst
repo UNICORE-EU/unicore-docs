@@ -92,11 +92,11 @@ Download and install the Slurm TSI
 
   cd /opt/unicore
 
-  wget https://sourceforge.net/projects/unicore/files/Servers/Core/9.3.1/unicore-tsi-9.3.1.tgz -O unicore-tsi-9.3.1.tgz
+  wget https://github.com/UNICORE-EU/server-bundle/releases/download/10.0.0/unicore-tsi-10.0.0.tgz -O unicore-tsi-10.0.0.tgz
   
-  tar xf unicore-tsi-9.3.1.tgz
-  rm unicore-tsi-9.3.1.tgz
-  cd unicore-tsi-9.3.1
+  tar xf unicore-tsi-10.0.0.tgz
+  rm unicore-tsi-10.0.0.tgz
+  cd unicore-tsi-10.0.0
   
   ./Install.sh slurm /opt/unicore/tsi
   
@@ -161,11 +161,11 @@ Download and extract the UNICORE Server bundle
 
   cd /opt/unicore
 
-  wget https://sourceforge.net/projects/unicore/files/Servers/Core/9.3.1/unicore-servers-9.3.1.tgz -O unicore-servers-9.3.1.tgz
+  wget https://github.com/UNICORE-EU/server-bundle/releases/download/10.0.0/unicore-servers-10.0.0.tgz -O unicore-servers-10.0.0.tgz
   
-  tar xf unicore-servers-9.3.1.tgz
-  chown -R unicore:unicore unicore-servers-9.3.1
-  rm unicore-servers-9.3.1.tgz
+  tar xf unicore-servers-10.0.0.tgz
+  chown -R unicore:unicore unicore-servers-10.0.0
+  rm unicore-servers-10.0.0.tgz
 
 
 Installing UNICORE Gateway and UNICORE/X
@@ -183,7 +183,7 @@ on the HPC cluster.
 
 .. code:: console
 
-  cd unicore-servers-9.3.1
+  cd unicore-servers-10.0.0
 
   # TSI is running on 'hpc-login'
   sed -i "s/uxTSIHost=.*/uxTSIHost=hpc-login/" configure.properties

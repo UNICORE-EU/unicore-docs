@@ -7,7 +7,6 @@ Property name,Type, Default value \/ mandatory,Description
 "coreServices.uftp.command.port","integer [1 -- 65535]","64435","The UFTPD command port."
 "coreServices.uftp.command.socketTimeout","integer [0 -- 300]","10","The timeout (in seconds) for communicating with the command port."
 "coreServices.uftp.command.sslDisable","[true, false]","false","Allows to disable SSL on the command port (useful for testing)."
-"coreServices.uftp.disableSessionMode","[true, false]","false","Controls multi-file transfers should be done one by one (NOT recommended)."
 "coreServices.uftp.enable","[true, false]","true","Controls whether UFTP should be enabled for this server."
 "coreServices.uftp.encryption","[true, false]","false","Controls whether encryption should be enabled by default for server-server transfers."
 "coreServices.uftp.rateLimit","integer number","0","Limit the bandwidth (bytes per second) used by a single transfer (0 means no limit)."

@@ -13,20 +13,12 @@ checking server status, or getting the full details of a user job.
 
 Security considerations
 ~~~~~~~~~~~~~~~~~~~~~~~
- 
+
 Usually, each UNICORE user has only access to his or her own resources 
 (such as jobs). For administrative use, you will need to aquire administrator
-privileges. There are two ways to achieve this: 
-
-- create dedicated user credentials (e.g. a certificate) and map
-  them to the role *admin* (in the :ref:`XUUDB <xuudb>`, or whatever attribute source
-  you are using). This method is recommended if you want to remotely
-  administrate :ref:`UNICORE/X <unicorex>`.
-
-- use the server keystore (of the UNICORE/X server you want to administrate) 
-  as UCC keystore. This will also give you administrator privileges. For this you 
-  will need to be logged on to the UNICORE/X server, and UNICORE/X must accept
-  certificate authentication.
+privileges. The recommended way is to create dedicated user credentials
+(e.g. username/password) and map them to the role *admin* (in the :ref:`XUUDB <xuudb>`,
+or whatever attribute source you are using).
 
 Admin commands
 ~~~~~~~~~~~~~~
@@ -45,24 +37,18 @@ a list of statistical and performance data will be listed.
 It will also list the available admin commands for each server, with a
 short description of their parameters. For example, here is a sample output::
 
-  https://localhost:8080/DEMO-SITE/services/AdminService?res=default_admin 
-    Services: 
-      TargetSystemFactoryService[1]
-      ...
-    Monitors: 
-      use.externalConnectionStatus.REST_UnitySAMLAuthenticator: OK
-      use.security.overview: ServerIdentity: CN=Demo UNICORE/X,O=UNICORE,C=EU;Expires: Thu Sep 09 12:01:19 CEST 2032;IssuedBy: CN=Demo CA,O=UNICORE,C=EU
-      ....
+  https://localhost:8080/VENUS/rest/admin 
     Metrics: 
-      use.externalConnectionStatus.REST_UnitySAMLAuthenticator: OK
-      use.rest.callFrequency: 0.016677196376660174
-      ...
-    Available commands:
-      ShowJobDetails : parameters: jobID, [xnjsReference]
-      ShowServerUsageOverview : parameters: [clientDN]
-      ToggleResourceAvailability : 'resources' - comma separated list of IDs
+      use.security.ServerIdentity: ServerIdentity: CN=UNICOREX,O=UNICORE,C=EU;Expires: Sat Jun 24 10:42:02 CEST 2051;IssuedBy: CN=Demo CA,O=UNICORE,C=EU
+      use.throughput: count=29,mean=0.00,m1_rate=0.00,m5_rate=0.01,m15_rate=0.01
+      MeanTimeQueued-1: n/a
+    Commands: 
+      ToggleResourceAvailability : parameters: resources (comma separated list of IDs)
       ToggleJobSubmission : parameters: [message]
-      ToggleBESJobSubmission : 
+      AbortJob : parameters: jobID, [cleanup:false/true], [xnjsReference]
+      ShowJobDetails : parameters: [jobID], [xnjsReference]
+      ListPartitions : parameters: [xnjsReference]
+      ShowServerUsageOverview : parameters: [clientDN]
 
 To invoke a command, the ``admin-runcommand`` is used. It can take
 optional parameters.

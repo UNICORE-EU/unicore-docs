@@ -93,7 +93,7 @@ Example (for Unix) which captures the reference into a shell variable:
   
 .. code:: console
 
-  $ export ID=$(ucc cp -a ...
+  $ export ID=$(ucc cp -a ...)
   $ ucc copy-file-status $ID 
 
 

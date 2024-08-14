@@ -23,8 +23,7 @@ For example, assume the file *myjob.u* looks as follows:
 .. code:: json
 
   {
-    "ApplicationName": "Date", 
-    "ApplicationVersion": "1.0"
+    "ApplicationName": "Date"
   }
 
 To run this through UCC, issue the following command:
@@ -87,10 +86,16 @@ in :ref:`ucc_options`):
    +==============================+======================================================================+
    | -a,--asynchronous            | Run asynchronously                                                   |
    +------------------------------+----------------------------------------------------------------------+
+   | -A,--allocation  <URL>       | Submit into the given allocation                                     |
+   +------------------------------+----------------------------------------------------------------------+
    | -b,--brief                   | Do not create a sub-directory for output files                       |
    +------------------------------+----------------------------------------------------------------------+
    | -B,--broker                  | Select the type of resource broker to use (see ``run -h`` for        |
    |                              | a list)                                                              |
+   +------------------------------+----------------------------------------------------------------------+
+   | -d,--dry-run                 | Don't actually submit anything                                       |
+   +------------------------------+----------------------------------------------------------------------+
+   | -J,--multi-threaded          | For each job file listed on the command line, launch a thread        |
    +------------------------------+----------------------------------------------------------------------+
    | -s,--sitename <SITE>         | Site where the job shall be run                                      |
    +------------------------------+----------------------------------------------------------------------+
@@ -213,6 +218,37 @@ format shown above, or in the full ISO 8601 format including year, date, time an
    "Not before": "2011-12-24T12:30:00+0200",
   }
 
+Using allocations
+^^^^^^^^^^^^^^^^^
+
+Batch systems such as Slurm support allocations, i.e. the user can get a chunk of resources for a certain time,
+into which jobs can then be submitted. This allows a more "interactive" use of an HPC system, where you only have
+to wait once for the allocation to be granted, then subsequent jobs will be launched immediately.
+
+To create an allocation, you need to lauch a job of type ``ALLOCATE``, containing only resource requests:
+
+.. code:: json
+
+  {
+    "Job type": "ALLOCATE",
+
+    "Resources": {
+      "Nodes" : "1",
+      "Runtime": "1h"
+    }
+
+  }
+
+If you run this with "ucc run", a new job will be created, which is not yet executing anything.
+The job URL can then be used with a subsequent "ucc run -A <url>
+
+.. code:: console
+
+  $ export ALLOCATION=$(ucc run -a allocation.u)
+  $ ucc run -A $ALLOCATION yourjob1.u yourjob2.u
+
+Note that you should submit the allocation job asynchronously, otherwise ucc would wait for it to end.
+Also note that the allocation needs to be in state "RUNNING" before it can accept any jobs.
 
 Executing a command
 ~~~~~~~~~~~~~~~~~~~

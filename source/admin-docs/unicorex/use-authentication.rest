@@ -70,49 +70,6 @@ the DN of the user into the password file.
 
 .. _oauth2-bearer-token:
 
-Unity authentication using OAuth Bearer token
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-This mechanism uses the OAuth token sent from the client (HTTP
-``Authorization: Bearer ...`` header) to authenticate to Unity.
-In Unity terms, this uses the endpoint of type ``SAMLSoapIdP`` 
-(or ``SAMLUnicoreSoapIdP``) with authenticator of 
-type ``oauth-rp with cxf-oauth-bearer``.
-::
-
- container.security.rest.authentication.UNITY-OAUTH.class=eu.unicore.services.rest.security.UnityOAuthAuthenticator
- container.security.rest.authentication.UNITY-OAUTH.address=https://localhost:2443/unicore-soapidp-oidc/saml2unicoreidp-soap/AuthenticationService
-
-You can configure an additional validation of the Unity assertions
-using the configured *trusted assertion issuer* certificate(s)::
-
- # validate the received assertions?
- container.security.rest.authentication.UNITY-OAUTH.validate=true
-
-For this to work, UNICORE needs to public key of the Unity server as
-one of the *trusted assertion issuers*, please refer to the relevant
-section on trusted assertion issuers in the manual.
-
-Unity authentication using username/password
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-This mechanism takes the username/password sent from the client (HTTP Basic auth)
-and uses this to authenticate to Unity, retrieving an authentication assertion.
-::
-
- container.security.rest.authentication.UNITY.class=eu.unicore.services.rest.security.UnitySAMLAuthenticator
- container.security.rest.authentication.UNITY.address=https://localhost:2443/unicore-soapidp/saml2unicoreidp-soap/AuthenticationService
-
-You can configure an additional validation of the Unity assertions
-using the configured *trusted assertion issuer* certificate(s)::
-
- # validate the received assertions?
- container.security.rest.authentication.UNITY.validate=true
-
-For this to work, UNICORE needs to public key of the Unity server as
-one of the *trusted assertion issuers*, please refer to the relevant
-section on trusted assertion issuers in the manual.
-
 OAuth token authentication with an OIDC server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -137,29 +94,93 @@ In this case you need to set ``validate=true`` and provide client ID and secret
  container.security.rest.authentication.OAUTH.clientID=your-client-id
  container.security.rest.authentication.OAUTH.clientSecret=your-client-secret
 
+.. _assigning-attributes:
 
-The parameter ``dnTemplate`` is used to define the DN that will be assigned to authenticated users,
-where the ``%param`` parameters will be replaced by the corresponding parameters from the (validated OIDC token)
-The default template is ``UID=%email``.
+Assigning attributes based on authentication response
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Based on the response from the Identity Provider (e.g., the OIDC server) in the case of a
+successful authentication, UNICORE/X can assign common user attributes, which can be overriden
+later by the configured :ref:`attribute sources <use_aip>`. 
+
+To make use of this, you need to know what attributes are sent by the IdP. For OAuth, a simple
+way to find out is to query the "userinfo" endpoint of the server using a valid access token.
+
+UNICORE/X can assign the following attributes
+
+User identity:
 
 ::
 
- container.security.rest.authentication.OAUTH.dnTemplate=UID=%email
+ container.security.rest.authentication.OAUTH.identityAssign="UID="+email
 
-
-Successful OAuth authentication can assign the role and set the username based on the reply from the OIDC
-server. To enable this, you need to define templates for setting the role and/or the user ID.
-For example, to assign role "user" to each successfully authenticated request, and to
-use the "login_name" attribute in the token as the UNIX uid,
+Unix login (UID):
 
 ::
 
- container.security.rest.authentication.OAUTH.roleTemplate=user
- container.security.rest.authentication.OAUTH.uidTemplate=%login_name
+ container.security.rest.authentication.OAUTH.uidAssign=preferred_username
+
+Groups:
+
+::
+
+ container.security.rest.authentication.OAUTH.groupsAssign=["hpc", "users"]
+
+Role:
+
+(Note: the role will default to "user" in case of successful authentication and non-zero UID)
+
+::
+
+ container.security.rest.authentication.OAUTH.roleAssign="user"
 
 
-This can be overriden later by the configured :ref:`attribute sources <use_aip>`. 
+Unity (SAML) authentication using OAuth Bearer token
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+This mechanism uses the OAuth token sent from the client (HTTP
+``Authorization: Bearer ...`` header) to authenticate to Unity.
+In Unity terms, this uses the endpoint of type ``SAMLSoapIdP`` 
+(or ``SAMLUnicoreSoapIdP``) with authenticator of 
+type ``oauth-rp with cxf-oauth-bearer``.
+::
+
+ container.security.rest.authentication.UNITY-OAUTH.class=eu.unicore.services.rest.security.UnityOAuthAuthenticator
+ container.security.rest.authentication.UNITY-OAUTH.address=https://localhost:2443/unicore-soapidp-oidc/saml2unicoreidp-soap/AuthenticationService
+
+You can configure an additional validation of the Unity assertions
+using the configured *trusted assertion issuer* certificate(s)::
+
+ # validate the received assertions?
+ container.security.rest.authentication.UNITY-OAUTH.validate=true
+
+For this to work, UNICORE needs to public key of the Unity server as
+one of the *trusted assertion issuers*, please refer to the relevant
+section on trusted assertion issuers in the manual.
+
+SAML authentication supports :ref:`assigning attributes <assigning-attributes>` after successful authentication.
+
+Unity (SAML) authentication using username/password
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This mechanism takes the username/password sent from the client (HTTP Basic auth)
+and uses this to authenticate to Unity, retrieving an authentication assertion.
+::
+
+ container.security.rest.authentication.UNITY.class=eu.unicore.services.rest.security.UnitySAMLAuthenticator
+ container.security.rest.authentication.UNITY.address=https://localhost:2443/unicore-soapidp/saml2unicoreidp-soap/AuthenticationService
+
+You can configure an additional validation of the Unity assertions
+using the configured *trusted assertion issuer* certificate(s)::
+
+ # validate the received assertions?
+ container.security.rest.authentication.UNITY.validate=true
+
+For this to work, UNICORE needs to public key of the Unity server as
+one of the *trusted assertion issuers*, please refer to the relevant
+section on trusted assertion issuers in the manual.
+
+SAML authentication supports :ref:`assigning attributes <assigning-attributes>` after successful authentication.
 
 X.509 certificate
 ~~~~~~~~~~~~~~~~~

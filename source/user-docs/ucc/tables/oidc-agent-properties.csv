@@ -1,4 +1,5 @@
 Property name,Type, Default value \/ mandatory,Description
 "oidc-agent.account","string"," *mandatory* ","Account short name."
 "oidc-agent.lifetime","integer >= 1","","Minimum lifetime of the issued access token."
+"oidc-agent.refreshInterval","integer number","300","Interval (seconds) before refreshing the token."
 "oidc-agent.scope","string","","OpenID scope(s) to request."

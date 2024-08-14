@@ -79,5 +79,3 @@ IDB directory, main file defined, user-specific extension::
   XNJS.idbfile=/etc/unicore/unicorex/applications/
   XNJS.idbfile.main=/etc/unicore/unicorex/simpleidb
   XNJS.idbfile.ext.1=$HOME/.unicore/apps/*.xml
-
-

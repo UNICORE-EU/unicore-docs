@@ -30,9 +30,9 @@ Usage
 
 |:thinking:| **Can I use multiple registries with UCC?**
  
-	Yes. Simply use a comma-separated list of URLs for the ``-c`` option. 
-	However, you may only use a single key/truststore, so all registries (and sites listed in 
-	them) must accept the same security credentials.
+	Yes. Simply use a comma-separated list of URLs for the ``-r`` option. 
+	However, you may only use a single authentication setup, so all registries
+	(and sites listed in them) must accept the same security credentials.
 
 
 |:thinking:| **Can I upload and execute my own executable?**
@@ -42,12 +42,11 @@ Usage
 
 |:thinking:| **Can I use UCC to list the contents of the registry?**
  
-	Using the :ref:`rest command <rest-command>` (and optionally the UNIX ``jq`` utility for formatting the output),
-	this is very easy. For example,
+	Using the :ref:`rest command <rest-command>` this is very easy. For example,
 
 	.. code:: console
 
-		$ ucc rest get https://localhost:8080/DEMO-SITE/rest/core/registries/default_registry | jq
+		$ ucc rest get https://localhost:8080/DEMO-SITE/rest/registries/default_registry
 
 	will list the content of the registry.
 

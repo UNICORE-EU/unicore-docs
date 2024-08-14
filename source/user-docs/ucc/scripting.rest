@@ -26,13 +26,11 @@ Your Groovy scripts can access some predefined variables that are summarized in 
  +=======================+===================================================+===================================================+
  | registry              | A preconfigured client for accessing the registry | eu.unicore.client.registry.IRegistryClient        |
  +-----------------------+---------------------------------------------------+---------------------------------------------------+
- | configurationProvider | Security configuration provider (truststore, etc) | de.fzj.unicore.ucc.authn.UCCConfigurationProvider |
+ | configurationProvider | Security configuration provider (truststore, etc) | eu.unicore.ucc.authn.UCCConfigurationProvider     |
  +-----------------------+---------------------------------------------------+---------------------------------------------------+
  | auth                  | REST authentication mechanism                     | eu.unicore.services.rest.client.IAuthCallback     |
  +-----------------------+---------------------------------------------------+---------------------------------------------------+
  | registryURL           | the URL of the registry                           | java.lang.String                                  |
- +-----------------------+---------------------------------------------------+---------------------------------------------------+
- | messageWriter         | for writing messages to the user                  | de.fzj.unicore.ucc.MessageWriter                  |
  +-----------------------+---------------------------------------------------+---------------------------------------------------+
  | commandLine           | the command line                                  | org.apache.commons.cli.CommandLine                |
  +-----------------------+---------------------------------------------------+---------------------------------------------------+

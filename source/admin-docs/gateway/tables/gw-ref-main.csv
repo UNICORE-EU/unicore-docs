@@ -8,8 +8,6 @@ Property name,Type, Default value \/ mandatory,Description
 "gateway.registration.enable","[true, false]","false","Whether dynamic registration of sites is enabled."
 "gateway.registration.secret","string","","Required secret for dynamic registration."
 "gateway.soapMaxHeader","string","","DEPRECATED, no effect"
-"gateway.consignorTokenTimeTolerance","integer >= 0","30","The validity time of the authenticated client information passed to backend sites will start that many seconds before the real authentication. It is used to mask time synchronization problems between machines."
-"gateway.consignorTokenValidity","integer >= 1","60","What is the validity time of the authenticated client information passed to backend sites. Increase it if there machines clocks are not synhronized."
 "gateway.signConsignorToken","[true, false]","false","Controls whether information about the authenticated client (the consignor) passed to backend sites should be signed, or not. Signing is slower, but is required when sites may be reached directly, bypassing the Gateway."
 "gateway.client.chunked","[true, false]","true","Controls whether chunked passing of HTTP requests to backend sites is supported."
 "gateway.client.connectionTimeout","integer number","30000","Connection timeout, used when connecting to backend sites."

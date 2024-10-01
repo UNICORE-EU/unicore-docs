@@ -46,7 +46,7 @@ Job elements
 Job types
 ^^^^^^^^^
 
-UNICORE supports four types if jobs. They are selected by the ``Job type``
+UNICORE supports four types of jobs. They are selected by the ``Job type``
 element. If not given, ``batch`` is the default.
 
 

@@ -26,8 +26,24 @@ To view an example job showing most of the available options, run:
 (most of the options shown are not mandatory, of course).
 
 
-UCC extensions to the UNICORE job description format
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Specifying the execution site
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As an alternative to using the "--sitename" option to specify the execution site,
+you can use the following top-level keyword in the job description:
+
+::
+
+  {
+    "Site": "DEMO-SITE"
+  }
+
+Note that the commandline option, if present, takes precedence.
+
+Handling local files
+~~~~~~~~~~~~~~~~~~~~
+
+
 
 It is often the case that your job requires files from your
 local workstation, or you want UCC to download result files once

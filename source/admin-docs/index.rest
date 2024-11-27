@@ -40,7 +40,7 @@ Administrator Documentation
 	:ref:`UNICORE/X server <unicorex>` which provides the information about available
 	services to clients and other services. 
 
-- `UFTPD <https://uftp-docs.readthedocs.io/en/latest/admin-docs/uftpd/>`_
+- :ref:`UFTPD <uftp-docs:uftpd>`
 	The UNICORE File Transfer Server for high performance data transfer.
 
 .. figure:: _static/unicore-components.png
@@ -62,5 +62,6 @@ Administrator Documentation
 	admin-docs/xuudb/index.rst
 	admin-docs/workflow/index.rst
 	admin-docs/registry/index.rst
+	UFTPD <https://uftp-docs.readthedocs.io/en/latest/admin-docs/uftpd/index.html>
 	
 

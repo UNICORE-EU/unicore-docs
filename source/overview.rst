@@ -61,15 +61,14 @@ Clients
 ~~~~~~~
 
 - :ref:`Commandline client <ucc>`: Job execution, data transfer, workflows, scripting, batch mode, extensible
-- Dedicated `client for UFTP
-  <https://uftp-docs.readthedocs.io/en/latest/user-docs/uftp-client/>`_ 
+- :ref:`Dedicated client for UFTP <uftp-docs:uftp-client>`
   high performance file transfer and data management features
 - `pyUNICORE <https://pyunicore.readthedocs.io/>`_ Python client library
 
 Add-ons
 ~~~~~~~
 
-- `Standalone UFTP suite <https://uftp-docs.readthedocs.io/en/latest>`_ for high-performance data transfer 
+- :ref:`Standalone UFTP suite <uftp-docs:uftp-docs>` for high-performance data transfer 
   (can be used independently of UNICORE)
 - `Unity Identity Management system <https://unity-idm.eu>`_, supports LDAP, OAuth, SAML, 
   federated AAI and a lot more

@@ -77,7 +77,7 @@ For more complex cases, you can create a JSON job description and run that via U
 
 which you can then run via  ``ucc run`` (see the section :ref:`ucc_jobs` for more details).
 
-For simplicity, this example puts the script directly in the job via an "inline"
+For simplicity, this example puts the script directly in the job via an *inline*
 data transfer. There's a number of other options available to deal with file transfers (see 
 `Job data management <./rest-api/job-description/index.html#job-data-management>`_).
 
@@ -92,7 +92,7 @@ become available.
 You as the user need to provide the required resources - which queue,
 how long do you need the job to run, how many nodes etc, as well as the command to execute.
 
-For example to run 4 instances of "date" on one node of a cluster, the job would look
+For example to run 4 instances of *date* on one node of a cluster, the job would look
 like this:
 
 .. code:: json
@@ -106,7 +106,8 @@ like this:
   }
 
 Running this job via ``ucc run`` will submit and monitor the job, waiting for its completion and
-then download the standard output and error files (see :ref:`ucc_batch` for more details). UCC has many options to modify this behaviour,
+then download the standard output and error files (see :ref:`ucc_batch` for more details). 
+UCC has many options to modify this behaviour,
 and you will often submit the job without waiting for it to finish (see the section  
 `Options overview <./ucc/manual.html#options-overview>`_).
 
@@ -118,7 +119,7 @@ Advanced batch jobs
 
 If you prefer to use a more low level way to allocate resources, you can provide a file
 containing resource requests, e.g. for Slurm, and tell UNICORE to use that via special
-"Job type" and "BSS file" elements in your job:
+``Job type`` and ``BSS file`` elements in your job:
 
 .. code:: json
 
@@ -143,7 +144,7 @@ containing resource requests, e.g. for Slurm, and tell UNICORE to use that via s
   }
 
 For simplicity, this example contains the script directly in the job description
-via an "inline" data transfer.
+via an *inline* data transfer.
 
 Note that this only needs to contain resource requests, the actual execution part will be document
 by UNICORE. UNICORE will then track this batch job as usual.

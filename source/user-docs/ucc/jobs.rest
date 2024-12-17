@@ -70,7 +70,7 @@ Using the UCC's data management functions, the job working directory
 can be accessed at any time after job submission. Please see section
 :ref:`ucc_datamanagement` for details.
 
-.. _ucc_job_submission_options:
+.. _options_overview:
 
 Options overview
 ~~~~~~~~~~~~~~~~

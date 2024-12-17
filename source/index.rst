@@ -64,6 +64,8 @@ in intranets and the internet.
 	:align: middle
 
 For getting more information or support, please see the :ref:`links` and :ref:`support` page.
+The :ref:`glossary` includes a number of terms that we use in our documentation, so that you have a reference 
+for how we’re using them.
 
 .. toctree::
 	:caption: Getting Support
@@ -71,6 +73,7 @@ For getting more information or support, please see the :ref:`links` and :ref:`s
 	
 	links.rst
 	support
+	glossary
 
 
 |bsd-img| License
@@ -89,5 +92,6 @@ and the source code is available on `GitHub <https://github.com/UNICORE-EU>`_.
 	:hidden:
 	
 	license
+
 
 

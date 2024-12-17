@@ -26,7 +26,7 @@ User Documentation
 - |data-triggered-img| :ref:`data-triggered`
 	Reference for the data-triggered processing in UNICORE/X.
 
-- :ref:`UFTP Client <uftp-docs:uftp-client>`
+- |uftp-img| :ref:`UFTP Client <uftp-docs:uftp-client>`
 	The UNICORE File Transfer Client for high performance data transfer.
 
 .. |info-img| image:: _static/user-guide.png
@@ -54,6 +54,10 @@ User Documentation
 	:height: 24px
 	:align: middle
 
+.. |uftp-img| image:: _static/uftp.png
+	:height: 24px
+	:align: middle
+
 .. toctree::
 	:maxdepth: 3
 	:caption: User Documentation
@@ -65,4 +69,5 @@ User Documentation
 	user-docs/rest-api/job-description/index
 	user-docs/rest-api/workflow-description/index
 	user-docs/data-triggered-processing
-	UFTP Client <https://uftp-docs.readthedocs.io/en/latest/user-docs/uftp-client/index.html>
+	UFTP Client <https://uftp-docs.readthedocs.io/en/latest/user-docs/uftp-client>
+	

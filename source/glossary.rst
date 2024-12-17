@@ -11,7 +11,8 @@ so that you have a reference for how we're using them.
 	
 
 	UNICORE
-		UNiform Interface to COmputing REsources
+		A European Federation Software Suite. UNICORE (UNiform Interface to Computing RRsources) 
+		offers a ready-to-run system including client and server software.
 	
 	UNICORE Commandline Client
 		A full featured commandline client for UNICORE.

@@ -75,10 +75,11 @@ For more complex cases, you can create a JSON job description and run that via U
     ]
   }
 
-which you can then run via  ``ucc run``.
+which you can then run via  ``ucc run`` (see the section :ref:`ucc_jobs` for more details).
 
 For simplicity, this example puts the script directly in the job via an "inline"
-data transfer. There's a number of other options available to deal with file transfers.
+data transfer. There's a number of other options available to deal with file transfers (see 
+`Job data management <./rest-api/job-description/index.html#job-data-management>`_).
 
 
 Running batch jobs
@@ -105,8 +106,9 @@ like this:
   }
 
 Running this job via ``ucc run`` will submit and monitor the job, waiting for its completion and
-then download the standard output and error files. UCC has many options to modify this behaviour,
-and you will often submit the job without waiting for it to finish.
+then download the standard output and error files (see :ref:`ucc_batch` for more details). UCC has many options to modify this behaviour,
+and you will often submit the job without waiting for it to finish (see the section  
+`Options overview <./ucc/manual.html#options-overview>`_).
 
 The ``ucc list-jobs`` command is used to list all your jobs (that were submitted via UNICORE),
 and you can use other ucc commands to interact with the job or download results.

@@ -21,7 +21,7 @@ def setup(app):
 # -- Project information -----------------------------------------------------
 
 project = 'UNICORE Docs'
-author = '2024 UNICORE'
+author = '2025 UNICORE'
 copyright = author
 version = 'stable'
 language = 'en'
@@ -86,6 +86,7 @@ html_theme_options = {
     #'style_external_links': False,
     #'vcs_pageview_mode': 'blob',
     #'style_nav_header_background': '#2980B9',
+    'style_nav_header_background': '#0080C0',
     # Toc options
     'collapse_navigation': False,
     #'sticky_navigation': True,

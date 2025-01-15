@@ -9,16 +9,16 @@
 
 UFTP is a high-performance file transfer protocol.  For using UFTP as
 a data staging and file upload/download solution in UNICORE, a separate server 
-(`UFTPD <https://uftp-docs.readthedocs.io/en/latest/admin-docs/uftpd/index.html>`_) is required. 
+(:ref:`UFTPD <uftp-docs:uftpd>`) is required. 
 This is installed on a host with direct access to the file system, usually this is a cluster 
 login node, but it can also be a separate host.
 
-In a `UFTP transfer <https://uftp-docs.readthedocs.io/en/latest/index.html>`_, one side acts 
+In a :ref:`UFTP transfer <uftp-docs:uftp-docs>`, one side acts 
 as a client and the other side is the uftpd server. UNICORE/X will run the client code via the 
 :ref:`TSI <tsi>` (recommended) or in-process (with lower performance).
 
 For details on how to install the UFTPD server please refer to the separate 
-`UFTPD manual <https://uftp-docs.readthedocs.io/en/latest/admin-docs/uftpd/manual.html>`_,
+:ref:`UFTPD manual <uftp-docs:uftpd-manual>`,
 which provides all information required to install and configure the UFTPD server.
 
 The minimal required UNICORE/X configuration consists of 

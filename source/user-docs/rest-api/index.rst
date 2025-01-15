@@ -438,8 +438,8 @@ Similarly, to upload a file localfile to a remote file newfile:
  media type EXCEPT ``application/json``! See the :ref:`rest-api-examples` for a detailed example.
 
 The second way is to create a UNICORE file transfer by POSTing to the ``/imports`` or ``/exports`` 
-path, which requires custom clients, e.g. to support `UFTP 
-<https://uftp-docs.readthedocs.io/en/latest/user-docs/uftp-client/index.html>`_. For 
+path, which requires custom clients, e.g. to support :ref:`UFTP 
+<uftp-docs:uftp-client>`. For 
 this reason, we do not consider this any further here.
 
 
@@ -471,7 +471,7 @@ Copying data to another server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 UNICORE supports server-to-server transfers using one of several protocols including the rather 
-efficient `UFTP protocol <https://uftp-docs.readthedocs.io/en/latest>`_. This is initiated by POSTing to a 
+efficient :ref:`UFTP protocol <uftp-docs:uftp-docs>`. This is initiated by POSTing to a 
 storage resource's/transfers path ``BASE/storages/{id}/transfers``.
 
 The transfer is described using JSON, and can be either ``push`` or ``pull``.

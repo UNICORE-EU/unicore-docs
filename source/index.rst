@@ -4,6 +4,10 @@
 Welcome to UNICORE Documentation
 ================================
 
+.. meta::
+   :description: The UNICORE documentation
+   :keywords: UNICORE, documentation
+
 .. role:: blue
 
 `UNICORE <https://www.unicore.eu>`_ (:blue:`UN`\ iform :blue:`I`\ nterface to :blue:`CO`\ mputing 

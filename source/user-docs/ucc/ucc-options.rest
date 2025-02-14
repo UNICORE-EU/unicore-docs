@@ -187,6 +187,8 @@ Your :ref:`config file <config-file>` would require at least:
   oidc-agent.account=<oidc-agent account to be used>
 
 
+.. _oidc-server:
+
 OIDC Server
 ^^^^^^^^^^^
 

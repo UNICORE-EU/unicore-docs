@@ -62,6 +62,6 @@ Administrator Documentation
 	admin-docs/xuudb/index.rst
 	admin-docs/workflow/index.rst
 	admin-docs/registry/index.rst
-	UFTPD <https://uftp-docs.readthedocs.io/en/latest/admin-docs/uftpd>
+	UFTPD -> <https://uftp-docs.readthedocs.io/en/latest/admin-docs/uftpd>
 
 

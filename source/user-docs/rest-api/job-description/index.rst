@@ -220,6 +220,9 @@ The default behaviour can be modified via the following options:
 
 and the same for the post command.
 
+
+.. _job-data-management:
+
 Job data management
 ~~~~~~~~~~~~~~~~~~~
 

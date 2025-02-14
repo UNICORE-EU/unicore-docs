@@ -295,7 +295,7 @@ as BFT or UFTP, but also standard protocols like ftp and scp.
 Some of these have additional configuration options, which
 are given in this section.
 
-.. include:: scp.rest
+.. include:: ux-scp.rest
 
 
 GridFTP

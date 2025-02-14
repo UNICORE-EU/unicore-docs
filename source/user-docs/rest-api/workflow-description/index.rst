@@ -751,10 +751,10 @@ in the for group as shown above:
   file names (last elements of the paths) in the current chunk
 
 
-.. _examples:
+.. _wf-examples:
 
-Examples
-~~~~~~~~
+Examples of workflows
+~~~~~~~~~~~~~~~~~~~~~
 
 This section collects a few simple example workflows. They are intended to be submitted using 
 :ref:`ucc`.

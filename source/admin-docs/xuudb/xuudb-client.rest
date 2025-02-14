@@ -25,7 +25,7 @@ The client configuration requires the URL of the XUUDB server in the property ``
 and in case of secure HTTPS connections also a configuration truststore and credential. The settings
 are exactly the same as in case of the XUUDB server, so refer to its documentation :ref:`authtrust`.
 
-.. include:: sec-client.rest
+.. include:: xuudb-sec-client.rest
 
 
 

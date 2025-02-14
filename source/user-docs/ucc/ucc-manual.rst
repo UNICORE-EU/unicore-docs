@@ -43,32 +43,32 @@ It offers the following functions
 
 For more information about UNICORE visit https://www.unicore.eu.
 
-.. include:: install.rest
+.. include:: ucc-install.rest
 
-.. include:: quickstart.rest
+.. include:: ucc-quickstart.rest
 
-.. include:: options.rest
+.. include:: ucc-options.rest
 
-.. include:: jobs.rest
+.. include:: ucc-jobs.rest
 
-.. include:: jobdescription.rest
+.. include:: ucc-jobdescription.rest
 
-.. include:: datamanagement.rest
+.. include:: ucc-datamanagement.rest
 
-.. include:: metadata.rest
+.. include:: ucc-metadata.rest
 
-.. include:: workflow.rest
+.. include:: ucc-workflow.rest
 
-.. include:: batch.rest
+.. include:: ucc-batch.rest
 
-.. include:: shell.rest
+.. include:: ucc-shell.rest
 
-.. include:: share.rest
+.. include:: ucc-share.rest
 
-.. include:: tunneling.rest
+.. include:: ucc-tunneling.rest
 
-.. include:: admin.rest
+.. include:: ucc-admin.rest
 
-.. include:: scripting.rest
+.. include:: ucc-scripting.rest
 
-.. include:: faq.rest
+.. include:: ucc-faq.rest

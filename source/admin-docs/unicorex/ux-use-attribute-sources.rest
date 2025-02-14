@@ -187,8 +187,8 @@ Available attribute sources
 
 .. _xuudb-attr:
 
-XUUDB
-^^^^^
+XUUDB attribute
+^^^^^^^^^^^^^^^
 
 The :ref:`xuudb` is the standard option in UNICORE. It has the following features:
   
@@ -323,8 +323,8 @@ You can also define other attributes - those will be used as XACML authorization
 attributes, with XACML string type.  
 
 
-PAM
-^^^
+PAM attribute
+^^^^^^^^^^^^^
 
 This is a special attribute source which only works in conjunction
 with the corresponding REST authentication module.

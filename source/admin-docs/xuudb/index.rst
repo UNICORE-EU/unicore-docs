@@ -21,7 +21,7 @@ user's role.
   
   UNICORE XUUDB
 
-|user-guide-img| :doc:`manual`
+|user-guide-img| :doc:`xuudb-manual`
       User Manual with detailed instructions and examples for using the XUUDB.
 
 .. |user-guide-img| image:: ../../_static/user-guide.png
@@ -33,5 +33,5 @@ user's role.
 	:caption: XUUDB Documentation
 	:hidden:
       
-	manual
+	xuudb-manual
 	

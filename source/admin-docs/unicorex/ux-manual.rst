@@ -15,34 +15,34 @@ of the target resources, e.g. batch systems or file systems.
 For more information about UNICORE visit
 https://www.unicore.eu.
 
-.. include:: install.rest
+.. include:: ux-install.rest
 
-.. include:: configuration.rest
+.. include:: ux-configuration.rest
 
-.. include:: features.rest
+.. include:: ux-features.rest
 
-.. include:: admin.rest
+.. include:: ux-admin.rest
 
-.. include:: security_concepts.rest
+.. include:: ux-security_concepts.rest
 
-.. include:: use-authentication.rest
+.. include:: ux-use-authentication.rest
   
-.. include:: use-attribute-sources.rest
+.. include:: ux-use-attribute-sources.rest
 
-.. include:: use-vo.rest
+.. include:: ux-use-vo.rest
   
-.. include:: use-persistence.rest
+.. include:: ux-use-persistence.rest
 
 .. include:: xnjs.rest
 
-.. include:: uftp.rest
+.. include:: ux-uftp.rest
 
-.. include:: storages.rest
+.. include:: ux-storages.rest
 
-.. include:: metadata.rest
+.. include:: ux-metadata.rest
 
-.. include:: dataprocessing.rest
+.. include:: ux-dataprocessing.rest
 
-.. include:: use-authorization.rest
+.. include:: ux-use-authorization.rest
   
-.. include:: use-policies.rest
+.. include:: ux-use-policies.rest

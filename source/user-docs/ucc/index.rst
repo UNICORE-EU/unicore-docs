@@ -18,19 +18,19 @@ supporting all of UNICORE's features, such as:
 * Storage functions (:ref:`ls_command`, :ref:`mkdir_command`, \.\.\.) including creation of storage instances 
   via storage factories
 
-* :ref:`Workflow execution <workflow>` using UNICORE's own :ref:`workflow description<workflow-description>`
+* :ref:`Workflow execution <workflow>` using UNICORE's own :ref:`workflow description <workflow-description>`
 
 and much more.
 
 
-|user-guide-img| :doc:`manual`
+|user-guide-img| :doc:`ucc-manual`
     User Manual with detailed instructions and examples for using the UNICORE Commandline Client.
 
 .. |user-guide-img| image:: ../../_static/user-guide.png
 	:height: 22px
 	:align: middle
 
-|app-package-img| :doc:`building`
+|app-package-img| :doc:`ucc-building`
     Building the UNICORE Commandline Client distribution packages.
 
 .. |app-package-img| image:: ../../_static/app-package.png
@@ -43,8 +43,8 @@ and much more.
 	:caption: UCC Documentation
 	:hidden:
 
-	manual
-	building
+	ucc-manual
+	ucc-building
 	
 	
 .. toctree::

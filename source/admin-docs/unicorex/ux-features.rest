@@ -14,8 +14,8 @@ Features can be disabled via configuration. It is also possible to
 disable single services in a feature.
 
 
-JobManagement
-^^^^^^^^^^^^^
+JobManagement feature
+^^^^^^^^^^^^^^^^^^^^^
 
 This feature deals with job submission and management, as well as
 those storage services required for job processing.
@@ -51,8 +51,8 @@ To disable the whole feature
 
 
 
-StorageAccess
-^^^^^^^^^^^^^
+StorageAccess feature
+^^^^^^^^^^^^^^^^^^^^^
 
 This feature provides storage access, storage factory service,
 metadata management and file transfers.
@@ -90,8 +90,9 @@ To disable only one service, e.g. the Storage Factory
   container.feature.StorageAccess.StorageFactory.enable=false
 
 
-Workflow
-^^^^^^^^
+
+Workflow Feature
+^^^^^^^^^^^^^^^^
 This feature provides workflow processing involving only this UNICORE/X server,
 (i.e. NO cross-site workflows)
 
@@ -101,8 +102,8 @@ To disable the whole feature
   container.feature.WorkflowEngine.enable=false
 
 
-Base
-^^^^
+Base feature
+^^^^^^^^^^^^
 
 This feature provides low-level services, but also contains the
 RESTful APIs for jobs and data management.
@@ -122,8 +123,8 @@ RESTful APIs for jobs and data management.
  +----------------+----------------------------------------------+
 
 
-Admin
-^^^^^
+Admin feature
+^^^^^^^^^^^^^
 
 This feature provides the Admin service (see :ref:`ux_admin_service`).
 
@@ -139,8 +140,8 @@ This feature provides the Admin service (see :ref:`ux_admin_service`).
  +------------------+--------------------------------------------+
  
 
-|registry-img| Registry
------------------------
+|registry-img| Registry feature
+-------------------------------
 
 .. |registry-img| image:: ../../_static/registry.png
 	:height: 32px

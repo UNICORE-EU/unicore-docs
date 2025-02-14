@@ -42,10 +42,10 @@ Authentication
 ~~~~~~~~~~~~~~
 
 You need a user account on the :ref:`UNICORE/X <unicorex>` server, which is typically configured to 
-use a `password <../../admin-docs/unicorex/manual.html#password-auth>`_ 
-(or using an `OAuth2 bearer token <../../admin-docs/unicorex/manual.html#oauth2-bearer-token>`_). 
+use a `password <password-auth>` 
+(or using an `OAuth2 bearer token <oauth2-bearer-token>`). 
 The supported `authentication methods 
-<../../admin-docs/unicorex/manual.html#auth-img-authentication>`_ depend on the UNICORE server.
+<auth-img-authentication>` depend on the UNICORE server.
 
 For example, when username/password are enabled you can use ``curl`` to access the base URL above:
 

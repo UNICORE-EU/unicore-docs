@@ -26,21 +26,21 @@ is possible as well, see the :ref:`tsi-manual` for details.
   UNICORE TSI
 
 
-|user-guide-img| :doc:`manual`
+|user-guide-img| :doc:`tsi-manual`
     TSI Manual with detailed instructions and examples for using the TSI.
 
 .. |user-guide-img| image:: ../../_static/user-guide.png
 	:height: 22px
 	:align: middle
 
-|api-img| :doc:`api`
+|api-img| :doc:`tsi-api`
     The API to the TSI as used by :ref:`UNICORE/X <unicorex>`.
 
 .. |api-img| image:: ../../_static/api.png
 	:height: 22px
 	:align: middle
 
-|app-package-img| :doc:`building`
+|app-package-img| :doc:`tsi-building`
     Building TSI distribution packages.
 
 .. |app-package-img| image:: ../../_static/app-package.png
@@ -54,9 +54,9 @@ is possible as well, see the :ref:`tsi-manual` for details.
 	:caption: TSI Documentation
 	:hidden:
 	
-	manual
-	api
-	building
+	tsi-manual
+	tsi-api
+	tsi-building
 
 .. toctree::
 	:maxdepth: 1

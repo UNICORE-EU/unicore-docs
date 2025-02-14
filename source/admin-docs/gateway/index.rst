@@ -33,7 +33,7 @@ Last not least, the Gateway can be configured as a HTTP load balancer.
   UNICORE Gateway Server
 
 
-|user-guide-img| :doc:`manual`
+|user-guide-img| :doc:`gw-manual`
   Installation and Operating the Gateway.
 
 .. |user-guide-img| image:: ../../_static/user-guide.png
@@ -45,7 +45,8 @@ Last not least, the Gateway can be configured as a HTTP load balancer.
 	:caption: Gateway Documentation
 	:hidden:
 	
-	manual
+	gw-manual
+	
 .. toctree::
 	:maxdepth: 1
 	:hidden:

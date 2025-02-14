@@ -132,11 +132,11 @@ external database pay attention to enter proper values.
   :class: tight-table
 
 
-.. include:: sec-jetty.rest
+.. include:: xuudb-sec-jetty.rest
 
 .. _authtrust:
 
-.. include:: sec-authtrustcfg.rest
+.. include:: xuudb-sec-authtrustcfg.rest
 
 
 .. _dynamic:
@@ -436,7 +436,7 @@ In case if XUUDB was installed with binary package use:
   $ /etc/init.d/unicore-xuudb stop
 
 
-.. include:: sec-logging.rest
+.. include:: xuudb-sec-logging.rest
 
 
 

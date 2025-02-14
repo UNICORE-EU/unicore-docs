@@ -27,8 +27,8 @@ when submitting jobs to the execution sites.
 
 For more information about UNICORE visit https://www.unicore.eu.
 
-.. include:: setup.rest
+.. include:: wf-setup.rest
 
-.. include:: config.rest
+.. include:: wf-config.rest
 
-.. include:: update.rest
+.. include:: wf-update.rest

@@ -15,7 +15,7 @@ and control constructs:
   integration
 
 
-|user-guide-img| :doc:`manual`
+|user-guide-img| :doc:`wf-manual`
       User Manual with detailed instructions and examples for using the Workflow service.
 
 .. |user-guide-img| image:: ../../_static/user-guide.png
@@ -27,7 +27,7 @@ and control constructs:
 	:caption: Workflow Documentation
 	:hidden:
       
-	manual
+	wf-manual
 	
 	  
 

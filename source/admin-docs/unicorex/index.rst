@@ -16,14 +16,14 @@ for a single compute cluster (or just a file system).
   UNICORE/X Server
 
 
-|user-guide-img| :doc:`manual`
+|user-guide-img| :doc:`ux-manual`
   Installation and Operating the UNICORE/X server.
 
 .. |user-guide-img| image:: ../../_static/user-guide.png
 	:height: 22px
 	:align: middle
 
-|update-img| :doc:`update`
+|update-img| :doc:`ux-update`
   Update a UNICORE/X server to this version.
 
 .. |update-img| image:: ../../_static/update.png
@@ -35,8 +35,8 @@ for a single compute cluster (or just a file system).
 	:caption: UNICORE/X Documentation
 	:hidden:
 
-	manual
-   	update
+	ux-manual
+   	ux-update
 	
 .. toctree::
 	:maxdepth: 1

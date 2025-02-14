@@ -127,6 +127,6 @@ attribute.
 Details on what attributes are used for those purposes are presented
 in the following section.
  
-.. include:: use-vo-config.rest
+.. include:: ux-use-vo-config.rest
 
-.. include:: use-vo-howto.rest
+.. include:: ux-use-vo-howto.rest

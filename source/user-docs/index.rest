@@ -69,5 +69,5 @@ User Documentation
 	user-docs/rest-api/job-description/index
 	user-docs/rest-api/workflow-description/index
 	user-docs/data-triggered-processing
-	UFTP Client -> <https://uftp-docs.readthedocs.io/en/latest/user-docs/uftp-client>
+	user-docs/uftp-client/index
 	

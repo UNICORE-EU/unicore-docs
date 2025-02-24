@@ -40,7 +40,7 @@ If you are not using Python (or Java), you can always directly use the
 Use case: job execution
 -----------------------
 
-Running jobs is the backbones of UNICORE - you can use it as a fancy job submission
+Running jobs is the backbone of UNICORE - you can use it as a fancy job submission
 and job monitoring tool, or simply as a "replacement" for SSH.
 
 
@@ -78,7 +78,7 @@ For more complex cases, you can create a JSON job description and run that via U
 which you can then run via  ``ucc run`` (see the section :ref:`ucc_jobs` for more details).
 
 For simplicity, this example puts the script directly in the job via an *inline*
-data transfer. There's a number of other options available to deal with file transfers (see 
+data transfer. There's a number of other options available to deal with file transfers (see
 :ref:`job-data-management` for more details).
 
 
@@ -92,12 +92,13 @@ become available.
 You as the user need to provide the required resources - which queue,
 how long do you need the job to run, how many nodes etc, as well as the command to execute.
 
-For example to run 4 instances of *date* on one node of a cluster, the job would look
-like this:
+For example to run 4 instances of *date* on one node of a cluster, the job could look
+like this
 
 .. code:: json
 
   {
+    "Job type": "BATCH",
     "Executable": "srun -ntasks=4 date",
     "Resources": {
       "Nodes": 1,
@@ -105,14 +106,39 @@ like this:
     }
   }
 
+
+Often, it is more elegant to put the commands into a script, like this:
+
+.. code:: json
+
+  {
+    "Job type": "BATCH",
+    "Executable": "/bin/bash ./myscript.sh",
+    "Resources": {
+      "Nodes": 1,
+      "Runtime": 30
+    },
+    "Imports": [
+      {
+        "From": "inline://dummy", "To": "myscript.sh",
+        "Data": [
+          "srun -ntasks=4 date"
+        ]
+    ]
+  }
+
+For simplicity, this example puts the script directly in the job via an *inline*
+data transfer. There's a number of other options available to deal with file transfers (see
+:ref:`job-data-management` for more details).
+
 Running this job via ``ucc run`` will submit and monitor the job, waiting for its completion and
 then download the standard output and error files (see :ref:`ucc_batch` for more details). 
-UCC has many options to modify this behaviour,
-and you will often submit the job without waiting for it to finish (see the section  
-`Options overview <ucc-options-overview>`).
+UCC has many options to modify this behaviour, and you will often submit the job without waiting
+for it to finish (see the section `Options overview <ucc-options-overview>`).
 
 The ``ucc list-jobs`` command is used to list all your jobs (that were submitted via UNICORE),
 and you can use other ucc commands to interact with the job or download results.
+
 
 Advanced batch jobs
 ~~~~~~~~~~~~~~~~~~~

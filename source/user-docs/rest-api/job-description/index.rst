@@ -242,14 +242,15 @@ Some jobs require additional files from the client machine to be uploaded before
 user task can be started.
 
 Uploading LOCAL files is the responsibility of the client! Make sure to read the 
-:ref:`client documentation <ucc-manual>` for more information on this topic.
+:ref:`client documentation <handle-local-files>` for more information on this topic.
 
 To tell UNICORE/X that the client does not wish to send any local files, use the flag
 ::
 
  "haveClientStageIn": "false",
 
-Otherwise, the server will wait for an explicit *start* command (see the :ref:`rest-api` spec for 
+Otherwise, the server will wait for an explicit *start* command (see the 
+:ref:`REST-API spec <starting-aborting-jobs>` for 
 details) before submitting / executing the user task.
 
 
@@ -343,6 +344,8 @@ and is discussed below.
 
 The optional ``ExtraParameters`` element is used for protocol-specific extra settings.
 
+
+.. _inline-data:
 
 Using *inline* data to import a file into the job workspace
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -566,7 +569,7 @@ can specify the account (or project) you want to charge the job to using the ``P
 
   "Project" : "my_project",
 
-(putting the "Project" into the "Resources" element will work, too)
+(putting the ``Project`` into the ``Resources`` element will work, too)
 
 Miscellaneous options
 ~~~~~~~~~~~~~~~~~~~~~

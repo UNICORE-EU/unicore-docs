@@ -36,7 +36,7 @@ on your requirements, use cases and existing infrastructure.
 A few starting points:
 
 1. for each target resource (e.g. a compute cluster) you need a :ref:`TSI <tsi>` and 
-   a :ref:`UNICORE/X<unicorex>`
+   a :ref:`UNICORE/X<unicorex>`.
    The TSI is deployed on the cluster login node(s), while UNICORE/X requires a VM or server,
    UNICORE/X should NOT be run on a machine where users can log in.
 

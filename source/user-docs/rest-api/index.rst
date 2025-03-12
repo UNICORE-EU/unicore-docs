@@ -30,6 +30,8 @@ Basics
 The REST API supports both the JSON (*application/json*) and HTML (*text/html*) content types.
 
 
+.. _base-url:
+
 Base URL
 ~~~~~~~~
 
@@ -43,11 +45,10 @@ Authentication
 
 You need a user account on the :ref:`UNICORE/X <unicorex>` server, which is typically configured to 
 use a `password <password-auth>` 
-(or using an `OAuth2 bearer token <oauth2-bearer-token>`). 
-The supported `authentication methods 
-<auth-img-authentication>` depend on the UNICORE server.
+(or using an :ref:`OAuth2 bearer token <oauth2-bearer-token>`). 
+The supported :ref:`authentication methods <use_auth>` depend on the UNICORE server.
 
-For example, when username/password are enabled you can use ``curl`` to access the base URL above:
+For example, when username/password are enabled you can use ``curl`` to access the :ref:`base URL <base-url>` above:
 
 .. code:: console
 
@@ -667,6 +668,8 @@ Note however that **small(!)** files can be embedded into the job description as
 
 In the :ref:`rest-api-examples` you will find some typical job submission and management examples.
 
+
+.. _starting-aborting-jobs:
 
 Starting, aborting or restarting jobs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

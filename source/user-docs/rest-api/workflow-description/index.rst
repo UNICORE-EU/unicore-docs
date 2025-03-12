@@ -757,7 +757,7 @@ Examples of workflows
 ~~~~~~~~~~~~~~~~~~~~~
 
 This section collects a few simple example workflows. They are intended to be submitted using 
-:ref:`ucc`.
+:ref:`UCC <ucc_workflow>`.
 
 .. _examples_two_step_with_data:
 

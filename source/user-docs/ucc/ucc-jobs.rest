@@ -124,13 +124,14 @@ To see if other brokers exist, execute ``ucc run -h``, the available
 options will be listed in the help for the ``-B`` option.
 
 
+.. _asynch-submission:
+
 Processing jobs asynchronously  
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In case of long-running jobs, you will want to run the job
 asynchronously, i.e. just submit the job, stage in any files and start
 it, in order to get the results later.
-
 
 Asynchronous submission
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -147,6 +148,8 @@ A job file will be written that contains information about the job endpoint
 and any exports that should be performed once the job has finished.
 You can use this file later with the ``get-output`` and ``job-status`` commands.
 
+.. _get-job-status:
+
 Get the status of particular jobs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -162,6 +165,7 @@ job URL will be read from the console.
 The arguments can be either a job URL, or the name of a job file (as
 written by the ``run -a`` command).
 
+.. _download-results:
 
 Download results
 ^^^^^^^^^^^^^^^^
@@ -224,7 +228,7 @@ Using allocations
 ^^^^^^^^^^^^^^^^^
 
 Batch systems such as Slurm support allocations, i.e. the user can get a chunk of resources for a certain time,
-into which jobs can then be submitted. This allows a more "interactive" use of an HPC system, where you only have
+into which jobs can then be submitted. This allows a more *interactive* use of an HPC system, where you only have
 to wait once for the allocation to be granted, then subsequent jobs will be launched immediately.
 
 To create an allocation, you need to lauch a job of type ``ALLOCATE``, containing only resource requests:
@@ -241,8 +245,8 @@ To create an allocation, you need to lauch a job of type ``ALLOCATE``, containin
 
   }
 
-If you run this with "ucc run", a new job will be created, which is not yet executing anything.
-The job URL can then be used with a subsequent "ucc run -A <url>
+If you run this with ``ucc run``, a new job will be created, which is not yet executing anything.
+The job URL can then be used with a subsequent ``ucc run -A <url>``
 
 .. code:: console
 
@@ -250,7 +254,7 @@ The job URL can then be used with a subsequent "ucc run -A <url>
   $ ucc run -A $ALLOCATION yourjob1.u yourjob2.u
 
 Note that you should submit the allocation job asynchronously, otherwise ucc would wait for it to end.
-Also note that the allocation needs to be in state "RUNNING" before it can accept any jobs.
+Also note that the allocation needs to be in state ``RUNNING`` before it can accept any jobs.
 
 Executing a command
 ~~~~~~~~~~~~~~~~~~~
@@ -271,7 +275,7 @@ For example, try
 
   $ ucc exec /bin/date
 
-To safely pass arguments to the executable, use "--" to end the UCC part of
+To safely pass arguments to the executable, use ``--`` to end the UCC part of
 the command line, for example
 
 .. code:: console

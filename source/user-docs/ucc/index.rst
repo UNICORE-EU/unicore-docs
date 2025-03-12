@@ -18,7 +18,7 @@ supporting all of UNICORE's features, such as:
 * Storage functions (:ref:`ls_command`, :ref:`mkdir_command`, \.\.\.) including creation of storage instances 
   via storage factories
 
-* :ref:`Workflow execution <workflow>` using UNICORE's own :ref:`workflow description <workflow-description>`
+* :ref:`Workflow execution <ucc_workflow>` using UNICORE's own :ref:`workflow description <workflow-description>`
 
 and much more.
 

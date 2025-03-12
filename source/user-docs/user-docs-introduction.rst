@@ -28,7 +28,7 @@ What client should you use?
 ---------------------------
 
 For most of the common end-user tasks, like interactive use, scripting,
-automation etc, the :ref:`UNICORE Commandline client <ucc>` will be the
+automation etc, the :ref:`UNICORE Commandline client <ucc>` (UCC) will be the
 most convenient. It provides a fully-fledged commandline tool.
 
 For integration into third party applications, we provide a Python library
@@ -56,7 +56,7 @@ you can use the ``ucc exec`` command
 
 This will run the command and get standard output and error back to the client and display them.
 
-For more complex cases, you can create a JSON job description and run that via UCC.
+For more complex cases, you can create a JSON job description and run that via :ref:`UCC <ucc>`.
 
 .. code:: json
 
@@ -77,9 +77,9 @@ For more complex cases, you can create a JSON job description and run that via U
 
 which you can then run via  ``ucc run`` (see the section :ref:`ucc_jobs` for more details).
 
-For simplicity, this example puts the script directly in the job via an *inline*
-data transfer. There's a number of other options available to deal with file transfers (see
-:ref:`job-data-management` for more details).
+For simplicity, this example puts the script directly in the job via an :ref:`*inline*
+data <inline-data>` transfer. There's a number of other options available to deal with file 
+transfers (see :ref:`job-data-management` for more details).
 
 
 Running batch jobs
@@ -133,11 +133,14 @@ data transfer. There's a number of other options available to deal with file tra
 
 Running this job via ``ucc run`` will submit and monitor the job, waiting for its completion and
 then download the standard output and error files (see :ref:`ucc_batch` for more details). 
-UCC has many options to modify this behaviour, and you will often submit the job without waiting
-for it to finish (see the section `Options overview <ucc-options-overview>`).
+
+UCC has many :ref:`options <ucc-options-overview>` to modify this behaviour,
+and you will often submit the job without waiting for it to finish (see the section :ref:`asynch-submission`).
+
 
 The ``ucc list-jobs`` command is used to list all your jobs (that were submitted via UNICORE),
-and you can use other ucc commands to interact with the job or download results.
+and you can use other :ref:`ucc commands <get-job-status>` to interact with the job or 
+:ref:`download results <download-results>`.
 
 
 Advanced batch jobs
@@ -170,7 +173,7 @@ containing resource requests, e.g. for Slurm, and tell UNICORE to use that via s
   }
 
 For simplicity, this example contains the script directly in the job description
-via an *inline* data transfer.
+via an :ref:`*inline* data <inline-data>` transfer.
 
 Note that this only needs to contain resource requests, the actual execution part will be document
 by UNICORE. UNICORE will then track this batch job as usual.

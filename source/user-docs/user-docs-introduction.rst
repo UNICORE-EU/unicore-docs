@@ -127,7 +127,7 @@ Often, it is more elegant to put the commands into a script, like this:
     ]
   }
 
-For simplicity, this example puts the script directly in the job via an *inline*
+For simplicity, this example puts the script directly in the job via an :ref:`*inline* <inline-data>`
 data transfer. There's a number of other options available to deal with file transfers (see
 :ref:`job-data-management` for more details).
 
@@ -173,7 +173,7 @@ containing resource requests, e.g. for Slurm, and tell UNICORE to use that via s
   }
 
 For simplicity, this example contains the script directly in the job description
-via an :ref:`*inline* data <inline-data>` transfer.
+via an :ref:`*inline* <inline-data>` data transfer.
 
 Note that this only needs to contain resource requests, the actual execution part will be document
 by UNICORE. UNICORE will then track this batch job as usual.

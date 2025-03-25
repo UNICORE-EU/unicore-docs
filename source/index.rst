@@ -15,7 +15,7 @@ Welcome to UNICORE Documentation
 It makes distributed computing and data resources available in a seamless and secure way 
 in intranets and the internet. 
 
-.. figure:: _static/unicore.png
+.. figure:: _static/unicore-overview.png
    :width: 600
    :alt: Federating HPC with UNICORE
    :align: center

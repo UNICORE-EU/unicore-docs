@@ -251,7 +251,7 @@ The UNICORE/X files are now in ``/opt/unicore/unicorex``.
 UNICORE/X is the central component in a UNICORE installation, and consequently has quite a
 few configuration options.
 
-Here we focus on a very basic setup, and refer to the :ref:`full manual <unicorex-manual>` 
+Here we focus on a very basic setup, please refer to the :ref:`UNICORE/X manual <unicorex-manual>` 
 for more information.
 
 
@@ -500,7 +500,7 @@ Gateway config
 ~~~~~~~~~~~~~~
 
 We configure our new credential and trusted certificate in the 
-file `/opt/unicore/gateway/conf/gateway.properties`:
+file ``/opt/unicore/gateway/conf/gateway.properties``:
 
 .. code:: console
 
@@ -525,7 +525,7 @@ UNICORE/X config
 ~~~~~~~~~~~~~~~~
 
 We configure our new credential and trusted certificate in the 
-file `/opt/unicore/unicorex/conf/container.properties`:
+file ``/opt/unicore/unicorex/conf/container.properties``:
 
 .. code:: console
 

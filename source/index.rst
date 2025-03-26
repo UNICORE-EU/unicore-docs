@@ -55,6 +55,10 @@ in intranets and the internet.
 
 	howto-singlecluster
 
+.. raw:: html
+
+   <hr>
+
 
 .. include:: user-docs/index.rest
 .. include:: admin-docs/index.rest
@@ -67,6 +71,10 @@ in intranets and the internet.
 	:height: 32px
 	:align: middle
 
+UNICORE software is available as Open Source under the :ref:`BSD License <license>` 
+while the software repository is hosted on `SourceForge <https://sourceforge.net/projects/unicore/>`_
+and the source code is available on `GitHub <https://github.com/UNICORE-EU>`_. 
+
 For getting more information or support, please see the :ref:`links` and :ref:`support` page.
 The :ref:`glossary` includes a number of terms that we use in our documentation, so that you have a reference 
 for how we’re using them.
@@ -75,27 +83,10 @@ for how we’re using them.
 	:caption: Getting Support
 	:hidden:
 	
-	links.rst
+	license
+	links
 	support
 	glossary
-
-
-|bsd-img| License
-=================
-
-.. |bsd-img| image:: _static/bsd-license.png
-	:height: 32px
-	:align: middle
-
-UNICORE software is available as Open Source under the :ref:`BSD License <license>` 
-while the software repository is hosted on `SourceForge <https://sourceforge.net/projects/unicore/>`_
-and the source code is available on `GitHub <https://github.com/UNICORE-EU>`_. 
-
-.. toctree::
-	:caption: LICENSE
-	:hidden:
-	
-	license
 
 
 .. raw:: html

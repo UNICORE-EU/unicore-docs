@@ -23,7 +23,8 @@ server (*host/port*), site name, and filename. For example,
 
 specifies a file named */my_file* on the storage instance 
 *\https://mygateway:8080/SITE/rest/core/storages/HOME*,
-using the BFT protocol. 
+using the BFT protocol. The "/files/" part is part of the API endpoint,
+and not part of the filename.
 
 Paths are always **relative** to the storage root, not the root of
 the actual file system.
@@ -53,6 +54,9 @@ The ``-R`` option allows to choose whether subdirectories are to be copied too.
 
 The ``-X`` option allows to resume a previous transfer. Missing data will be appended to an
 existing target file (if the chosen protocol supports it).
+
+Please note that the "/files/" part is part of the API endpoint, and not 
+part of the filename.
 
 Examples for server-server transfer:
 

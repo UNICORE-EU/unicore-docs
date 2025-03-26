@@ -16,7 +16,7 @@ This chapter provides an overview of the JSON workflow description that is suppo
 using tools such as the Java or Python APIs.
 
 After presenting all the constructs individually, several complete examples are given in 
-:ref:`examples`.
+:ref:`wf-examples`.
 
 
 Overview and simple constructs
@@ -399,7 +399,7 @@ The ``expression`` contains an expression in Groovy syntax (which is very close 
 
 The workflow engine will replace variables in job data staging sections and environment 
 definitions, allowing to inject variables into jobs. Examples for this mechanism will be given 
-in the :ref:`examples` section.
+in the :ref:`wf-examples` section.
 
 Loop constructs
 ~~~~~~~~~~~~~~~

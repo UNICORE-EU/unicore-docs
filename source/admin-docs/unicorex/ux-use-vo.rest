@@ -8,15 +8,15 @@
 	:align: middle
 
 VO (**V**\ irtual **O**\ rganisation) is a quite broad concept. VO server software
-(such as Unity) is used to store identities of federated entities
+(such as `Unity <https://unity-idm.eu/>`_) is used to store identities of federated entities
 along with their attributes.  Entities are managed with the usage of
 groups to help administration.  Those attributes can be used e.g. for
 authorization purposes. It is described here how to take advantage of
 this approach in any service based on the UNICORE Services Environment
 such as UNICORE/X, Workflow Service, etc.
 
-In the following we use Unity as our VO service, though in principle
-other SAML servers can be used.
+In the following we use `Unity <https://unity-idm.eu/>`_ as our VO service,
+though in principle other SAML servers can be used.
 
 Overview
 ~~~~~~~~
@@ -26,8 +26,8 @@ Features
 
 All features below can be used in any combinations, independently:
 
-- Unity can provide all user attributes to be used for authorization
-  and for accessing resources, also those which are unsupported by the
+- `Unity <https://unity-idm.eu/>`_ can provide all user attributes to be used for 
+  authorization and for accessing resources, also those which are unsupported by the
   more simple attribute sources (including full support for default and
   allowed attributes).  Therefore, it can be used as a central attribute
   source for multiple sites. Since attributes can be assigned in a group

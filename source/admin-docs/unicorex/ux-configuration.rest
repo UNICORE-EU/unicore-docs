@@ -176,6 +176,8 @@ Since UNICORE/X is the central component, it is interfaced to other
 parts of the UNICORE architecture, i.e. the :ref:`gateway` and (optionally) 
 a :ref:`registry`.
 
+.. _ux-gateway:
+
 Gateway
 ^^^^^^^
 
@@ -192,6 +194,7 @@ On the gateway side, the UNICORE/X address is hard-coded as well,
 using an entry *SITENAME=address* in the ``connections.properties`` file
 pointing to the network address of the UNICORE/X container.
 
+.. _ux-registry:
 
 Registry
 ^^^^^^^^
@@ -207,6 +210,8 @@ For example,
   container.externalregistry.url=https://host1:8080/REGISTRY/services/Registry?res=default_registry
   container.externalregistry.url2=https://host2:8080/BACKUP/services/Registry?res=default_registry
 
+
+.. _ux-unity:
 
 Unity
 ^^^^^

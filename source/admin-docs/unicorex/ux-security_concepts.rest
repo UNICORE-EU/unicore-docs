@@ -57,7 +57,7 @@ Identity
   
 A server has a certificate, which is used to identify the server when
 it makes a web service request. This certificate resides in the server
-keystore, (see :ref:`ux_configuration`).
+keystore (see :ref:`ux_configuration`).
 
 A user request is assigned an identity during the authentication
 process.  Identities are X.500 distinguished names.  Requests without
@@ -95,7 +95,7 @@ Attributes
 
 UNICORE/X retrieves user attributes using either a local component or
 a remote service.  For example, an XUUDB attribute service can be
-configured.  See :ref:`use_aip` for more information.
+configured (see :ref:`use_aip` for more information).
 
 Policy checks
 ^^^^^^^^^^^^^
@@ -110,8 +110,8 @@ Each request is checked based on the following information:
   
 - the activity to be performed (the web method such as ``GET``)
   
-The validation is performed by the **PDP** (Policy Decision Point). The
-default PDP uses a list of rules expressed in XACML 2.0 format that
+The validation is performed by the **PDP** (**P**\ olicy **D**\ ecision **P**\ oint).
+The default PDP uses a list of rules expressed in XACML 2.0 format that
 are configured for the server. The :ref:`use_pdp` describes how to
 configure different engines for policy evaluation including a remote
 one.
@@ -132,8 +132,8 @@ to the client (via HTTP header ``X-UNICORE-SecuritySession`` in the
 response), allowing the client to authenticate subsequent requests
 using this session ID (using the same HTTP header).  This will
 speed-up the client-server communication, especially in cases where
-external authentication (e.g. via Unity is used).  These sessions have
-a limited lifetime (8 hours by default).
+external authentication (e.g. via `Unity <https://unity-idm.eu/>`_ is used).
+These sessions have a limited lifetime (8 hours by default).
 
 .. note::
   The security session only covers authentication attribute

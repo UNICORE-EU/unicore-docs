@@ -47,15 +47,6 @@ extensions = [
     'm2r2'
 ]
 
-# supress warning for dublicate labels (e.g. section titles  "Installation", "Prerequisites", etc)
-suppress_warnings = ['autosectionlabel.*']
-
-# Make sure the target is unique
-#
-# don't use it diue to duplicated file names,
-# e.g. ucc/manual.rst and gateway/manual.rst
-#autosectionlabel_prefix_document = True
-
 source_suffix = {
     '.rst': 'restructuredtext',
     '.md': 'markdown',
@@ -141,3 +132,11 @@ intersphinx_mapping = {
 # https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html#confval-intersphinx_disabled_reftypes
 intersphinx_disabled_reftypes = ["*"]
 
+# Make sure the target is unique
+#
+# it could raise some warnings to duplicated labels used in several files or in the same file,
+# but you could supress such warnings (see the option below)
+autosectionlabel_prefix_document = True
+
+# supress warning for dublicate labels (e.g. section titles "Input", "Output", etc)
+suppress_warnings = ['autosectionlabel.*']

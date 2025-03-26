@@ -52,3 +52,6 @@ Last not least, the Gateway can be configured as a HTTP load balancer.
 	:hidden:
 
 
+.. raw:: html
+
+   <hr>

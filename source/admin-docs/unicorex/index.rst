@@ -43,4 +43,7 @@ for a single compute cluster (or just a file system).
 	:hidden:
 
 
+.. raw:: html
+
+   <hr>
 

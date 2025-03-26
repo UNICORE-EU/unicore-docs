@@ -17,4 +17,6 @@ For more details please refer to :ref:`UFTPD documentation <uftp-docs:uftpd>`.
 	:align: middle
 
 
-	
+.. raw:: html
+
+   <hr>

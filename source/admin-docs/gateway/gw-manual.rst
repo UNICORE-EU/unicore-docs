@@ -539,3 +539,8 @@ is stateless, the standard redundancy solutions can be used.
 The simpliest solution is to use Round Robin DNS, where DNS server routes the Gateway's DNS
 address to a pool of real IP addresses. While easy to set up this solution has a
 significant drawback: DNS server doesn't care about machines being down.
+
+
+.. raw:: html
+
+   <hr>

@@ -32,3 +32,8 @@ For more information about UNICORE visit https://www.unicore.eu.
 .. include:: wf-config.rest
 
 .. include:: wf-update.rest
+
+
+.. raw:: html
+
+   <hr>

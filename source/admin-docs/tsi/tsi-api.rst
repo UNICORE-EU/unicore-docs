@@ -629,3 +629,7 @@ The output is a multiline string
    ...
   status: <status message>
 
+
+.. raw:: html
+
+   <hr>

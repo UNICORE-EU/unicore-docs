@@ -985,3 +985,7 @@ stage-in the current file. Also, the name of the current file is placed into the
 	  }
 	
 	}
+	
+.. raw:: html
+
+   <hr>

@@ -16,4 +16,6 @@ For more details please refer to :ref:`UFTP Client documentation <uftp-docs:uftp
 	:align: middle
 
 
-	
+.. raw:: html
+
+   <hr>

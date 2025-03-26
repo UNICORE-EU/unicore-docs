@@ -35,3 +35,7 @@ user's role.
       
 	xuudb-manual
 	
+
+.. raw:: html
+
+   <hr>

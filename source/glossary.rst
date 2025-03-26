@@ -112,4 +112,7 @@ so that you have a reference for how we're using them.
 		features better with typical Python usage.
 
 
+.. raw:: html
+
+   <hr>
 

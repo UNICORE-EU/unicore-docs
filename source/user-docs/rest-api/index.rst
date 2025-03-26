@@ -840,3 +840,8 @@ Can be found here :ref:`rest-api-examples`.
 	:hidden:
 
 	rest-api-examples.rst
+	
+
+.. raw:: html
+
+   <hr>

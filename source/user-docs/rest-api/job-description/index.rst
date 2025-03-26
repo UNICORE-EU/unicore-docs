@@ -684,3 +684,7 @@ your email, use
 
   "User email": "foo@bar.org",
 
+
+.. raw:: html
+
+   <hr>

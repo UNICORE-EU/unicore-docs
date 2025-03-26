@@ -51,3 +51,6 @@ and much more.
 	:maxdepth: 1
 	:hidden:
 
+.. raw:: html
+
+   <hr>

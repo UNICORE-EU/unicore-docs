@@ -73,3 +73,6 @@ Add-ons
 - `Unity Identity Management system <https://unity-idm.eu>`_, supports LDAP, OAuth, SAML, 
   federated AAI and a lot more
 
+.. raw:: html
+
+   <hr>

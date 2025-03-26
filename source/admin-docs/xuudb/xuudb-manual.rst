@@ -18,3 +18,7 @@ For more information about UNICORE visit https://www.unicore.eu.
 .. include:: xuudb-general.rest
 .. include:: xuudb-server.rest
 .. include:: xuudb-client.rest
+
+.. raw:: html
+
+   <hr>

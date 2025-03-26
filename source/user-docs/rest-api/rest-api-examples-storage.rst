@@ -62,3 +62,8 @@
     # Access copied file
     copied_file = storage2.stat("copied-test.txt")
     print (json.dumps(copied_file.properties, sort_keys=True, indent=4))
+
+
+.. raw:: html
+
+   <hr>

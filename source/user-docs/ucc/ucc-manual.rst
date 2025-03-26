@@ -72,3 +72,8 @@ For more information about UNICORE visit https://www.unicore.eu.
 .. include:: ucc-scripting.rest
 
 .. include:: ucc-faq.rest
+
+
+.. raw:: html
+
+   <hr>

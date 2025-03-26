@@ -29,5 +29,8 @@ and control constructs:
       
 	wf-manual
 	
-	  
+
+.. raw:: html
+
+   <hr>
 

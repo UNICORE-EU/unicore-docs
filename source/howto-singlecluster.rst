@@ -557,3 +557,8 @@ Check the logs for any errors!
 	:align: middle
 
 You can always :ref:`contact us<support>` for advice in your specific situation.
+
+
+.. raw:: html
+
+   <hr>

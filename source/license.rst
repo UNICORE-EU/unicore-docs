@@ -9,3 +9,7 @@
 	
 
 .. literalinclude:: ../LICENSE
+
+.. raw:: html
+
+   <hr>

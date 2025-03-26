@@ -51,3 +51,7 @@ The full documentation for PyUNICORE can be found
 	rest-api-examples-job
 	rest-api-examples-storage
 	rest-api-examples-workflow
+	
+.. raw:: html
+
+   <hr>

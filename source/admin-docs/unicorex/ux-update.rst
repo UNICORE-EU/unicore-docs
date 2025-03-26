@@ -30,3 +30,8 @@ In the following, *LIB* refers to the directory containing the jar files for the
 * Start the server.
 
 * Check the logs for any **ERROR** or **WARN** messages and if necessary correct them.
+
+
+.. raw:: html
+
+   <hr>

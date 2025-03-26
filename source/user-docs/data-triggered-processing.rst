@@ -271,3 +271,8 @@ The ``.UNICORE_Rules`` file could look like this:
       }
     ]
   }
+
+
+.. raw:: html
+
+   <hr>

@@ -60,3 +60,7 @@
 	for line in stdout_content:
 		print(line)
 
+
+.. raw:: html
+
+   <hr>

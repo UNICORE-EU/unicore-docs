@@ -4,22 +4,22 @@
 Administrator Documentation
 ===========================
 
-- :ref:`gateway`
+:ref:`gateway`
 	An optional server component that
 	provides a reverse https proxy, allowing you to run several backend
 	servers (:ref:`unicorex`, :ref:`Registery <registry>`, ...) behind a single address.
   
-- :ref:`unicorex`
+:ref:`unicorex`
 	The central server component of a typical UNICORE  installation
 	that provides :ref:`REST APIs <rest-api>` for job management and data access  services for a
 	single compute cluster (or just a file system).
 
-- :ref:`tsi`
+:ref:`tsi`
 	The **T**\ arget **S**\ ystem **I**\ nterface (TSI) server is used to 
 	interface to a resource manager such as Slurm and to access files 
 	on the cluster.
   
-- :ref:`xuudb`
+:ref:`xuudb`
 	An optional service, that is best
 	suited as a per-site service, providing attributes for multiple
 	UNICORE/X-like services at a site. The XUUDB maps a UNICORE user identity 
@@ -28,19 +28,19 @@ Administrator Documentation
 	commonly also to provide authorization information, i.e. the
 	user's role.
 
-- :ref:`workflow`
+:ref:`workflow`
 	provides advanced workflow processing
 	capabilities using UNICORE resources.  The Workflow service provides
 	graphs of activities including high-level control constructs
 	(*for-each*, *while*, *if-then-else*, etc.), and submits and manages the
 	execution of single UNICORE jobs.
   
-- :ref:`registry`
+:ref:`registry`
 	The Registry server is a specially configured
 	:ref:`UNICORE/X server <unicorex>` which provides the information about available
 	services to clients and other services. 
 
-- :ref:`UFTPD <uftp-docs:uftpd>`
+:ref:`UFTPD <uftp-docs:uftpd>`
 	The UNICORE File Transfer Server for high performance data transfer.
 
 .. figure:: _static/unicore-components.png
@@ -65,3 +65,6 @@ Administrator Documentation
 	admin-docs/uftpd/index.rst
 
 
+.. raw:: html
+
+   <hr>

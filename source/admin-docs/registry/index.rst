@@ -186,3 +186,6 @@ values for your setup)::
 
   registry=https://gwhost:port/REGISTRY/rest/registries/default_registry
 
+.. raw:: html
+
+   <hr>

@@ -43,3 +43,8 @@ Please note also the following places for getting more information:
 	:height: 16px
 	:align: middle
 	:target: https://github.com/UNICORE-EU
+
+
+.. raw:: html
+
+   <hr>

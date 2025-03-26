@@ -61,3 +61,8 @@ is possible as well, see the :ref:`tsi-manual` for details.
 .. toctree::
 	:maxdepth: 1
 	:hidden:
+
+
+.. raw:: html
+
+   <hr>

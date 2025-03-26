@@ -177,3 +177,7 @@ via an :ref:`*inline* <inline-data>` data transfer.
 
 Note that this only needs to contain resource requests, the actual execution part will be document
 by UNICORE. UNICORE will then track this batch job as usual.
+
+.. raw:: html
+
+   <hr>

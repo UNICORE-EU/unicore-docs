@@ -9,5 +9,5 @@ Property name,Type, Default value \/ mandatory,Description
 "oidc.refreshInterval","integer number","300","Interval (seconds) before refreshing the token."
 "oidc.refreshTokenFile","string","","(internal) Filename for storing the refresh token between UCC invocations."
 "oidc.request_key_for_otp","string","otp","(internal) How to send the OTP value to the server."
-"oidc.scope","string","openid","Token scope to request from the OIDC server."
+"oidc.scope","string","","Token scope to request from the OIDC server."
 "oidc.username","string","","Username used to log in. If not given in configuration, it will be asked interactively."

@@ -37,10 +37,8 @@ Installation
 ~~~~~~~~~~~~
 
 The workflow system is available either as part of the `UNICORE Server
-bundle <https://sourceforge.net/projects/unicore/files/Servers/Core>`_ (tar.gz or zip), 
-or as separate Linux packages (deb or rpm) on the `UNICORE project website 
-<https://sourceforge.net/p/unicore/wiki/Linux_Repositories/>`_ at sourceforge.
-
+bundle <https://github.com/UNICORE-EU/server-bundle/releases>`_ (tar.gz or zip),
+or as separate Linux packages (deb or rpm, currently not publicly available). 
 The basic installation procedure is completely analogous to the
 installation of a :ref:`UNICORE/X <unicorex>` server.
 

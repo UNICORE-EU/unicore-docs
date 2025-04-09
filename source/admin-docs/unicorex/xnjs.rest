@@ -66,9 +66,9 @@ As the TSI is a crucial and sensitive service, make sure to read
 its :ref:`documentation <tsi-manual>`. This guide serves just as a quick overview of
 the necessary steps.
 
-- First, download and install the UNICORE TSI package. The `UNICORE
-  core server bundle <https://sourceforge.net/projects/unicore/files/Servers/Core/>`_ 
-  (*quickstart* package) includes the TSI in the ``tsi`` subdirectory. You should copy 
+- First, download and install the UNICORE TSI package. The 
+  <`UNICORE core server bundle <https://github.com/UNICORE-EU/server-bundle/releases>`_ 
+  includes the TSI in the ``tsi`` subdirectory. You should copy 
   this folder to the correct machine first.  In the following this will be denoted by 
   ``<tsidir>``.
 

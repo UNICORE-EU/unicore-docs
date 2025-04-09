@@ -15,8 +15,9 @@ To run UCC, you need a Java runtime version 11 or later (`OpenJDK <https://openj
 Download
 ~~~~~~~~
 
-You can get the UCC latest version from SourceForge 
-`UNICORE download page <https://sourceforge.net/projects/unicore/files/Clients/Commandline%20Client>`_.
+You can get the latest UCC version from  
+`GitHub <https://github.com/UNICORE-EU/commandline-client/releases>`_.
+
 
 Installation and configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

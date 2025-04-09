@@ -73,15 +73,12 @@ Last not least, the Gateway can be configured as a HTTP load balancer.
 The UNICORE Gateway is distributed in the following formats:
 
 #. As a part of platform independent installation bundle called
-   `UNICORE Server bundle <https://sourceforge.net/projects/unicore/files/Servers/Core/>`_.  
+   `UNICORE Server bundle <https://github.com/UNICORE-EU/server-bundle/releases>`_.  
    The UNICORE Server bundle is provided as a tar package and includes a command line installer.
-#. As a binary, platform-specific package available currently for
-   RedHat (Centos) and Debian platforms on the 
-   `UNICORE project website <https://sourceforge.net/p/unicore/wiki/Linux_Repositories/>`_ 
-   at sourceforge. Those packages are not tested
-   on all possible platforms, but should work without any problems with
-   other versions of similar distributions, e.g. SL, Centos, or Fedora.
-   
+#. As a binary, platform-specific package available for
+   RedHat (Centos) and Debian platforms (currently not publicly available)
+
+
 Prerequisites
 ~~~~~~~~~~~~~
 
@@ -93,7 +90,7 @@ version 11 or later. We recommend using
 Installation from the Server bundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Download `the server bundle <https://sourceforge.net/projects/unicore/files/Servers/Core/>`_
+Download `the server bundle <https://github.com/UNICORE-EU/server-bundle/releases>`_
 from the UNICORE project website. 
 
 Please review the ``README`` file available after extracting the

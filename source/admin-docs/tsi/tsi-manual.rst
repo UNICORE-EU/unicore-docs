@@ -66,13 +66,9 @@ default this is called ``unicore-tsi``.
 	:height: 32px
 	:align: middle
 
-The TSI is available either as a generic distribution (part of the
-`UNICORE core server 
-<https://sourceforge.net/projects/unicore/files/Servers/Core/>`_ bundle package, 
-or as a separate tgz archive) or as a
-batch system specific package (such as an RPM, deb or tgz for Torque
-or Slurm) on the `UNICORE repositories  
-<https://sourceforge.net/p/unicore/wiki/Linux_Repositories/>`_ at sourceforge.
+The TSI is available either as part of the
+`UNICORE core server <https://github.com/UNICORE-EU/server-bundle/releases>`_ bundle package, 
+or `separately <https://github.com/UNICORE-EU/tsi/releases>`_
 
 
 Batch system specific distribution

@@ -21,7 +21,7 @@ Evaluating UNICORE
 ------------------
 
 If you wish to experiment with a UNICORE server installation, one simple way is to
-download the `Core Server Bundle <https://sourceforge.net/projects/unicore/files/Servers/Core/>`_
+download the `Core Server Bundle <https://github.com/UNICORE-EU/server-bundle/releases>`_
 which can be installed very quickly on a single test machine or even your laptop.
 
 If you are a `Docker <https://docs.docker.com>`_ user, you can try our

@@ -115,13 +115,9 @@ Dynamic mappings configuration is described in the section :ref:`dynamic`.
 The UNICORE XUUDB is distributed in the following formats:
 
 * As a part of a platform independent installation bundle called
-  `UNICORE core server bundle <https://sourceforge.net/projects/unicore/files/Servers/Core>`_.
+  `UNICORE core server bundle <https://github.com/UNICORE-EU/server-bundle/releases>`_.
 
-* As a `platform-specific binary package 
-  <https://sourceforge.net/p/unicore/wiki/Linux_Repositories/>`_.
-  available for RedHat (Centos) and Debian platforms. Those
-  packages are not tested on all possible platforms, but should work
-  without any problems with other versions of similar distributions.
+* As a platform-specific binary package for RedHat (Centos) and Debian platforms. (Currently not publicly available).
 
 In both cases an installation of XUUDB installs both XUUDB Server and XUUDB admin client.
 
@@ -133,26 +129,5 @@ Installation from Core Server Bundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Download the core server bundle from the UNICORE project website at 
-https://sourceforge.net/projects/unicore/files/Servers/Core.
-
-
-Installation from RPM or DEB packages
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-An up-to-date list of the available repositories is given on the following page
-https://sourceforge.net/p/unicore/wiki/Linux_Repositories/.
-
-The preferred way is to use Yum or APT to install (and subsequently update) XUUDB.
-
-After the repository is configured, the following command will install the XUUDB:
-
-.. code:: console
-
-  $ yum install unicore-xuudb
-
-or in case of Debian systems:
-
-.. code:: console
-
-  $  apt-get install unicore-xuudb
+https://github.com/UNICORE-EU/server-bundle/releases.
 

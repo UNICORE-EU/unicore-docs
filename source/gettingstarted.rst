@@ -20,12 +20,12 @@ or the :ref:`REST API documentation <rest-api>`.
 Evaluating UNICORE
 ------------------
 
-If you wish to experiment with a UNICORE server installation or wish to
-quickly evaluate UNICORE's features, you can try our
-`UNICORE Docker image <https://github.com/UNICORE-EU/tools/tree/master/unicore-docker-image>`_.
-
-Also, you can download the `Core Server Bundle <https://sourceforge.net/projects/unicore/files/Servers/Core/>`_
+If you wish to experiment with a UNICORE server installation, one simple way is to
+download the `Core Server Bundle <https://sourceforge.net/projects/unicore/files/Servers/Core/>`_
 which can be installed very quickly on a single test machine or even your laptop.
+
+If you are a `Docker <https://docs.docker.com>`_ user, you can try our
+`UNICORE Docker image <https://github.com/UNICORE-EU/tools/tree/master/unicore-docker-image>`_.
 
 Deploying UNICORE
 -----------------
@@ -33,7 +33,10 @@ Deploying UNICORE
 Full production deployments of UNICORE range from minimalistic to rather complex, depending
 on your requirements, use cases and existing infrastructure. 
 
-A few starting points:
+For the typical case of providing UNICORE access to a single compute cluster, please have a look
+at :ref:`How to setup UNICORE for a single HPC cluster <unicore-howto-singlecluster>`.
+
+For more complex cases, here are a few starting points:
 
 1. for each target resource (e.g. a compute cluster) you need a :ref:`TSI <tsi>` and 
    a :ref:`UNICORE/X<unicorex>`.
@@ -49,9 +52,6 @@ A few starting points:
 
 4. for multi-site workflows, you will need a :ref:`Registry <registry>` 
    and a :ref:`Workflow service <workflow>`
-
-You can always :ref:`contact us<support>` for advice in your specific situation.
-
 
 .. raw:: html
 

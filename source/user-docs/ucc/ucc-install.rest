@@ -22,8 +22,17 @@ You can get the latest UCC version from
 Installation and configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To install, unpack the distribution in a directory of your choice. It's a good idea
-to add the ``bin/`` directory to your ``PATH`` variable,
+To install, unpack the distribution (zip, debian or rpm file) in a directory of your choice. 
+For example, to install the UCC using a zip file, run the following command:
+
+.. code:: console
+
+  $ unzip unicore-ucc-<version>.zip
+  
+It will create the <UCC_HOME> directory within your current location.
+
+It's a good idea
+to add the path to the ``<UCC_HOME>/bin`` directory to your ``PATH`` variable,
 
 .. code:: console
 
@@ -42,16 +51,31 @@ where *UCC_HOME* is the directory you installed UCC in.
   
   Setting environment variables can be done (as *administrator*) 
   using the :menuselection:`Control panel --> System --> Extras panel`.
+  
+Alternatively, you can install a Debian package on a Linux machine:
 
+.. code:: console
+
+  $ sudo dpkg -i unicore-ucc-<version>_all.deb  
+
+It will install the UNICORE client into the directory ``/usr/share/unicore/ucc`` and
+automatically configure the PATH to include the ``/usr/bin/ucc`` start script.
+
+.. note:: *Debian distribution only*
+
+   All configuration files will be installed into ``<USER_HOME>/.ucc``  
+   instead of ``<UCC_HOME>/conf`` directory.
+
+
+Preferences file
+~~~~~~~~~~~~~~~~
 
 Though you can specify many parameters on the commandline, it is
 easiest to use a config file, so that you do not have to key in this
 information repeatedly.
 
-Preferences file
-~~~~~~~~~~~~~~~~
-
 UCC checks by default whether the file :file:`{<userhome>}/.ucc/preferences` exists, and reads it.
+If it does not exist then it will be created when the first ucc command will be executed (e.g. ``ucc -h``).
 
 A minimal example that specifies username, password and your preferred UNICORE registry URL
 would look as follows::
@@ -67,12 +91,14 @@ would look as follows::
   
   client.serverHostnameChecking=NONE
 
-Please refer to :ref:`ucc_options` for a full description of available options.
+Please refer to :ref:`config-file` for a full description of available options.
 
 
 .. note::
   If you are worried about security, and do not want specify the password: UCC will ask for it 
   if it is not given in the preferences or on the commandline.
+  
+  Please check the path to the trusted CA files (e.g., to cacert.pem) to avoid warning messages.
 
 
 .. note:: *Windows only* 
@@ -80,11 +106,8 @@ Please refer to :ref:`ucc_options` for a full description of available options.
   The preferences are usually searched in the :file:`c:\\Users\\\\{<user_name>}\\.ucc` 
   folder.
   
-  To create the ``.ucc`` folder, you might have to use the 
-  command prompt ``mkdir`` command. 
-  
   When specifying paths in the preferences file, the backslash ``\`` 
-  character needs to be written using an extra backslash ``\\``.
+  character needs to be written using an extra backslash ``\\`` or it could be subsituted with a ``/``.
 
 
 For example, if you are using a local UNICORE installation for 
@@ -95,9 +118,9 @@ testing, you could use
 
 
 .. tip::
-  If you wish to change the default property file location, you can
-  set a Java VM property in the UCC start script, for example by editing the command
-  that starts UCC
+  If you wish to change the default property file location, you can set a Java VM 
+  property in the ``ucc`` start script (or ``ucc.batch`` on Windows) — 
+  for example, by editing the command that starts UCC:
 
   .. code:: console
 
@@ -110,6 +133,7 @@ Logging
 UCC writes some messages to the console, more if you choose the
 verbose mode (``-v`` option). If you need real logging (e.g. when using
 the batch mode), you can edit the :file:`{<UCC_HOME>}/conf/logging.properties`
+(or in :file:`{<UCC_HOME>}/.ucc/logging.properties` in Debian distribution)
 file, which configures the `Log4J 
 <https://logging.apache.org/log4j/2.x/manual/configuration.html>`_ logging 
 infrastructure used in UNICORE.
@@ -119,8 +143,9 @@ Installing UCC extensions
 
 UCC can be extended with additional commands. It is enough
 to copy the libraries (``.jar`` files) of the extension into a directory
-that is scanned by UCC: in general these are the UCC ``lib``
-and the ``${HOME}/.ucc/lib`` directory. 
+that is scanned by UCC: in general these are the UCC ``lib`` 
+(or ``/usr/share/unicore/ucc/lib`` if it was installed from a Debian package)
+and the ``${HOME}/.ucc/lib`` directories. 
 
 
 .. _system-info:

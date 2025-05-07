@@ -49,27 +49,39 @@ registry, issue the following command:
 This should show at least an accessible Workflow service.
 
 The distribution contains some example workflow files in the ``samples/workflows`` directory 
-that you can edit and submit.
+that you can edit and submit, e.g.:
   
 .. code:: console
 
-  $ ucc workflow-submit yourworkflow.json
+  $ ucc workflow-submit twostep.json
 
-which will submit the workflow and print the address of the workflow to standard output.
+will submit a workflow with 2 jobs and print the URL address of the workflow to standard output.
 
-To get the workflow status:
-
-.. code:: console
-
-  $ ucc list-workflows <workflow_address>
-
-
-To list all your workflows, you can use the ``list-workflows`` command without an explicit
-workflow address:
+To list all your workflows, you can use the ``list-workflows``:
 
 .. code:: console
 
-  $ ucc list-workflows -l
+  $ ucc list-workflows
+
+To get the status of a specific workflow specify the URL of the workflow:
+
+.. code:: console
+
+  $ ucc list-workflows <workflow_address> -l
+
+It lists also all jobs which were submitted within the workflow.
+
+To get the working directory of a specific job:
+
+.. code:: console
+
+  $ ucc list-job <job_address> -l
+  
+You could display the content of the stdout file of a specific job:
+
+.. code:: console
+
+  $ ucc cat <job_working_directory>/files/stdout
 
 
 Workflow description format

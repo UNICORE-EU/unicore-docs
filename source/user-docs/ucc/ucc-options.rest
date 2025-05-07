@@ -54,8 +54,8 @@ keystore, registry, etc.
 User preferences
 ~~~~~~~~~~~~~~~~
 
-If you have multiple user IDs or are a member of multiple Unix Groups on the target system,
-you may wish to control the user attributes that are used when invoking UCC.
+If you have multiple user IDs or are a member of multiple Unix Groups mapped within UNICORE on
+the target system, you may wish to control the user attributes that are used when invoking UCC.
 
 Here is a list of options related to user attributes:
 

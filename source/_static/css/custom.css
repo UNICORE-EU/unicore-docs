@@ -23,3 +23,8 @@ div.rst-versions > div.rst-other-versions > div.injected > dl:nth-child(4) {
 .blue {
     color:#0080c0;
 }
+
+/* make menu selection fett */
+span.menuselection {
+    font-weight: bold;
+}

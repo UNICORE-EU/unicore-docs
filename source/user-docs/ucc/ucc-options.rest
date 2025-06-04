@@ -16,7 +16,7 @@ options for a command by calling UCC with the ``-h`` or ``--help`` option, for e
   $ ucc run --help
 
 Since it is not possible to give all the required options on the commandline, 
-it is mandatory to create a preferences file containing e.g. your settings for 
+it is recommended to create a preferences file containing e.g. your settings for 
 keystore, registry, etc. 
 
 
@@ -54,8 +54,9 @@ keystore, registry, etc.
 User preferences
 ~~~~~~~~~~~~~~~~
 
-If you have multiple user IDs or are a member of multiple Unix Groups mapped within UNICORE on
-the target system, you may wish to control the user attributes that are used when invoking UCC.
+If you have multiple user IDs or belong to multiple Unix groups that are 
+mapped within UNICORE on the target system, you may want to control which 
+user attributes are used when invoking UCC.
 
 Here is a list of options related to user attributes:
 
@@ -100,20 +101,21 @@ Configuration file
 ~~~~~~~~~~~~~~~~~~
 
 By default, UCC checks for the existence of a file :file:`{<userhome>}/.ucc/preferences` and reads
-settings from there. As shown above, you can use a different file by specifying
-it on the commandline using the ``-c`` option.
+settings from it.  If the file does not exist, it will be created when you run your first 
+UCC command. As shown above, you can specify a different configuration file 
+on the command line using the ``-c`` option.
 
-The configuration file can contain default settings for many commandline options,
-which are given in the form *<option name>=<value>*  where *<option name>* is the long
-form of the option. The property values may contain variables in the form ``${VAR_X}``,
-which are automatically replaced with the environmental variable values with the same name.
-Additionally a special variable ``${UCC_CONFIG}`` is recognized and is replaced with the
+The configuration file can include default settings for many command-line options,
+provided in the format *<option name>=<value>*  where *<option name>* referes to the long
+form of the option. The property values may include variables in the form ``${VAR_X}``,
+which are automatically replaced with the corresponding environment variable values.
+Additionally, a special variable ``${UCC_CONFIG}`` is recognized and will be replaced with the
 absolute path of your configuration file. 
 
-The most important part of configuration is how UCC should authenticate you to the UNICORE
-server(s) and what server(s) should be trusted.
+The most important part of configuration is specifying how UCC should authenticate you to 
+the UNICORE server(s) and which server(s) should be trusted.
 
-An overview of the available authentication options can be retrieved using:
+An overview of the available authentication options can be obtained using the following command:
 
 .. code:: console
 
@@ -133,13 +135,14 @@ A minimal example for using the *quickstart* installation would be:
 
 
 .. important::
-  To protect your passwords, you should make the file non-readable by others,
-  for example on Unix using a command such as ``chmod 600 preferences``.
+  To protect your passwords, you should make the file unreadable by others -
+  for example, on Unix systems, by using a command such as:
+  ``chmod 600 preferences``.
 
 
 .. note::
-  If required passwords are not given in the properties file,
-  they will be queried interactively.
+  If required passwords are not specified in the properties file,
+  they will be requested interactively.
 
 
 
@@ -210,19 +213,23 @@ ID and secret.
   oidc.username=...
   oidc.password=...
 
-UCC also supports sending an OTP (one-time password) to Keycloak. To enable, add
+UCC also supports sending a one-time password (OTP) to Keycloak. To enable this feature, 
+add the following line to your configuration::
 
-::
 
   oidc.otp=QUERY
 
-to your config. The OTP token is queried from the command-line (the OTP value can also be placed verbatim
-in the preferences as ``oidc.otp=your_otp_value`` ).
+
+This setting causes UCC to prompt for the OTP on the command line. 
+Alternatively, the OTP value can be provided directly in the preferences file, e.g.::
+
+.. ``oidc.otp=your_otp_value`` 
 
 
-UCC stores the refresh token (if any) and tries to use it, before using the username/password
-again, also accross UCC invocations. (The token is stored in a file :file:`$HOME/.ucc/refresh-tokens`,
-this default can be changed via a config variable)
+UCC stores the refresh token (if available) and tries to use it before falling back
+to username/password authentication - even accross multiple UCC invocations. 
+By default, the token is stored in the file :file:`$HOME/.ucc/refresh-tokens`.
+This location can be changed using a configuration variable.
 
 Bearer token in config
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -237,14 +244,16 @@ Certificate-based authentication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For UNICORE installations that support (or even require) client
-certficates for authentication, set::
+certficates for authentication, configure the following settings::
 
   authentication-method=X509
-  
   credential.path=<your keystore>
   credential.password=XXXXXXX
 
-..
+Replace *<your keystore>* with the path to your client certificate 
+keystore, and provide the corresponding password.
+
+
  .. csv-table:: Credential properties
   :file: tables/ucc-credProperties.csv
   :widths: 20, 20, 20, 40
@@ -255,7 +264,7 @@ certficates for authentication, set::
 Truststore options
 ~~~~~~~~~~~~~~~~~~
 
-In most cases you only need a truststore directory containing trusted
+In most cases, you only need a truststore directory containing trusted
 certificates::
 
   truststore.type=directory
@@ -274,39 +283,44 @@ in the following table:
 Truststore examples
 ~~~~~~~~~~~~~~~~~~~
 
-Here are some examples for commonly used trust store 
+Below are some examples for commonly used trust store 
 configurations.
 
-Most commonly used is a directory (with a minimal set of options):
-::
+The most common setup is a **directory-based truststore**, which requires minimal configuration:
 
-  truststore.type=directory
-  truststore.directoryLocations.1=/trust/dir/*.pem
+.. code-block:: ini
 
-
-OpenSSL trust store::
-
-  truststore.type=openssl
-  truststore.opensslPath=/etc/grid-security/
-  truststore.opensslNsMode=EUGRIDPMA_GLOBUS_REQUIRE
-  truststore.updateInterval=1200
-  truststore.crlMode=IF_VALID
+   truststore.type=directory
+   truststore.directoryLocations.1=/trust/dir/*.pem
 
 
+An **OpenSSL-based truststore** can be configured as follows:
 
-Java keystore used as a trust store::
+.. code-block:: ini
 
-  truststore.type=keystore
-  truststore.keystorePath=/some/dir/truststore.jks
-  truststore.keystoreFormat=JKS
-  truststore.keystorePassword=xxxxxx
+   truststore.type=openssl
+   truststore.opensslPath=/etc/grid-security/
+   truststore.opensslNsMode=EUGRIDPMA_GLOBUS_REQUIRE
+   truststore.updateInterval=1200
+   truststore.crlMode=IF_VALID
+
+
+
+To use a **Java keystore** as a truststore, use this configuration:
+
+.. code-block:: ini
+
+   truststore.type=keystore
+   truststore.keystorePath=/some/dir/truststore.jks
+   truststore.keystoreFormat=JKS
+   truststore.keystorePassword=xxxxxx
 
 
 Client options
 ~~~~~~~~~~~~~~
 
 The configuration file may also contain low-level options, for example, if you need to 
-specify connection timeouts, http proxies, etc. 
+specify connection timeouts, HTTP proxies, other advanced networking settings. 
 
 .. csv-table:: Client options
   :file: tables/ucc-clientProperties.csv
@@ -318,7 +332,7 @@ specify connection timeouts, http proxies, etc.
 Other options
 ~~~~~~~~~~~~~
 
-The following table lists other options, that are more rarely used:
+The following table lists additional options, that are less commonly used:
 
 .. table:: Other options for the UCC
    :align: left

@@ -10,7 +10,8 @@
 Prerequisites
 ~~~~~~~~~~~~~  
 
-To run UCC, you need a Java runtime version 11 or later (`OpenJDK <https://openjdk.org/install/>`_ preferred).
+To run UCC, you need a Java runtime version 11 or later 
+(`OpenJDK <https://openjdk.org/install/>`_ preferred).
 
 Download
 ~~~~~~~~
@@ -22,63 +23,65 @@ You can get the latest UCC version from
 Installation and configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To install, unpack the distribution (zip, debian or rpm file) in a directory of your choice. 
-For example, to install the UCC using a zip file, run the following command:
+To install, unpack the distribution package (ZIP, DEB or RPM file) into a directory of your choice. 
+For example, to install the UCC using a ZIP file, run the following command:
 
 .. code:: console
 
   $ unzip unicore-ucc-<version>.zip
   
-It will create the <UCC_HOME> directory within your current location.
+This will create the :file:`{<UCC_HOME>}` directory in your current location.
+All configuration files will be located into the :file:`{<UCC_HOME>}/conf` directory.
+Sample files can be found in :file:`{<UCC_HOME>}/samples` directory.
 
-It's a good idea
-to add the path to the ``<UCC_HOME>/bin`` directory to your ``PATH`` variable,
+It is recommended to add the path to the :file:`{<UCC_HOME>}/bin` directory to your 
+``PATH`` enviroment variable:
 
 .. code:: console
 
   $ export PATH=$PATH:<UCC_HOME>/bin
 
 
-where *UCC_HOME* is the directory you installed UCC in.
+Here, :file:`{<UCC_HOME>}` refers to the directory where UCC was installed.
 
 .. note:: *Windows only* 
 
-  Please do not install UCC into a directory containing spaces such 
-  as *Program files*.
+  Environment variables can be set (as *Administrator*) via:
+  :menuselection:`Control panel --> System --> Extras panel`.
   
-  Also avoid long path names, this can lead to errors due to the Windows
-  limit on command line length.
+  Please do not install UCC in a directory that contains spaces (e.g. ``Program files``).
+  Also, avoid long path names, as this may cause errors due to Windows
+  command-line length limitations.
   
-  Setting environment variables can be done (as *administrator*) 
-  using the :menuselection:`Control panel --> System --> Extras panel`.
   
-Alternatively, you can install a Debian package on a Linux machine:
 
-.. code:: console
 
-  $ sudo dpkg -i unicore-ucc-<version>_all.deb  
+.. note:: *Debian distribution on Linux*
 
-It will install the UNICORE client into the directory ``/usr/share/unicore/ucc`` and
-automatically configure the PATH to include the ``/usr/bin/ucc`` start script.
+  Alternatively, on a Linux system, you can install the Debian package as follows:
 
-.. note:: *Debian distribution only*
+  .. code:: console
 
-   All configuration files will be installed into ``<USER_HOME>/.ucc``  
-   instead of ``<UCC_HOME>/conf`` directory.
+    $ sudo dpkg -i unicore-ucc-<version>_all.deb  
+
+  This will install the UNICORE client into ``/usr/share/unicore/ucc`` and
+  automatically configure the system to include the ``/usr/bin/ucc`` start script 
+  in your PATH. All configuration files will be placed in the :file:`{<USER_HOME>}/.ucc` directory.
+  Sample files can be found in ``/usr/share/doc/unicore/ucc/samples`` directory.
 
 
 Preferences file
 ~~~~~~~~~~~~~~~~
 
-Though you can specify many parameters on the commandline, it is
-easiest to use a config file, so that you do not have to key in this
-information repeatedly.
+While many parameters can be specified on the command line, it is often more convenient 
+to use a configuration file, so you don’t have to enter the same information repeatedly.
 
-UCC checks by default whether the file :file:`{<userhome>}/.ucc/preferences` exists, and reads it.
-If it does not exist then it will be created when the first ucc command will be executed (e.g. ``ucc -h``).
+By default, UCC looks for the file :file:`{<USER_HOME>}/.ucc/preferences` 
+and reads it at startup. If the file does not exist, it will be created when you run 
+your first UCC command (e.g. ``ucc -h``).
 
-A minimal example that specifies username, password and your preferred UNICORE registry URL
-would look as follows::
+A minimal example specifying your username, password, and the UNICORE registry URL 
+might look like this::
 
   registry=<your registry>
   
@@ -91,36 +94,38 @@ would look as follows::
   
   client.serverHostnameChecking=NONE
 
-Please refer to :ref:`config-file` for a full description of available options.
-
+Ensure that the path to your trusted CA files (e.g., cacert.pem)  
+is correct to avoid warning messages.
+For a complete list of available configuration options, please refer to the 
+:ref:`config-file` section.
 
 .. note::
-  If you are worried about security, and do not want specify the password: UCC will ask for it 
-  if it is not given in the preferences or on the commandline.
-  
-  Please check the path to the trusted CA files (e.g., to cacert.pem) to avoid warning messages.
+  If you are concerned about security and prefer not to specify the password 
+  in the preferences file, UCC will prompt you for it if it is not provided either 
+  in the file or on the command line.
 
+  
 
 .. note:: *Windows only* 
 
-  The preferences are usually searched in the :file:`c:\\Users\\\\{<user_name>}\\.ucc` 
-  folder.
+  On Windows, the preferences file is  typically located at: 
+  :file:`c:\\Users\\\\{<user_name>}\\.ucc\preferences`.
   
-  When specifying paths in the preferences file, the backslash ``\`` 
-  character needs to be written using an extra backslash ``\\`` or it could be subsituted with a ``/``.
+  When specifying paths in the preferences file, you must either use double 
+  backslashes (\\) or replace them with forward slashes (/).
 
 
 For example, if you are using a local UNICORE installation for 
-testing, you could use
+testing, you might set:
 ::
 
   registry=https://localhost:8080/DEMO-SITE/rest/core/registries/default_registry
 
 
 .. tip::
-  If you wish to change the default property file location, you can set a Java VM 
-  property in the ``ucc`` start script (or ``ucc.batch`` on Windows) — 
-  for example, by editing the command that starts UCC:
+  To change the default location of the preferences file, you can set a 
+  Java system property in the UCC startup script (``ucc`` on Linux or ``ucc.batch`` on Windows). 
+  For example, modify the Java command as follows:
 
   .. code:: console
 
@@ -130,22 +135,25 @@ testing, you could use
 Logging
 ~~~~~~~
 
-UCC writes some messages to the console, more if you choose the
-verbose mode (``-v`` option). If you need real logging (e.g. when using
+UCC displays some messages to the console, and provides more detailed information 
+when verbose mode is enabled using the ``-v`` option.
+If you need detailed logging (e.g. when using
 the batch mode), you can edit the :file:`{<UCC_HOME>}/conf/logging.properties`
-(or in :file:`{<UCC_HOME>}/.ucc/logging.properties` in Debian distribution)
-file, which configures the `Log4J 
+(or :file:`{<UCC_HOME>}/.ucc/logging.properties` in the Debian distribution)
+file. This file configures the `Log4J 
 <https://logging.apache.org/log4j/2.x/manual/configuration.html>`_ logging 
-infrastructure used in UNICORE.
+infrastructure used by UNICORE.
   
 Installing UCC extensions
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-UCC can be extended with additional commands. It is enough
-to copy the libraries (``.jar`` files) of the extension into a directory
-that is scanned by UCC: in general these are the UCC ``lib`` 
-(or ``/usr/share/unicore/ucc/lib`` if it was installed from a Debian package)
-and the ``${HOME}/.ucc/lib`` directories. 
+UCC can be extended with additional commands by simply copying the extension librarie files 
+(``.jar`` files) into a directory that UCC scans at startup. By default, these directories are:
+
+ * :file:`{<UCC_HOME>}/lib` (or ``/usr/share/unicore/ucc/lib`` if UCC was installed 
+   via a Debian package)
+
+ * :file:`{<USER_HOME>}/.ucc/lib`
 
 
 .. _system-info:
@@ -153,8 +161,8 @@ and the ``${HOME}/.ucc/lib`` directories.
 Testing the installation
 ~~~~~~~~~~~~~~~~~~~~~~~~ 
 
-To test your UCC installation and to get information about the
-services available in the UNICORE system you're connecting to, do
+To test your UCC installation and retrieve  information about the
+services available in the UNICORE system you're connecting to, run the following command:
 
 .. code:: console
 

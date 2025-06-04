@@ -11,16 +11,16 @@ Introduction
 ~~~~~~~~~~~~
   
 The UCC can run jobs specified in the JSON job description format that
-is used by the UNICORE :ref:`REST API <rest-api>`, plus a few extensions related to
+is used by the UNICORE :ref:`REST API <rest-api>`, including some extensions for
 handling of local files, submission options, etc. See
-:ref:`ucc_jobdescription` for all the details.
+:ref:`ucc_jobdescription` for details.
 
-In the following it is assumed that you have UCC installed
+In the following, it is assumed that you have UCC installed
 :ref:`ucc_install` and tried some examples :ref:`ucc_quickstart`.
 
 For example, assume the file *myjob.u* looks as follows:
 
-.. code:: json
+.. code-block:: json
 
   {
     "ApplicationName": "Date"
@@ -32,51 +32,89 @@ To run this through UCC, issue the following command:
 
   $ ucc run myjob.u
   
-This will submit the job, wait for completion, download the stdout and
-stderr files, and place them in your default output directory. The ``run``
-command has a number of options, to see all the possibilities use the
-built-in help:
+This submits the job, waits for completion, downloads stdout and stderr, 
+and saves them in your default output directory. 
+
+To see all available options for the ``run`` command, use the built-in help:
 
 .. code:: console
 
   $ ucc run -h
+  
+
+.. tip:: *Windows only* 
+
+  If you created a Bash script on Windows, it may contain Windows-style 
+  line endings (CRLF), which can cause execution errors on UNIX systems 
+  (where LF line endings are expected). Since the script will be executed 
+  on a UNIX system, you should convert it to UNIX format using the 
+  ``dos2unix`` command:
+
+  .. code:: console
+
+    $ dos2unix script.sh
+
+  Alternatively, you can include a ``User pre-command`` in your job 
+  description file to convert the script automatically before execution:
+
+  .. code-block:: json
+     :emphasize-lines: 4
+
+     {
+      "Executable": "/bin/bash",
+      "Arguments": ["script.sh"],
+      "User pre-command": "dos2unix script.sh",
+      "Imports": [
+      { "From": "script.sh", "To": "script.sh" },
+      ],
+     }
 
 
-Controlling the output location and file names
+Controlling the Output Location and File Names
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Output files will be placed in the directory given by the ``-o`` option, if not given, the current
-directory is used. Also, file names will be put into a subdirectory named as the job id, 
-to prevent accidental overwriting of existing files. This behaviour can be changed using the 
-``-b`` option. When ``-b`` is given on the command line, no subdirectory will be created.
+Output files will be placed in the directory specified using the ``-o`` 
+option. If this option is not provided, the current working directory 
+is used by default.
 
-Specifying the site
+By default, output files are stored in a subdirectory named after the 
+job ID to prevent accidental overwriting of existing files. This 
+behavior can be changed using the ``-b`` option.
+
+When ``-b`` is specified, no subdirectory will be created, and all 
+output files will be written directly to the specified (or current) 
+directory.
+
+
+Specifying the Site
 ^^^^^^^^^^^^^^^^^^^
 
-In the example above, a random site will be chosen to execute the
-job. To control it, you can use the ``-s`` option.  This will accept the
-name of a target system. The target systems available to you can be
-listed by
+In the example above, a random site is selected to execute the job. To 
+explicitly choose a site, use the ``-s`` option. This option accepts 
+the name of a target system.
+
+To list all available target systems, use the following command:
 
 .. code:: console
 
-  $ ucc list-sites
+   $ ucc list-sites
 
 
-Accessing a job's working directory
+Accessing a Job's Working Directory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Using the UCC's data management functions, the job working directory
-can be accessed at any time after job submission. Please see section
-:ref:`ucc_datamanagement` for details.
+Using UCC's data management functions, the job's working directory can 
+be accessed at any time after job submission. 
+
+For more information, see section :ref:`ucc_datamanagement`.
 
 .. _ucc-options-overview:
 
-Options overview
+Options Overview
 ~~~~~~~~~~~~~~~~
 
-The following options are available when running jobs (see also the general options overview 
-in :ref:`ucc_options`):
+The following options are available when running jobs (see also the 
+general options overview in :ref:`ucc_options`):
 
 .. table:: Job submission options for UCC
    :width: 100%
@@ -107,177 +145,191 @@ in :ref:`ucc_options`):
    +------------------------------+----------------------------------------------------------------------+
 
   
-Resource selection
+Resource Selection
 ~~~~~~~~~~~~~~~~~~
 
-In general the user selects the execution site.
+In general, the user selects the execution site.
+If no site is specified during job submission, UCC will automatically 
+select a suitable site where the job's requirements (e.g. resources, 
+applications) can be fulfilled.
 
-If no site is specified upon submission, UCC will select a matching site, where
-the requirements (resources, applications) are met.
+If other types of brokers are available, they can be selected using the 
+``-B`` or ``--broker`` option.
 
-In case there are other types of brokers available, they can be
-selected using the ``-B`` or ``--broker`` option.
+* **LOCAL** (default): brokering is handled by UCC itself.
 
-* LOCAL (default): brokering is done by UCC itself
+To check if other brokers are available, run:
 
-To see if other brokers exist, execute ``ucc run -h``, the available
-options will be listed in the help for the ``-B`` option.
+.. code:: console
+
+   ucc run -h
+
+The available broker options will be listed in the help for the ``-B`` option.
 
 
 .. _asynch-submission:
 
-Processing jobs asynchronously  
+Processing Jobs Asynchronously  
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In case of long-running jobs, you will want to run the job
-asynchronously, i.e. just submit the job, stage in any files and start
-it, in order to get the results later.
+For long-running jobs, it is often desirable to run the job 
+asynchronously — that is, submit the job, stage in any files, and 
+start it, then retrieve the results later.
 
-Asynchronous submission
+Asynchronous Submission
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Use the ``-a`` flag when submitting a job:
-  
+
 .. code:: console
 
-  $ ucc run -a <job file>
+   $ ucc run -a <job file>
 
+This will submit the job, stage in any local files, start the job, and 
+exit immediately. A job file will be written containing information 
+about the job endpoint and any exported files to retrieve once the job 
+has completed.
+You can use this file later with the ``get-output`` and 
+``job-status`` commands.
 
-This will submit the job, stage-in any local files, start the job and exit.
-A job file will be written that contains information about the job endpoint
-and any exports that should be performed once the job has finished.
-You can use this file later with the ``get-output`` and ``job-status`` commands.
 
 .. _get-job-status:
 
-Get the status of particular jobs
+Get the Status of Particular Jobs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The command 
+To check the status of one or more jobs, use:
 
 .. code:: console
 
-  $ ucc job-status <job_file_or_url> <job_file_or_url_2> ...
+   $ ucc job-status <job_file_or_url> <job_file_or_url_2> ...
 
-will retrieve the status of the given jobs. If not given on the command line, a 
-job URL will be read from the console.
+If no job is specified on the command line, a job URL will be read 
+from the console.
+Each argument may be either a job URL or the name of a job file 
+(as written by the ``run -a`` command).
 
-The arguments can be either a job URL, or the name of a job file (as
-written by the ``run -a`` command).
 
 .. _download-results:
 
-Download results
+Download Results
 ^^^^^^^^^^^^^^^^
-    
-To get stdout and stderr as well as other files marked for export, do:
+
+To retrieve `stdout`, `stderr`, and any other files marked for export, use:
 
 .. code:: console
 
-  $ ucc get-output -o <outdir> <job_file_or_url> <job_file_or_url_2> ...
+   $ ucc get-output -o <outdir> <job_file_or_url> <job_file_or_url_2> ...
 
-Here, the option ``-o`` specifies the directory where to put the output,
-by default the current directory is used. As before, a job address
-can also be read from the console.
+The ``-o`` option specifies the directory where the output files will be saved. 
+If not provided, the current directory is used by default.
+As before, a job address can also be entered interactively via the console 
+if no job file or URL is given on the command line.
 
 
-Referencing a job by its URL (endpoint address)
+Referencing a Job by Its URL (Endpoint Address)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In case you want to check on a job not submitted through UCC, you can
-refer to a job by its URL.  The :ref:`list-jobs <list-jobs>` command will produce a
-list of all job URLs that you can access.
+If you want to check a job that was not submitted through UCC, you can
+refer to it by its URL. The :ref:`ucc list-jobs <list-jobs>` command will 
+produce a list of all job URLs accessible to you.
 
-Note that in this case UCC will only retrieve stdout and stderr files. To download
-other result files, you'll have to use the data movement functions described 
-in :ref:`ucc_datamanagement`.
+Note that in this case, UCC will only retrieve the `stdout` and `stderr`
+files. To download other result files, you need to use the data movement
+functions described in :ref:`ucc_datamanagement`.
 
   
-Scheduling job submission to the batch system
+Scheduling Job Submission to the Batch System
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Sometimes a user wishes to control the time when a job is
 submitted to the batch queue, for example, because he/she knows that
 a certain queue will be empty at that time.
 
-To schedule a job, you can either use the ``-S`` option to the ucc ``run``
+To schedule a job, you can use the ``-S`` option with the ``ucc run`` 
 command:
 
 .. code:: console
 
-  $ ucc run -S "12:24" ...
+   $ ucc run -S "12:24" ...
 
-Alternatively, you can specify the start time in your job file using the ``Not before`` keyword:
-
-.. code:: json
-
-  {
-    "Not before": "12:30",
-  }
-
-In both cases, the specified start time can be given in the brief "HH:mm" (hours and minutes) 
-format shown above, or in the full ISO 8601 format including year, date, time and time zone:
+Alternatively, you can specify the start time in your job file using 
+the ``Not before`` keyword:
 
 .. code:: json
 
-  {
-   "Not before": "2011-12-24T12:30:00+0200",
-  }
+   {
+     "Not before": "12:30"
+   }
 
-Using allocations
+In both cases, the specified start time can be given in the brief 
+"HH:mm" (hours and minutes) format shown above—in this case, the time 
+is interpreted as the local time on the UNICORE/X server — or in the 
+full ISO 8601 format including year, date, time, and time zone:
+
+.. code:: json
+
+   {
+     "Not before": "2011-12-24T12:30:00+0200"
+   }
+
+
+Using Allocations
 ^^^^^^^^^^^^^^^^^
 
-Batch systems such as Slurm support allocations, i.e. the user can get a chunk of resources for a certain time,
-into which jobs can then be submitted. This allows a more *interactive* use of an HPC system, where you only have
-to wait once for the allocation to be granted, then subsequent jobs will be launched immediately.
+Batch systems such as Slurm support allocations, i.e., the user can get a chunk 
+of resources for a certain time, into which jobs can then be submitted. This 
+allows a more *interactive* use of an HPC system, where you only have to wait 
+once for the allocation to be granted, then subsequent jobs will be launched 
+immediately.
 
-To create an allocation, you need to lauch a job of type ``ALLOCATE``, containing only resource requests:
+To create an allocation, you need to launch a job of type ``ALLOCATE`` containing 
+only resource requests:
 
 .. code:: json
 
-  {
-    "Job type": "ALLOCATE",
+   {
+     "Job type": "ALLOCATE",
 
-    "Resources": {
-      "Nodes" : "1",
-      "Runtime": "1h"
-    }
+     "Resources": {
+       "Nodes": "1",
+       "Runtime": "1h"
+     }
+   }
 
-  }
-
-If you run this with ``ucc run``, a new job will be created, which is not yet executing anything.
-The job URL can then be used with a subsequent ``ucc run -A <url>``
+If you run this with ``ucc run``, a new job will be created that is not yet 
+executing anything. The job URL can then be used with a subsequent ``ucc run -A <url>``:
 
 .. code:: console
 
-  $ export ALLOCATION=$(ucc run -a allocation.u)
-  $ ucc run -A $ALLOCATION yourjob1.u yourjob2.u
+   $ export ALLOCATION=$(ucc run -a allocation.u)
+   $ ucc run -A $ALLOCATION yourjob1.u yourjob2.u
 
-Note that you should submit the allocation job asynchronously, otherwise ucc would wait for it to end.
-Also note that the allocation needs to be in state ``RUNNING`` before it can accept any jobs.
+Note that you should submit the allocation job **asynchronously**, otherwise UCC 
+would wait for it to finish. In addition, the allocation must be in the 
+``RUNNING`` state before it can accept any jobs.
 
-Executing a command
+
+Executing a Command
 ~~~~~~~~~~~~~~~~~~~
 
-If you just want to execute a simple command remotely (i.e. without data staging, 
-resource specifications etc), you can use the ``exec`` command. 
+If you just want to execute a simple command remotely (i.e., without data staging, 
+resource specifications, etc.), you can use the ``exec`` command.
+This will run the given command remotely (similarly to ``ssh``) and print the 
+output to the console. You can specify the site with the ``-s`` option. If you 
+do not specify the site, a random site will be chosen.
 
-This will run the given command remotely (similarly to ``ssh``), and print the 
-output to the console. You can specify the site with the ``-s`` option.
-If you do not specify the site, a random site will be chosen.
-
-UNICORE will run the command on the login node, it will not be submitted to the 
-batch system.
-
-For example, try
+UNICORE will run the command on the login node; it will not be submitted to the 
+batch system. For example, try:
 
 .. code:: console
 
-  $ ucc exec /bin/date
+   $ ucc exec /bin/date
 
 To safely pass arguments to the executable, use ``--`` to end the UCC part of
-the command line, for example
+the command line. For example, to execute the ``date rfc-email`` query, which 
+refers to the date and time format used in email messages, use:
 
 .. code:: console
 
-  $ ucc exec -- date --rfc-email
+   $ ucc exec -- date --rfc-email

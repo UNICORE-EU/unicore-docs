@@ -8,21 +8,21 @@
 	:align: middle
 
 Assuming you have successfully installed UCC, this section
-shows how to get going quickly.
+shows how to get started quickly.
 
 .. _ucc_help:
 
 Getting help
 ~~~~~~~~~~~~
 
-Calling UCC with the ``-h`` option will show the available options. 
-To get a list of available commands, type:
+Calling UCC with the ``-h`` option displays the available options. 
+To view a list of available commands, use:
 
 .. code:: console
 
   $ ucc -h
 
-To get help on a specific command, type:
+To get help on a specific command, use:
 
 .. code:: console
 
@@ -34,7 +34,7 @@ See also :ref:`ucc_options` for a list of common options.
 Connecting
 ~~~~~~~~~~
 
-First, contact UNICORE and make sure you have access to some target systems:
+First, contact UNICORE and make sure you have access to at least one target system:
   
 .. code:: console
 
@@ -44,7 +44,7 @@ First, contact UNICORE and make sure you have access to some target systems:
 List available sites
 ~~~~~~~~~~~~~~~~~~~~
 
-Then, list the sites available to you using: 
+Next, list the sites available to you using: 
   
 .. code:: console
 
@@ -54,23 +54,22 @@ Then, list the sites available to you using:
 Running your first job
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The UCC distribution contains `samples 
-<https://github.com/UNICORE-EU/commandline-client/tree/master/distribution/src/main/samples>`_ 
+The UCC distribution contains some job examples located in the <UCC_HOME>/samples directory 
 that you can run. Let's run the `date.u 
 <https://github.com/UNICORE-EU/commandline-client/blob/master/distribution/src/main/samples/date.u>`_ 
-sample. The ``-v`` switch prints more info so you can see what's going on.
+sample. The ``-v`` switch enables verbose output, so you can see more details about what is happening.
 
 .. code:: console
 
   $ ucc run -v <UCC_HOME>/samples/date.u
 
-This will run *date* on a randomly chosen site, and retrieve the output. 
-To run on a particular site, use the ``-s`` option to specify a particular 
-target system.
+This command will run *date* on a randomly chosen site, and retrieve the output. 
+To target a specific site, use the ``-s`` option to specify the desired system.
 
 .. note:: *Debian distribution on Linux*
-  Look for UCC samples in the ``/usr/share/doc/unicore/ucc/samples`` 
-  instead of <UCC_HOME>/samples directory.
+  
+  If UCC was installed from a DEBIAN file, sample files can be found in 
+  ``/usr/share/doc/unicore/ucc/samples`` directory.
 
 
 .. _list-jobs:
@@ -78,12 +77,43 @@ target system.
 Listing your jobs
 ~~~~~~~~~~~~~~~~~
 
-The command
+To list your jobs along with their status, use the following command:
 
 .. code:: console
 
   $ ucc list-jobs -l
 
-will print a list of job URLs with their respective status 
+This will print a list of job URLs with their respective status 
 (``RUNNING``, ``SUCCESSFUL``, etc).
   
+
+Accessing Job Files
+~~~~~~~~~~~~~~~~~~~
+
+After submitting a job, you can access its output files using various
+UCC commands. For example, after running a job, you might want to
+inspect the working directory and view the output.
+
+.. code-block:: console
+   :emphasize-lines: 2,7,9,12,19
+   
+   > ucc run date.ucc
+    https://mygateway:8080/DEMO-SITE/rest/core/jobs/3QYZPs5HQ3t
+    SUCCESSFUL, exit code: 0
+    stdout                                                      100%  29 72,1B/s
+    stderr
+  
+   > ucc job-status -l https://mygateway:8080/DEMO-SITE/rest/core/jobs/3QYZPs5HQ3t
+    https://mygateway:8080/DEMO-SITE/rest/core/jobs/3QYZPs5HQ3t SUCCESSFUL exit code: 0
+    Working directory: https://mygateway:8080/DEMO-SITE/rest/core/storages/3QYZPs5HQ3t-uspace
+    Job type: BATCH, queue: 'batch'
+   
+   > ucc ls https://mygateway:8080/DEMO-SITE/rest/core/storages/3QYZPs5HQ3t-uspace
+    /UNICORE_SCRIPT_EXIT_CODE
+    /stderr
+    /bss_submit_1749042166438
+    /stdout
+    /UNICORE_Job_1749042166438
+   
+   > ucc cat https://mygateway:8080/DEMO-SITE/rest/core/storages/3QYZPs5HQ3t-uspace/files/stdout
+    Wed Jun 4 13:00:00 UTC 2025

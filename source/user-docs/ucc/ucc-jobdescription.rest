@@ -1,6 +1,6 @@
 .. _ucc_jobdescription:
 
-|job-desc-img| Job description format
+|job-desc-img| Job Description Format
 -------------------------------------
 
 .. |job-desc-img| image:: ../../_static/job-desc.png
@@ -26,11 +26,12 @@ To view an example job showing most of the available options, run:
 (most of the options shown are not mandatory, of course).
 
 
-Specifying the execution site
+Specifying the Execution Site
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As an alternative to using the ``--sitename`` option to specify the execution site,
-you can use the following top-level keyword in the job description:
+As an alternative to using the ``--sitename`` option to specify the
+execution site, you can use the following top-level keyword in the job
+description:
 
 ::
 
@@ -43,22 +44,21 @@ Note that the commandline option, if present, takes precedence.
 
 .. _handle-local-files:
 
-Handling local files
+Handling Local Files
 ~~~~~~~~~~~~~~~~~~~~
 
-It is often the case that your job requires files from your
-local workstation, or you want UCC to download result files once
-the job has finished.
+It is often the case that your job requires files from your local
+workstation, or you want UCC to download result files once the job
+has finished.
 
-UCC achieves this by allowing paths to local files in the ``To`` and/or ``From``
-directives of the data staging part(s) in your job.
+UCC achieves this by allowing paths to local files in the ``To`` and/or
+``From`` directives of the data staging part(s) in your job.
 
-Local files can be given as an absolute or relative path; in the
-latter case the configured output directory will be used as base
-directory.
+Local files can be given as an absolute or relative path; in the latter
+case the configured output directory will be used as base directory.
 
 
-Importing local files into the job workspace
+Importing Local Files into the Job Workspace
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To import files from your local computer, you can use the usual
@@ -66,104 +66,106 @@ To import files from your local computer, you can use the usual
 
 You can of course mix local and remote files. This example shows
 some of the possibilities:
+
 ::
 
   {
+    "Imports": [ 
 
-	"Imports": [ 
-	
-	#
-	# import a local file from the client machine
-	# into the job workspace
-	#
-		  
-	  { "From": "/work/data/fileName", "To": "fileName" },
-	
-	#    
-	# import a set of local files from the client machine
-	# into the job workspace
-	#
+      #
+      # Import a local file from the client machine
+      # into the job workspace
+      #
 
-	  { "From": "/work/data/pdf/*.pdf", "To": "/" },
-  
-	#
-	# import a remote file from a UNICORE storage using the UFTP protocol
-	#
-	
-	  { "From": "UFTP:https://gw:8080/DEMO-SITE/rest/core/storages/Home/files/testfile",
-	    "To": "testfile" },
-  
-	# create a symlink from a file on the compute machine to the job workspace
+      { "From": "/work/data/fileName", "To": "fileName" },
 
-	  { "From": "link:/work/data/testfile", "To": "linked-file" },
+      #    
+      # Import a set of local files from the client machine
+      # into the job workspace
+      #
 
-	# copy a file on the compute machine to the job workspace
+      { "From": "/work/data/pdf/*.pdf", "To": "/" },
 
-	  { "From": "file:/work/data/testfile", "To": "copied-file" },
+      #
+      # Import a remote file from a UNICORE storage using the
+      # UFTP protocol
+      #
 
-	],
+      { "From": "UFTP:https://gw:8080/DEMO-SITE/rest/core/"
+                "storages/Home/files/testfile",
+        "To": "testfile" },
 
+      # Create a symlink from a file on the compute machine
+
+      { "From": "link:/work/data/testfile", "To": "linked-file" },
+
+      # Copy a file on the compute machine
+
+      { "From": "file:/work/data/testfile", "To": "copied-file" }
+    ]
   }
-
 
 If for some reason an import fails, but you want the job to run anyway,
 there is a flag ``FailOnError`` that can be set to ``false``:
+
 ::
 
- "Imports": [ 
-
-      { "From": "/work/data/fileName",
-        "To": "fileName",
-        "FailOnError": "false"
-      },
-  
- ],
+  "Imports": [ 
+    {
+      "From": "/work/data/fileName",
+      "To": "fileName",
+      "FailOnError": "false"
+    }
+  ]
 
 .. note::
-  UCC supports simple wild cards (``*`` and ``?``) for importing and exporting files.
+  UCC supports simple wildcards (``*`` and ``?``) for importing and
+  exporting files.
 
 
-Exporting result files from the job workspace
+Exporting Result Files from the Job Workspace
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To export files from the job's working directory to your local machine, use the normal ``Exports`` keyword,
-with a file path as the ``To`` argument. Here is an example ``Exports`` section that specifies two exports:
+To export files from the job's working directory to your local
+machine, use the normal ``Exports`` keyword, with a file path as
+the ``To`` argument.
+
+Here is an example ``Exports`` section that specifies two exports:
+
 ::
 
   {
     "Exports": [ 
-    
-      # this exports all png files to a local directory
 
-        { "From": "*.png", "To": "/home/me/images/" },
-  
-      # this exports a single file to a to local directory
-      # failure of this data transfer will be ignored
-      
-        { "From": "error.log", 
-          "To": "/home/me/logs/error.log",
-          "FailOnError": "false" },
-      
-      # this exports to a UNICORE storage
+      # This exports all PNG files to a local directory
+      { "From": "*.png",
+        "To": "/home/me/images/" },
 
-      { "From": "stdout", 
-        "To": "https://gw:8080/DEMO-SITE/rest/core/storages/Home/files/results/myjob/stdout"
-      },
+      # This exports a single file to a local directory
+      # Failure of this data transfer will be ignored
+      { "From": "error.log",
+        "To": "/home/me/logs/error.log",
+        "FailOnError": "false" },
+
+      # This exports to a UNICORE storage
+      { "From": "stdout",
+        "To": "https://gw:8080/DEMO-SITE/rest/core/storages/"
+              "Home/files/results/myjob/stdout" }
     ]
   }
 
-As a special case, UCC also supports downloading files from other UNICORE storages
-(after the job has finished), using the ``Exports`` keyword:
+As a special case, UCC also supports downloading files from other
+UNICORE storages (after the job has finished), using the ``Exports``
+keyword:
+
 ::
 
   {
-     "Exports": [
-     
-      # this exports a file from a UNICORE storage
-      
-        { "From": "https://gw:8080/DEMO-SITE/rest/core/storages/Work/files/somefile",
-          "To": "/home/me/somefile"
-        },
-    ]   
+    "Exports": [
+      # This exports a file from a UNICORE storage
+      { "From": "https://gw:8080/DEMO-SITE/rest/core/storages/"
+                "Work/files/somefile",
+        "To": "/home/me/somefile" }
+    ]
   }
 

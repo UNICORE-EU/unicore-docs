@@ -1,6 +1,6 @@
 .. _ucc_datamanagement:
 
-|data-img| Data management functions
+|data-img| Data Management Functions
 ------------------------------------
 
 .. |data-img| image:: ../../_static/data-management.png
@@ -8,28 +8,30 @@
 	:align: middle
 
 UCC offers access to all the data management functions in UNICORE.
-You can upload or download data from a remote server, initiate
-a server-to-server transfer, create directories and so on.
+You can upload or download data from a remote server, initiate a
+server-to-server transfer, create directories, and more.
 
 
-Specifying remote locations
+Specifying Remote Locations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Remote locations are specified via URIs that includes protocol, storage
-server (*host/port*), site name, and filename. For example,
-::
+Remote locations are specified via URIs that include protocol,
+storage server (*host/port*), site name, and filename. For example::
 
- BFT:https://mygateway:8080/SITE/rest/core/storages/HOME/files/my_file
+  BFT:https://mygateway:8080/SITE/rest/core/storages/HOME/files/my_file
 
-specifies a file named */my_file* on the storage instance 
-*\https://mygateway:8080/SITE/rest/core/storages/HOME*,
-using the BFT protocol. The "/files/" part is part of the API endpoint,
-and not part of the filename.
+This URI specifies a file named */my_file* on the storage instance
+*https://mygateway:8080/SITE/rest/core/storages/HOME*, using the BFT
+protocol.
 
-Paths are always **relative** to the storage root, not the root of
-the actual file system.
+.. important::
+  The ``/files/`` part is part of the API endpoint and not part of the
+  filename.
 
-The protocol is optional, and will default to ``BFT`` if not given.
+Paths are always **relative** to the storage root, not the root of the
+actual file system.
+
+The protocol is optional and defaults to ``BFT`` if not specified.
 
   
 Data movement

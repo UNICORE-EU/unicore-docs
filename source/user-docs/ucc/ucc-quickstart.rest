@@ -97,7 +97,7 @@ inspect the working directory and view the output.
 .. code-block:: console
    :emphasize-lines: 2,7,9,12,19
    
-   > ucc run date.ucc
+   > ucc run date.u
     https://mygateway:8080/DEMO-SITE/rest/core/jobs/3QYZPs5HQ3t
     SUCCESSFUL, exit code: 0
     stdout                                                      100%  29 72,1B/s

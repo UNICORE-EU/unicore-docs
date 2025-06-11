@@ -95,15 +95,17 @@ UCC commands. This example shows how to submit a job, inspect its
 status, explore the working directory, and handle output files.
 
 .. code-block:: bash
-   :emphasize-lines: 2,3,6,7,10,11,12,16,25,29,32
+   :emphasize-lines: 2,3,6,9,12,14,18,27,31,34
    
    # start a job and exit immediately (asynchronous submission)
    $ ucc run -a date.u
    https://134.94.198.76:8080/DEMO-SITE/rest/core/jobs/DkNJ0b38aD0
    
    # list all jobs
-   $ ucc list-jobs
-   https://134.94.198.76:8080/DEMO-SITE/rest/core/jobs/DkNJ0b38aD0
+   $ ucc list-jobs -l
+   Submitted        |     Status | URL
+   -----------------|------------|--------------------------------------------------------------
+   2025-06-11 15:27 | SUCCESSFUL | https://134.94.198.76:8080/DEMO-SITE/rest/core/jobs/DkNJ0b38aD0
    
    # check the job's status
    $ ucc job-status -l https://134.94.198.76:8080/DEMO-SITE/rest/core/jobs/DkNJ0b38aD0

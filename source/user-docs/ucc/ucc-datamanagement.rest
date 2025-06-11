@@ -208,20 +208,39 @@ Finding data
 ls
 ^^
 
-This will list a remote directory. Useful options are: ``-l`` (detailed output), ``-H`` 
-(human-friendly) and ``-R`` (recurse). 
+This command lists the contents of a remote directory. 
 
-Example:
+Useful options are:
 
-.. code:: console
+- ``-l`` : detailed output
+- ``-H`` : human-readable sizes
+- ``-R`` : recursive listing
+
+
+Basic example:
+
+.. code-block:: console
 
   $ ucc ls -l -H https://mygateway:8080/SITE/rest/core/storages/HOME/
 
-If the storage supports metadata, you can get the metadata of a single file using ``ls -l -m``:
+If the storage supports metadata, you can display it for a specific file
+using ``-m`` along with ``-l``:
 
 .. code:: console
 
   $ ucc ls -l -m https://mygateway:8080/SITE/rest/core/storages/HOME/.bashrc
+
+To list all PDF files in a folder:
+
+.. code-block:: console
+
+  $ ucc ls https://mygateway:8080/SITE/rest/core/storages/HOME/*.pdf
+
+To recursively list all files in a directory and subdirectories:
+
+.. code-block:: console
+
+  $ ucc ls -R https://mygateway:8080/SITE/rest/core/storages/HOME/projects/
 
 
 Using the StorageFactory service

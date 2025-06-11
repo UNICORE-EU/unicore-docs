@@ -87,33 +87,47 @@ This will print a list of job URLs with their respective status
 (``RUNNING``, ``SUCCESSFUL``, etc).
   
 
-Accessing Job Files
-~~~~~~~~~~~~~~~~~~~
+Job Execution Example
+~~~~~~~~~~~~~~~~~~~~~
 
 After submitting a job, you can access its output files using various
-UCC commands. For example, after running a job, you might want to
-inspect the working directory and view the output.
+UCC commands. This example shows how to submit a job, inspect its
+status, explore the working directory, and handle output files.
 
-.. code-block:: console
-   :emphasize-lines: 2,7,9,12,19
+.. code-block:: bash
+   :emphasize-lines: 2,3,6,7,10,11,12,16,25,29,32
    
-   > ucc run date.u
-    https://mygateway:8080/DEMO-SITE/rest/core/jobs/3QYZPs5HQ3t
-    SUCCESSFUL, exit code: 0
-    stdout                                                      100%  29 72,1B/s
-    stderr
-  
-   > ucc job-status -l https://mygateway:8080/DEMO-SITE/rest/core/jobs/3QYZPs5HQ3t
-    https://mygateway:8080/DEMO-SITE/rest/core/jobs/3QYZPs5HQ3t SUCCESSFUL exit code: 0
-    Working directory: https://mygateway:8080/DEMO-SITE/rest/core/storages/3QYZPs5HQ3t-uspace
-    Job type: BATCH, queue: 'batch'
+   # start a job and exit immediately (asynchronous submission)
+   $ ucc run -a date.u
+   https://134.94.198.76:8080/DEMO-SITE/rest/core/jobs/DkNJ0b38aD0
    
-   > ucc ls https://mygateway:8080/DEMO-SITE/rest/core/storages/3QYZPs5HQ3t-uspace
-    /UNICORE_SCRIPT_EXIT_CODE
-    /stderr
-    /bss_submit_1749042166438
-    /stdout
-    /UNICORE_Job_1749042166438
+   # list all jobs
+   $ ucc list-jobs
+   https://134.94.198.76:8080/DEMO-SITE/rest/core/jobs/DkNJ0b38aD0
    
-   > ucc cat https://mygateway:8080/DEMO-SITE/rest/core/storages/3QYZPs5HQ3t-uspace/files/stdout
-    Wed Jun 4 13:00:00 UTC 2025
+   # check the job's status
+   $ ucc job-status -l https://134.94.198.76:8080/DEMO-SITE/rest/core/jobs/DkNJ0b38aD0
+   https://134.94.198.76:8080/DEMO-SITE/rest/core/jobs/DkNJ0b38aD0 SUCCESSFUL exit code: 0
+   Working directory: https://134.94.198.76:8080/DEMO-SITE/rest/core/storages/DkNJ0b38aD0-uspace
+   Job type: BATCH, queue: 'batch'
+   
+   # list files in the job's working directory
+   $ ucc ls -l https://134.94.198.76:8080/DEMO-SITE/rest/core/storages/DkNJ0b38aD0-uspace 
+   -rw-r-----   2 2025-06-11T13:27:25+0000 /UNICORE_SCRIPT_EXIT_CODE
+   -rw-r--r--   0 2025-06-11T13:27:25+0000 /stderr
+   -rw-r--r--  29 2025-06-11T13:27:25+0000 /stdout
+   -rwxrwxr-- 1099 2025-06-11T13:27:25+0000 /UNICORE_Job_1749648445137
+   -rwxrwxr-- 362 2025-06-11T13:27:25+0000 /bss_submit_1749648445137
+   
+   # To access individual files, append /files/<filename> to the working directory URL!
+   # For example, to view the contents of the stdout file:
+   $ ucc cat https://mygateway:8080/DEMO-SITE/rest/core/storages/DkNJ0b38aD0-uspace/files/stdout
+   Wed Jun 11 13:27:25 UTC 2025
+    
+   # download output to current directory
+   $ ucc get-output https://mygateway:8080/DEMO-SITE/rest/core/storages/DkNJ0b38aD0-uspace/files/stdout
+   
+   # optionally check if stderr contains error messages
+   $ ucc cat https://mygateway:8080/DEMO-SITE/rest/core/storages/DkNJ0b38aD0-uspace/files/stderr
+   
+

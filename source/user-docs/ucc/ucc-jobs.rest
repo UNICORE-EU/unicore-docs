@@ -42,10 +42,11 @@ To see all available options for the ``run`` command, use the built-in help:
   $ ucc run -h
   
 
-.. tip:: *Windows only* 
+.. caution:: *Windows only* 
 
-  If you created a Bash script on Windows, it may contain Windows-style 
-  line endings (CRLF), which can cause execution errors on UNIX systems 
+  If you want to run a Bash script that was created on Windows, 
+  it may contain Windows-style line endings (CRLF), 
+  which can cause execution errors on UNIX systems 
   (where LF line endings are expected). Since the script will be executed 
   on a UNIX system, you should convert it to UNIX format using the 
   ``dos2unix`` command:
@@ -54,7 +55,8 @@ To see all available options for the ``run`` command, use the built-in help:
 
     $ dos2unix script.sh
 
-  Alternatively, you can include a ``User pre-command`` in your job 
+  Alternatively, if ``dos2unix`` is installed on the server,
+  you can include a ``User pre-command`` in your JSON job 
   description file to convert the script automatically before execution:
 
   .. code-block:: json
@@ -327,7 +329,7 @@ batch system. For example, try:
    $ ucc exec /bin/date
 
 To safely pass arguments to the executable, use ``--`` to end the UCC part of
-the command line. For example, to execute the ``date rfc-email`` query, which 
+the command line. For example, to execute the ``date --rfc-email`` query, which 
 refers to the date and time format used in email messages, use:
 
 .. code:: console

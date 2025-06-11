@@ -72,35 +72,20 @@ some of the possibilities:
   {
     "Imports": [ 
 
-      #
-      # Import a local file from the client machine
-      # into the job workspace
-      #
-
+      // Import a local file from the client machine into the job workspace
       { "From": "/work/data/fileName", "To": "fileName" },
 
-      #    
-      # Import a set of local files from the client machine
-      # into the job workspace
-      #
-
+      // Import a set of local files from the client machine into the job workspace
       { "From": "/work/data/pdf/*.pdf", "To": "/" },
 
-      #
-      # Import a remote file from a UNICORE storage using the
-      # UFTP protocol
-      #
-
-      { "From": "UFTP:https://gw:8080/DEMO-SITE/rest/core/"
-                "storages/Home/files/testfile",
+      // Import a remote file from a UNICORE storage using the UFTP protocol
+      { "From": "UFTP:https://gw:8080/DEMO-SITE/rest/core/storages/Home/files/testfile",
         "To": "testfile" },
 
-      # Create a symlink from a file on the compute machine
-
+      // Create a symlink from a file on the compute machine
       { "From": "link:/work/data/testfile", "To": "linked-file" },
 
-      # Copy a file on the compute machine
-
+      // Copy a file on the compute machine
       { "From": "file:/work/data/testfile", "To": "copied-file" }
     ]
   }
@@ -137,20 +122,17 @@ Here is an example ``Exports`` section that specifies two exports:
   {
     "Exports": [ 
 
-      # This exports all PNG files to a local directory
-      { "From": "*.png",
-        "To": "/home/me/images/" },
+      // This exports all PNG files to a local directory
+      { "From": "*.png", "To": "/home/me/images/" },
 
-      # This exports a single file to a local directory
-      # Failure of this data transfer will be ignored
-      { "From": "error.log",
-        "To": "/home/me/logs/error.log",
+      // This exports a single file to a local directory
+      // Failure of this data transfer will be ignored
+      { "From": "error.log", "To": "/home/me/logs/error.log",
         "FailOnError": "false" },
 
-      # This exports to a UNICORE storage
+      // This exports to a UNICORE storage
       { "From": "stdout",
-        "To": "https://gw:8080/DEMO-SITE/rest/core/storages/"
-              "Home/files/results/myjob/stdout" }
+        "To": "https://gw:8080/DEMO-SITE/rest/core/storages/Home/files/results/myjob/stdout" }
     ]
   }
 
@@ -162,9 +144,8 @@ keyword:
 
   {
     "Exports": [
-      # This exports a file from a UNICORE storage
-      { "From": "https://gw:8080/DEMO-SITE/rest/core/storages/"
-                "Work/files/somefile",
+      // This exports a file from a UNICORE storage
+      { "From": "https://gw:8080/DEMO-SITE/rest/core/storages/Work/files/somefile",
         "To": "/home/me/somefile" }
     ]
   }

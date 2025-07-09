@@ -177,7 +177,7 @@ as the allowed UNICORE/X host(s).
   tsi.my_addr=localhost
 
   # The port on which the TSI will listen for UNICORE/X requests
-  tsi.my_port=14433
+  tsi.my_port=4433
 
   # Comma-separated list of UNICORE/X machine(s) from where
   # connections are allowed
@@ -585,19 +585,19 @@ this directory must be world writable. The required Unix access mode is ``1777``
 	:height: 32px
 	:align: middle
 
-For the Linux packages, the TSI is pre-configured for systemd, and
-if you want to run it as a a system service, you can use ``systemctl``:
+For Linux packages, the TSI is pre-configured for systemd. If you want
+to run it as a system service, use ``systemctl``:
 
 .. code:: console
 
   $ sudo systemctl add-wants multi-user.target unicore-tsi-variant
 
-(where *variant* stands for the concrete TSI implementation, such as
-``nobatch`` or ``slurm``)
+(where *variant* stands for the TSI implementation, such as
+``nobatch`` or ``slurm``).
 
 
-Starting 
-~~~~~~~~
+Starting the TSI 
+~~~~~~~~~~~~~~~~
 
 If installed from an Linux package, the TSI can be started via *systemd*:
 
@@ -606,28 +606,36 @@ If installed from an Linux package, the TSI can be started via *systemd*:
  $ sudo systemctl start unicore-tsi-variant
 
 
-The TSI can also be started using the script ``BIN/start.sh``.
+You can also start it using the script in the ``BIN`` directory. Make
+sure you have appropriated permissions for TSI directories (``BIN``, ``CONF``, 
+``LIB``,``LOGS``):
+
+
+.. code:: console
+
+  $ BIN/start.sh
+
 
 Stopping the TSI
 ~~~~~~~~~~~~~~~~
 
-If installed from an Linux package, the TSI can be stopped via *systemd*:
+Alternatively, use the shutdown script in the ``BIN`` directory
+(see also the section *Scripts*):
 
 .. code:: console
 
-  $ sudo systemctl stop unicore-tsi-variant
+  $ BIN/stop.sh
 
+This will stop the main TSI process and all spawned processes,
+including worker processes.
 
-The TSI can also be stopped using the script ``BIN/stop.sh``
-(cf. section *Scripts*). This will stop the main TSI process and the tree
-of all spawned processes including the TSI workers.
+Note:
+  TSI worker processes (but not the main process) will stop if the
+  UNICORE/X server they connect to is stopped.
 
-TSI worker processes (but not the main process) will stop executing when
-the UNICORE/X server it connects to stops executing.
-
-It is possible to stop a TSI worker process, but this could result in
-the failure of a job (the UNICORE/X server will recover and create
-new TSI processes).
+You can stop individual worker processes, but this may cause job
+failures. The UNICORE/X server will recover and start new TSI
+processes if needed.
 
 TSI logging
 ~~~~~~~~~~~
@@ -643,13 +651,14 @@ the logs via ``journalctl``, for example,
 To print logging output to stdout instead, set 
 ::
 
-  tsi.use_syslog=false``
+  tsi.use_syslog=false
 
 in the :file:`{CONF}/tsi.properties` file.
 
 
-Since stdout is redirected to a file (see the STARTLOG definition in ``CONF/startup.properties``)
-the logging output will be in that file.
+Note:
+  Since stdout is redirected to a file (see the ``STARTLOG`` definition 
+  in ``CONF/startup.properties``) the logging output will be in that file.
 
 
 For more verbose logging, set

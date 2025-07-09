@@ -91,7 +91,7 @@ Download and install the Slurm TSI
 .. code:: console
 
   cd /opt/unicore
-  export V=10.1.0
+  export V=10.2.1
 
   wget https://github.com/UNICORE-EU/server-bundle/releases/download/${V}/unicore-tsi-${V}.tgz -O unicore-tsi-${V}.tgz
   
@@ -303,7 +303,7 @@ in the UNICORE/X manual.
 In the configuration we have set up so far, UNICORE will authenticate users via username/password, which
 are configured in a file 
 
-``/opt/unicore/unicorex/conf/rest-users.txt``
+``/opt/unicore/unicorex/conf/user-authfile.txt``
 
 A default user *demouser* with password *test123* is pre-configured, you can add others.
 

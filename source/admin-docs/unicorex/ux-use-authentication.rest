@@ -36,14 +36,14 @@ Username-password file
 ~~~~~~~~~~~~~~~~~~~~~~
 
 
-The FILE mechanism uses a local map file containing username, password
-and the DN. Required configuration is the location of the file.
+The FILE mechanism uses a local map file containing username, password hash, salt,
+and user DN. The file's location is specified in ``CONF/main.config``:
 ::
 
  container.security.rest.authentication.FILE.class=eu.unicore.services.rest.security.FilebasedAuthenticator
- container.security.rest.authentication.FILE.file=conf/rest-users.txt
+ container.security.rest.authentication.FILE.file=conf/user-authfile.txt
 
-The file format is:
+The file format (e.g., ``user-authfile.txt``) is:
 ::
 
 	#
@@ -52,9 +52,10 @@ The file format is:
 	#
 	demouser:<...>:<...>:CN=Demo User, O=UNICORE, C=EU
 
-i.e. each line gives the username, the hashed password, the salt and
-the user's DN, separated by colons. To generate entries, i.e. to hash the 
-password correctly, the ``md5sum`` utility can be used. For example, 
+Each line provides the username, the hashed password, the salt and
+the user's distinguished name (DN), all separated by colons. 
+To create entries with correctly hashed passwords, you can use the 
+``md5sum`` utility. For example, 
 if your intended password is *test123*, you could do
 
 .. code:: console
@@ -63,9 +64,9 @@ if your intended password is *test123*, you could do
 	$ echo "Salt is ${SALT}"
 	$ echo -n "${SALT}test123" | md5sum
 
-which will output the salted and hashed password. Here we generate a
-random string as the salt. Enter these together with the username, and
-the DN of the user into the password file.
+In this example, a random string is generated as the salt. You should
+enter the resulting values — username, hash, salt, and DN — into the
+password file.
 
 
 .. _oauth2-bearer-token:

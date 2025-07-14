@@ -67,7 +67,7 @@ Common options:
 :gcID: 
           The so-called *grid component ID* is used to group entries, and
           must match the setting in the UNICORE/X configuration file
-          ``uas.config``.  For example, if you have two systems with
+          ``main.config``.  For example, if you have two systems with
           different user name mappings, you can handle both with a
           single XUUDB, since you can store two user name mappings for
           each certificate, by choosing a different gcID for both

@@ -89,10 +89,10 @@ to the Registry. Please, make sure to read the :ref:`UNICORE/X documentation <un
 as well.
 
 
-Registry configuration (``CONF/uas.config``)
+Registry configuration (``CONF/main.config``)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Apart from hostname, port, and other properties, the ``uas.config`` file must contain the 
+Apart from hostname, port, and other properties, the ``main.config`` file must contain the
 following entry::
 
  container.feature.Registry.mode=shared
@@ -157,7 +157,7 @@ UNICORE/X configuration
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 To publish the services in a shared registry, configure the
-address of the registry in ``uas.config``::
+address of the registry in ``main.config``::
 
   # switch on use of external registry 
   container.externalregistry.use=true

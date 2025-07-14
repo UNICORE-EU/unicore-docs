@@ -158,7 +158,7 @@ UNICORE/X container configuration overview
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following table gives an overview of the basic settings for a
-UNICORE/X server. These can be set in ``uas.config`` or ``container.properties``.
+UNICORE/X server. These can be set in ``main.config`` or ``container.properties``.
 Many of the settings (e.g. ``security``) will be explained in more detail in
 separate sections.
 
@@ -267,7 +267,7 @@ need to be configured:
   role, UNIX login, group and other properties to UNICORE users. A
   number of attribute sources exist, which can be combined using
   various combining algorithms.  These are configured in the
-  ``uas.config`` file. Due to the complexity, the description of the
+  ``main.config`` file. Due to the complexity, the description of the
   configuration options can be found in :ref:`use_aip`.
 
 

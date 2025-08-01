@@ -51,7 +51,7 @@ XACML 2.0 PDP
 ^^^^^^^^^^^^^
 
 The implementation class of this module is: ``eu.unicore.uas.pdp.local.LocalHerasafPDP`` so
-to enable this module use the following configuration in ``uas.config``::
+to enable this module use the following configuration in ``main.config``::
 
  container.security.accesscontrol.pdpConfig=<CONFIG_DIR>/xacml2.conf
  container.security.accesscontrol.pdp=eu.unicore.uas.pdp.local.LocalHerasafPDP
@@ -103,7 +103,7 @@ the UNICORE authorization (see the above note for details), the Argus policy mus
 the classic UNICORE XACML 2 policy, stored locally.
 
 The implementation class of this module is ``eu.unicore.uas.pdp.argus.ArgusPDP``, so
-to enable this module use the following configuration in ``uas.config``::
+to enable this module use the following configuration in ``main.config``::
 
  container.security.accesscontrol.pdpConfig=<CONFIG_DIR>/argus.config
  container.security.accesscontrol.pdp=eu.unicore.uas.pdp.argus.ArgusPAP

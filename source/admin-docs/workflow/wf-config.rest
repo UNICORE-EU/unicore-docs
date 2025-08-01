@@ -27,7 +27,7 @@ Workflow processing
 ~~~~~~~~~~~~~~~~~~~
 
 Some details of the workflow engine's behaviour can be configured. 
-All these settings are made in ``uas.config``.
+All these settings are made in ``main.config``.
 
 
 Limits

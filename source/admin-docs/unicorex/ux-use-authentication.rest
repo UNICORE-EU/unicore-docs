@@ -15,7 +15,7 @@ user authentication, which will check the supplied credentials and map
 the user to a distinguished name (DN).
 
 This configuration is done in the container config file (typically
-``uas.config`` or ``container.properties``).
+``main.config`` or ``container.properties``).
 
 The enabled authentication options and their order are configured
 using a list of enabled mechanisms. For example,

@@ -37,7 +37,7 @@ VOs::
 
 	container.security.attributes.order=SAML XUUDB
 
-	container.security.attributes.SAML.class=eu.unicore.uas.security.saml.SAMLAttributeSource
+	container.security.attributes.SAML.class=eu.unicore.services.aip.saml.SAMLAttributeSource
 	container.security.attributes.SAML.configurationFile=conf/saml.config
 
 	# ... xuudb configuration omitted ...

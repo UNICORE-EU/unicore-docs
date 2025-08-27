@@ -22,7 +22,8 @@ Evaluating UNICORE
 
 If you wish to experiment with a UNICORE server installation, one simple way is to
 download the `Core Server Bundle <https://github.com/UNICORE-EU/server-bundle/releases>`_
-which can be installed very quickly on a single test machine or even your laptop.
+which can be installed very quickly on a single test machine or even your laptop. 
+See also :ref:`unicore-howto-testmachine` for more information.
 
 If you are a `Docker <https://docs.docker.com>`_ user, you can try our
 `UNICORE Docker image <https://github.com/UNICORE-EU/tools/tree/master/unicore-docker-image>`_.
@@ -38,20 +39,28 @@ at :ref:`How to setup UNICORE for a single HPC cluster <unicore-howto-singleclus
 
 For more complex cases, here are a few starting points:
 
-1. for each target resource (e.g. a compute cluster) you need a :ref:`TSI <tsi>` and 
-   a :ref:`UNICORE/X<unicorex>`.
-   The TSI is deployed on the cluster login node(s), while UNICORE/X requires a VM or server,
-   UNICORE/X should NOT be run on a machine where users can log in.
+1. For each target resource (e.g., a compute cluster), you need a
+   :ref:`TSI <tsi>` and a :ref:`UNICORE/X <unicorex>`.
 
-2. we strongly recommend running a :ref:`Gateway <gateway>`, one for all of an
-   institution/company's UNICORE services is enough. This will shield the services from direct
-   external access for added security.
+   The TSI is deployed on the cluster's login node(s). UNICORE/X, in
+   contrast, should run on a separate server or virtual machine.
+
+   UNICORE/X should **not** be run on a system where users can log in.
+
+2. We strongly recommend running a :ref:`Gateway <gateway>`.
+   
+   One gateway is sufficient for all UNICORE services at an institution
+   or company.
+
+   This component shields backend services from direct external access,
+   providing an important layer of security.
   
-3. For the services (except TSI where this is optional), you will need server certificate(s)
-   from a CA (similar to a web server)
+3. For the services (except TSI, where this is optional), you will need
+   server certificate(s) issued by a trusted Certificate Authority (CA),
+   similar to what is used for web servers.
 
-4. for multi-site workflows, you will need a :ref:`Registry <registry>` 
-   and a :ref:`Workflow service <workflow>`
+4. For multi-site workflows, you will need a :ref:`Registry <registry>`
+   and a :ref:`Workflow service <workflow>`.
 
 .. raw:: html
 

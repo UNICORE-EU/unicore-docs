@@ -29,6 +29,10 @@ in intranets and the internet.
 |start-img| :ref:`unicore-gettingstarted`
 	shows how to get going quickly.
 
+|user-guide-img| :ref:`unicore-howto-testmachine`
+	describes how to install UNICORE servers from a bundle 
+	on a single test machine or on a laptop.
+	
 |user-guide-img| :ref:`unicore-howto-singlecluster`
 	covers the steps required to install a minimal set of UNICORE services 
 	for a single HPC cluster that is running Slurm.
@@ -53,6 +57,7 @@ in intranets and the internet.
 	overview
 	gettingstarted
 
+	howto-testmachine
 	howto-singlecluster
 
 .. raw:: html

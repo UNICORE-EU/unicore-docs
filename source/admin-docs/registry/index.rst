@@ -90,7 +90,7 @@ as well.
 
 
 Registry configuration (``CONF/main.config``)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Apart from hostname, port, and other properties, the ``main.config`` file must contain the
 following entry::

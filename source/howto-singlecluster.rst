@@ -91,7 +91,7 @@ Download and install the Slurm TSI
 .. code:: console
 
   cd /opt/unicore
-  export V=10.2.1
+  export V=10.4.0
 
   wget https://github.com/UNICORE-EU/server-bundle/releases/download/${V}/unicore-tsi-${V}.tgz -O unicore-tsi-${V}.tgz
   
@@ -161,7 +161,7 @@ Download and extract the UNICORE Server bundle
 .. code:: console
 
   cd /opt/unicore
-  export V=10.1.0
+  export V=10.4.0
   wget https://github.com/UNICORE-EU/server-bundle/releases/download/${V}/unicore-servers-${V}.tgz -O unicore-servers-${V}.tgz
   
   tar xf unicore-servers-${V}.tgz
@@ -184,7 +184,7 @@ on the HPC cluster.
 
 .. code:: console
 
-  export V=10.1.0
+  export V=10.4.0
   cd unicore-servers-${V}
 
   # TSI is running on 'hpc-login'

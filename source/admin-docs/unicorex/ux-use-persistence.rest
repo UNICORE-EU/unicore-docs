@@ -60,29 +60,6 @@ persistence configuration can be easily shared between the job (XNJS) data and o
 If the ``persistence.config`` property is set, the given file will be read as a Java properties 
 file, and the properties will be used.
 
-.. note::
- All properties can be specified on a *per table* basis, by appending ``.<TABLENAME>``
- to the property name. This means you can even select different storage systems for
- different data, e.g. store service data on the filesystem and jobs in MySQL.
- The table name is case-sensitive.
-
-.. csv-table::
-  :file: tables/persistence-properties.csv
-  :widths: 25, 20, 15, 40
-  :header-rows: 1
-  :class: tight-table
-
-Caching
-^^^^^^^
-  
-By default, caching of data in memory is enabled. It can be switched off and configured on a 
-per-table (i.e. per entity class) basis. If you have a lot of memory for your server, you might 
-consider increasing the cache size for certain components.
-
-For example, to set the maximum size of the JOBS cache to 1000, you'd configure
-::
-
- persistence.cache.maxSize.JOBS=1000
 
 
 The H2 engine
@@ -92,15 +69,14 @@ H2 is a pure Java database engine. It can be used in embedded mode (i.e. the eng
 in server mode, if multiple UNICORE servers should use the same database server. For more information, visit
 http://www.h2database.com.
 
-
-Connection URL
-++++++++++++++
-
-In H2 server mode, the connection URL is constructed as follows:
+To use H2, set
 ::
 
-  jdbc:h2:tcp://<persistence.host>:<persistence.port>/<persistence.directory>/<table_name>
+ persistence.class=eu.unicore.persist.impl.H2Persist
+ persistence.directory=/path/to/data/directory/
 
+The "persistence.directory" refers to a directory on the UNICORE server, which of course must be writable
+for the UNICORE server process. It will hold the server's persistent data, e.g. submitted job descriptions etc.
 
 The MySQL Engine
 ^^^^^^^^^^^^^^^^
@@ -109,7 +85,7 @@ The MySQL database engine does not need an introduction. To configure its use fo
 data, you need to set
 ::
 
- persistence.class=de.fzj.unicore.persist.impl.MySQLPersist
+ persistence.class=eu.unicore.persist.impl.MySQLPersist
 
 To use MySQL, you need access to an installed MySQL server. It is beyond the scope
 of this guide to describe in detail how to setup and operate MySQL. 
@@ -144,8 +120,9 @@ The UNICORE persistence properties would in this case look like this::
 	persistence.port=3306
 	persistence.mysql.tabletype=MyISAM
 
-If you want to store data from multiple UNICORE servers, make sure to
-use a different database for each of them.
+.. note::
+ If using the same MySQL instance to store data from multiple UNICORE servers, you MUST use
+ a separate database for every UNICORE server!
 
 The PostgreSQL engine
 ^^^^^^^^^^^^^^^^^^^^^
@@ -153,7 +130,7 @@ The PostgreSQL engine
 To configure PostgreSQL for UNICORE persistence data, you need to set
 ::
 
- persistence.class=de.fzj.unicore.persist.impl.PGSQLPersist
+ persistence.class=eu.unicore.persist.impl.PGSQLPersist
 
 You will need access to a PostgreSQL server, and configure access to
 a database. We recommend a dedicated PostgreSQL user. Here is an example
@@ -188,9 +165,41 @@ for how to setup access.
 
 The UNICORE persistence properties would in this case look like this::
 
-	persistence.class=de.fzj.unicore.persist.impl.PGSQLPersist
+	persistence.class=eu.unicore.persist.impl.PGSQLPersist
 	persistence.database=unicore_data
 	persistence.user=unicore
 	persistence.password=some_password
 	persistence.host=<your_postgresql_host>
 	persistence.port=5432
+
+.. note::
+ If using the same PostgreSQL instance to store data from multiple UNICORE servers, you MUST use
+ a separate database for every UNICORE server!
+
+
+Caching
+^^^^^^^
+  
+By default, caching of data in memory is enabled. It can be switched off and configured on a 
+per-table (i.e. per entity class) basis. If you have a lot of memory for your server, you might 
+consider increasing the cache size for certain components.
+
+For example, to set the maximum size of the JOBS cache to 1000, you'd configure
+::
+
+ persistence.cache.maxSize.JOBS=1000
+
+Persistence configuration reference
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+ All properties can be specified on a *per table* basis, by appending ``.<TABLENAME>``
+ to the property name. This means you can even select different storage systems for
+ different data, e.g. store service data on the filesystem and jobs in MySQL.
+ The table name is case-sensitive.
+
+.. csv-table::
+  :file: tables/persistence-properties.csv
+  :widths: 25, 20, 15, 40
+  :header-rows: 1
+  :class: tight-table

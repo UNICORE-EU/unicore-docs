@@ -19,12 +19,14 @@ next sections.
 Mandatory configuration
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+- Configure the host/port where the server will be running, and possibly the
+  public address that will be used by clients to access to the APIs.
+
 - SSL certificates and basic security: UNICORE uses SSL certificates for all servers. 
-  For UNICORE/X these settings are made in the ``container.properties`` config file.
 
 - Attribute sources: various ways are available to assign local
-  attributes to users, such as Unix user name, groups and role. For
-  details, please refer to the :ref:`use_aip`.
+  attributes to users, such as Unix user name, groups and role. 
+  For details, please refer to the :ref:`use_aip`.
 
 - Backend / target system access: to access a resource manager like Slurm, the
   UNICORE TSI needs to be installed and UNICORE/X needs to be configured accordingly. Please
@@ -33,12 +35,16 @@ Mandatory configuration
 - You can choose to enable/disable certain UNICORE features, for example if you
   wish to set up a storage-only UNICORE server. Please refer to :ref:`ux_features`.
 
-UNICORE/X is configured using several config files residing in the
-*CONF* directory, please see :ref:`ux_install` for the location of the *CONF*
-directory.
+- Choose the database back-end. By default, runtime data is stored in a directory on 
+  the UNICORE/X server. To use a database server like MySQL or PostgreSQL instead,
+  please refer to :ref:`ux_persistence`.
 
 Config file overview
 ~~~~~~~~~~~~~~~~~~~~
+
+UNICORE/X is configured using several config files residing in the
+*CONF* directory, please see :ref:`ux_install` for the location of the *CONF*
+directory.
 
 The following table indicates the main configuration files. Depending on
 configuration and installed extensions, some of these files may not be present, or
@@ -59,9 +65,6 @@ if they are modified, at least where possible. This is indicated in the
  |startup.properties    |Java process settings (e.g. memory),  |no                        |
  |                      |lib\/log\/conf directories            |                          |
  +----------------------+--------------------------------------+--------------------------+
- |logging.properties    |Logging levels, logfiles and their    |yes                       |
- |                      |properties                            |                          |
- +----------------------+--------------------------------------+--------------------------+
  |main.config           |Main server config file. Defines      |no                        |
  |                      |features, storages, AuthN\/AuthZ,     |                          |
  |                      |AIPs\/PDPs                            |                          |
@@ -71,13 +74,13 @@ if they are modified, at least where possible. This is indicated in the
  +----------------------+--------------------------------------+--------------------------+
  |tsi.config            |Configuration to access the TSI       |no                        |
  +----------------------+--------------------------------------+--------------------------+
- |simpleidb             |Backend, installed applications,      |yes                       |
- |                      |resources                             |                          |
+ |idb.json              |Batch queue definitions, installed    |yes                       |
+ |                      |applications                          |                          |
  +----------------------+--------------------------------------+--------------------------+
- |simpleuudb            |Maps user DNs to local attributes     |yes                       |
+ |user-mapfile.json     |Maps user DNs to local attributes     |yes                       |
  |                      |(optional)                            |                          |
  +----------------------+--------------------------------------+--------------------------+
- |rest-users.txt        |Usernames\/passwords for REST         |yes                       |
+ |users-authfile.txt    |Usernames\/passwords for REST         |yes                       |
  |                      |authentication (optional)             |                          |
  +----------------------+--------------------------------------+--------------------------+
  |xacml2Policies\/\*.xml|Access control policy for securing the|yes, via xacml2.config (do|
@@ -89,6 +92,9 @@ if they are modified, at least where possible. This is indicated in the
  +----------------------+--------------------------------------+--------------------------+
  |saml.config           |Configure the use of Unity as an      |no                        |
  |                      |attribute source (optional)           |                          |
+ +----------------------+--------------------------------------+--------------------------+
+ |logging.properties    |Logging levels, logfiles and their    |yes                       |
+ |                      |properties                            |                          |
  +----------------------+--------------------------------------+--------------------------+
 
 
@@ -110,7 +116,7 @@ see :ref:`ux_admin` for more on these.
 Config file formats
 ~~~~~~~~~~~~~~~~~~~
 
-UNICORE/X uses two different formats for configuration. 
+UNICORE/X uses different formats for configuration. 
 
 Java properties
 ^^^^^^^^^^^^^^^
@@ -145,16 +151,24 @@ syntax ``$VARIABLE``, i.e. **WITHOUT** curly braces.
 XML
 ^^^
 
-Various XML dialects are being used, so please refer to the example files distributed with
-UNICORE for more information on the syntax. In general XML is a bit unfriendly to edit, and
-it is rather easy to introduce typos. 
+For XML files, please refer to the example files distributed with UNICORE for more information
+on the syntax. In general, XML makes it rather easy to introduce typos.
 
 .. hint::
-  It is advisable to run a tool such as ``xmllint`` after editing XML files to check for
-  typos.
+  It is advisable to run a tool such as ``xmllint`` on XML files to check for typos.
 
 
-UNICORE/X container configuration overview
+JSON
+^^^^
+
+For JSON files, please refer to the example files distributed with UNICORE for more information
+on the syntax.
+
+.. hint::
+  It is advisable to run a tool such as ``jq`` on JSON files to check for typos.
+
+
+UNICORE/X container configuration reference
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following table gives an overview of the basic settings for a
@@ -182,9 +196,9 @@ Gateway
 ^^^^^^^
 
 The gateway address is hard-coded into :file:`{CONF}/container.properties`, using
-the ``container.baseurl`` property::
+the ``container.externalurl`` property::
 
-  container.baseurl=https://Gateway_HOST:Gateway_PORT/SITENAME/services
+  container.externalurl=https://Gateway_HOST:Gateway_PORT/SITENAME/
 
 where *Gateway_HOST* and *Gateway_PORT* are the host and port of the
 gateway, and *SITENAME* is the UNICORE/X site name. The gateway address

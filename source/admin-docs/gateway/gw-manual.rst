@@ -184,10 +184,10 @@ If the scheme of the hostname URL is set to ``https``, the Gateway uses the conf
 data from ``security.properties`` to configure the HTTPS settings. 
 
 
-Credential and truststore settings
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Web server credential and truststore settings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Gateway credential and truststore is configured using the following properties
+The Gateway web server credential and truststore is configured using the following properties
 
 .. csv-table:: Credential settings
   :file: tables/sec-ref-credProperties.csv
@@ -219,23 +219,6 @@ The number of concurrent calls is limited, and controlled by two parameters::
   # total number of concurrent calls per site
   gateway.client.maxPerService=20
 
-
-You can also control the limit on the maximum SOAP header size which
-is allowed by the Gateway. Typically you **don't have to touch this
-parameter**. However, if your clients do produce very big SOAP headers
-and the Gateway blocks them, you can increase the limit. Note that
-such a giant SOAP header usually means that the client is not behaving
-as intended, e.g. is trying to perform a DoS attack.
-::
-
- # maximum size of an accepted SOAP header, in bytes
- gateway.soapMaxHeader=102400
-
-.. note::
- The Gateway may consume this amount of memory (plus some extra amount
- for other data) for each opened connection. Therefore, this value multiplied by 
- the number of maximum allowed connections, should be **significantly lower**, then the total
- memory available for the Gateway.
   
 
 .. _dyn-reg:

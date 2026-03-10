@@ -26,8 +26,8 @@ test machine or even on your laptop.
    :height: 32px
    :align: middle
 
-- Java 11 or later (OpenJDK or Oracle Java recommended)
-- Python 3.x (required for TSI and installation scripts)
+- Java 17 or later (OpenJDK or Oracle Java recommended)
+- Python 3.9 or later (required for TSI and installation scripts)
 
 .. important::
    **Security Notes**

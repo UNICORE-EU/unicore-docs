@@ -10,7 +10,7 @@
 Prerequisites
 ~~~~~~~~~~~~~  
 
-To run UCC, you need a Java runtime version 11 or later 
+To run UCC, you need a Java runtime version 17 or later
 (`OpenJDK <https://openjdk.org/install/>`_ preferred).
 
 Download

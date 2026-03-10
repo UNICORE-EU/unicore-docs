@@ -12,10 +12,10 @@ Applications can be defined in the main IDB file
 .. code:: 
 
   {
-    Applications: [
-      { Name: Date, ...  },
-      { Name: "Python script", ... },
-    ],
+    "Applications": [
+      { "Name": "Date", ...  },
+      { "Name": "Python script", ... }
+    ]
   }
 
 or in separate files (one application per file).
@@ -73,30 +73,30 @@ Here is an example:
 .. code:: 
 
   {
-   Name: "Python script",
-   Version: "3.4",
-   Description: "Python 3 interpreter",
-   Executable: "/usr/bin/python3",
-   Arguments: [
+   "Name": "Python script",
+   "Version": "3.4",
+   "Description": "Python 3 interpreter",
+   "Executable": "/usr/bin/python3",
+   "Arguments": [
       "-d$DEBUG?",
       "-vVERBOSE?",
       "$OPTIONS?",
       "$SOURCE?",
-      "$ARGUMENTS",
+      "$ARGUMENTS"
    ],
 
-   Parameters: {
-     "SOURCE": {Type: "filename"},
-     "ARGUMENTS": {Type: "string"},
-     "DEBUG": {Type: "boolean"},
-     "VERBOSE": {Type: "boolean"},
-     "OPTIONS": {Type: "string"},
+   "Parameters": {
+     "SOURCE": {"Type": "filename"},
+     "ARGUMENTS": {"Type": "string"},
+     "DEBUG": {"Type": "boolean"},
+     "VERBOSE": {"Type": "boolean"},
+     "OPTIONS": {"Type": "string"},
    },
 
-   Prologue: "module load python3",
+   "Prologue": "module load python3",
   
-   Resources: {
-     Nodes: 1,
+   "Resources": {
+     "Nodes": 1
    }
   }
 
@@ -109,9 +109,9 @@ Here is an example entry for the *Date* application on a UNIX system:
 ::
 
   {
-    Name: Date,
-    Version: 1.0,
-    Executable: "/bin/date",
+    "Name": "Date",
+    "Version": "1.0",
+    "Executable": "/bin/date"
   }
 
 
@@ -124,10 +124,10 @@ Command line arguments are specified using ``Arguments`` tags:
 :: 
 
   {
-    Name: LS,
-    Version: 1.0,
-    Executable: /bin/ls
-    Arguments: [ "-l", "-t", ],
+    "Name": "LS",
+    "Version": "1.0",
+    "Executable": "/bin/ls",
+    Arguments: [ "-l", "-t" ]
   }
 
 This would result in a command line ``/bin/ls -l -t``.
@@ -145,20 +145,20 @@ appended to the argument value:
 .. code::
 
   {
-    Name: JAVA,
-    Version: "11.0",
-    Description: "Java virtual machine",
-    Executable: "/usr/bin/java",
+    "Name": "JAVA",
+    "Version": "11",
+    "Description": "Java virtual machine",
+    "Executable": "/usr/bin/java",
   
-    Arguments: [ "-cp$CLASSPATH?", ],
+    "Arguments": [ "-cp $CLASSPATH?" ]
   
   }
 
-Here, ``-cp$CLASSPATH?`` is an optional argument. 
+Here, ``-cp $CLASSPATH?`` is an optional argument.
 
 If the user's job submission now includes a environment variable named
 ``CLASSPATH`` the incarnated commandline will be
-``/usr/bin/java -cp$CLASSPATH ...``, otherwise just ``/usr/bin/java ...``.
+``/usr/bin/java -cp $CLASSPATH ...``, otherwise just ``/usr/bin/java ...``.
 
 This allows very flexible incarnations.
 
@@ -170,14 +170,14 @@ To set environment variables, add a map
 .. code::
 
   {
-    Name: LS,
-    Version: 1.0,
-    Executable: "/bin/ls",
+    "Name": "LS",
+    "Version": "1.0",
+    "Executable": "/bin/ls",
   
-    Environment: {
+    "Environment": {
      "PATH": "/opt/myapp:/usr/bin:$PATH",
-     "MYENV": "value",
-    },
+     "MYENV": "value"
+    }
   }
 
 
@@ -192,13 +192,11 @@ on a login node (i.e. they are not part of the batch job).
 .. code::
 
   {
-     Name: SomeSimulation,
-     Version: "1.0",
-     Executable: "/usr/bin/simulation",
-     
-     PreCommand: "/opt/licenses/aquire_license",
-     
-     PostCommand: "/opt/licenses/release_license"
+     "Name": "SomeSimulation",
+     "Version": "1.0",
+     "Executable": "/usr/bin/simulation",
+     "PreCommand": "/opt/licenses/aquire_license",
+     "PostCommand": "/opt/licenses/release_license"
   }
 
 
@@ -211,11 +209,11 @@ and are placed before/after the application executable command.
 .. code::
 
   {
-     Name: SomeSimulation,
-     Version: "1.0",
-     Executable: "/usr/bin/simulation",   
-     Prologue: "module load some_module",
-     Epilogie: "",
+     "Name": "SomeSimulation",
+     "Version": "1.0",
+     "Executable": "/usr/bin/simulation",
+     "Prologue": "module load some_module",
+     "Epilogue": ""
   }
 
 Interactive execution when using a batch system
@@ -227,12 +225,9 @@ the login node (i.e. interactively), a flag in the IDB can be set:
 .. code::
 
   {
-    Name: SomeApp,
-    Version: 1.0,
-    
-    # instruct UNICORE to run the application on a login node
-    RunOnLoginNode: true,
-    
+    "Name": "SomeApp",
+    "Version": "1.0",
+    "RunOnLoginNode": "true"
   }
 
 
@@ -246,12 +241,8 @@ If you want to change this behaviour, you can set a flag
 .. code::
 
   {
-    Name: SomeApp,
-    Version: 1.0,
+    "Name": "SomeApp",
+    "Version": "1.0",
       
-    # instruct UNICORE to NOT fail if the application
-    # exits with non-zero exit code
-  
-    IgnoreNonZeroExitCode: true,
-  
+    "IgnoreNonZeroExitCode": "true"
   }

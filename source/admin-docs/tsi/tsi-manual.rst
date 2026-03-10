@@ -33,7 +33,7 @@ system. This is described in section :ref:`tsi_localization`.
 	:height: 32px
 	:align: middle
 
-The TSI requires Python Version 3.6 or later. It works only on
+The TSI requires Python Version 3.9 or later. It works only on
 Unix-style operating systems (e.g. Linux or Mac OS/X), Windows is not
 directly supported.
 

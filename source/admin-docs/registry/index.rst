@@ -22,7 +22,7 @@ more than one.
 Prerequisites
 ~~~~~~~~~~~~~ 
 
-To run the Registry, you need a Java runtime (headless is enough), in version 11 or later.
+To run the Registry, you need a Java runtime (headless is enough), in version 17 or later.
 
 UNICORE servers have been most extensively tested on Linux systems, but run on MacOS/X as well.
 

@@ -45,7 +45,7 @@ The following steps will be described:
 	:height: 32px
 	:align: middle
 
-- a server or VM with Java 11 or later and Python3 installed
+- a server or VM with Java 17 or later and Python3 installed
 
 - port ``8080`` on this server must be accessible from the Internet if you want to
   let external users access your cluster.
@@ -125,7 +125,7 @@ You can start the TSI now and see if there are any errors in the log file:
 ------------------------------------------------------------
 
 The two Java-based server components will be installed on the host named ``unicore-host``.
-We assume that Java 11 or later is installed.
+We assume that Java 17 or later is installed.
 
 Check that 
 

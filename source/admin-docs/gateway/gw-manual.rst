@@ -18,8 +18,8 @@ configured.
 .. attention:: **LIMITATIONS**
   
   The Gateway is not a complete HTTP reverse proxy implementation. For
-  example, it is not possible to run a full, complex web      application
-  *behind* the Gateway, especially not if protocols like    WebSocket are
+  example, it is not possible to run a full, complex web application
+  *behind* the Gateway, especially not if protocols like WebSocket are
   used.
 
 In effect, traffic to a *virtual* URL, e.g.
@@ -83,7 +83,7 @@ Prerequisites
 ~~~~~~~~~~~~~
 
 To run, the Gateway requires Java (JRE headless is sufficient) in
-version 11 or later. We recommend using 
+version 17 or later. We recommend using
 `OpenJDK <https://openjdk.java.net/install/>`_.
 
 
@@ -201,6 +201,33 @@ The Gateway web server credential and truststore is configured using the followi
   :widths: 25, 15, 15, 45
   :header-rows: 1
   :class: tight-table
+
+
+
+Configuring a separate back-end communication credential
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Usually, the Gateway uses a single credential and truststore for both
+HTTPS server and client usage. However, if you prefer, you can configure
+separate credentials for the web server and the connections to the "internal"
+UNICORE servers (UNICORE/X, Workflow etc).
+
+This is done using a set of properties exactly like the ones
+described in the previous section, but with a different prefix
+"gateway.client."
+
+
+For example, to configure a separate client credential and
+truststore::
+
+  gateway.client.credential.path=/certs/gateway-internal-credential.pem
+  gateway.client.credential.password=
+
+  gateway.client.truststore.type=directory
+  gateway.client.truststore.directoryLocations.1=/certs/internal-trusted/*.pem
+
+
+Note that you always have to configure both credential and truststore.
 
 
 Scalability settings

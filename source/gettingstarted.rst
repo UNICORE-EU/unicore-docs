@@ -25,8 +25,9 @@ download the `Core Server Bundle <https://github.com/UNICORE-EU/server-bundle/re
 which can be installed very quickly on a single test machine or even your laptop. 
 See also :ref:`unicore-howto-testmachine` for more information.
 
-If you are a `Docker <https://docs.docker.com>`_ user, you can try our
+If you are a `Docker <https://docs.docker.com>`_ user, we recommend using our
 `UNICORE Docker image <https://github.com/UNICORE-EU/tools/tree/master/unicore-docker-image>`_.
+for evaluation.
 
 Deploying UNICORE
 -----------------

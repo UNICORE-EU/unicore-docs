@@ -54,20 +54,15 @@ Do **not** start servers (except TSI) as ``root``.
 
 **Install the bundle**
 
-Download either the ``.tgz`` archive or the Debian package (``.deb``)
-from the `Core Server Bundle <https://github.com/UNICORE-EU/server-bundle/releases>`_.
+Download the ``.tgz`` archive from
+the `Core Server Bundle <https://github.com/UNICORE-EU/server-bundle/releases>`_.
 
-For ``.tgz`` files, unpack with:
+Unpack the bundle with
 
 .. code:: console
 
    $ tar xzf unicore-server-bundle-<version>.tgz
 
-For Debian packages, install with:
-
-.. code:: console
-
-   $ sudo dpkg -i unicore-server-bundle-<version>.deb
 
 The bundle includes the following components:
 
@@ -137,14 +132,14 @@ Starting UNICORE
 Start the UNICORE servers using the ``start.sh`` script in the
 installation directory. 
 
-Testing Installation
-----------------------
+Testing the installation
+------------------------
 
 To check that authentication and user mapping work correctly, run:
 
 .. code:: console
 
-   export BASE=https://unicore-host:8080/TEST/rest/core
+   export BASE=https://unicore-host:8080/DEMO-SITE/rest/core
    # Replace `unicore-host` with your server host (e.g., localhost)
    curl -k -u demouser:test123 -H "Accept: application/json" \
        $BASE?fields=client | python3 -m json.tool
@@ -153,9 +148,6 @@ Expected output:
 
 .. code:: console
 
-   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                    Dload  Upload   Total   Spent    Left  Speed
-   100   215  100   215    0     0    676      0 --:--:-- --:--:-- --:--:--   678
    {
        "client": {
            "role": {
@@ -177,7 +169,7 @@ Expected output:
    }
 
 .. note::
-   If needed, servers can be stopped using the ``stop.sh`` script in the same directory.
+   The servers can be stopped using the ``stop.sh`` script in the same directory.
    
    
 |support_img| Reporting bugs

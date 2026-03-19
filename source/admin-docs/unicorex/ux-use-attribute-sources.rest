@@ -9,21 +9,22 @@
 
 The authorization process in UNICORE/X requires that each UNICORE user
 (identified by an X.500 DN) is assigned some *attributes* such as her
-*role*. Attributes are also used to subsequently run tasks for the
-authorized user and possibly can be used for other purposes as well
-(for instance for accounting).
+*role*. Attributes are for example used to subsequently run tasks for the
+user using the correct user id and group, and can possibly be used for
+other purposes as well.
 
-Therefore, the most important item for security configuration is
-selecting and maintaining a so called *attribute source* (called sometimes
-**A**\ ttribute **I**\ nformation **P**\ oint, AIP), which is
-used by USE to assign attributes to UNICORE users.
+UNICORE can be configured to use one or more so called *attribute sources*,
+that can even be combined for maximum flexibility and administrative control.
 
-Several attribute sources are available, that can even be combined 
-for maximum flexibility and administrative control.
+There are three kinds of attribute sources:
 
-There are two kinds of attribute sources:
-
-- *Classic* or *static attribute sources*, which are used **BEFORE** authorization. Those attribute
+- *Automatic attribute sources*, where attributes are already extracted during the
+  authentication process. For example, if using PAM authentication (local username/password),
+  the Unix username and user role will be pre-set in case of successful authentication.
+  Similar mechanisms exist for other authentication mechanisms like OAuth token-based or ssh-key
+  authentication. Check the documentation of the authentication handlers for details.
+  Note that these attributes can be overriden later by the other attribute sources.
+- *Static attribute sources*, which are used **BEFORE** authorization. Those attribute
   sources maintain a simple mappings of user certificates (or DNs) to some attributes. The primary 
   role of those sources is to provide attributes used for authorization, but also incarnation 
   attributes may be assigned. 
@@ -36,8 +37,8 @@ There are two kinds of attribute sources:
 
 .. _use_incarnation-attributes:
 
-UNICORE incarnation and authorization attributes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+UNICORE authorization attributes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Note that actual names of the attributes presented here are not very important. Real attribute
 names are defined by attribute source (advanced attribute sources, like Unity/SAML attribute
@@ -67,7 +68,7 @@ There are two special authorization attributes:
   sources or jobs accounting) may be configured to use it.   
 
 
-There are several attributes used for incarnation:
+There are several attributes used for running tasks on the back-end:
 
 - ``xlogin`` - specifies which local user id (in UNIX called *uid*) should be assigned to 
   the UNICORE user.
@@ -78,17 +79,10 @@ There are several attributes used for incarnation:
   added for the UNICORE user.
 - ``queue`` - define which BSS queues are allowed for the particular user.
 
+(UNICORE can consume other attributes, but this is used only in certain special services and use-cases)
 
-Finally, UNICORE can consume other attributes. All other attributes can be used only for 
-authorization or in more advanced setups (for instance, using the UNICORE/X incarnation tweaker).
-Currently, all such additional attributes which are received from attribute source are treated
-as XACML attributes and are put into XACML evaluation context. This feature is rather
-rarely used, but it allows for creating a very fine grained authorization policies using
-custom attributes. 
-
-Particular attribute source define how to assign these attribute to users. Not always 
-all types of attributes are supported by the attribute source, 
-e.g. XUUDB can not define (among others) per-user queues or VOs.
+Not always all types of attributes are supported by the attribute source, 
+e.g. the XUUDB can only supports the "role", "xlogin" and "groups" attributes.
 
 After introducing all the special UNICORE attributes, it must be noted that those attributes are
 used in two ways. Their primary role is to strictly define what is allowed for the
@@ -108,7 +102,7 @@ Configuring Attribute Sources
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
- The following description is for configuring the classic, static attribute sources.
+ The following description is for configuring static attribute sources.
  However, everything written here applies also to configuration of the dynamic sources: 
  the only difference is that instead of ``container.security.attributes.`` property prefix,
  the ``container.security.dynamicAttributes.`` should be used.
@@ -196,8 +190,6 @@ The :ref:`xuudb` is the standard option in UNICORE. It has the following feature
   multiple clients. Usually, it is deployed to handle attributes for a whole UNICORE site running 
   multiple service containers.
    
-- Access can be protected by a client-authenticated SSL.
-   
 - XUUDB can store static mappings of UNICORE users: the local ``xlogin``, ``role`` and ``project`` 
   attributes (where ``project`` maps to Unix groups).
    
@@ -214,7 +206,7 @@ To enable and configure the *XUUDB* as a static attribute source,
 set the following properties in the configuration file::
 
 	container.security.attributes.order=... XUUDB ...
-	container.security.attributes.XUUDB.class=eu.unicore.uas.security.XUUDBAuthoriser
+	container.security.attributes.XUUDB.class=eu.unicore.services.aip.xuudb.XUUDBAttributeSource
 	container.security.attributes.XUUDB.xuudbHost=https://<xuudbhost>
 	container.security.attributes.XUUDB.xuudbPort=<xuudbport>
 	container.security.attributes.XUUDB.xuudbGCID=<your_gcid>
@@ -223,18 +215,16 @@ To enable and configure the *XUUDB* as a dynamic attribute source,
 set the following properties in the configuration file::
 
 	container.security.dynamicAttributes.order=... XUUDB ...
-	container.security.dynamicAttributes.XUUDB.class=eu.unicore.uas.security.xuudb.XUUDBDynamicAttributeSource
+	container.security.dynamicAttributes.XUUDB.class=eu.unicore.services.aip.xuudb.XUUDBDynamicAttributeSource
 	container.security.dynamicAttributes.XUUDB.xuudbHost=https://<xuudbhost>
 	container.security.dynamicAttributes.XUUDB.xuudbPort=<xuudbport>
 
 
-SAML Virtual Organizations aware attribute source (e.g. Unity)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SAML attribute source (e.g. Unity)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-UNICORE supports SAML attributes, which can be either fetched by the
-server or pushed by the clients, using a Virtual Organisations aware
-attribute source. In the most cases Unity is deployed as a server
-providing attributes and handling VOs, as it supports all UNICORE
+UNICORE supports SAML attributes, which are fetched from a server.
+In the most cases, Unity is used for this, as it supports all UNICORE
 features and therefore offers a greatest flexibility, while being
 simple to adopt. SAML attributes can be used only as a static
 attribute source.
@@ -254,37 +244,37 @@ XUUDB, or when you want to locally override attributes for
 selected users (e.g. to ban somebody).
 
 In contrast to the XUUDB, the ``File`` attribute source can store all
-types of attributes, while the XUUDB only handles role, uid and group.
+types of attributes, while the XUUDB only handles role, xlogin and group.
   
 To use, set
 ::
 
 	container.security.attributes.order=... FILE ...
-	container.security.attributes.FILE.class=eu.unicore.uas.security.file.FileAttributeSource
+	container.security.attributes.FILE.class=eu.unicore.services.aip.file.FileAttributeSource
 	container.security.attributes.FILE.file=<your map file>
 	container.security.attributes.FILE.matching=<strict|regexp>
 
-The map file itself has the following format: 
+The map file itself is in JSON format, as following: 
 
-.. code:: xml
+.. code::
 
-	<?xml version="1.0" encoding="UTF-8"?>
-	<fileAttributeSource>
-	   <entry key="USER DN">
-		  <attribute name="role">
-			 <value>user</value>
-		  </attribute>
-		  <attribute name="xlogin">
-			 <value>unixuser</value>
-			 <value>nobody</value>
-			 ...
-		  </attribute>
-		  ...
-	   </entry>
-	   ...
-	</fileAttributeSource>
+  {
+    "USER DN":
+      {
+        "role" : [ "role1", ... ],
+        "xlogin": [ "user1", "user2", ... ],
+        ...
+      },
+    "OTHER USER DN":
+      {
+        "role": "user",
+		"xlogin": "hpcuser1"
+      }
+  }
 
-You can add an arbitrary number of attributes and attribute values.
+
+This attribute source supports arbitrary attribute names, and values can be either single strings or
+lists of strings.
 
 The *matching* option controls how a client's DN is mapped to a file entry.
 In *strict* mode, the canonical representation of the key is compared with the 
@@ -311,27 +301,15 @@ Recognized attribute names are:
 - ``supplementaryGroups``
 - ``addOsGroups`` (with values ``true`` or ``false``)
 - ``queue``
-    
-Attributes with those names (case insensitive) are handled as special UNICORE incarnation
-attributes. The correspondence should be straightforward, e.g. the ``xlogin`` is 
+
+Attributes with those names (case insensitive) are the standard UNICORE 
+attributes used for task execution, e.g. the ``xlogin`` is 
 used to provide available local OS user names for the client. 
 
 For all attributes except of the ``supplementaryGroups`` the default value is the first one
 provided. For ``supplementaryGroups`` the default value contains all defined values. 
 
-You can also define other attributes - those will be used as XACML authorization 
-attributes, with XACML string type.  
-
-
-PAM attribute
-^^^^^^^^^^^^^
-
-This is a special attribute source which only works in conjunction
-with the corresponding REST authentication module.
-::
-
-	container.security.attributes.order=... PAM ...
-	container.security.attributes.PAM.class=eu.unicore.services.rest.security.PAMAttributeSource
+You can also define other attributes, if the service or authorization policy requires them.
 
 
 .. _chain-attr-source:
@@ -356,11 +334,11 @@ the *banned* role).
 	container.security.attributes.combiningPolicy=MERGE_LAST_OVERRIDES
 
 	# The FILE source cfg:
-	container.security.attributes.FILE.class=eu.unicore.uas.security.file.FileBasedAuthoriser
+	container.security.attributes.FILE.class=eu.unicore.services.aip.file.FileBasedAuthoriser
 	container.security.attributes.FILE.file=<your map file>
 
 	# The UNITY_CLUSTER is a sub chain:
-	container.security.attributes.UNITY_CLUSTER.class=de.fzj.unicore.uas.security.util.AttributeSourcesChain
+	container.security.attributes.UNITY_CLUSTER.class=eu.unicore.services.security.util.AttributeSourcesChain
 	container.security.attributes.UNITY_CLUSTER.order=UNITY1 UNITY2
 	container.security.attributes.UNITY_CLUSTER.combiningPolicy=FIRST_ACCESSIBLE
 

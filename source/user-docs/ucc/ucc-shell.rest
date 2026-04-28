@@ -10,7 +10,9 @@
 If you want to run a larger number of UCC commands, the overhead of starting
 the Java VM or checking the registry may become annoying. For this scenario, 
 UCC offers a ``shell`` that allows the user to enter UCC commands interactively.
-  
+The shell also has a number of convenient features like command completion,
+variables, history etc.
+
 It is started by
  
 .. code:: console
@@ -29,6 +31,12 @@ or on Unix you can use the redirection features:
 .. code:: console
 
   $ ucc shell < commandsfile
+
+or
+
+.. code:: console
+
+  $ cat commandsfile | ucc shell
 
 
 Changing property settings

@@ -49,18 +49,10 @@ since it is less administrative effort.
 Configuring the persistence layer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Peristence properties are configured in two files:
+Peristence properties are usually configured ``container.properties`` 
 
-- ``container.properties`` for all service data
-
-- ``xnjs.properties`` for job data
-
-It is recommended to specify a configuration file using the ``persistence.config`` property. Thus, 
-persistence configuration can be easily shared between the job (XNJS) data and other service data.
-If the ``persistence.config`` property is set, the given file will be read as a Java properties 
-file, and the properties will be used.
-
-
+For easier management, it is recommended to specify a configuration file using
+the ``persistence.config`` property, and to put all persistence related config in that file.
 
 The H2 engine
 ^^^^^^^^^^^^^

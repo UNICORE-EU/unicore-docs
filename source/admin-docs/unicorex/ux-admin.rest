@@ -16,8 +16,8 @@ flooded by jobs. To enable, edit :file:`{CONF}/container.properties` and
 add properties, e.g.
 ::
 
-  container.wsrf.maxInstancesPerUser.JobManagement=200
-  container.wsrf.maxInstancesPerUser.FileTransfer=20
+  container.services.maxInstancesPerUser.JobManagement=200
+  container.services.maxInstancesPerUser.FileTransfer=20
 
 
 The last part of the property name is the service name, please see :ref:`ux_features`
@@ -32,7 +32,7 @@ trying to submit a new job).
 Logging
 ~~~~~~~
 
-UNICORE uses the `Log4j 2 <https://logging.apache.org/log4j/2.x/manual/configuration.html>`_ 
+UNICORE uses the `Log4j <https://logging.apache.org/log4j/2.x/manual/configuration.html>`_ 
 logging framework. The config file is specified with a Java property
 ``log4j.configurationFile``.
 
@@ -112,8 +112,6 @@ Here is a table of the various logger categories:
  |unicore.xnjs.tsi              |TSI subsystem (batch system connector)          |
  +------------------------------+------------------------------------------------+
  |unicore.client                |Client calls (to other servers)                 |
- +------------------------------+------------------------------------------------+
- |unicore.wsrflite              |Underlying services environment (WSRF framework)|
  +------------------------------+------------------------------------------------+
  |uftp                          |UFTP client\/server communication               |
  +------------------------------+------------------------------------------------+

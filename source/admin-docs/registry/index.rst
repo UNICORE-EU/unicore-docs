@@ -172,8 +172,8 @@ The entries in the global Registry are updated at a specified
 interval. To control this interval, edit a property in
 ``CONF/container.properties``::
 
-  # default termination time for registry entries in seconds
-  container.wsrf.sg.defaulttermtime=1800
+  # refresh interval for registry entries in seconds
+  container.services.registryEntryRefreshInterval=1800
 
   
 Client configuration

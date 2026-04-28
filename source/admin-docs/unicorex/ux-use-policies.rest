@@ -37,10 +37,10 @@ service call), an XACML request is generated, which currently includes the follo
  +------------------------------+--------------+----------+----------------------------------+
  |XACML attribute name          |XACML category|XACML type|Description                       |
  +==============================+==============+==========+==================================+
- |\urn:oasis:names:tc:xacml:1.0:|Resource      |AnyURI    |WS service name                   |
+ |\urn:oasis:names:tc:xacml:1.0:|Resource      |AnyURI    |Service name                      |
  |resource:resource\-id         |              |          |                                  |
  +------------------------------+--------------+----------+----------------------------------+
- |\urn:unicore:wsresource       |Resource      |String    |Identifier of the WSRF resource   |
+ |\urn:unicore:wsresource       |Resource      |String    |Identifier of the service         |
  |                              |              |          |instance (if any).                |
  +------------------------------+--------------+----------+----------------------------------+
  |owner                         |Resource      |X.500 name|The name of the VO resource owner.|

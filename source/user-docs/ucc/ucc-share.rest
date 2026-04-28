@@ -1,7 +1,7 @@
 .. _ucc_share:
 
-|share-img| Sharing resources
------------------------------
+|share-img| Sharing resources via ACLs
+--------------------------------------
 
 .. |share-img| image:: ../../_static/share.png
 	:height: 32px
@@ -25,25 +25,25 @@ groups.
 Editing ACLs
 ~~~~~~~~~~~~
 
-The ACLs are managed via the ``share`` command.
+The ACLs are managed via the ``acl`` command.
 Use the basic
 
 .. code:: console
 
-  $ ucc share <URL>
+  $ ucc acl <URL>
 
-to share the current ACL for the given resource, where *URL* is the full URL
+to see the current ACL for the given resource, where *URL* is the full URL
 of the resource, e.g.
 
 .. code:: console
 
-  $ ucc share https://localhost:8080/DEMO-SITE/rest/core/storages/HOME
+  $ ucc acl https://localhost:8080/DEMO-SITE/rest/core/storages/HOME
  
 To add an ACL entry use:
 
 .. code:: console
 
-  $ ucc share ACE1 ACE2 ... <URL> 
+  $ ucc acl ACE1 ACE2 ... <URL> 
 
 where *ACE* is an access control entry expressed in a simple format::
 
@@ -54,19 +54,19 @@ target system is *test*, you would use:
 
 .. code:: console
 
-  $ ucc share modify:UID:test <URL>
+  $ ucc acl modify:UID:test <URL>
 
 To delete entries use the ``-d`` option:
 
 .. code:: console
 
-  $ ucc share -d modify:UID:test <URL>
+  $ ucc acl -d modify:UID:test <URL>
 
 To delete **all** entries use the ``-b`` option:
 
 .. code:: console
 
-  $ ucc share -b <URL>
+  $ ucc acl -b <URL>
 
 
 Permission levels
